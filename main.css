@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.desktopTemplate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 66px 20px;
+    gap: 103px;
+    position: absolute;
+    width: 232px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+}
+
+.logoContainer {
+    width: 100.03px;
+    height: 121.97px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.logo {
+    position: absolute;
+    left: 28.44%;
+    right: 28.44%;
+    top: 6.45%;
+    bottom: 81.64%;
+}
+
+.desktopTemplateMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 15px;
+    width: 232px;
+    height: 229px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.desktopTemplateMenuElements {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 53px;
+    gap: 20px;
+    width: 232px;
+    height: 46px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.desktopTemplateIconContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 30px;
+    height: 30px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.desktopTemplateIcon {
+    width: 22px;
+    height: 26px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.desktopTemplateFont {
+    width: 53px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    white-space: nowrap;
+    color: #CDCDCD;
+}
+
+.desktopTemplateIconActive {
+    background-color: #091931;
+}
+
+
+.desktopTemplateLegalContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 142px 0px 0px;
+    gap: 15px;
+    width: 160px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.desktopTemplateLegal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    gap: 20px;
+    width: 160px;
+    height: 46px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.desktopTemplateLegalIconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 30px;
+    height: 30px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
