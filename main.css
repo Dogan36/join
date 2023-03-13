@@ -282,15 +282,18 @@ h1 {
     width: 137px;
     height: 51px;
 
-    background: #2A3647;
-    border: 1px solid #2A3647;
+    background: var(--defaultDark);
+    border: 1px solid var(--defaultDark);
     border-radius: 10px;
-
-    /* Inside auto layout */
-
     flex: none;
     order: 1;
     flex-grow: 0;
+    cursor: pointer;
+}
+
+.addPrimaryButton:hover{
+    background-color:var(--secondaryColor);
+    border-color: var(--secondaryColor);
 }
 
 .addPrimaryButton span {
@@ -333,7 +336,7 @@ h1 {
 .boardContent {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     padding: 0px;
     gap: 26px;
@@ -345,8 +348,11 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    gap: 35px;
+    gap: 35px; 
+   
 }
+
+
 
 .boardElementHeader {
     display: flex;
@@ -371,7 +377,7 @@ h1 {
     color: #2A3647;
 }
 
-.boardElementHeader img {
+.boardElementHeader svg {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -380,6 +386,11 @@ h1 {
     gap: 10px;
     width: 30px;
     height: 30px;
+    cursor: pointer;
+}
+
+.boardElementHeader svg:hover {
+    color:var(--secondaryColor)
 }
 
 .boardCard {
@@ -530,7 +541,6 @@ h1 {
 .boardAvatar span {
     width: 19px;
     height: 14px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -540,3 +550,4 @@ h1 {
     text-align: center;
     color: #FFFFFF;
 }
+
