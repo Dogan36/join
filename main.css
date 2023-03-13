@@ -291,8 +291,8 @@ h1 {
     cursor: pointer;
 }
 
-.addPrimaryButton:hover{
-    background-color:var(--secondaryColor);
+.addPrimaryButton:hover {
+    background-color: var(--secondaryColor);
     border-color: var(--secondaryColor);
 }
 
@@ -348,8 +348,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    gap: 35px; 
-   
+    gap: 35px;
+
 }
 
 
@@ -390,7 +390,7 @@ h1 {
 }
 
 .boardElementHeader svg:hover {
-    color:var(--secondaryColor)
+    color: var(--secondaryColor)
 }
 
 .boardCard {
@@ -551,3 +551,30 @@ h1 {
     color: #FFFFFF;
 }
 
+.contactsLeft {
+    position: absolute;
+    width: 453px;
+    height: 935px;
+overflow: scroll;
+    background: #FFFFFF;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+}
+
+.contactList{
+    display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 357px;
+height: 1072px;
+
+/* white */
+
+background: #FFFFFF;
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
