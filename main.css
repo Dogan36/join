@@ -240,16 +240,16 @@ h1 {
 .board {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: #F6F7F8;
-    padding: 80px 65px 0 65px
+    padding: 0px 65px 0 65px
 }
 
 .boardHeadline {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
+    padding: 80px 0px 80px 0px;
     height: 73px;
     justify-content: space-between;
 }
@@ -269,12 +269,6 @@ h1 {
 
     border: 1px solid #A8A8A8;
     border-radius: 10px;
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
 }
 
 .addPrimaryButton {
@@ -343,12 +337,7 @@ h1 {
     align-items: flex-start;
     padding: 0px;
     gap: 26px;
-
-    position: absolute;
-    height: 661px;
-    left: 302px;
-    top: 343px;
-    background-color: yellow;
+    flex-wrap: wrap;
 }
 
 .boardElement {
@@ -373,7 +362,7 @@ h1 {
 .boardElementHeader span {
     width: 57px;
     height: 25px;
-
+white-space: nowrap;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -424,4 +413,172 @@ h1 {
     gap: 20px;
     width: 209px;
     height: 203px;
+}
+
+.boardCardCategory {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 25px;
+    gap: 10px;
+
+    width: 103px;
+    height: 27px;
+
+    background: var(--desing);
+    border-radius: 8px;
+}
+
+.boardCardCategory span {
+    width: 53px;
+    height: 19px;
+    text-align: center;
+    /* Version 2/body */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+
+    /* white */
+
+    color: #FFFFFF;
+
+}
+
+.boardCardContent {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 20px;
+
+    width: 207px;
+    height: 67px;
+}
+
+.boardCardTaskName {
+    width: 137px;
+    height: 19px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+.boardCardTaskDescription {
+
+    width: 207px;
+    height: 38px;
+
+    /* Version 2/body */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+    text-overflow: ellipsis;
+
+    /* icon */
+
+    color: #A8A8A8;
+}
+
+.boardCardProgress {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+    width: 209px;
+    height: 14px;
+}
+
+.boardCardProgress span{
+    width: 51px;
+height: 14px;
+
+/* Version 2/t7 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 120%;
+/* or 14px */
+
+
+color: #000000;
+white-space: nowrap;
+}
+
+.boardCardAssign{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 83px;
+    
+    width: 207px;
+    height: 35px;
+}
+
+.boardCardAssignedTo{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    padding: 0px;
+    width: 93px;
+    height: 35px;
+}
+
+.boardAvatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 8px;
+    gap: 10px;
+    
+    width: 35px;
+    height: 35px;
+    
+    background: #0190E0;
+    /* white */
+    
+    border: 1px solid #FFFFFF;
+    border-radius: 58px;
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px -4px;
+}
+
+.boardAvatar span{
+    width: 19px;
+height: 14px;
+
+/* Version 2/t7 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 120%;
+/* or 14px */
+text-align: center;
+
+color: #FFFFFF;
 }
