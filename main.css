@@ -4,6 +4,23 @@
     box-sizing: border-box;
 }
 
+:root {
+    --mainBgColor: #F6F7F8;
+    --defaultDark: #2A3647;
+    --secondaryColor: #29ABE2;
+    --activeDark: #091931;
+    --lowPriority: #7AE229;
+    --medPriority: #FFA800;
+    --highPriority: #FF3D00;
+    --backOffice: #1FD7C1;
+    --desing: #FF7A00;
+    --sales: #FC71FF;
+    --media: #FFC701;
+    --marketing: #0038FF;
+
+
+}
+
 h1 {
     width: 176px;
     height: 73px;
