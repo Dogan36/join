@@ -277,7 +277,7 @@ h1 {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-
+white-space: nowrap;
     width: 137px;
     height: 51px;
 
@@ -815,7 +815,7 @@ contacts {
 
 }
 
-.contactCardHeaderContent span {
+.contactCardContentHeader span {
     width: 287px;
     height: 56px;
 
@@ -857,4 +857,167 @@ contacts {
     display: flex;
     align-items: center;
     color: #29ABE2;
+}
+
+.contactCardInfoHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 59px;
+
+    width: 392.85px;
+    height: 74px;
+}
+
+.contactCardInfoHeader span {
+    width: 207px;
+    height: 74px;
+
+    /* Version 2/t6 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.contactCardEdit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0px;
+    gap: 6px;
+
+    width: 126.85px;
+    height: 29.34px;
+}
+
+.contactCardEdit span {
+    width: 100px;
+    height: 19px;
+
+    /* Version 2/body */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+    display: flex;
+    align-items: center;
+
+    color: #2A3647;
+}
+
+.contactCardInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 22px;
+    
+    width: 140px;
+    height: 128px;
+    
+}
+
+.contactCardEmail{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 15px;
+    
+    width: 140px;
+    height: 53px;
+}
+
+.contactCardEmail span:first-child{
+    width: 43px;
+    height: 19px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #000000;
+
+}
+
+.contactCardEmail span:last-child{
+    width: 140px;
+    height: 19px;
+    
+    /* Version 2/body */
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #007CEE;
+    
+}
+
+.contactPrimaryButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    
+    position: absolute;
+    width: 193px;
+    height: 53px;
+    left: 1195px;
+    top: 820px;
+    
+    background: #2A3647;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+}
+
+.contactPrimaryButton:hover {
+    background-color: var(--secondaryColor);
+    border-color: var(--secondaryColor);
+}
+
+.contactPrimaryButton span {
+    width: 130px;
+height: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+
+/* white */
+
+color: #FFFFFF;
 }
