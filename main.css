@@ -22,7 +22,6 @@
 }
 
 h1 {
-    width: 176px;
     height: 73px;
     font-family: 'Inter';
     font-style: normal;
@@ -551,13 +550,19 @@ h1 {
     color: #FFFFFF;
 }
 
+contacts {
+    display: flex;
+}
+
 .contactsLeft {
-    position: absolute;
     width: 453px;
     height: 935px;
     overflow: scroll;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .contactList {
@@ -618,21 +623,21 @@ h1 {
     height: 28px;
 }
 
-.contactListElement{
+.contactListElement {
     display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 15px 25px;
-gap: 35px;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 15px 25px;
+    gap: 35px;
 
-width: 357px;
-height: 79px;
+    width: 357px;
+    height: 79px;
 
-background: #FFFFFF;
-border-radius: 10px;
+    background: #FFFFFF;
+    border-radius: 10px;
 }
 
-.contantsAvatar{
+.contantsAvatar {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -646,7 +651,7 @@ border-radius: 10px;
     border-radius: 58px;
 }
 
-.contantsAvatar span{
+.contantsAvatar span {
     width: 19px;
     height: 14px;
     font-family: 'Inter';
@@ -659,51 +664,197 @@ border-radius: 10px;
     color: #FFFFFF;
 }
 
-.contactsInfo{
+.contactsInfo {
     display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 0px;
-gap: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 5px;
 
-width: 140px;
-height: 49px;
+    width: 140px;
+    height: 49px;
 }
 
-.contactsInfo span:first-child{
+.contactsInfo span:first-child {
     width: 127px;
-height: 25px;
+    height: 25px;
 
-/* Version 2/t6 */
+    /* Version 2/t6 */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 120%;
-/* or 25px */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
 
-display: flex;
-align-items: center;
+    display: flex;
+    align-items: center;
 
-color: #000000;
+    color: #000000;
 }
 
-.contactsInfo span:last-child{
+.contactsInfo span:last-child {
     width: 140px;
     height: 19px;
-    
+
     /* Version 2/body */
-    
+
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
     /* or 19px */
-    
+
     display: flex;
     align-items: center;
-    
+
     color: #007CEE;
+}
+
+.contactsRight {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactsRightHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    width: 569px;
+    height: 73px;
+    padding: 80px 0 80px 65px;
+    white-space: nowrap;
+}
+
+.contactsRightHeader span {
+    width: 235px;
+    height: 32px;
+
+    /* Version 2/t5 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    /* or 32px */
+
+
+    color: #2A3647;
+}
+
+.contactsCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 65px;
+    gap: 21px;
+    width: 461px;
+    height: 364px;
+}
+
+.contactCardHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 54px;
+    width: 461px;
+    height: 120px;
+}
+
+.contactCardAvatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 8px;
+    gap: 10px;
+    width: 120px;
+    height: 120px;
+    background: #0190E0;
+    border: 1px solid #FFFFFF;
+    border-radius: 100%;
+}
+
+.contactCardAvatar span {
+
+    width: 80px;
+    height: 28.57px;
+    left: 20px;
+    top: 45.71px;
+
+    /* Version 2/t2 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 120%;
+    /* or 56px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.contactCardHeaderContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 13px;
+
+    width: 287px;
+    height: 88px;
+
+}
+
+.contactCardHeaderContent span {
+    width: 287px;
+    height: 56px;
+
+    /* Version 2/t2 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 120%;
+    /* or 56px */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.contactCardHeaderAddTask {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 13px;
+
+    width: 128px;
+    height: 19px;
+}
+
+.contactCardHeaderAddTask span {
+    width: 100px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #29ABE2;
 }
