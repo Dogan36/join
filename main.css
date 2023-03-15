@@ -555,26 +555,155 @@ h1 {
     position: absolute;
     width: 453px;
     height: 935px;
-overflow: scroll;
+    overflow: scroll;
     background: #FFFFFF;
     box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.08);
 }
 
-.contactList{
+.contactList {
     display: flex;
-flex-direction: column;
-align-items: center;
-padding: 0px;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    width: 357px;
+    height: 1072px;
+
+    /* white */
+
+    background: #FFFFFF;
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.contactListSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 357px;
+    height: 60px;
+}
+
+.contactListSection span {
+    width: 282px;
+    height: 40px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+.contactListSeperator {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 12px;
+    gap: 10px;
+
+    width: 347px;
+    height: 28px;
+}
+
+.contactListElement{
+    display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 15px 25px;
+gap: 35px;
 
 width: 357px;
-height: 1072px;
-
-/* white */
+height: 79px;
 
 background: #FFFFFF;
-/* Inside auto layout */
+border-radius: 10px;
+}
 
-flex: none;
-order: 0;
-flex-grow: 0;
+.contantsAvatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 8px;
+    gap: 10px;
+    width: 35px;
+    height: 35px;
+    background: #0190E0;
+    border: 1px solid #FFFFFF;
+    border-radius: 58px;
+}
+
+.contantsAvatar span{
+    width: 19px;
+    height: 14px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    /* or 14px */
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.contactsInfo{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 5px;
+
+width: 140px;
+height: 49px;
+}
+
+.contactsInfo span:first-child{
+    width: 127px;
+height: 25px;
+
+/* Version 2/t6 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+display: flex;
+align-items: center;
+
+color: #000000;
+}
+
+.contactsInfo span:last-child{
+    width: 140px;
+    height: 19px;
+    
+    /* Version 2/body */
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+    
+    display: flex;
+    align-items: center;
+    
+    color: #007CEE;
 }
