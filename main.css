@@ -277,7 +277,7 @@ h1 {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-white-space: nowrap;
+    white-space: nowrap;
     width: 137px;
     height: 51px;
 
@@ -920,65 +920,65 @@ contacts {
     color: #2A3647;
 }
 
-.contactCardInfo{
+.contactCardInfo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 22px;
-    
+
     width: 140px;
     height: 128px;
-    
+
 }
 
-.contactCardEmail{
+.contactCardEmail {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 15px;
-    
+
     width: 140px;
     height: 53px;
 }
 
-.contactCardEmail span:first-child{
+.contactCardEmail span:first-child {
     width: 43px;
     height: 19px;
-    
+
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 120%;
     /* or 19px */
-    
+
     display: flex;
     align-items: center;
-    
+
     color: #000000;
 
 }
 
-.contactCardEmail span:last-child{
+.contactCardEmail span:last-child {
     width: 140px;
     height: 19px;
-    
+
     /* Version 2/body */
-    
+
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
     /* or 19px */
-    
+
     display: flex;
     align-items: center;
-    
+
     color: #007CEE;
-    
+
 }
 
 .contactPrimaryButton {
@@ -988,13 +988,13 @@ contacts {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-    
+
     position: absolute;
     width: 193px;
     height: 53px;
     left: 1195px;
     top: 820px;
-    
+
     background: #2A3647;
     border: 1px solid #2A3647;
     border-radius: 10px;
@@ -1007,17 +1007,184 @@ contacts {
 
 .contactPrimaryButton span {
     width: 130px;
-height: 25px;
+    height: 25px;
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 21px;
-line-height: 120%;
-/* or 25px */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
 
 
-/* white */
+    /* white */
 
-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.summaryHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    width: 569px;
+    height: 73px;
+    padding: 80px 0 80px 65px;
+    white-space: nowrap;
+}
+
+.summaryHeader span {
+    width: 235px;
+    height: 32px;
+
+    /* Version 2/t5 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    /* or 32px */
+
+
+    color: #2A3647;
+}
+
+.summaryContent {
+    padding-left: 65px;
+}
+
+.summaryContentLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 35px;
+
+}
+
+.summaryRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 35px;
+
+    width: 580px;
+    height: 170px
+}
+
+.summarySquareButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0px;
+    gap: 13px;
+
+    width: 170px;
+    height: 170px;
+
+    /* white */
+
+    background: #FFFFFF;
+    /* nuevo */
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.squareButtonInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    width: 87px;
+    height: 127px;
+}
+
+.squareButtonInner span:first-child {
+    width: 41px;
+    height: 77px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 120%;
+    /* identical to box height, or 77px */
+
+    text-align: center;
+
+    color: #000000;
+}
+
+.squareButtonInner span:last-child {
+    width: 87px;
+    height: 50px;
+
+    /* Version 2/t6 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+    text-align: center;
+
+    color: #2A3647;
+}
+
+.summarySquareButton:hover{
+    background-color: var(--defaultDark);
+    color:white
+}
+
+.summarySquareButton:hover span{
+    color: white;
+}
+
+.summaryUrgency {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 48px;
+    gap: 61px;
+
+    width: 580px;
+    height: 150px;
+
+    /* white */
+
+    background: #FFFFFF;
+    /* nuevo */
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}
+
+.summaryRectangeButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 38px 19px;
+    gap: 18px;
+
+    width: 272.5px;
+    height: 150px;
+
+    /* white */
+
+    background: #FFFFFF;
+    /* nuevo */
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
 }
