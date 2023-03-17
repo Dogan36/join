@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -9,9 +10,17 @@
     <script src="./js/mini_backend.js"></script>
     <script src='main.js'></script>
     <script src='./js/include.js'></script>
-    
+
 </head>
-<body onload="init()">
-  
+
+<body onload="includeHTML()">
+    <indexWrapper>
+        <div w3-include-html="./assets/templates/desktop_template.html"></div>
+        <div class="indexContainer">
+            <div class="indexHeader" w3-include-html="./assets/templates/header.html"></div>
+            <div class="indexContent" w3-include-html="/add_task.html"></div>
+        </div>
+    </indexWrapper>
 </body>
+
 </html>

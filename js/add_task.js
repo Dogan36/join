@@ -13,7 +13,7 @@ function closeNewTaskCategroy() {
     document.getElementById('select-container').innerHTML =``;
     document.getElementById('select-container').innerHTML =`<div onclick="openNewTaskCategroy()" class="option">
     <div>Select task category</div>
-    <img  class="arrow-icon" src="./img/arrow_icon.svg" alt="">
+    <img  class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="">
   </div>`;
     
 
@@ -24,7 +24,7 @@ function openNewTaskCategroy() {
     document.getElementById('select-container').innerHTML =`
     <div onclick="closeNewTaskCategroy()" class="option">
       <div>Select task category</div>
-      <img class="arrow-icon" src="./img/arrow_top_icon.svg" alt="">
+      <img class="arrow-icon" src="./assets/img/arrow_top_icon.svg" alt="">
     </div>
     <div onclick="openNewCategroy('new-category-contaier', 'color-container', 'select-container')" class="option">New Category</div>`;
 }
@@ -35,11 +35,11 @@ function openSelectContactsToAssign() {
   document.getElementById('select-contacts-container').innerHTML= `
   <div onclick="closeSelectContactsToAssign()" class="option">
     <div>Select contacts to assign</div>
-    <img class="arrow-icon" src="./img/arrow_top_icon.svg" alt="">
+    <img class="arrow-icon" src="./assets/img/arrow_top_icon.svg" alt="">
   </div>
   <div id="invite-new-contact-container" onclick="openNewCategroy('Assigned-to-contaier', 'select-contacts-container', 'select-contacts-container')"" class="option">
     <div>Invite new contact</div>
-    <img class="contact-icon" src="./img/contact_icon.svg" alt="">
+    <img class="contact-icon" src="./assets/img/contact_icon.svg" alt="">
   </div>
   `;
 
@@ -52,7 +52,7 @@ function closeSelectContactsToAssign() {
   document.getElementById('select-contacts-container').innerHTML= `
   <div onclick="openSelectContactsToAssign()" class="option">
     <div>Select contacts to assign</div>
-    <img class="arrow-icon" src="./img/arrow_icon.svg" alt="">
+    <img class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="">
   </div>
   `;
 }
