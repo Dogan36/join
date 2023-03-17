@@ -66,6 +66,7 @@ function prioColor(color) {
     document.getElementById('prio-urgent-white-icon').classList.remove('d-none');
     document.getElementById('prio-urgent-icon').classList.add('d-none');
     document.getElementById('prio-medium-icon').classList.remove('d-none');
+    document.getElementById('prio-low-icon').classList.remove('d-none');
     
     
   
@@ -76,17 +77,20 @@ function prioColor(color) {
     document.getElementById('prio-medium-white-icon').classList.remove('d-none');
     document.getElementById('prio-medium-icon').classList.add('d-none');
     document.getElementById('prio-urgent-icon').classList.remove('d-none');
+    document.getElementById('prio-low-icon').classList.remove('d-none');
     
     
     
   
     
   }else if (color == 'prio-green'){
-    document.getElementById('prio-green').classList.toggle('prio-green');
+    document.getElementById('prio-green').classList.add('prio-green');
     document.getElementById('prio-red').classList.remove('prio-red');
     document.getElementById('prio-yellow').classList.remove('prio-yellow');
-    document.getElementById('prio-low-white-icon').classList.toggle('d-none');
-    document.getElementById('prio-low-icon').classList.toggle('d-none');
+    document.getElementById('prio-low-white-icon').classList.remove('d-none');
+    document.getElementById('prio-low-icon').classList.add('d-none');
+    document.getElementById('prio-urgent-icon').classList.remove('d-none');
+    document.getElementById('prio-medium-icon').classList.remove('d-none');
 }
 }
 
