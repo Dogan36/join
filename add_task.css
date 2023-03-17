@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    background: #F5F5F5;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.title {
+    width: 130px;
+    height: 19px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    margin-top: 34px;
+}
+
+.title-input {
+    width: 422px;
+    height: 51px;
+    padding: 13px 21px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    background: #FFFFFF;
+    margin-top: 8px;
+}
+
+.description-field {
+    width: 421px;
+    height: 119px;
+    padding: 18px 21px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    background: #ffffff;
+    margin-top: 8px;
+    isolation: isolate;
+    flex: none;
+    resize: vertical;
+
+}
+
+
+/*  */
+
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    font-size: 21px;
+}
+
+.no-outline:focus {
+    outline: none;
+}
+
+input.new-category-input {
+    width: 333px;
+}
+
+.new-category-contaier {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 422px;
+    background-color: white;
+    padding: 13px 21px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+.dash-contaier {
+    display: flex;
+    align-items: center;
+}
+
+.dash {
+    border-left: 2px solid #cecece;
+    height: 30px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.img-container {
+    display: flex;
+    height: 15px;
+}
+
+.select-container {
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    width: 422px;
+}
+
+.option {
+    display: flex;
+    padding: 18px 21px;
+    font-size: 21px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+/* color */
+
+.purple {
+    background-color: purple;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.color.wheel {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    margin: 10px;
+}
+
+.color.wheel:hover {
+    width: 20px;
+    height: 20px;
+    border: 3px solid white;
+    box-shadow: 4px 3px 6px silver;
+    cursor: pointer;
+}    
+
+.color-container {
+    display: flex;
+}
+
+img.arrow-icon {
+    width: 25px;
+    height: 8px;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none;
+}
+
+.x-or-hook {
+    cursor: pointer;
+}
+
+.contact-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.content-container {
+    display: flex;
+}
+
+.container-center {
+    border-left: 3px solid #cecece;
+    height: 512px;
+    margin-left: 59px;
+    margin-right: 59px;
+    margin-top: 40px;
+}
+
+.prio-container {
+    display: flex;
+    gap: 10px;
+}
+
+.prio-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 134px;
+    height: 51px;
+    background-color: white;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 18px 10px;
+    gap: 10px;
+}
+
+.prio-button:hover {
+    width: 140px;
+    height: 57px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+img.prio-icon {
+    width: 20px;
+}
+
+.prio-red {
+    background-color: #ff3d00;
+    color: white;
+
+}
+
+.prio-yellow {
+    background-color: #ffa800;
+    color: white;
+}
+
+.prio-green {
+    background-color: #7ae229;
+    color: white;
+}
+
+.plus-icon {
+    width: 12px;
+    height: 12px;
+}
