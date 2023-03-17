@@ -1140,15 +1140,6 @@ contacts {
     color: #2A3647;
 }
 
-.summarySquareButton:hover{
-    background-color: var(--defaultDark);
-    color:white
-}
-
-.summarySquareButton:hover span{
-    color: white;
-}
-
 .summaryUrgency {
     display: flex;
     flex-direction: row;
@@ -1164,7 +1155,7 @@ contacts {
 
     background: #FFFFFF;
     /* nuevo */
-
+    cursor: pointer;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
 }
@@ -1187,4 +1178,135 @@ contacts {
 
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
+}
+
+.summaryUrgencyLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 18px;
+
+    width: 130px;
+    height: 75px
+}
+
+.summaryUrgencyAmount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 52px;
+    height: 75px;
+}
+
+.summaryUrgencyAmount span:first-child {
+    width: 50px;
+    height: 56px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 47px;
+    line-height: 120%;
+    /* or 56px */
+
+    text-align: center;
+
+    color: #000000;
+}
+
+.summaryUrgencyAmount span:last-child {
+    width: 52px;
+    height: 19px;
+
+    /* Version 2/body */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+
+    color: #2A3647;
+
+}
+
+.summaryUrgencyRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 13px;
+
+    width: 178px;
+    height: 57px;
+
+}
+
+.summaryUrgencyRight span:first-child {
+    width: 178px;
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    color: #2A3647;
+}
+
+.summaryUrgencyRight span:last-child {
+    width: 148px;
+    height: 19px;
+
+    /* Version 2/body */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+
+    color: #2A3647;
+}
+
+.summaryRectangeButton{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 38px 19px;
+gap: 18px;
+
+width: 272.5px;
+height: 150px;
+
+/* white */
+
+background: #FFFFFF;
+cursor: pointer;
+
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+border-radius: 30px;
+
+}
+.summarySquareButton:hover,
+.summaryUrgency:hover, 
+.summaryRectangeButton:hover{
+    background-color: var(--defaultDark);
+}
+
+.summarySquareButton:hover span,
+.summaryUrgency:hover span,
+.summaryRectangeButton:hover span{
+    color: white;
 }
