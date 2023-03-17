@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/summary.css" />
+    <script src="./js/summary.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-all">
+      <div class="headline-summary">
+        <div class="summary">Summary</div>
+        <div class="v-line"></div>
+        <div class="everything-in-a-nutshell">Everything in a nutshell!</div>
+      </div>
+      <div class="container-button">
+        <div class="container-button-head">
+          <div class="button-v1 button-number-hover-effect hover-effect ">
+            <span class="button-nummber-v1-v3">5</span>
+            <span class="button-text-v1-v3 ">Tasks in Board</span>
+          </div>
+          <div class="button-v1 button-number-hover-effect hover-effect">
+            <div class="button-nummber-v1-v3">5</div>
+            <div class="button-text-v1-v3">Tasks in Progress</div>
+          </div>
+          <div class="button-v1 button-number-hover-effect hover-effect">
+            <div class="button-nummber-v1-v3">5</div>
+            <div class="button-text-v1-v3">Tasks in Feedback</div>
+          </div>
+        </div>
+
+        <div class="button-v2 button-number-hover-effect hover-effect">
+          <div class="container-urgent-left">
+            <div>
+              <img
+                class="orange-button"
+                src="./img/oranger_button.svg"
+                alt=""
+              />
+            </div>
+            <div>
+              <div class="button-nummber-v2">1</div>
+              <div class="button-text-v2">Urgent</div>
+            </div>
+          </div>
+          <div class="v-line-grey"></div>
+          <div>
+            <div class="button-text-v2">October 16, 2022</div>
+            <div class="">Upcoming Deadline</div>
+          </div>
+        </div>
+        <div class="container-button-bottom">
+          <div class="button-v3 button-number-hover-effect hover-effect" onmouseover="onMouseOverImg('pen-icon', './img/pen_white_icon.svg')"
+          onmouseout="onMouseOutImg('pen-icon', './img/pen_icon.svg')">
+            <img id="pen-icon" class="pen-icon" src="./img/pen_icon.svg" alt="" />
+            <div>
+              <div class="button-nummber-v1-v3">1</div>
+              <div class="button-text-v1-v3">To-do</div>
+            </div>
+          </div>
+          <div class="button-v3 button-number-hover-effect hover-effect" onmouseover="onMouseOverImg('hook-icon', './img/hook_white_icon.svg')"
+          onmouseout="onMouseOutImg('hook-icon', './img/hook_icon.svg')">
+            <img id="hook-icon" class="hook-icon" src="./img/hook_icon.svg" alt="">
+            <div>
+                <div class="button-nummber-v1-v3">1</div>
+                <div class="button-text-v1-v3">Done</div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
