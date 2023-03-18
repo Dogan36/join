@@ -1,11 +1,13 @@
-function showMsg(){
-const urlParams = new URLSearchParams(window.location.search);
-const msg = urlParams.get('msg');
-let msgBox = document.getElementById('msgBox')
-if (msg) {
-    msgBox.innerHTML = msg;
-}
-}
+document.addEventListener('DOMContentLoaded', function() {
+    const logo = document.querySelector('.logo');
+    const contentContainer = document.querySelector('.content-container');
+  
+    logo.addEventListener('animationend', () => {
+      contentContainer.classList.add('show');
+    });
+  });
+  
+
 function login() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');

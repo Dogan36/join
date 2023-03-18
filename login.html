@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./js/register.js"></script>
+    <link rel="stylesheet" href="main.css">
     <script src="./js/login.js"></script>
     <title>Document</title>
 </head>
-<body onload="showMsg()">
-    <form onsubmit="login(); return false;">
-        <input type="email" id="email" required>
-        <input type="password" id="password" required>
-        <button>Einloggen</button>
-    </form>
 
-    <div id="msgBox">test</div>
+<body>
+    <div class="loginWrapper">
+
+        <img class="logo" src="assets/img/logo.svg" alt="">
+
+        <from onsubmit="login(); return false;" class="content-container">
+            <div class="loginHeadline"><span>Log in</span><img src="/assets/img/loginSeperator.svg" alt=""></div>
+            <div class="loginInputs">
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input class="loginInput" type="email" id="email" placeholder="Email" required>
+                            <img src="/assets/img/loginMail.svg" alt="">
+                        </div>
+                        <span>This field is
+                            required
+                        </span>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input class="loginInput" type="password" id="password" placeholder="Password" required>
+                            <img src="/assets/img/loginPassword.svg" alt="">
+                        </div>
+                        <span>This field is
+                            required
+                        </span>
+                    </div>
+                </div>
+                <div class="loginOptions"></div>
+                <div class="loginButtons"></div>
+                
+            </div>
+        </form>
 </body>
+
 </html>

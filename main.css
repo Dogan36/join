@@ -1273,55 +1273,244 @@ contacts {
     color: #2A3647;
 }
 
-.summaryRectangeButton{
+.summaryRectangeButton {
     display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 38px 19px;
-gap: 18px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 38px 19px;
+    gap: 18px;
 
-width: 272.5px;
-height: 150px;
+    width: 272.5px;
+    height: 150px;
 
-/* white */
+    /* white */
 
-background: #FFFFFF;
-cursor: pointer;
+    background: #FFFFFF;
+    cursor: pointer;
 
-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-border-radius: 30px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
 
 }
+
 .summarySquareButton:hover,
-.summaryUrgency:hover, 
-.summaryRectangeButton:hover{
+.summaryUrgency:hover,
+.summaryRectangeButton:hover {
     background-color: var(--defaultDark);
 }
 
 .summarySquareButton:hover span,
 .summaryUrgency:hover span,
-.summaryRectangeButton:hover span{
+.summaryRectangeButton:hover span {
     color: white;
 }
 
-indexWrapper{
+indexWrapper {
     display: flex;
     height: 100vh;
 }
 
-.indexContainer{
+.indexContainer {
     display: flex;
     flex-direction: column;
     height: 100%;
     flex-grow: 1;
-    
+
 }
 
-.indexContent{
+.indexContent {
     height: 100%;
 }
 
-.indexHeader{
+.indexHeader {}
+
+.loginWrapper {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 334px;
+    width: 274px;
+    transform: translate(-50%, -50%);
+    animation-name: logo-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    background: #FFFFFF;
+    width: 652px;
+    height: 513px;
+
+box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content-container.show {
+    opacity: 1;
+}
+
+.logo-animation {
+    animation-name: logo-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.logo-animation:last-of-type {
+    animation-name: logo-animation, show-content;
+}
+
+@keyframes show-content {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes logo-animation {
+    0% {
+        width: 274px;
+        height: 334px;
+    }
+    100% {
+        width: 100.03px;
+        height: 121.97px;
+        transform: translate(0, 0);
+        top: 80px;
+        left: 77px;
+    }
+}
+
+.loginHeadline{display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+gap: 24px;
+
+width: 315px;
+height: 97px;
+}
+.loginHeadline span{
+  width: 315px;
+height: 73px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 61px;
+line-height: 120%;
+text-align: center;
+color: #000000;  
+}
+
+.loginInputs{display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 29px;
+
+width: 422px;
+height: 171px;}
+
+.loginOptions{display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 35px;
+
+width: 335px;
+height: 19px;}
+
+.loginButtons{display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 35px;
+
+width: 341px;
+height: 51px;}
+
+.inputContainer{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 422px;
+height: 71px;
+
+}
+
+.inputFieldContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+    
+    width: 422px;
+    height: 71px;
+
+}
+
+.inputFieldContainer span{
+    width: 119px;
+height: 12px;
+
+/* t7 */
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 120%;
+}
+
+.inputFieldWithImg{
+    display: flex;
+flex-direction: row;
+align-items: center;
+padding: 13px 21px;
+gap: 10px;
+
+width: 422px;
+height: 51px;
+
+background: #FFFFFF;
+/* Style */
+
+border: 1px solid #D1D1D1;
+border-radius: 10px;
+}
+.loginInput{
+    display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+width: 380px;
+height: 25px;
 
 }
