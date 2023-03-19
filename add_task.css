@@ -50,6 +50,11 @@ body {
     isolation: isolate;
     flex: none;
     resize: vertical;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
 
 }
 
@@ -184,6 +189,11 @@ img.arrow-icon {
 
 .content-container {
     display: flex;
+    flex-direction: column;
+}
+
+.content-body-container {
+    display: flex;
 }
 
 .container-center {
@@ -240,6 +250,23 @@ img.prio-icon {
 }
 
 .plus-icon {
-    width: 12px;
-    height: 12px;
+    width: 22px;
+    height: 22px;
 }
+
+.indexContent {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Add-new-subtask {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #D1D1D1;
+}
+

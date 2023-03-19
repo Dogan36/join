@@ -57,6 +57,7 @@ function closeSelectContactsToAssign() {
   `;
 }
 
+
 function prioColor(color) {
 
   if(color == 'prio-red') {
@@ -92,5 +93,19 @@ function prioColor(color) {
     document.getElementById('prio-urgent-icon').classList.remove('d-none');
     document.getElementById('prio-medium-icon').classList.remove('d-none');
 }
+} 
+
+function openSubtasks() {
+  document.getElementById('Add-new-subtask-contaier').classList.add('d-none');
+  document.getElementById('contact-email-contaier').classList.remove('d-none');
+  
 }
+
+function closeSelectContactEmail() {
+  document.getElementById('contact-email-contaier').classList.add('d-none');
+  document.getElementById('Add-new-subtask-contaier').classList.remove('d-none');
+}
+
+
+
 
