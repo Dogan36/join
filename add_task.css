@@ -9,6 +9,7 @@ body {
     background: #F5F5F5;
     font-family: 'Inter';
     font-style: normal;
+    overflow: hidden;
 }
 
 .title-container {
@@ -26,7 +27,6 @@ body {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    margin-top: 34px;
 }
 
 .title-input {
@@ -116,11 +116,12 @@ input.new-category-input {
 
 .option {
     display: flex;
-    padding: 18px 21px;
+    padding: 13px 21px;
     font-size: 21px;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    height: 51px;
 }
 
 /* color */
@@ -187,9 +188,17 @@ img.arrow-icon {
     height: 25px;
 }
 
-.content-container {
+.content-add-tast-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.content-head-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 82px;
 }
 
 .content-body-container {
@@ -197,14 +206,22 @@ img.arrow-icon {
 }
 
 .container-center {
-    border-left: 3px solid #cecece;
-    height: 512px;
-    margin-left: 59px;
-    margin-right: 59px;
-    margin-top: 40px;
+    margin: 0 59px 0 59px;
+    width: 0px;
+    border: 1px solid #D1D1D1;
+    height: 551px;
 }
 
+
+
 .prio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.prio-body-container {
     display: flex;
     gap: 10px;
 }
@@ -220,12 +237,13 @@ img.arrow-icon {
     border-radius: 10px;
     padding: 18px 10px;
     gap: 10px;
+    font-size: 21px;
 }
 
 .prio-button:hover {
-    width: 140px;
-    height: 57px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    transform: scale(1.05);
 
 }
 
@@ -259,7 +277,24 @@ img.prio-icon {
     height: 100%;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
 }
+
+.indexContent::-webkit-scrollbar {
+    width: 10px;
+}
+
+.indexContent::-webkit-scrollbar-thumb {
+    background-color: #2A3647;
+    border-radius: 100px;
+}
+
+.indexContent::-webkit-scrollbar-track {
+    background-color: #D1D1D1;
+    border-radius: 100px;
+    margin-block: 2px;
+}
+
 
 .Add-new-subtask {
     font-family: 'Inter';
@@ -270,3 +305,79 @@ img.prio-icon {
     color: #D1D1D1;
 }
 
+.container-left {
+    display: flex;
+    gap: 14px;
+    flex-direction: column;
+}
+
+
+.required {
+    position: relative;
+    font-size: 12px;
+    line-height: 120%;
+    margin: 8px 0 0 0;
+    color: #ff3a3a;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.submit-btns-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 270px;
+    margin-bottom: 74px;
+}
+
+.create-task-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 10px;
+    gap: 10px;
+    height: 61px;
+    background: #2A3647;
+    color: #FFFFFF;
+    font-size: 21px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 100ms ease-in-out;
+    font-family: 'Inter';
+
+}
+
+.create-task-btn:hover {
+    background: #29ABE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.clear-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    font-size: 21px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter';
+    color: #2A3647;
+    background-color: #F6F7F8;
+    transition: 100ms ease-in-out;
+}
+
+
+.clear-btn:hover {
+    color: #29ABE2;
+    border: 2px solid #29ABE2;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+}
