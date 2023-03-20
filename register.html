@@ -6,15 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="fonts.css">
     <script src="./js/register.js"></script>
 </head>
 
 <body>
-    <form onsubmit="addUser(); return false;">
-        <input type="email" id="email" required>
-        <input type="password" id="password" required>
-        <button>Registrieren</button>
-    </form>
-</body>
-
-</html>
+    <div class="signUpWrapper">
+        
+        <img class="logoTopLeft" src="assets/img/logo.svg" alt="">
+        
+        <from onsubmit="addUser(); return false;" class="signUpContainer">
+            <img class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
+            <div class="loginHeadline"><span>Sign up</span><img src="/assets/img/loginSeperator.svg" alt=""></div>
+            <div class="loginInputs">
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input class="loginInput" type="text" id="registerName" placeholder="Name" required>
+                            <img src="/assets/img/userIcon.svg" alt="">
+                        </div>
+                        <span>This field is
+                            required
+                        </span>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email" required>
+                            <img src="/assets/img/loginMail.svg" alt="">
+                        </div>
+                        <span>This field is
+                            required
+                        </span>
+                    </div>
+                </div>
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input id="registerPassword" class="loginInput" type="password"
+                            placeholder="Password" required>
+                            <img id="registerPasswordImg" src="/assets/img/loginPassword.svg" alt="">
+                        </div>
+                        <span>This field is
+                            required
+                        </span>
+                    </div>
+                </div>
+                
+                
+                <div class="loginButtons">
+                    <button class="primaryButton"><span>Sign</span></button>
+                </div>
+            </div>
+        </form>
+    </body>
+    
+    </html>
+    

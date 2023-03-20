@@ -1303,8 +1303,8 @@ indexWrapper {
     width: 652px;
     height: 513px;
 
-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-border-radius: 30px;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1339,6 +1339,7 @@ border-radius: 30px;
         width: 274px;
         height: 334px;
     }
+
     100% {
         width: 100.03px;
         height: 121.97px;
@@ -1348,133 +1349,140 @@ border-radius: 30px;
     }
 }
 
-.loginHeadline{display: flex;
-flex-direction: column;
-align-items: center;
-padding: 0px;
-gap: 24px;
-
-width: 315px;
-height: 97px;
-}
-
-.loginHeadline span{
-  width: 315px;
-height: 73px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 61px;
-line-height: 120%;
-text-align: center;
-color: #000000;  
-}
-
-.loginInputs{display: flex;
-flex-direction: column;
-align-items: center;
-padding: 0px;
-gap: 29px;
-
-width: 422px;
-height: 171px;}
-
-.loginOptions{display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: flex-start;
-padding: 0px;
-gap: 35px;
-
-width: 335px;
-height: 19px;
-border: unset;}
-
-.loginButtons{display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: flex-start;
-padding: 0px;
-gap: 35px;
-
-width: 341px;
-height: 51px;}
-
-.inputContainer{
+.loginHeadline {
     display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 0px;
-gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
 
-width: 422px;
-height: 71px;
-
+    width: 315px;
+    height: 97px;
 }
 
-.inputFieldContainer{
+.loginHeadline span {
+    width: 315px;
+    height: 73px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    text-align: center;
+    color: #000000;
+}
+
+.loginInputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 29px;
+
+    width: 422px;
+    height: 171px;
+}
+
+.loginOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 35px;
+
+    width: 335px;
+    height: 19px;
+    border: unset;
+}
+
+.loginButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 35px;
+
+    width: 341px;
+    height: 51px;
+}
+
+.inputContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     gap: 8px;
-    
+
     width: 422px;
     height: 71px;
 
 }
 
-.inputFieldContainer span{
+.inputFieldContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 8px;
+
+    width: 422px;
+    height: 71px;
+
+}
+
+.inputFieldContainer span {
     width: 119px;
-height: 12px;
+    height: 12px;
 
-/* t7 */
+    /* t7 */
 
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 120%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
 }
 
-.inputFieldWithImg{
+.inputFieldWithImg {
     display: flex;
-flex-direction: row;
-align-items: center;
-padding: 13px 21px;
-gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    padding: 13px 21px;
+    gap: 10px;
 
-width: 422px;
-height: 51px;
+    width: 422px;
+    height: 51px;
 
-background: #FFFFFF;
-/* Style */
+    background: #FFFFFF;
+    /* Style */
 
-border: 1px solid #D1D1D1;
-border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
 }
 
-.loginInput{
+.loginInput {
     display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-padding: 0px;
-gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
 
-width: 380px;
-height: 25px;
-border: unset;
-outline: none;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 120%;
+    width: 380px;
+    height: 25px;
+    border: unset;
+    outline: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
 
 }
 
-.rememberMe{
+.rememberMe {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1483,84 +1491,86 @@ line-height: 120%;
     gap: 20px;
     width: 146px;
     height: 19px;
-      
+
 }
 
 
 
-.loginOptions span{
+.loginOptions span {
     width: 154px;
-height: 19px;
+    height: 19px;
 
-/* Version 2/body */
+    /* Version 2/body */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 120%;
-/* or 19px */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
 
 
-/* Ligth blue */
+    /* Ligth blue */
 
-color: #29ABE2;
+    color: #29ABE2;
 
 }
 
-.rememberMe span{
+.rememberMe span {
     width: 110px;
-height: 19px;
+    height: 19px;
 
-/* Version 2/body */
+    /* Version 2/body */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 120%;
-/* or 19px */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
 
-white-space: nowrap;
-color: #000000;
+    white-space: nowrap;
+    color: #000000;
 
 }
-.buttonWoIcon span{
+
+.buttonWoIcon span {
     width: 62px;
-height: 25px;
+    height: 25px;
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 21px;
-line-height: 120%;
-/* or 25px */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
 
 
-color: #FFFFFF;
+    color: #FFFFFF;
 
 }
-.buttonWoIcon{
+
+.buttonWoIcon {
     display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 4px 0px;
-gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
 
-width: 145px;
-height: 51px;
+    width: 145px;
+    height: 51px;
 
-background: #2A3647;
-border-radius: 8px;
+    background: #2A3647;
+    border-radius: 8px;
 }
 
-.buttonWoIcon:hover{
+.buttonWoIcon:hover {
     background-color: var(--secondaryColor);
     border-color: var(--secondaryColor);
 }
 
-.secondaryButton{
+.secondaryButton {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1575,54 +1585,56 @@ border-radius: 8px;
     border-radius: 8px;
 }
 
-.secondaryButton span{
+.secondaryButton span {
     width: 129px;
-height: 25px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 21px;
-line-height: 120%;
-/* or 25px */
-
-
-/* Version 2/ main color */
-
-color: #2A3647;
-}
-.secondaryButton:hover{
-    border: 1px solid var(--secondaryColor)
-}
-.secondaryButton:hover span{
-color: var(--secondaryColor);
-}
-
-.loginTopRight{
-    display: flex;
-flex-direction: row;
-align-items: center;
-padding: 0px;
-gap: 35px;
-
-position: absolute;
-width: 287px;
-height: 51px;
-right:114px; 
-top: 67px;
-}
-
-.loginTopRight span{
     height: 25px;
 
-/* Version 2/t6 */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 120%;
-white-space: nowrap;
+
+    /* Version 2/ main color */
+
+    color: #2A3647;
+}
+
+.secondaryButton:hover {
+    border: 1px solid var(--secondaryColor)
+}
+
+.secondaryButton:hover span {
+    color: var(--secondaryColor);
+}
+
+.loginTopRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 35px;
+
+    position: absolute;
+    width: 287px;
+    height: 51px;
+    right: 114px;
+    top: 67px;
+}
+
+.loginTopRight span {
+    height: 25px;
+
+    /* Version 2/t6 */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    white-space: nowrap;
 }
 
 .primaryButton {
@@ -1648,7 +1660,7 @@ white-space: nowrap;
 }
 
 .primaryButton span {
-   
+
     height: 25px;
 
     font-family: 'Inter';
@@ -1669,4 +1681,44 @@ white-space: nowrap;
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+.signUpWrapper {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.logoTopLeft {
+    position: absolute;
+    width: 100.03px;
+    height: 121.97px;
+    top: 80px;
+    left: 77px;
+}
+
+.signUpContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    background: #FFFFFF;
+    width: 652px;
+    height: 559px;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.leftArrow {
+    position: absolute;
+    width: 37px;
+    height: 37px;
+    left: 31px;
+    top: 35px;
+    cursor: pointer;
 }
