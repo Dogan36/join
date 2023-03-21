@@ -1,0 +1,322 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --mainBgColor: #F6F7F8;
+    --defaultDark: #2A3647;
+    --secondaryColor: #29ABE2;
+    --activeDark: #091931;
+    --lowPriority: #7AE229;
+    --medPriority: #FFA800;
+    --highPriority: #FF3D00;
+    --backOffice: #1FD7C1;
+    --design: #FF7A00;
+    --sales: #FC71FF;
+    --media: #FFC701;
+    --marketing: #0038FF;
+}
+
+h1 {
+    height: 73px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    color: #000000;
+}
+
+
+
+
+
+
+
+
+
+.contactPrimaryButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+
+    position: absolute;
+    width: 193px;
+    height: 53px;
+    left: 1020px;
+    top: 400px;
+
+    background: #2A3647;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+}
+
+.contactPrimaryButton:hover {
+    background-color: var(--secondaryColor);
+    border-color: var(--secondaryColor);
+}
+
+.contactPrimaryButton span {
+    width: 130px;
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    /* white */
+
+    color: #FFFFFF;
+}
+
+
+
+indexWrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.indexContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+
+}
+
+.indexContent {
+    height: 100%;
+}
+
+.indexHeader {}
+
+.loginWrapper {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 334px;
+    width: 274px;
+    transform: translate(-50%, -50%);
+    animation-name: logo-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 0px;
+    gap: 35px;
+    background: #FFFFFF;
+    width: 652px;
+    height: 513px;
+
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loginContainer.show {
+    opacity: 1;
+}
+
+.logo-animation {
+    animation-name: logo-animation;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.logo-animation:last-of-type {
+    animation-name: logo-animation, show-content;
+}
+
+@keyframes show-content {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes logo-animation {
+    0% {
+        width: 274px;
+        height: 334px;
+    }
+
+    100% {
+        width: 100.03px;
+        height: 121.97px;
+        transform: translate(0, 0);
+        top: 80px;
+        left: 77px;
+    }
+}
+
+
+.buttonWoIcon span {
+    width: 62px;
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    color: #FFFFFF;
+
+}
+
+.buttonWoIcon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+
+    width: 145px;
+    height: 51px;
+
+    background: #2A3647;
+    border-radius: 8px;
+}
+
+.buttonWoIcon:hover {
+    background-color: var(--secondaryColor);
+    border-color: var(--secondaryColor);
+}
+
+.secondaryButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+    cursor: pointer;
+    width: 161px;
+    height: 51px;
+    white-space: nowrap;
+    border: 1px solid #2A3647;
+    border-radius: 8px;
+}
+
+.secondaryButton span {
+    width: 129px;
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    /* Version 2/ main color */
+
+    color: #2A3647;
+}
+
+.secondaryButton:hover {
+    border: 1px solid var(--secondaryColor)
+}
+
+.secondaryButton:hover span {
+    color: var(--secondaryColor);
+}
+
+
+
+.primaryButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    white-space: nowrap;
+    height: 51px;
+    width: 145px;
+    background: var(--defaultDark);
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+    flex: none;
+    cursor: pointer;
+}
+
+.primaryButton:hover {
+    background-color: var(--secondaryColor);
+    border-color: var(--secondaryColor);
+}
+
+.primaryButton span {
+
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    /* white */
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+
+
+
+
+.addContactButtons{
+    position: absolute;
+width: 369px;
+height: 61px;
+left: 737px;
+top: 435px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 25px;
+    
+    width: 369px;
+    height: 61px; 
+}
+
