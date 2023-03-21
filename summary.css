@@ -218,3 +218,24 @@ img.pen-icon {
 .button-v2:hover .v-line-grey {
     border: 2px solid #ffffff;
 }
+
+.body-summary-container {
+    display: flex;
+    align-items: center;
+}
+
+.welcome-desk {
+    display: flex;
+    flex-direction: column;
+}
+
+#welcome-text-desk {
+    font-size: 47px;
+    font-weight: 500;
+}
+
+#welcome-name-desk {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+}

@@ -11,8 +11,11 @@
     <script src='main.js'></script>
     <script src='./js/include.js'></script>
     <link rel="stylesheet" href="add_task.css" />
+    <link rel="stylesheet" href="board.css">
     <script src="./js/add_task.js"></script>
+    <script src="./js/summary.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='fonts.css'>
+
 
 
 </head>
@@ -20,11 +23,17 @@
 <body onload="includeHTML()">
     <indexWrapper>
         <div w3-include-html="./assets/templates/desktop_template.html"></div>
+        <div onclick="closeAddTask()" class="container-opened-task d-none" id="container-opened-task"></div>
+        <div class="add-task-window-container">
+            <div class="add-task-window d-none" id="add-task-window"></div>
+        </div>
+        
         <div class="indexContainer">
             <div class="indexHeader" w3-include-html="./assets/templates/header.html"></div>
-            <div class="indexContent" w3-include-html="add_task.html"></div>
+            <div class="indexContent" w3-include-html="board.html"></div>
         </div>
     </indexWrapper>
+    
 </body>
 
 </html>
