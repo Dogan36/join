@@ -14,15 +14,12 @@ function addUser() {
 }
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     passwordInput = document.getElementById('registerPassword');
     passwordToggle = document.getElementById('registerPasswordImg');
-    visibleIcon = '/assets/img/visibleIcon.svg';
-    unVisibleIcon = '/assets/img/notVisibleIcon.svg';
-    standartIcon = '/assets/img/loginPassword.svg';
+    visibleIcon = '../assets/img/visibleIcon.svg';
+    unVisibleIcon = './assets/img/notVisibleIcon.svg';
+    standartIcon = 'assets/img/loginPassword.svg';
     console.log('geladen')
     passwordInput.addEventListener('keyup', changePasswortImage);
     passwordToggle.addEventListener('click', togglePasswordVisibility);
