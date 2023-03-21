@@ -78,6 +78,7 @@ function prioColor(color) {
     document.getElementById('prio-medium-white-icon').classList.remove('d-none');
     document.getElementById('prio-medium-icon').classList.add('d-none');
     document.getElementById('prio-urgent-icon').classList.remove('d-none');
+    document.getElementById('prio-urgent-white-icon').classList.add('d-none');
     document.getElementById('prio-low-icon').classList.remove('d-none');
     
     
@@ -91,6 +92,7 @@ function prioColor(color) {
     document.getElementById('prio-low-white-icon').classList.remove('d-none');
     document.getElementById('prio-low-icon').classList.add('d-none');
     document.getElementById('prio-urgent-icon').classList.remove('d-none');
+    document.getElementById('prio-medium-white-icon').classList.add('d-none');
     document.getElementById('prio-medium-icon').classList.remove('d-none');
 }
 } 
@@ -105,6 +107,26 @@ function closeSelectContactEmail() {
   document.getElementById('contact-email-contaier').classList.add('d-none');
   document.getElementById('Add-new-subtask-contaier').classList.remove('d-none');
 }
+
+
+// JavaScript for Add Task in the Board-page
+function addTask() {
+  document.getElementById('container-opened-task').classList.remove('d-none');
+  document.getElementById('add-task-window').classList.remove('d-none');
+}
+
+function closeAddTask() {
+  document.getElementById('container-opened-task').classList.add('d-none');
+  document.getElementById('add-task-window').classList.add('d-none');
+}
+
+
+
+
+
+
+
+
 
 
 
