@@ -1,5 +1,7 @@
 
-    
+
+function rednderAddTaskHTML(id) {
+    document.getElementById(id).innerHTML = /*html*/  `
     </div>
     <div class="content-add-tast-container">
       <div class="content-add-tast-body-container">
@@ -188,3 +190,6 @@
       
       
     <div></div>
+    `;
+
+}

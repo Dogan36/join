@@ -297,3 +297,10 @@
     display: none;
 }
 
+.add-task-window-off {
+    position: relative;
+    z-index: 105;
+    display: flex;
+    justify-content: flex-end;
+}
+
