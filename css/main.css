@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.body {
+    font-family: 'Inter';
+}
+
 :root {
     --mainBgColor: #F6F7F8;
     --defaultDark: #2A3647;
@@ -21,64 +25,11 @@
 
 h1 {
     height: 73px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 61px;
     line-height: 120%;
-    color: #000000;
 }
-
-
-
-
-
-
-
-
-
-.contactPrimaryButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-
-    position: absolute;
-    width: 193px;
-    height: 53px;
-    left: 1020px;
-    top: 400px;
-
-    background: #2A3647;
-    border: 1px solid #2A3647;
-    border-radius: 10px;
-}
-
-.contactPrimaryButton:hover {
-    background-color: var(--secondaryColor);
-    border-color: var(--secondaryColor);
-}
-
-.contactPrimaryButton span {
-    width: 130px;
-    height: 25px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    /* or 25px */
-
-
-    /* white */
-
-    color: #FFFFFF;
-}
-
-
 
 indexWrapper {
     display: flex;
@@ -175,148 +126,294 @@ indexWrapper {
 }
 
 
-.buttonWoIcon span {
-    width: 62px;
-    height: 25px;
+/*buttons*/
+/*Log in SignUp Button*/
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    /* or 25px */
-
-
-    color: #FFFFFF;
-
-}
-
-.buttonWoIcon {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 0px;
-    gap: 10px;
-
-    width: 145px;
-    height: 51px;
-
-    background: #2A3647;
-    border-radius: 8px;
-}
-
-.buttonWoIcon:hover {
-    background-color: var(--secondaryColor);
-    border-color: var(--secondaryColor);
-}
-
-.secondaryButton {
+.loginSignUpButton {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 4px 16px;
     gap: 10px;
-    cursor: pointer;
-    width: 161px;
+    width: 91px;
     height: 51px;
-    white-space: nowrap;
-    border: 1px solid #2A3647;
+    background: var(--defaultDark);
     border-radius: 8px;
 }
 
-.secondaryButton span {
-    width: 129px;
-    height: 25px;
+.loginSignUpButton span {
+    width: 59px;
+    height: 19px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    color: white;
+}
 
-    font-family: 'Inter';
+/*Log in Log in Button*/
+.loginLoginButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 145px;
+    height: 51px;
+    background: var(--defaultDark);
+    border-radius: 8px;
+}
+
+.loginLoginButton span {
+    width: 62px;
+    height: 25px;
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-
-    /* Version 2/ main color */
-
-    color: #2A3647;
+    color: white;
 }
 
-.secondaryButton:hover {
-    border: 1px solid var(--secondaryColor)
+/*Login Guest Button*/
+
+.loginGuestButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+    width: 161px;
+    height: 51px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 8px;
 }
 
-.secondaryButton:hover span {
-    color: var(--secondaryColor);
+.loginGuestButton span {
+    width: 129px;
+    height: 25px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: var(--defaultDark);
+    color: white;
 }
 
+/*Sign up Sign Up Button*/
+.signUpSignUpButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 145px;
+    height: 51px;
+    background: var(--defaultDark);
+    border-radius: 8px;
+}
 
+.signUpButton span {
+    width: 78px;
+    height: 25px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: white;
+}
 
-.primaryButton {
+/*Board Add Task Button*/
+
+.boardAddTaskButton {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-    white-space: nowrap;
+    width: 137px;
     height: 51px;
-    width: 145px;
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
-    flex: none;
-    cursor: pointer;
 }
 
-.primaryButton:hover {
-    background-color: var(--secondaryColor);
-    border-color: var(--secondaryColor);
-}
-
-.primaryButton span {
-
+.boardAddTaskButton span {
+    width: 92px;
     height: 25px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-
-    /* white */
-
-    color: #FFFFFF;
-
-
-    /* Inside auto layout */
-
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    color: white;
 }
 
-
-
-
-
-.addContactButtons{
-    position: absolute;
-width: 369px;
-height: 61px;
-left: 737px;
-top: 435px;
+/*Add Task create Task Button*/
+.addTaskCreateTaskButton {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-    gap: 25px;
-    
-    width: 369px;
-    height: 61px; 
+    padding: 18px 10px;
+    gap: 10px;
+
+    width: 177px;
+    height: 61px;
+
+    background: #2A3647;
+    border-radius: 10px;
 }
 
+.addTaskCreateTaskButton span {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: white;
+}
+
+/*Add Task clear Button*/
+.addTaskClearButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.addTaskClearButton span {
+    width: 53px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: var(--defaultDark);
+}
+
+/*contacts new contact Button*/
+.contactsNewContactButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+
+    position: absolute;
+    width: 193px;
+    height: 53px;
+    left: 1195px;
+    top: 904px;
+
+    background: var(--defaultDark);
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+}
+
+.contactsNewContactButton span {
+    width: 130px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+/*addcontacts overlay create contact Button*/
+.addContactOverlayCreateContactButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
+}
+
+.addContactOverlayCreateContactButton span {
+    width: 154px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+/*addcontacts overlay cancel Button*/
+.addContactOverlayCancelButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+}
+
+.addContactOverlayCancelButton span {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: var(--defaultDark);
+}
+
+/*edit concact overlay save Button*/
+.editContactOverlaySaveButton {
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 18px 10px;
+gap: 10px;
+
+width: 143px;
+height: 61px;
+
+background: var(--defaultDark);
+border-radius: 10px;
+}
+
+.editContactOverlaySaveButton span{
+    width: 123px;
+height: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+text-align: center;
+
+color: #FFFFFF;
+}
