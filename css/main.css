@@ -52,6 +52,9 @@ indexWrapper {
     height: 100%;
 }
 
+.indexHeader{
+    z-index: 1;
+}
 
 .loginWrapper {
     height: 100vh;

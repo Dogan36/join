@@ -26,10 +26,18 @@ function redrictToPage(loggedIn){
 }
 
 function showContent(x){
-    document.getElementById('summaryContent').classList.add('d-none')
-    document.getElementById('boardContent').classList.add('d-none')
-    document.getElementById('addTaskContent').classList.add('d-none')
-    document.getElementById('contactsContent').classList.add('d-none')
+    var content = document.querySelectorAll(".indexContent");
+  content.forEach(function(element) {
+    element.classList.add("d-none");
+  });
     document.getElementById(x).classList.remove('d-none')
- 
 }
+
+function setActiveIcon(element) {
+    var icons = document.getElementsByClassName("desktopTemplateIconActive");
+    for (var i = 0; i < icons.length; i++) {
+      icons[i].classList.remove("desktopTemplateIconActive");
+    }
+  
+    element.classList.add("desktopTemplateIconActive");
+  }
