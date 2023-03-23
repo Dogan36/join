@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -132,8 +132,6 @@ indexWrapper {
 }
 
 
-/*buttons*/
-/*Log in SignUp Button*/
 
 .loginSignUpButton {
     display: flex;
@@ -158,7 +156,7 @@ indexWrapper {
     color: white;
 }
 
-/*Log in Log in Button*/
+
 .loginLoginButton {
     display: flex;
     flex-direction: row;
@@ -182,7 +180,7 @@ indexWrapper {
     color: white;
 }
 
-/*Login Guest Button*/
+
 
 .loginGuestButton {
     display: flex;
@@ -208,7 +206,7 @@ indexWrapper {
     color: white;
 }
 
-/*Sign up Sign Up Button*/
+
 .signUpSignUpButton {
     display: flex;
     flex-direction: row;
@@ -232,7 +230,7 @@ indexWrapper {
     color: white;
 }
 
-/*Board Add Task Button*/
+
 
 .boardAddTaskButton {
     display: flex;
@@ -259,7 +257,7 @@ indexWrapper {
     color: white;
 }
 
-/*Add Task create Task Button*/
+
 .addTaskCreateTaskButton {
     display: flex;
     flex-direction: row;
@@ -286,7 +284,7 @@ indexWrapper {
     color: white;
 }
 
-/*Add Task clear Button*/
+
 .addTaskClearButton {
     display: flex;
     flex-direction: row;
@@ -311,7 +309,6 @@ indexWrapper {
     color: var(--defaultDark);
 }
 
-/*contacts new contact Button*/
 .contactsNewContactButton {
     display: flex;
     flex-direction: row;
@@ -342,7 +339,7 @@ indexWrapper {
     color: #FFFFFF;
 }
 
-/*addcontacts overlay create contact Button*/
+
 .addContactOverlayCreateContactButton {
     display: flex;
     flex-direction: row;
@@ -367,7 +364,7 @@ indexWrapper {
     color: #FFFFFF;
 }
 
-/*addcontacts overlay cancel Button*/
+
 .addContactOverlayCancelButton {
     display: flex;
     flex-direction: row;
@@ -392,7 +389,7 @@ indexWrapper {
     color: var(--defaultDark);
 }
 
-/*edit concact overlay save Button*/
+
 .editContactOverlaySaveButton {
     display: flex;
     flex-direction: row;
@@ -417,7 +414,7 @@ indexWrapper {
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
+ 
 
     text-align: center;
 
