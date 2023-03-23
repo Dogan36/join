@@ -24,3 +24,12 @@ function redrictToPage(loggedIn){
         window.location.href = login.html
     }
 }
+
+function showContent(x){
+    document.getElementById('summaryContent').classList.add('d-none')
+    document.getElementById('boardContent').classList.add('d-none')
+    document.getElementById('addTaskContent').classList.add('d-none')
+    document.getElementById('contactsContent').classList.add('d-none')
+    document.getElementById(x).classList.remove('d-none')
+ 
+}
