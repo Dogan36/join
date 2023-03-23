@@ -8,6 +8,10 @@
     font-family: 'Inter';
 }
 
+.d-none {
+    display: none !important;
+}
+
 :root {
     --mainBgColor: #F6F7F8;
     --defaultDark: #2A3647;
@@ -389,31 +393,31 @@ indexWrapper {
 /*edit concact overlay save Button*/
 .editContactOverlaySaveButton {
     display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 18px 10px;
-gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
 
-width: 143px;
-height: 61px;
+    width: 143px;
+    height: 61px;
 
-background: var(--defaultDark);
-border-radius: 10px;
+    background: var(--defaultDark);
+    border-radius: 10px;
 }
 
-.editContactOverlaySaveButton span{
+.editContactOverlaySaveButton span {
     width: 123px;
-height: 25px;
+    height: 25px;
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 21px;
-line-height: 120%;
-/* or 25px */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
 
-text-align: center;
+    text-align: center;
 
-color: #FFFFFF;
+    color: #FFFFFF;
 }
