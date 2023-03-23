@@ -1,40 +1,43 @@
+<div class="desktopTemplate">
 
-    <div class="desktopTemplate">
-        <div class="logoContainer">
-            <img class src="../img/logo_invert.svg" alt="">
+    <img class="logoTemplate" src="/assets/img/logo_invert.svg" alt="">
+
+    <div class="desktopTemplateMenu">
+        <div onclick="showContent('summaryContent'); setActiveIcon(this)" id="summary"
+            class="desktopTemplateMenuElements desktopTemplateIconActive">
+            <div class="desktopTemplateIconContainer">
+                <img class="desktopTemplateIcon" src="/assets/img/summaryIcon.svg" alt="">
+            </div>
+            <p class="desktopTemplateFont">Summary</p>
         </div>
-        <div class="desktopTemplateMenu">
-            <div onclick="showContent('summaryContent'); setActiveIcon(this)" id="summary" class="desktopTemplateMenuElements desktopTemplateIconActive">
-                <div class="desktopTemplateIconContainer">
-                    <img class="desktopTemplateIcon" src="/assets/img/summaryIcon.svg" alt="">
-                </div>
-                <p class="desktopTemplateFont">Summary</p>
+        <div onclick="showContent('boardContent'); setActiveIcon(this)" id="board" class="desktopTemplateMenuElements">
+            <div class="desktopTemplateIconContainer">
+                <img class="desktopTemplateIcon" src="/assets/img/boardIcon.svg" alt="">
             </div>
-            <div onclick="showContent('boardContent'); setActiveIcon(this)" id="board" class="desktopTemplateMenuElements">
-                <div class="desktopTemplateIconContainer">
-                    <img class="desktopTemplateIcon" src="/assets/img/boardIcon.svg" alt="">
-                </div>
-                <p class="desktopTemplateFont">Board</p>
-            </div>
-            <div onclick="showContent('addTaskContent'); setActiveIcon(this)" id="addTask" class="desktopTemplateMenuElements">
-                <div class="desktopTemplateIconContainer">
-                    <img class="desktopTemplateIcon" src="/assets/img/addTaskIcon.svg" alt="">
-                </div>
-                <p class="desktopTemplateFont">Add Task</p>
-            </div>
-            <div onclick="showContent('contactsContent'); setActiveIcon(this)" id="contacts" class="desktopTemplateMenuElements">
-                <div class="desktopTemplateIconContainer">
-                    <img class="desktopTemplateIcon" src="/assets/img/contactsIcon.svg" alt="">
-                </div>
-                <p class="desktopTemplateFont">Contacts</p>
-            </div>
+            <p class="desktopTemplateFont">Board</p>
         </div>
-        <div class="desktopTemplateLegalContainer">
-            <div class="desktopTemplateLegal">
-                <div class="desktopTemplateLegalIconContainer">
-                    <img src="/assets/img/infoIcon.svg" alt="">
-                </div>
-                <p class="desktopTemplateFont">Legal Notice</p>
+        <div onclick="showContent('addTaskContent'); setActiveIcon(this)" id="addTask"
+            class="desktopTemplateMenuElements">
+            <div class="desktopTemplateIconContainer">
+                <img class="desktopTemplateIcon" src="/assets/img/addTaskIcon.svg" alt="">
             </div>
+            <p class="desktopTemplateFont">Add Task</p>
+        </div>
+        <div onclick="showContent('contactsContent'); setActiveIcon(this)" id="contacts"
+            class="desktopTemplateMenuElements">
+            <div class="desktopTemplateIconContainer">
+                <img class="desktopTemplateIcon" src="/assets/img/contactsIcon.svg" alt="">
+            </div>
+            <p class="desktopTemplateFont">Contacts</p>
         </div>
     </div>
+    <div class="desktopTemplateMenu">
+        <div onclick="showContent('legalNotice'); setActiveIcon(this)" id="legalNotice"
+            class="desktopTemplateMenuElements">
+            <div class="desktopTemplateIconContainer">
+                <img class="desktopTemplateIcon" src="/assets/img/infoIcon.svg" alt="">
+            </div>
+            <p class="desktopTemplateFont">Legal Notice</p>
+        </div>
+    </div>
+</div>

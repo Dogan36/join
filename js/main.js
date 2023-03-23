@@ -38,6 +38,6 @@ function setActiveIcon(element) {
     for (var i = 0; i < icons.length; i++) {
       icons[i].classList.remove("desktopTemplateIconActive");
     }
-  
+    document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
     element.classList.add("desktopTemplateIconActive");
   }
