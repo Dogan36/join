@@ -21,6 +21,8 @@ async function loadServer() {
   console.log(tasks)
  
 }
+//how to change img on hover?
+
 
 
 function showContent(x) {
@@ -49,4 +51,12 @@ function setActiveIcon(){
   var icon = document.querySelector(".desktopTemplateIconActive");
   var img= icon.querySelector("img");
   img.src = img.src.replace(".svg", "_active.svg");
+}
+
+function hover(element, url) {
+  element.setAttribute('src', url);
+}
+
+function unhover(element, url) {
+  element.setAttribute('src', url);
 }
