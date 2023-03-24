@@ -87,7 +87,7 @@
     color: #2A3647;
 }
 
-.boardElementHeader svg {
+.boardElementHeader img {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -97,11 +97,9 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    
 }
 
-.boardElementHeader svg:hover {
-    color: var(--secondaryColor)
-}
 
 .boardCard {
     display: flex;
