@@ -67,9 +67,7 @@ height: 121.97px;
 .desktopTemplateIcon {
     width: 22px;
     height: 26px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+   color:#CDCDCD;
 }
 
 .desktopTemplateFont {
@@ -87,6 +85,14 @@ height: 121.97px;
 .desktopTemplateIconActive {
     background-color: #091931;
 }
+
+.desktopTemplateIconActive p{
+    color:white !important
+}
+
+
+
+
 
 
 .desktopTemplateLegalContainer {
