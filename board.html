@@ -1,144 +1,127 @@
-
-    <div class="board">
-        <div class="boardHeadline">
-            <h1>Board</h1>
-            <div class="boardHeadlineRight">
-                <div class="findTask">
-                    <input placeholder="Find Task" type="text" name="Find Task" id="findTaskInput">
-                    <img src="./assets/img/seperator.svg" alt=""><img src="./assets/img/searchIcon.svg" alt="">
-                </div>
-                <button onclick="addTask(); rednderAddTaskHTML('add-task-window-content');" class="addPrimaryButton"><span>Add Task</span> <img src="./assets/img/plusIcon.svg"alt=""></button>
+<div class="board">
+    <div class="boardHeadline">
+        <h1>Board</h1>
+        <div class="boardHeadlineRight">
+            <div class="findTask">
+                <input placeholder="Find Task" type="text" name="Find Task" id="findTaskInput">
+                <img src="./assets/img/seperator.svg" alt=""><img src="./assets/img/searchIcon.svg" alt="">
             </div>
-        </div>
-        <div class="boardContent">
-            <div class="boardElement">
-                <div class="boardElementHeader">
-                    <span>To do</span>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="boardCard">
-                    <div class="boardCardInner">
-                        <div class="boardCardCategory"><span>Design</span></div>
-                        <div class="boardCardContent">
-                            <span class="boardCardTaskName">Website Redesign</span>
-                            <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                                v</span>
-                        </div>
-                        <div class="boardCardProgress">
-                            <progress max="2" value="1"></progress>
-                            <div><span>1</span>/<span>2</span><span> Done</span></div>
-                        </div>
-                        <div class="boardCardAssign">
-                            <div class="boardCardAssignedTo">
-                                <div class="boardAvatar"><span>DC</span></div>
-                                <div class="boardAvatar"><span>AB</span></div>
-                            </div>
-                            <img src="./assets/img/boardLowIcon.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="boardElement">
-                <div class="boardElementHeader">
-                    <span>To do</span>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="boardCard">
-                    <div class="boardCardInner">
-                        <div class="boardCardCategory"><span>Design</span></div>
-                        <div class="boardCardContent">
-                            <span class="boardCardTaskName">Website Redesign</span>
-                            <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                                v</span>
-                        </div>
-                        <div class="boardCardProgress">
-                            <progress max="2" value="1"></progress>
-                            <div><span>1</span>/<span>2</span><span> Done</span></div>
-                        </div>
-                        <div class="boardCardAssign">
-                            <div class="boardCardAssignedTo">
-                                <div class="boardAvatar"><span>DC</span></div>
-                                <div class="boardAvatar"><span>AB</span></div>
-                            </div>
-                            <img src="./assets/img/boardLowIcon.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="boardElement">
-                <div class="boardElementHeader">
-                    <span>To do</span>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="boardCard">
-                    <div class="boardCardInner">
-                        <div class="boardCardCategory"><span>Design</span></div>
-                        <div class="boardCardContent">
-                            <span class="boardCardTaskName">Website Redesign</span>
-                            <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                                v</span>
-                        </div>
-                        <div class="boardCardProgress">
-                            <progress max="2" value="1"></progress>
-                            <div><span>1</span>/<span>2</span><span> Done</span></div>
-                        </div>
-                        <div class="boardCardAssign">
-                            <div class="boardCardAssignedTo">
-                                <div class="boardAvatar"><span>DC</span></div>
-                                <div class="boardAvatar"><span>AB</span></div>
-                            </div>
-                            <img src="./assets/img/boardLowIcon.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="boardElement">
-                <div class="boardElementHeader">
-                    <span>To do</span>
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.5V22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M22.5 15.1416L7.5 15.1416" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <rect x="1" y="1" width="28" height="28" rx="9" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                </div>
-                <div class="boardCard">
-                    <div class="boardCardInner">
-                        <div class="boardCardCategory"><span>Design</span></div>
-                        <div class="boardCardContent">
-                            <span class="boardCardTaskName">Website Redesign</span>
-                            <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                                elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                                v</span>
-                        </div>
-                        <div class="boardCardProgress">
-                            <progress max="2" value="1"></progress>
-                            <div><span>1</span>/<span>2</span><span> Done</span></div>
-                        </div>
-                        <div class="boardCardAssign">
-                            <div class="boardCardAssignedTo">
-                                <div class="boardAvatar"><span>DC</span></div>
-                                <div class="boardAvatar"><span>AB</span></div>
-                            </div>
-                            <img src="./assets/img/boardLowIcon.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <button onclick="addTask(); rednderAddTaskHTML('add-task-window-content');"
+                class="boardAddTaskButton"><span>Add Task</span> <img src="./assets/img/plusIcon.svg" alt=""></button>
         </div>
     </div>
+    <div class="boardContent">
+        <div class="boardElement">
+            <div class="boardElementHeader">
+                <span>To do</span>
+                <img src="./assets/img/boardPlusIcon.svg" alt="">
+            </div>
+            <div class="boardCard">
+                <div class="boardCardInner">
+                    <div class="boardCardCategory"><span>Design</span></div>
+                    <div class="boardCardContent">
+                        <span class="boardCardTaskName">Website Redesign</span>
+                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
+                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
+                            v</span>
+                    </div>
+                    <div class="boardCardProgress">
+                        <progress max="2" value="1"></progress>
+                        <div><span>1</span>/<span>2</span><span> Done</span></div>
+                    </div>
+                    <div class="boardCardAssign">
+                        <div class="boardCardAssignedTo">
+                            <div class="boardAvatar"><span>DC</span></div>
+                            <div class="boardAvatar"><span>AB</span></div>
+                        </div>
+                        <img src="./assets/img/boardLowIcon.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="boardElement">
+            <div class="boardElementHeader">
+                <span>To do</span>
+                <img src="./assets/img/boardPlusIcon.svg" alt="">
+            </div>
+            <div class="boardCard">
+                <div class="boardCardInner">
+                    <div class="boardCardCategory"><span>Design</span></div>
+                    <div class="boardCardContent">
+                        <span class="boardCardTaskName">Website Redesign</span>
+                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
+                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
+                            v</span>
+                    </div>
+                    <div class="boardCardProgress">
+                        <progress max="2" value="1"></progress>
+                        <div><span>1</span>/<span>2</span><span> Done</span></div>
+                    </div>
+                    <div class="boardCardAssign">
+                        <div class="boardCardAssignedTo">
+                            <div class="boardAvatar"><span>DC</span></div>
+                            <div class="boardAvatar"><span>AB</span></div>
+                        </div>
+                        <img src="./assets/img/boardLowIcon.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="boardElement">
+            <div class="boardElementHeader">
+                <span>To do</span>
+                <img src="./assets/img/boardPlusIcon.svg" alt="">
+            </div>
+            <div class="boardCard">
+                <div class="boardCardInner">
+                    <div class="boardCardCategory"><span>Design</span></div>
+                    <div class="boardCardContent">
+                        <span class="boardCardTaskName">Website Redesign</span>
+                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
+                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
+                            v</span>
+                    </div>
+                    <div class="boardCardProgress">
+                        <progress max="2" value="1"></progress>
+                        <div><span>1</span>/<span>2</span><span> Done</span></div>
+                    </div>
+                    <div class="boardCardAssign">
+                        <div class="boardCardAssignedTo">
+                            <div class="boardAvatar"><span>DC</span></div>
+                            <div class="boardAvatar"><span>AB</span></div>
+                        </div>
+                        <img src="./assets/img/boardLowIcon.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="boardElement">
+            <div class="boardElementHeader">
+                <span>To do</span>
+                <img src="./assets/img/boardPlusIcon.svg" alt="">
+            </div>
+            <div class="boardCard">
+                <div class="boardCardInner">
+                    <div class="boardCardCategory"><span>Design</span></div>
+                    <div class="boardCardContent">
+                        <span class="boardCardTaskName">Website Redesign</span>
+                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
+                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
+                            v</span>
+                    </div>
+                    <div class="boardCardProgress">
+                        <progress max="2" value="1"></progress>
+                        <div><span>1</span>/<span>2</span><span> Done</span></div>
+                    </div>
+                    <div class="boardCardAssign">
+                        <div class="boardCardAssignedTo">
+                            <div class="boardAvatar"><span>DC</span></div>
+                            <div class="boardAvatar"><span>AB</span></div>
+                        </div>
+                        <img src="./assets/img/boardLowIcon.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

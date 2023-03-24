@@ -255,6 +255,7 @@ indexWrapper {
     font-size: 21px;
     line-height: 120%;
     color: white;
+    white-space: nowrap;
 }
 
 
