@@ -4,21 +4,26 @@ let user
 async function init() {
   loadServer();
   loadLocalStorage();
+  
 }
 
 function setServer(){
   let tasksAsText = JSON.stringify(tasks);
+  let contactsAsText = JSON.stringify(contacts);
   console.log(tasksAsText)
-    let contactsTitelsAsText = JSON.stringify(contacts);
+    // let contactsTitelsAsText = JSON.stringify(contacts);
   
   backend.setItem('tasks', tasksAsText)
+  backend.setItem('contacts', contactsAsText)
   console.log('testtest')
 }
 
 async function loadServer() {
   await downloadFromServer();
   tasks = JSON.parse(backend.getItem('tasks')) || [];
-  console.log(tasks)
+  contacts = JSON.parse(backend.getItem('contacts')) || [];
+  console.log(contacts)
+  
  
 }
 
