@@ -6,8 +6,10 @@
                 <input placeholder="Find Task" type="text" name="Find Task" id="findTaskInput">
                 <img src="./assets/img/seperator.svg" alt=""><img src="./assets/img/searchIcon.svg" alt="">
             </div>
-            <button onclick="addTask(); rednderAddTaskHTML('add-task-window-content');"
-                class="boardAddTaskButton"><span>Add Task</span> <img src="./assets/img/plusIcon.svg" alt=""></button>
+            <!-- <button onclick="addTask(); rednderAddTaskHTML('add-task-window-content');"
+                class="boardAddTaskButton"><span>Add Task</span> <img src="./assets/img/plusIcon.svg" alt=""></button> -->
+            <button w3-include-html ="add_task_html";
+                class="boardAddTaskButton"><span>Add Task</span> <img src="./assets/img/plusIcon.svg" alt=""></button>    
         </div>
     </div>
     <div class="boardContent">
