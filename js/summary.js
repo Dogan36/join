@@ -6,9 +6,7 @@ function onMouseOutImg(id, src) {
     document.getElementById(id).setAttribute('src', src);
 }
 
-
-
-function greetingAds() {
+function  greetingAds() {
     let now = new Date();
     let hours = now.getHours();
 

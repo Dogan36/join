@@ -1,4 +1,5 @@
 
+
 function openNewCategroy(oneCategroy, twoCategroy, threeCategroy) {
     document.getElementById(oneCategroy).classList.remove('d-none');
     document.getElementById(twoCategroy).classList.remove('d-none');
@@ -126,10 +127,21 @@ function addTask() {
   document.getElementById('container-opened-task').classList.remove('d-none');
   document.getElementById('add-task-window').classList.remove('d-none');
 }
-
+canva
 function closeAddTask() {
   document.getElementById('container-opened-task').classList.add('d-none');
   document.getElementById('add-task-window').classList.add('d-none');
+}
+
+
+//Add Task input fields to json array
+
+
+
+function addJsonArray() {
+  let inputTitle = document.getElementById(`task-title-input`);
+  test.push(inputTitle.value);
+  console.log(tasks);
 }
 
 

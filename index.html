@@ -11,7 +11,7 @@
     <script src='./js/main.js'></script>
     <script src='./js/include.js'></script>
     <script src="./js/add_task.js"></script>
-    <script src="./js/summary.js" defer></script>
+    <script src="./js/summary.js"></script>
     <script src="./js/add_task_html.js"></script>
     <link rel="stylesheet" href="./css/summary.css">
     <link rel="stylesheet" href="./css/header.css">
@@ -26,7 +26,7 @@
     
 </head>
 
-<body onload="includeHTML(); greetingAds();">
+<body onload="includeHTML()">
     <indexWrapper>
         <div w3-include-html="./assets/templates/desktop_template.html"></div>
         <div onclick="closeAddTask()" class="container-opened-task d-none" id="container-opened-task"></div>

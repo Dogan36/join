@@ -1,3 +1,5 @@
+let test = [];
+
 let contacts = [
   {
     "id": "0",
@@ -30,6 +32,7 @@ let contacts = [
     "email": "anna.schneider@t-online.de"
   }
 ];
+
 
 let tasks = [
   {
