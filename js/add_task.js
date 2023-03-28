@@ -3,7 +3,7 @@ function openNewCategroy(oneCategroy, twoCategroy, threeCategroy) {
     document.getElementById(oneCategroy).classList.remove('d-none');
     document.getElementById(twoCategroy).classList.remove('d-none');
     document.getElementById(threeCategroy).classList.add('d-none');
-
+  
 }
 
 function closeNewTaskCategroy() {
