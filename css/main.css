@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,11 +20,44 @@
     --lowPriority: #7AE229;
     --medPriority: #FFA800;
     --highPriority: #FF3D00;
-    --backOffice: #1FD7C1;
-    --design: #FF7A00;
-    --sales: #FC71FF;
-    --media: #FFC701;
-    --marketing: #0038FF;
+    --avatar-color-1: #FF0000;
+    /* Rot */
+    --avatar-color-2: #FFA500;
+    /* Orange */
+    --avatar-color-3: #FFFF00;
+    /* Gelb */
+    --avatar-color-4: #008000;
+    /* Dunkelgrün */
+    --avatar-color-5: #0000FF;
+    /* Blau */
+    --avatar-color-6: #800080;
+    /* Lila */
+    --avatar-color-7: #FFC0CB;
+    /* Rosa */
+    --avatar-color-8: #00FFFF;
+    /* Türkis */
+    --avatar-color-9: #808080;
+    /* Grau */
+    --avatar-color-10: #FF69B4;
+    /* Hellrosa */
+    --avatar-color-11: #00FF00;
+    /* Grün */
+    --avatar-color-12: #7FFFD4;
+    /* Aquamarin */
+    --avatar-color-13: #9400D3;
+    /* Violett */
+    --avatar-color-14: #FFD700;
+    /* Gold */
+    --avatar-color-15: #FF1493;
+    /* Pink */
+    --avatar-color-16: #00CED1;
+    /* Türkisblau */
+    --avatar-color-17: #FF6347;
+    /* Tomatenrot */
+    --avatar-color-18: #4B0082;
+    /* Indigoblau */
+    --avatar-color-19: #808000;
+    /* Olivgrün */
 }
 
 h1 {
@@ -52,7 +85,7 @@ indexWrapper {
     height: 100%;
 }
 
-.indexHeader{
+.indexHeader {
     z-index: 1;
 }
 
@@ -415,7 +448,7 @@ indexWrapper {
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
- 
+
 
     text-align: center;
 
