@@ -277,6 +277,7 @@ indexWrapper {
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .boardAddTaskButton span {
@@ -355,11 +356,12 @@ indexWrapper {
     width: 193px;
     height: 53px;
     left: 1195px;
-    top: 904px;
+    top: 700px;
 
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .contactsNewContactButton span {
@@ -371,6 +373,7 @@ indexWrapper {
     font-size: 21px;
     line-height: 120%;
     color: #FFFFFF;
+    white-space:  nowrap;
 }
 
 
@@ -442,15 +445,17 @@ indexWrapper {
 .editContactOverlaySaveButton span {
     width: 123px;
     height: 25px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
-
-
     text-align: center;
-
     color: #FFFFFF;
+}
+
+.boardAddTaskButton:hover,
+.contactsNewContactButton:hover{
+    background-color: var(--secondaryColor);
+    border: 1px solid var(--secondaryColor);
 }

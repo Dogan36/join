@@ -133,7 +133,7 @@
     gap: 10px;
     width: 103px;
     height: 27px;
-    background: var(--design);
+    background: var(--avatar-color-1);
     border-radius: 8px;
 }
 
