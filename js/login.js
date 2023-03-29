@@ -1,4 +1,4 @@
-const passwordInput = document.getElementById('loginPassword');
+let passwordInput = document.getElementById('loginPassword');
     const passwordToggle = document.getElementById('loginPasswordImg');
     const visibleIcon = '/assets/img/visibleIcon.svg';
     const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
@@ -39,16 +39,11 @@ function updateCheckbox() {
 
 
 function addListener() {
-    const passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
- 
     passwordInput.addEventListener('keyup', changePasswortImage)
     passwordToggle.addEventListener('click', togglePasswordVisibility);
 }
 
 function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
     const visibleIcon = '/assets/img/visibleIcon.svg';
     const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
     const standartIcon = '/assets/img/loginPassword.svg';
@@ -69,8 +64,6 @@ function togglePasswordVisibility() {
 
 
 function changePasswortImage() {
-    const passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
     const visibleIcon = '/assets/img/visibleIcon.svg';
     const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
     const standartIcon = '/assets/img/loginPassword.svg';
