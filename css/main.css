@@ -177,6 +177,7 @@ indexWrapper {
     height: 51px;
     background: var(--defaultDark);
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .loginSignUpButton span {
@@ -459,7 +460,8 @@ indexWrapper {
 
 .boardAddTaskButton:hover,
 .contactsNewContactButton:hover,
-.loginLoginButton:hover{
+.loginLoginButton:hover,
+.loginSignUpButton:hover{
     background-color: var(--secondaryColor);
     border: 1px solid var(--secondaryColor);
 }
