@@ -148,21 +148,13 @@
 .loginOptions span {
     width: 154px;
     height: 19px;
-
-    /* Version 2/body */
-
+    cursor: pointer;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    /* or 19px */
-
-
-    /* Ligth blue */
-
-    color: #29ABE2;
-
+    color: var(--secondaryColor);
 }
 
 .rememberMe span {
