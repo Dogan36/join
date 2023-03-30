@@ -1,12 +1,11 @@
-let passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
-    const visibleIcon = '/assets/img/visibleIcon.svg';
-    const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
-    const standartIcon = '/assets/img/loginPassword.svg';
+
+    let visibleIcon = '/assets/img/visibleIcon.svg';
+    let unVisibleIcon = '/assets/img/notVisibleIcon.svg';
+    let standartIcon = '/assets/img/loginPassword.svg';
 
 document.addEventListener('DOMContentLoaded', function () {
-    const logo = document.querySelector('.logo');
-    const contentContainer = document.querySelector('.loginContainer');
+    let logo = document.querySelector('.logo');
+    let contentContainer = document.querySelector('.loginContainer');
     logo.addEventListener('animationend', () => {
         contentContainer.classList.add('show');
     });
@@ -39,14 +38,19 @@ function updateCheckbox() {
 
 
 function addListener() {
+    let passwordInput = document.getElementById('loginPassword');
+    let passwordToggle = document.getElementById('loginPasswordImg');
+ 
     passwordInput.addEventListener('keyup', changePasswortImage)
     passwordToggle.addEventListener('click', togglePasswordVisibility);
 }
 
 function togglePasswordVisibility() {
-    const visibleIcon = '/assets/img/visibleIcon.svg';
-    const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
-    const standartIcon = '/assets/img/loginPassword.svg';
+    let passwordInput = document.getElementById('loginPassword');
+    let passwordToggle = document.getElementById('loginPasswordImg');
+    let visibleIcon = '/assets/img/visibleIcon.svg';
+    let unVisibleIcon = '/assets/img/notVisibleIcon.svg';
+    let standartIcon = '/assets/img/loginPassword.svg';
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else {
@@ -64,9 +68,11 @@ function togglePasswordVisibility() {
 
 
 function changePasswortImage() {
-    const visibleIcon = '/assets/img/visibleIcon.svg';
-    const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
-    const standartIcon = '/assets/img/loginPassword.svg';
+    let passwordInput = document.getElementById('loginPassword');
+    let passwordToggle = document.getElementById('loginPasswordImg');
+    let visibleIcon = '/assets/img/visibleIcon.svg';
+    let unVisibleIcon = '/assets/img/notVisibleIcon.svg';
+    let standartIcon = '/assets/img/loginPassword.svg';
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else if (passwordInput.type == 'text') {
