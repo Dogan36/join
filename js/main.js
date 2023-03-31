@@ -4,7 +4,6 @@ let user
 async function init() {
   loadServer();
   loadLocalStorage();
-  
 }
 
 function setServer(){
@@ -26,10 +25,10 @@ async function loadServer() {
   
  
 }
-//how to change img on hover?
 
 
 
+// zeige das ausgewählte Content auf index.html
 function showContent(x) {
   var content = document.querySelectorAll(".indexContent");
   content.forEach(function (element) {
@@ -38,6 +37,7 @@ function showContent(x) {
   document.getElementById(x).classList.remove('d-none')
 }
 
+// zeige welcher Content aktuell ausgewählt ist
 function setActiveElement(element) {
   var icon = document.querySelector(".desktopTemplateIconActive");
     icon.classList.remove("desktopTemplateIconActive");
@@ -58,6 +58,7 @@ function setActiveIcon(){
   img.src = img.src.replace(".svg", "_active.svg");
 }
 
+// ändere img bei hover auf buttons
 function hover(element, url) {
   element.setAttribute('src', url);
 }
