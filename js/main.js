@@ -1,9 +1,24 @@
 setURL('https://gruppenarbeit-485join.developerakademie.net/join/smallest_backend_ever')
-let user
+let users
 
 async function init() {
   loadServer();
   loadLocalStorage();
+}
+
+function addUser() {
+  let name = document.getElementById('registerName')
+  let email = document.getElementById('registerEmail');
+  let password = document.getElementById('registerPassword')
+  users.push({ email: email.value, password: password.value })
+  window.location.href = './login.html?msg=Du hast dich erfolgreich registriert'
+}
+
+function login() {
+  let email = document.getElementById('email');
+  let password = document.getElementById('password');
+  let user = users.find(u => u.email == email.value && u.password == password.value);
+
 }
 
 function setServer(){
