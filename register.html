@@ -15,57 +15,48 @@
     <script src="./js/main.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <div class="signUpWrapper">
-        
+
         <img class="logoTopLeft" src="assets/img/logo.svg" alt="">
-        
-        <from onsubmit="addUser(); return false;" class="signUpContainer">
+
+        <form onsubmit="addUser(); return false;" class="signUpContainer">
             <img class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="text" id="registerName" placeholder="Name" required>
+                            <input class="loginInput" type="text" id="registerName" placeholder="Name" aria-required="true" required>
                             <img src="./assets/img/userIcon.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="registerNameError" class="errorMessage">This field is required</span>
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email" required>
+                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email" aria-required="true" required>
                             <img src="./assets/img/loginMail.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="registerEmailError" class="errorMessage">This field is required</span>
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input id="registerPassword" class="loginInput" type="password"
-                            placeholder="Password" required>
+                            <input id="registerPassword" class="loginInput" type="password" placeholder="Password" aria-required="true" required>
                             <img id="registerPasswordImg" src="./assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="registerPasswordError" class="errorMessage">This field is required</span>
                     </div>
                 </div>
-                
-                
                 <div class="loginButtons">
-                    <button onclick="addUser()" class="loginLoginButton"><span>Sign up</span></button>
+                    <button type="submit" class="loginLoginButton"><span>Sign up</span></button>
                 </div>
             </div>
         </form>
-    </body>
-    
-    </html>
-    
+        
+</body>
+
+</html>
