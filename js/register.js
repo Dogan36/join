@@ -1,5 +1,3 @@
-let users = []
-
 let passwordInput;
 let passwordToggle;
 let visibleIcon;

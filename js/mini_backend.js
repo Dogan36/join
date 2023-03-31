@@ -21,9 +21,8 @@ window.onload = async function() {
     downloadFromServer();
 }
 
-async function downloadFromServer() {
-    let result = await loadJSONFromServer();
-    jsonFromServer = JSON.parse(result);
+async function downloadFromServer(key) {
+    let result = await loadJSONFromServer(key);
     console.log('Loaded', result);
 }
 
@@ -36,11 +35,11 @@ function setURL(url) {
  * payload {JSON | Array} - The payload you want to store
  */
 
-async function loadJSONFromServer() {
-    let response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&noache=' + (new Date().getTime()));
-    return await response.text();
-
-}
+async function loadJSONFromServer(key) {
+    const response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&noache=' + (new Date().getTime()));
+    const jsonResponse = await response.json();
+    return JSON.parse(jsonResponse[key]);
+  }
 
 function loadJSONFromServerOld() {
     return new Promise(function(resolve, reject) {
