@@ -81,18 +81,6 @@
 
 }
 
-.inputFieldContainer span {
-    width: 119px;
-    height: 12px;
-
-    /* t7 */
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 120%;
-}
 
 .inputFieldWithImg {
     display: flex;
@@ -100,16 +88,13 @@
     align-items: center;
     padding: 13px 21px;
     gap: 10px;
-
     width: 422px;
     height: 51px;
-
     background: #FFFFFF;
-    /* Style */
-
     border: 1px solid #D1D1D1;
     border-radius: 10px;
 }
+
 
 .loginInput {
     display: flex;
