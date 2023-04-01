@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function addAllEventListener() {
     listenerPasswordImg()
-    listenerErrorMsg()
 }
 
 function listenerPasswordImg() {
@@ -38,9 +37,9 @@ function addUser() {
         document.getElementById('registerEmailError').classList.remove('d-none');
         hasError = true;
     } else {
-        document.getElementById('registerEmailError').add('d-none');
+        document.getElementById('registerEmailError').classList.add('d-none');
     }
-    if (document.getElementById('registerPassword') === '') {
+    if (document.getElementById('registerPassword').value === '') {
         document.getElementById('registerPasswordError').classList.remove('d-none');
         hasError = true;
 
@@ -49,7 +48,7 @@ function addUser() {
     }
     if (!hasError) {
         document.getElementById("registerForm").submit();
-        window.location.href = "login.html"
+        window.location.href = "login.html?msg=TestMessage"
     }
 }
 
