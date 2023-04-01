@@ -17,7 +17,7 @@
 <body onload="init()">
     <div class="loginWrapper">
         <div class="loginTopRight"><span>Not a Join user?</span>
-            <div onclick= class="loginSignUpButton"><span>Sign up</span></div>
+            <div onclick="window.location.href='register.html'" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
 
@@ -30,7 +30,7 @@
                             <input class="loginInput" type="email" id="email" placeholder="Email" required>
                             <img src="/assets/img/loginMail.svg" alt="">
                         </div>
-                        <span>This field is
+                        <span class="errorMessage d-none">This field is
                             required
                         </span>
                     </div>
@@ -42,7 +42,7 @@
                                 placeholder="Password" required>
                             <img id="loginPasswordImg" src="/assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span>This field is
+                        <span class="errorMessage d-none">This field is
                             required
                         </span>
                     </div>
