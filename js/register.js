@@ -26,67 +26,58 @@ function listenerPasswordImg() {
     passwordToggle.addEventListener('click', togglePasswordVisibility);
 }
 
-function listenerErrorMsg() {
-    const registerForm = document.getElementById('registerForm');
-    const registerNameInput = document.getElementById('registerName');
-    const registerEmailInput = document.getElementById('registerEmail');
-    const registerPasswordInput = document.getElementById('registerPassword');
+function addUser() {
+    var hasError = false;
+    if (document.getElementById('registerName').value === '') {
+        document.getElementById('registerNameError').classList.remove('d-none');
+        hasError = true;
+    } else {
+        document.getElementById('registerNameError').classList.add('d-none');
+    }
+    if (document.getElementById('registerEmail').value === '') {
+        document.getElementById('registerEmailError').classList.remove('d-none');
+        hasError = true;
+    } else {
+        document.getElementById('registerEmailError').add('d-none');
+    }
+    if (document.getElementById('registerPassword') === '') {
+        document.getElementById('registerPasswordError').classList.remove('d-none');
+        hasError = true;
 
-    const registerNameError = document.getElementById('registerNameError');
-    const registerEmailError = document.getElementById('registerEmailError');
-    const registerPasswordError = document.getElementById('registerPasswordError');
-
-
-
-
-    registerForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        if (registerNameInput.value === '') {
-            registerNameError.classList.remove('d-none');
-        } else {
-            registerNameError.classList.add('d-none');
-        }
-
-        if (registerEmailInput.value === '') {
-            registerEmailError.classList.remove('d-none');
-        } else {
-            registerEmailError.classList.add('d-none');
-        }
-
-        if (registerPasswordInput.value === '') {
-            registerPasswordError.classList.remove('d-none');
-        } else {
-            registerPasswordError.classList.add('d-none');
-        }
-
-    })
+    } else {
+        document.getElementById('registerPasswordError').classList.add('d-none');
+    }
+    if (!hasError) {
+        document.getElementById("registerForm").submit();
+        window.location.href = "login.html"
+    }
 }
 
-    function togglePasswordVisibility() {
-        if (passwordInput.value === '') {
-            passwordToggle.src = standartIcon;
+
+function togglePasswordVisibility() {
+    if (passwordInput.value === '') {
+        passwordToggle.src = standartIcon;
+    } else {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordToggle.src = visibleIcon;
         } else {
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                passwordToggle.src = visibleIcon;
-            } else {
-                passwordInput.type = 'password';
-                if (passwordToggle.src !== '/assets/img/loginPassword.svg') {
-                    passwordToggle.src = unVisibleIcon;
-                }
+            passwordInput.type = 'password';
+            if (passwordToggle.src !== '/assets/img/loginPassword.svg') {
+                passwordToggle.src = unVisibleIcon;
             }
         }
     }
+}
 
 
-    function changePasswortImage() {
-        if (passwordInput.value === '') {
-            passwordToggle.src = standartIcon;
-        } else if (passwordInput.type == 'text') {
-            passwordToggle.src = visibleIcon;
-        }
-        else {
-            passwordToggle.src = unVisibleIcon
-        }
+function changePasswortImage() {
+    if (passwordInput.value === '') {
+        passwordToggle.src = standartIcon;
+    } else if (passwordInput.type == 'text') {
+        passwordToggle.src = visibleIcon;
     }
+    else {
+        passwordToggle.src = unVisibleIcon
+    }
+}
