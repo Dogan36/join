@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="fonts.css">
     <script src="./js/mini_backend.js"></script>
-    <script src="./js/register.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/register.js"></script>
 </head>
 
 <body onload="init()">
@@ -20,35 +20,38 @@
 
         <img class="logoTopLeft" src="assets/img/logo.svg" alt="">
 
-        <form onsubmit="addUser(); return false;" class="signUpContainer">
+        <form onsubmit="addUser(); return false;" class="signUpContainer" id="registerForm">
             <img class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="text" id="registerName" placeholder="Name" aria-required="true" required>
+                            <input class="loginInput" type="text" id="registerName" placeholder="Name"
+                                aria-required="true" required>
                             <img src="./assets/img/userIcon.svg" alt="">
                         </div>
-                        <span id="registerNameError" class="errorMessage">This field is required</span>
+                        <span id="registerNameError" class="errorMessage d-none">This field is required</span>
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email" aria-required="true" required>
+                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email"
+                                aria-required="true" required>
                             <img src="./assets/img/loginMail.svg" alt="">
                         </div>
-                        <span id="registerEmailError" class="errorMessage">This field is required</span>
+                        <span id="registerEmailError" class="errorMessage d-none">This field is required</span>
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input id="registerPassword" class="loginInput" type="password" placeholder="Password" aria-required="true" required>
+                            <input id="registerPassword" class="loginInput" type="password" placeholder="Password"
+                                aria-required="true" required>
                             <img id="registerPasswordImg" src="./assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span id="registerPasswordError" class="errorMessage">This field is required</span>
+                        <span id="registerPasswordError" class="errorMessage d-none">This field is required</span>
                     </div>
                 </div>
                 <div class="loginButtons">
@@ -56,7 +59,6 @@
                 </div>
             </div>
         </form>
-        
 </body>
 
 </html>
