@@ -78,47 +78,66 @@ function changePasswortImage() {
     }
 }
 
-async function checkInputsSignUp() {
+
+
+async function checkInputsLogin() {
     document.querySelectorAll('.errorMessage').forEach(function (el) {
         el.classList.add('d-none');
-    });
-    var hasError = false;
-    if (checkLoginEmail()) {
-        hasError = true;
-    }
-    if (checkSignUpPassword()) {
-        hasError = true;
-    }
-    if (!hasError) {
-        window.location.href = 'index.html'
-    }
+    })
+    checkLoginEmail()
 }
 
 async function checkLoginEmail() {
-    const email = document.getElementById('loginEmail').value;
-   user = await getUser(email);
+    const email = document.getElementById('loginEmail');
+    user = await getUser(email.value);
     if (email.value === '') {
         document.getElementById('loginEmailError').classList.remove('d-none');
-        return true
+        return
+    }
+    if (email.value.indexOf('@') === -1) {
+        document.getElementById('loginEmailFormatError').classList.remove('d-none');
+        return
     }
     if (!user) {
         document.getElementById('loginEmailNotFoundError').classList.remove('d-none');
-        return true
+        return
+    } else {
+        checkLoginPassword()
     }
 }
+
 
 async function checkLoginPassword() {
     const password = document.getElementById('loginPassword').value;
     let userPassword = await getPassword(user);
-    if (password.value === '') {
+    if (password === '') {
         document.getElementById('loginPasswordError').classList.remove('d-none');
-        return true
+        return
     }
-    if (password.value.length < 7) {
+    if (password.length < 7) {
         document.getElementById('loginPasswordLengthError').classList.remove('d-none');
-        return true
+        return
     }
-    if (password.value !== userPassword) {
-        document.getElementById('loginPasswordIncorrectError').classList.remove('d-none')
+    if (password !== userPassword) {
+        document.getElementById('loginPasswordIncorrectError').classList.remove('d-none');
+        return
     }
+    rememberMe()
+    
+}
+
+
+async function getUser(email) {
+    user = users.find(user => user.email === email);
+    return user;
+}
+
+async function getPassword(user) {
+    const password = user.password;
+    return password;
+}
+
+function rememberMe() {
+    console.log('test')
+    window.location.href = 'index.html'
 }
