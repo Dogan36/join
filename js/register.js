@@ -27,9 +27,9 @@ function listenerPasswordImg() {
 
 
 async function checkInputsSignUp() {
-    document.getElementById('registerEmailError').classList.add('d-none');
-    document.getElementById('registerEmailFormatError').classList.add('d-none');
-    document.getElementById('registerEmailTakenError').classList.add('d-none');
+    document.querySelectorAll('.errorMessage').forEach(function(el) {
+        el.classList.add('d-none');
+    });
     var hasError = false;
     if (checkSignUpName()) {
         hasError = true;
@@ -83,41 +83,41 @@ function checkEmailExists(email) {
     }
 }
 
-    function checkSignUpPassword() {
-        if (document.getElementById('registerPassword').value === '') {
-            document.getElementById('registerPasswordError').classList.remove('d-none');
-            return true;
-        }
-        if (document.getElementById('registerPassword').value.length<7) {
-            document.getElementById('registerPasswordLengthError').classList.remove('d-none');
-            return true;
-        }
+function checkSignUpPassword() {
+    if (document.getElementById('registerPassword').value === '') {
+        document.getElementById('registerPasswordError').classList.remove('d-none');
+        return true;
     }
-    
-    function togglePasswordVisibility() {
-        if (passwordInput.value === '') {
-            passwordToggle.src = standartIcon;
+    if (document.getElementById('registerPassword').value.length < 7) {
+        document.getElementById('registerPasswordLengthError').classList.remove('d-none');
+        return true;
+    }
+}
+
+function togglePasswordVisibility() {
+    if (passwordInput.value === '') {
+        passwordToggle.src = standartIcon;
+    } else {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordToggle.src = visibleIcon;
         } else {
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                passwordToggle.src = visibleIcon;
-            } else {
-                passwordInput.type = 'password';
-                if (passwordToggle.src !== '/assets/img/loginPassword.svg') {
-                    passwordToggle.src = unVisibleIcon;
-                }
+            passwordInput.type = 'password';
+            if (passwordToggle.src !== '/assets/img/loginPassword.svg') {
+                passwordToggle.src = unVisibleIcon;
             }
         }
     }
+}
 
 
-    function changePasswortImage() {
-        if (passwordInput.value === '') {
-            passwordToggle.src = standartIcon;
-        } else if (passwordInput.type == 'text') {
-            passwordToggle.src = visibleIcon;
-        }
-        else {
-            passwordToggle.src = unVisibleIcon
-        }
+function changePasswortImage() {
+    if (passwordInput.value === '') {
+        passwordToggle.src = standartIcon;
+    } else if (passwordInput.type == 'text') {
+        passwordToggle.src = visibleIcon;
     }
+    else {
+        passwordToggle.src = unVisibleIcon
+    }
+}

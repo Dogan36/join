@@ -21,7 +21,7 @@
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
 
-        <form onsubmit="login(); return false;" class="loginContainer">
+        <form onsubmit="checkUser(); return false;" class="loginContainer" novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="/assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -30,9 +30,9 @@
                             <input class="loginInput" type="email" id="email" placeholder="Email" required>
                             <img src="/assets/img/loginMail.svg" alt="">
                         </div>
-                        <span class="errorMessage d-none">This field is
-                            required
-                        </span>
+                        <span id="loginEmailError" class="errorMessage d-none">This field is required</span>
+                        <span id="loginEmailFormatError" class="errorMessage d-none">Please insert a valid email</span>
+                        <span id="loginEmailNotFoundError" class="errorMessage d-none">Email not found</span>
                     </div>
                 </div>
                 <div class="inputContainer">
@@ -42,9 +42,10 @@
                                 placeholder="Password" required>
                             <img id="loginPasswordImg" src="/assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span class="errorMessage d-none">This field is
-                            required
-                        </span>
+                        <span id="loginPasswordError" class="errorMessage d-none">This field is required</span>
+                        <span id="loginPasswordLengthError" class="errorMessage d-none">Password must contain at least 6
+                            characters</span>
+                        <span id="loginPasswordIncorrectError" class="errorMessage d-none">Incorrect password</span>
                     </div>
                 </div>
                 <div class="loginOptions">
@@ -79,7 +80,7 @@
                     <span>Forgot my password</span>
                 </div>
                 <div class="loginButtons">
-                    <button class="loginLoginButton"><span>Log in</span></button>
+                    <button type="submit" class="loginLoginButton"><span>Log in</span></button>
                     <button class="loginGuestButton"><span>Guest Log in</span></button>
                 </div>
             </div>
