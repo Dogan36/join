@@ -21,5 +21,5 @@ function  greetingAds() {
         greeting = "Good night";
     }
     document.getElementById('welcome-text-desk').innerHTML = greeting;
-    setTimeout(greetingAds, 1000);
+    
 }

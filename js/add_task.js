@@ -127,7 +127,7 @@ function addTask() {
   document.getElementById('container-opened-task').classList.remove('d-none');
   document.getElementById('add-task-window').classList.remove('d-none');
 }
-canva
+
 function closeAddTask() {
   document.getElementById('container-opened-task').classList.add('d-none');
   document.getElementById('add-task-window').classList.add('d-none');

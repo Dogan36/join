@@ -16,7 +16,7 @@ async function includeHTML() {
             /* Remove the attribute, and call this function once more: */
             elmnt.removeAttribute("w3-include-html");
             includeHTML();
-            greetingAds();
+           
           }
         }
         xhttp.open("GET", file, true);
