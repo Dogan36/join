@@ -17,8 +17,8 @@ function addAllEventListener() {
 function listenerPasswordImg() {
     passwordInput = document.getElementById('registerPassword');
     passwordToggle = document.getElementById('registerPasswordImg');
-    visibleIcon = '../assets/img/visibleIcon.svg';
-    unVisibleIcon = './assets/img/notVisibleIcon.svg';
+    visibleIcon = 'assets/img/visibleIcon.svg';
+    unVisibleIcon = 'assets/img/notVisibleIcon.svg';
     standartIcon = 'assets/img/loginPassword.svg';
     console.log('geladen')
     passwordInput.addEventListener('keyup', changePasswortImage);
@@ -103,7 +103,7 @@ function togglePasswordVisibility() {
             passwordToggle.src = visibleIcon;
         } else {
             passwordInput.type = 'password';
-            if (passwordToggle.src !== '/assets/img/loginPassword.svg') {
+            if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
                 passwordToggle.src = unVisibleIcon;
             }
         }

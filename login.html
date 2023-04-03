@@ -16,19 +16,19 @@
 
 <body onload="init()">
     <div class="loginWrapper">
-        <div class="loginTopRight"><span>Not a Join user?</span>
+        <div class="loginTopRight"><span>Not a  user?</span>
             <div onclick="window.location.href='register.html'" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
 
         <form onsubmit="checkInputsLogin(); return false;" class="loginContainer" novalidate>
-            <div class="loginHeadline"><span>Log in</span><img src="/assets/img/loginSeperator.svg" alt=""></div>
+            <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
                             <input class="loginInput" type="email" id="loginEmail" placeholder="Email" required>
-                            <img src="/assets/img/loginMail.svg" alt="">
+                            <img src="assets/img/loginMail.svg" alt="">
                         </div>
                         <span id="loginEmailError" class="errorMessage d-none">This field is required</span>
                         <span id="loginEmailFormatError" class="errorMessage d-none">Please insert a valid email</span>
@@ -40,7 +40,7 @@
                         <div class="inputFieldWithImg">
                             <input id="loginPassword" class="loginInput" type="password" id="password"
                                 placeholder="Password" required>
-                            <img id="loginPasswordImg" src="/assets/img/loginPassword.svg" alt="">
+                            <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
                         <span id="loginPasswordError" class="errorMessage d-none">This field is required</span>
                         <span id="loginPasswordLengthError" class="errorMessage d-none">Password must contain at least 6

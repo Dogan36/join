@@ -2,6 +2,7 @@ setURL('https://gruppenarbeit-485join.developerakademie.net/join/smallest_backen
 let tasks = []
 let contacts = []
 let users = []
+let currentUser
 
 
 async function init() {
@@ -14,6 +15,12 @@ async function init() {
   console.log(contacts)
 }
 
+async function initIndex(){
+  await includeHTML(); 
+  await getCurrentUser();
+ 
+}
+
 
 async function addUser() {
   let name = document.getElementById('registerName')
@@ -24,12 +31,6 @@ async function addUser() {
   window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
 }
 
-
-function login() {
-  let email = document.getElementById('email');
-  let password = document.getElementById('password');
-  let user = users.find(u => u.email == email.value && u.password == password.value);
-}
 
 async function setServer() {
   let tasksAsText = JSON.stringify(tasks);
@@ -51,6 +52,7 @@ function showContent(x) {
     element.classList.add("d-none");
   });
   document.getElementById(x).classList.remove('d-none')
+  
 }
 
 // zeige welcher Content aktuell ausgewählt ist
@@ -82,4 +84,11 @@ function hover(element, url) {
 function unhover(element, url) {
   element.setAttribute('src', url);
 }
+
+async function getCurrentUser(){
+  var params = new URLSearchParams(window.location.search);
+currentUser = params.get('variable');
+
+}
+
 
