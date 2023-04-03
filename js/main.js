@@ -91,4 +91,10 @@ currentUser = params.get('variable');
 
 }
 
+function closeOverlay(){
+  document.getElementById('container-opened-task').classList.add('d-none');
+  document.getElementById('add-task-window').classList.add('d-none');
+  document.getElementById('add-task-window').classList.add('d-none')
+}
+
 
