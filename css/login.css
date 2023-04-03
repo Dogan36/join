@@ -186,3 +186,8 @@
     line-height: 120%;
     white-space: nowrap;
 }
+
+img[src="assets/img/notVisibleIcon.svg"]:hover,
+img[src="assets/img/visibleIcon.svg"]:hover {
+  cursor: pointer;
+}

@@ -37,3 +37,8 @@
     top: 35px;
     cursor: pointer;
 }
+
+img[src="assets/img/notVisibleIcon.svg"]:hover,
+img[src="assets/img/visibleIcon.svg"]:hover {
+  cursor: pointer;
+}
