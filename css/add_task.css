@@ -73,9 +73,7 @@ input {
     outline: none;
 }
 
-input.new-category-input {
-    width: 333px;
-}
+
 
 .new-category-contaier {
     display: flex;
@@ -124,40 +122,59 @@ input.new-category-input {
     height: 51px;
 }
 
+.selection-point-container {
+    display: flex;
+    align-items: center;
+}
+
 /* color */
 
 .purple {
-    background-color: purple;
+    background-color: #800080;
 }
 
 .red {
-    background-color: red;
+    background-color: #ff0000;
 }
 
 .green {
-    background-color: green;
+    background-color: #008000;
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: #ffba00;
 }
 
 .pink {
-    background-color: pink;
+    background-color: #ffc0cb;
 }
 
 .blue {
-    background-color: blue;
+    background-color: #0000ff;
 }
 
-.color.wheel {
+.color-category-button {
     width: 12px;
     height: 12px;
     border-radius: 100%;
     margin: 10px;
 }
 
-.color.wheel:hover {
+.color {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    margin: 10px;
+}
+
+.wheel {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    margin: 10px;
+}
+
+.wheel:hover {
     border: 2px solid white;
     box-shadow: silver 4px 3px 6px;
     cursor: pointer;
@@ -205,7 +222,7 @@ img.arrow-icon {
     align-items: center;
     flex-direction: column;
     margin-top: 82px;
-    
+
 }
 
 .add-tast-container {
@@ -395,23 +412,43 @@ img.prio-icon {
     border-radius: 10px;
 }
 
+.checkbox-container {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.checkbox {
+    margin-right: 10px;
+}
+
 
 
 
 @media (max-width: 1200px) {
-.content-body-container {
-    flex-direction: column;
-    align-items: center;
-    
-}
+    .content-body-container {
+        flex-direction: column;
+        align-items: center;
 
-.container-center {
-    display: none;
-}
+    }
 
-/* .container-center{
+    .container-center {
+        display: none;
+    }
+
+    /* .container-center{
 
 } */
 
 }
+
+.input-and-color-button-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.new-category-input {
+    width: 100%;
+}
+
 
