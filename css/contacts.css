@@ -432,14 +432,31 @@ contacts {
 
 }
 
-.addContactOverlay{
-    position: relative;
-width: 1212px;
-height: 594px;
 
-background: #FFFFFF;
-border-radius: 30px;
+.addContactOverlayCreateContactButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
 }
+
+.addContactOverlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1212px;
+    height: 594px;
+    background: #FFFFFF;
+    border-radius: 30px;
+  }
+  
 
 .closeOverlay{
     position: absolute;
@@ -451,8 +468,166 @@ top: 26px;
 
 .addContactIcon{
     position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 533px;
-    top: 204px;
+width: 120px;
+height: 120px;
+left: 533px;
+top: 204px;
+}
+
+.addContactButtons{
+    display: flex;
+position: absolute;
+width: 369px;
+height: 61px;
+left: 737px;
+top: 435px;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 25px;
+}
+
+
+.addContactOverlayCreateContactButton span {
+    width: 154px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.addContactOverlayContent{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 29px;
+    
+    position: absolute;
+    width: 422px;
+    height: 271px;
+    left: 737px;
+    top: 129px;
+}
+
+.addContactOverlayLeft{
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 66px 46px;
+gap: 12px;
+isolation: isolate;
+position: absolute;
+width: 463px;
+height: 594px;
+left: -4px;
+top: 0px;
+background: var(--defaultDark);
+border-top-left-radius :30px; 
+border-bottom-left-radius :30px;
+
+}
+
+.addContactOverlayTitle{
+    width: 366px;
+    height: 73px;
+    
+    /* Version 2/t1 */
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    /* or 73px */
+    
+    
+    /* white */
+    
+    color: #FFFFFF;
+}
+
+.addContactOverlaySubtitle{
+    width: 371px;
+    height: 32px;
+    
+    /* Version 2/t5 */
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    /* or 32px */
+    
+    
+    /* white */
+    
+    color: #FFFFFF;
+}
+
+.addContactOverlayLogo{
+    height: 66px;
+    width: 55px;
+    position: absolute;
+left: 10.04%;
+right: 78.05%;
+top: 25.93%;
+bottom: 62.88%;
+}
+
+.addContactOverlayCancelButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+}
+
+.addContactOverlayCancelButton span {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: var(--defaultDark);
+}
+
+
+.editContactOverlaySaveButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+
+    width: 143px;
+    height: 61px;
+
+    background: var(--defaultDark);
+    border-radius: 10px;
+}
+
+.editContactOverlaySaveButton span {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    text-align: center;
+    color: #FFFFFF;
 }

@@ -7,61 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="fonts.css">
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/main.js"></script>
     <script src="./js/register.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <div class="signUpWrapper">
-        
+
         <img class="logoTopLeft" src="assets/img/logo.svg" alt="">
-        
-        <from onsubmit="addUser(); return false;" class="signUpContainer">
-            <img class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
+
+        <form class="signUpContainer" onsubmit="checkInputsSignUp(); return false" id="registerForm" novalidate>
+            <img onclick="window.location.href='login.html'" class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="text" id="registerName" placeholder="Name" required>
-                            <img src="./assets/img/userIcon.svg" alt="">
+                            <input class="loginInput" type="text" id="registerName" placeholder="Name"
+                                aria-required="true" required>
+                            <img src="assets/img/userIcon.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="registerNameError" class="errorMessage d-none">This field is required</span>
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email" required>
-                            <img src="./assets/img/loginMail.svg" alt="">
+                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email"
+                                aria-required="true" required>
+                            <img src="assets/img/loginMail.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="registerEmailError" class="errorMessage d-none">This field is required</span>
+                        <span id="registerEmailFormatError" class="errorMessage d-none">Please insert an Email</span>
+                        <span id="registerEmailTakenError" class="errorMessage d-none">This eMail is already in use</span>
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input id="registerPassword" class="loginInput" type="password"
-                            placeholder="Password" required>
-                            <img id="registerPasswordImg" src="./assets/img/loginPassword.svg" alt="">
+                            <input id="registerPassword" class="loginInput" type="password" placeholder="Password"
+                                aria-required="true" required>
+                            <img id="registerPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="registerPasswordError" class="errorMessage d-none">This field is required</span>
+                        <span id="registerPasswordLengthError" class="errorMessage d-none">Password must contain at least 6 Characters</span>
                     </div>
                 </div>
-                
-                
                 <div class="loginButtons">
-                    <button class="primaryButton"><span>Sign</span></button>
+                    <button type="submit" class="loginLoginButton"><span>Sign up</span></button>
                 </div>
             </div>
         </form>
-    </body>
-    
-    </html>
-    
+</body>
+
+</html>

@@ -6,7 +6,9 @@ function onMouseOutImg(id, src) {
     document.getElementById(id).setAttribute('src', src);
 }
 
-function  greetingAds() {
+
+
+function greetingAds() {
     let now = new Date();
     let hours = now.getHours();
 
@@ -21,5 +23,11 @@ function  greetingAds() {
         greeting = "Good night";
     }
     document.getElementById('welcome-text-desk').innerHTML = greeting;
-    setTimeout(greetingAds, 1000);
+    greetingCurrentUser()
 }
+
+function greetingCurrentUser(){
+    if (currentUser != 'guest'){
+    const [firstName] = currentUser.split(" ");  
+    document.getElementById('welcome-name-desk').innerHTML = firstName
+}}

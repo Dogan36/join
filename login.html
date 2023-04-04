@@ -5,45 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/register.js"></script>
-    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/main.js"></script>
     <script src="./js/login.js"></script>
     <title>Document</title>
 </head>
 
-<body>
+<body onload="init()">
     <div class="loginWrapper">
-        <div class="loginTopRight"><span>Not a Join user?</span>
-            <div class="primaryButton"><span>Sign up</span></div>
+        <div class="loginTopRight"><span>Not a  user?</span>
+            <div onclick="window.location.href='register.html'" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
 
-        <from onsubmit="login(); return false;" class="loginContainer">
-            <div class="loginHeadline"><span>Log in</span><img src="/assets/img/loginSeperator.svg" alt=""></div>
+        <form onsubmit="checkInputsLogin(); return false;" class="loginContainer" novalidate>
+            <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="email" id="email" placeholder="Email" required>
-                            <img src="/assets/img/loginMail.svg" alt="">
+                            <input class="loginInput" type="email" id="loginEmail" placeholder="Email" required>
+                            <img src="assets/img/loginMail.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="loginEmailError" class="errorMessage d-none">This field is required</span>
+                        <span id="loginEmailFormatError" class="errorMessage d-none">Please insert a valid email</span>
+                        <span id="loginEmailNotFoundError" class="errorMessage d-none">Email not found</span>
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input id="loginPassword" class="loginInput" type="password" id="password"
+                            <input id="loginPassword" class="loginInput" type="password"
                                 placeholder="Password" required>
-                            <img id="loginPasswordImg" src="/assets/img/loginPassword.svg" alt="">
+                            <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span>This field is
-                            required
-                        </span>
+                        <span id="loginPasswordError" class="errorMessage d-none">This field is required</span>
+                        <span id="loginPasswordLengthError" class="errorMessage d-none">Password must contain at least 6
+                            characters</span>
+                        <span id="loginPasswordIncorrectError" class="errorMessage d-none">Incorrect password</span>
                     </div>
                 </div>
                 <div class="loginOptions">
@@ -78,11 +80,13 @@
                     <span>Forgot my password</span>
                 </div>
                 <div class="loginButtons">
-                    <button class="primaryButton"><span>Log in</span></button>
-                    <button class="secondaryButton"><span>Guest Log in</span></button>
+                    <button type="submit" class="loginLoginButton"><span>Log in</span></button>
+                    <button onclick="event.preventDefault(); window.location.href='index.html?variable=guest'" class="loginGuestButton">
+                        <span>Guest Log in</span>
+                    </button>
                 </div>
             </div>
-            </form>
+        </form>
 </body>
 
 </html>

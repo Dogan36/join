@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,11 +20,44 @@
     --lowPriority: #7AE229;
     --medPriority: #FFA800;
     --highPriority: #FF3D00;
-    --backOffice: #1FD7C1;
-    --design: #FF7A00;
-    --sales: #FC71FF;
-    --media: #FFC701;
-    --marketing: #0038FF;
+    --avatar-color-1: #FF0000;
+    /* Rot */
+    --avatar-color-2: #FFA500;
+    /* Orange */
+    --avatar-color-3: #FFFF00;
+    /* Gelb */
+    --avatar-color-4: #008000;
+    /* Dunkelgrün */
+    --avatar-color-5: #0000FF;
+    /* Blau */
+    --avatar-color-6: #800080;
+    /* Lila */
+    --avatar-color-7: #FFC0CB;
+    /* Rosa */
+    --avatar-color-8: #00FFFF;
+    /* Türkis */
+    --avatar-color-9: #808080;
+    /* Grau */
+    --avatar-color-10: #FF69B4;
+    /* Hellrosa */
+    --avatar-color-11: #00FF00;
+    /* Grün */
+    --avatar-color-12: #7FFFD4;
+    /* Aquamarin */
+    --avatar-color-13: #9400D3;
+    /* Violett */
+    --avatar-color-14: #FFD700;
+    /* Gold */
+    --avatar-color-15: #FF1493;
+    /* Pink */
+    --avatar-color-16: #00CED1;
+    /* Türkisblau */
+    --avatar-color-17: #FF6347;
+    /* Tomatenrot */
+    --avatar-color-18: #4B0082;
+    /* Indigoblau */
+    --avatar-color-19: #808000;
+    /* Olivgrün */
 }
 
 h1 {
@@ -52,7 +85,7 @@ indexWrapper {
     height: 100%;
 }
 
-.indexHeader{
+.indexHeader {
     z-index: 1;
 }
 
@@ -144,6 +177,7 @@ indexWrapper {
     height: 51px;
     background: var(--defaultDark);
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .loginSignUpButton span {
@@ -168,10 +202,12 @@ indexWrapper {
     height: 51px;
     background: var(--defaultDark);
     border-radius: 8px;
+    white-space:  nowrap;
+    cursor: pointer;
 }
 
 .loginLoginButton span {
-    width: 62px;
+
     height: 25px;
     font-style: normal;
     font-weight: 700;
@@ -193,6 +229,7 @@ indexWrapper {
     height: 51px;
     border: 1px solid var(--defaultDark);
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .loginGuestButton span {
@@ -203,7 +240,7 @@ indexWrapper {
     font-size: 21px;
     line-height: 120%;
     color: var(--defaultDark);
-    color: white;
+    white-space: nowrap;
 }
 
 
@@ -244,6 +281,7 @@ indexWrapper {
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .boardAddTaskButton span {
@@ -322,11 +360,12 @@ indexWrapper {
     width: 193px;
     height: 53px;
     left: 1195px;
-    top: 904px;
+    top: 700px;
 
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .contactsNewContactButton span {
@@ -338,86 +377,34 @@ indexWrapper {
     font-size: 21px;
     line-height: 120%;
     color: #FFFFFF;
+    white-space:  nowrap;
 }
 
 
-.addContactOverlayCreateContactButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 208px;
-    height: 61px;
-    background: var(--defaultDark);
-    border-radius: 10px;
+
+.boardAddTaskButton:hover,
+.contactsNewContactButton:hover,
+.loginLoginButton:hover,
+.loginSignUpButton:hover{
+    background-color: var(--secondaryColor);
+    border: 1px solid var(--secondaryColor);
 }
 
-.addContactOverlayCreateContactButton span {
-    width: 154px;
-    height: 25px;
+.loginGuestButton:hover{
+border: 2px solid #29ABE2;
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.loginGuestButton span:hover{
+    color:var(--secondaryColor)
+}
+
+.errorMessage{
+    white-space: nowrap;
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #FFFFFF;
-}
-
-
-.addContactOverlayCancelButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 136px;
-    height: 61px;
-    border: 1px solid var(--defaultDark);
-    border-radius: 10px;
-}
-
-.addContactOverlayCancelButton span {
-    width: 69px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    color: var(--defaultDark);
-}
-
-
-.editContactOverlaySaveButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-
-    width: 143px;
-    height: 61px;
-
-    background: var(--defaultDark);
-    border-radius: 10px;
-}
-
-.editContactOverlaySaveButton span {
-    width: 123px;
-    height: 25px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
- 
-
-    text-align: center;
-
-    color: #FFFFFF;
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 120%;
+color: #FF001F;
 }

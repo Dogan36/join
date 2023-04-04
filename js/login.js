@@ -1,12 +1,13 @@
-const passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
-    const visibleIcon = '/assets/img/visibleIcon.svg';
-    const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
-    const standartIcon = '/assets/img/loginPassword.svg';
+
+let visibleIcon = 'assets/img/visibleIcon.svg';
+let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
+let standartIcon = 'assets/img/loginPassword.svg';
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
-    const logo = document.querySelector('.logo');
-    const contentContainer = document.querySelector('.loginContainer');
+    let logo = document.querySelector('.logo');
+    let contentContainer = document.querySelector('.loginContainer');
     logo.addEventListener('animationend', () => {
         contentContainer.classList.add('show');
     });
@@ -14,13 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     addListener();
 });
 
-
-function login() {
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let user = users.find(u => u.email == email.value && u.password == password.value);
-
-}
 
 
 function updateCheckbox() {
@@ -39,19 +33,20 @@ function updateCheckbox() {
 
 
 function addListener() {
-    const passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
- 
+    let passwordInput = document.getElementById('loginPassword');
+    let passwordToggle = document.getElementById('loginPasswordImg');
+
     passwordInput.addEventListener('keyup', changePasswortImage)
     passwordToggle.addEventListener('click', togglePasswordVisibility);
+    
 }
 
 function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
-    const visibleIcon = '/assets/img/visibleIcon.svg';
-    const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
-    const standartIcon = '/assets/img/loginPassword.svg';
+    let passwordInput = document.getElementById('loginPassword');
+    let passwordToggle = document.getElementById('loginPasswordImg');
+    let visibleIcon = 'assets/img/visibleIcon.svg';
+    let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
+    let standartIcon = 'assets/img/loginPassword.svg';
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else {
@@ -60,7 +55,7 @@ function togglePasswordVisibility() {
             passwordToggle.src = visibleIcon;
         } else {
             passwordInput.type = 'password';
-            if (passwordToggle.src !== '/assets/img/loginPassword.svg') {
+            if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
                 passwordToggle.src = unVisibleIcon;
             }
         }
@@ -69,11 +64,11 @@ function togglePasswordVisibility() {
 
 
 function changePasswortImage() {
-    const passwordInput = document.getElementById('loginPassword');
-    const passwordToggle = document.getElementById('loginPasswordImg');
-    const visibleIcon = '/assets/img/visibleIcon.svg';
-    const unVisibleIcon = '/assets/img/notVisibleIcon.svg';
-    const standartIcon = '/assets/img/loginPassword.svg';
+    let passwordInput = document.getElementById('loginPassword');
+    let passwordToggle = document.getElementById('loginPasswordImg');
+    let visibleIcon = 'assets/img/visibleIcon.svg';
+    let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
+    let standartIcon = 'assets/img/loginPassword.svg';
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else if (passwordInput.type == 'text') {
@@ -84,4 +79,69 @@ function changePasswortImage() {
     }
 }
 
+
+
+async function checkInputsLogin() {
+    document.querySelectorAll('.errorMessage').forEach(function (el) {
+        el.classList.add('d-none');
+    })
+    checkLoginEmail()
+}
+
+async function checkLoginEmail() {
+    const email = document.getElementById('loginEmail');
+    user = await getUser(email.value);
+    if (email.value === '') {
+        document.getElementById('loginEmailError').classList.remove('d-none');
+        return
+    }
+    if (email.value.indexOf('@') === -1) {
+        document.getElementById('loginEmailFormatError').classList.remove('d-none');
+        return
+    }
+    if (!user) {
+        document.getElementById('loginEmailNotFoundError').classList.remove('d-none');
+        return
+    } else {
+        checkLoginPassword()
+    }
+}
+
+
+async function checkLoginPassword() {
+    const password = document.getElementById('loginPassword').value;
+    let userPassword = await getPassword(user);
+    if (password === '') {
+        document.getElementById('loginPasswordError').classList.remove('d-none');
+        return
+    }
+    if (password.length < 7) {
+        document.getElementById('loginPasswordLengthError').classList.remove('d-none');
+        return
+    }
+    if (password !== userPassword) {
+        document.getElementById('loginPasswordIncorrectError').classList.remove('d-none');
+        return
+    }
+    rememberMe()
+    let currentUser=user.name
+    window.location.href = 'index.html?variable=' + currentUser;
+    
+}
+
+
+async function getUser(email) {
+    user = users.find(user => user.email === email);
+    return user;
+}
+
+async function getPassword(user) {
+    const password = user.password;
+    return password;
+}
+
+function rememberMe() {
+    console.log('test')
+    
+}
 
