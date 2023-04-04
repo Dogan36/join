@@ -29,7 +29,6 @@ function closeNewTaskCategroy() {
   document.getElementById('select-container').innerHTML = ``;
   document.getElementById('select-container').innerHTML = `<div onclick="openNewTaskCategroy()" class="option">
     <div>Select task category</div>
-<<<<<<< HEAD
     <img  class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="">
   </div>
   <div id="content-categroy-container" class="d-none">
@@ -37,11 +36,6 @@ function closeNewTaskCategroy() {
   </div>
   `;
 
-=======
-    <img  class="arrow-icon" src="assets/img/arrow_icon.svg" alt="">
-  </div>`;
-    
->>>>>>> 6666f78f518a93ed5ea460b0807309793dc650df
 
 }
 
@@ -99,14 +93,9 @@ function prioColor(color) {
   if (color == 'prio-red') {
     if (divRed.classList.contains("prio-red")) {
       document.getElementById('prio-red').classList.remove('prio-red');
-<<<<<<< HEAD
       document.getElementById('prio-urgent-icon').src = './assets/img/prio-urgent-icon.svg';
       deleteJasonPrio()
     } else {
-=======
-      document.getElementById('prio-urgent-icon').src = 'assets/img/prio-urgent-icon.svg';
-    }else {
->>>>>>> 6666f78f518a93ed5ea460b0807309793dc650df
       document.getElementById('prio-red').classList.add('prio-red');
       document.getElementById('prio-urgent-icon').src = 'assets/img/prio-urgent-white-icon.svg';
       document.getElementById('prio-medium-icon').src = 'assets/img/prio-medium-icon.svg';
@@ -121,7 +110,6 @@ function prioColor(color) {
   } else if (color == 'prio-yellow') {
     if (divYellow.classList.contains("prio-yellow")) {
       document.getElementById('prio-yellow').classList.remove('prio-yellow');
-<<<<<<< HEAD
       document.getElementById('prio-medium-icon').src = './assets/img/prio-medium-icon.svg';
       deleteJasonPrio();
     } else {
@@ -134,23 +122,10 @@ function prioColor(color) {
       document.getElementById('prio-green').classList.remove('prio-green');
       deleteJasonPrio();
     }
-=======
-      document.getElementById('prio-medium-icon').src = 'assets/img/prio-medium-icon.svg';
-    }else {
-
-    document.getElementById('prio-yellow').classList.add('prio-yellow');
-    document.getElementById('prio-medium-icon').src ='assets/img/prio-medium-white-icon.svg';
-    document.getElementById('prio-urgent-icon').src = 'assets/img/prio-urgent-icon.svg';
-    document.getElementById('prio-low-icon').src = 'assets/img/prio-low-icon.svg';
-    document.getElementById('prio-red').classList.remove('prio-red');
-    document.getElementById('prio-green').classList.remove('prio-green');
-  }
->>>>>>> 6666f78f518a93ed5ea460b0807309793dc650df
 
   } else if (color == 'prio-green') {
     if (divGreen.classList.contains("prio-green")) {
       document.getElementById('prio-green').classList.remove('prio-green');
-<<<<<<< HEAD
       document.getElementById('prio-low-icon').src = './assets/img/prio-low-icon.svg';
       deleteJasonPrio();
     } else {
@@ -163,18 +138,6 @@ function prioColor(color) {
       document.getElementById('prio-yellow').classList.remove('prio-yellow');
       deleteJasonPrio();
     }
-=======
-      document.getElementById('prio-low-icon').src = 'assets/img/prio-low-icon.svg';
-    }else {
-
-    document.getElementById('prio-green').classList.add('prio-green');
-    document.getElementById('prio-low-icon').src ='assets/img/prio-low-white-icon.svg';
-    document.getElementById('prio-urgent-icon').src = 'assets/img/prio-urgent-icon.svg';
-    document.getElementById('prio-medium-icon').src = 'assets/img/prio-medium-icon.svg';
-    document.getElementById('prio-red').classList.remove('prio-red');
-    document.getElementById('prio-yellow').classList.remove('prio-yellow');
-    
->>>>>>> 6666f78f518a93ed5ea460b0807309793dc650df
   }
   // selectPrio(name, colorNumber, colorIcon, whiteIcon);
 }
@@ -193,14 +156,9 @@ function popUpWindowaddTask() {
   document.getElementById('add-task-window').classList.remove('d-none');
 }
 
-<<<<<<< HEAD
 function popUpWindowCloseAddTask() {
   document.getElementById('container-opened-task').classList.add('d-none');
   document.getElementById('add-task-window').classList.add('d-none');
-=======
-function closeAddTask() {
- 
->>>>>>> 6666f78f518a93ed5ea460b0807309793dc650df
 }
 
 
@@ -534,7 +492,7 @@ function addTaskJasonArray() {
  */
 
 function AddTaskJasonToLoadSever() {
-  
+
 }
 
 
