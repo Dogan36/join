@@ -162,59 +162,7 @@ function popUpWindowCloseAddTask() {
 }
 
 
-// //Add Task input fields to json array
 
-// function addTask() {
-
-//   let title1 = document.getElementById('task-title-input');
-//   let description = document.getElementById('add-task-description');
-//   let category = document.getElementById('category');
-//   let assignedTo = document.getElementById('add-task-description');
-
-//   let task = {
-//     'taskTitle': title.value,
-//     'taskDescription': description.value,
-//     'taskCategory': category.value,
-//     'taskCategoryColor': color,
-//     'taskAssignedTo': [
-//       {
-//         'userId': "1"
-//       },
-//       {
-//         'userId': "2"
-//       }
-//     ],
-//   };
-
-
-//   tasks.push(task);
-//   console.log((tasks));
-//   // console.log(task);
-
-// }
-
-
-// function addTask() {
-//   let title = document.getElementById('task-title-input').value;
-//   let description = document.getElementById('add-task-description').value;
-
-//   let assignedToArray = [];
-//   let assignedTo1 = document.getElementById('assigned-to-1').value;
-//   let assignedTo2 = document.getElementById('assigned-to-2').value;
-
-//   assignedToArray.push(assignedTo1);
-//   assignedToArray.push(assignedTo2);
-
-//   let task = {
-//     taskTitle: title,
-//     taskDescription: description,
-//     taskCategory: category,
-//     assignedTo: assignedToArray
-//   };
-
-//   tasks.push(task);
-//   console.log(tasks);
-// }
 
 
 /**
@@ -351,7 +299,6 @@ function selectCategory(i) {
   `;
 }
 
-
 /**
  *  Add Task Assigned to
  */
@@ -382,26 +329,22 @@ function selectPrioOnOrOff(color, test, name, colorNumber, colorIcon, whiteIcon)
   }
 }
 
-
 function selectPrio(name, colorNumber, colorIcon, whiteIcon) {
   let prio = {
     'name': name,
     'backgroundColor': colorNumber,
     'iconColor': colorIcon,
     'iconWhite': whiteIcon
-
   }
   addTaskSelectPrios.push(prio);
   console.log(addTaskSelectPrios)
 }
-
 
 function deleteJasonPrio() {
   // addTaskSelectPrios[0].splice(1,1);
   for (let i = addTaskSelectPrios.length - 1; i >= 0; i--) {
     addTaskSelectPrios.splice(i, 1);
   }
-
 }
 
 /**
@@ -411,7 +354,6 @@ function deleteJasonPrio() {
 function openSubtask() {
   document.getElementById('Add-new-subtask-contaier').classList.add('d-none');
   document.getElementById('new-subtask-contaier').classList.remove('d-none');
-
 }
 
 function addNewSubtask() {
@@ -447,9 +389,7 @@ function renderSubtaskPoint() {
     </div>
     `;
   }
-
 }
-
 
 /**
  * Add Task Jason Array
@@ -469,30 +409,12 @@ function addTaskJasonArray() {
   console.log(TaskJasonArray);
 }
 
-
-
-
-// let ;
-// let category;
-// let assignedTo;
-// let dueDate;
-// let prio;
-// let addTaskSelectPrios = [];
-// let addTaskNewSubtasks = [];
-// let addTaskNewContacts = [];
-// let addTaskNewCategorys = [];
-// let buttonBackgroundColor = ['#800080', '#ff0000', '#008000', '#ffba00', '#ffc0cb', '#0000ff'];
-// let selectedCategory;
-// let selectedColor;
-
-
-
 /**
  * Load Data on the Server 
  */
 
 function AddTaskJasonToLoadSever() {
-
+    
 }
 
 
