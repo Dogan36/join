@@ -1,6 +1,6 @@
 
 
-let contacts = [
+  [
   {
     "id": "0",
     "name": "Lisa Müller",
@@ -34,7 +34,7 @@ let contacts = [
 ];
 
 
-let tasks = [
+ [
   {
     "taskTitle": "TestTitle",
     "taskDescription": "TestDescription",

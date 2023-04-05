@@ -3,6 +3,7 @@ let tasks = []
 let contacts = []
 let users = []
 let currentUser
+let initials = []
 
 
 async function init() {
@@ -15,10 +16,10 @@ async function init() {
   console.log(contacts)
 }
 
-async function initIndex(){
-  await includeHTML(); 
-  await getCurrentUser();
- 
+async function initIndex() {
+  await includeHTML();
+  getCurrentUser();
+  render()
 }
 
 
@@ -26,7 +27,7 @@ async function addUser() {
   let name = document.getElementById('registerName')
   let email = document.getElementById('registerEmail');
   let password = document.getElementById('registerPassword')
-  users.push({name: name.value, email: email.value, password: password.value});
+  users.push({ name: name.value, email: email.value, password: password.value });
   await setServer();
   window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
 }
@@ -52,7 +53,7 @@ function showContent(x) {
     element.classList.add("d-none");
   });
   document.getElementById(x).classList.remove('d-none')
-  
+
 }
 
 // zeige welcher Content aktuell ausgewählt ist
@@ -85,16 +86,50 @@ function unhover(element, url) {
   element.setAttribute('src', url);
 }
 
-async function getCurrentUser(){
+function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
-currentUser = params.get('variable');
+  currentUser = params.get('variable');
 
 }
 
-function closeOverlay(){
+function closeOverlay() {
   document.getElementById('container-opened-task').classList.add('d-none');
   document.getElementById('add-task-window').classList.add('d-none');
   document.getElementById('add-task-window').classList.add('d-none')
 }
 
+function render() {
+  renderSummary()
+  renderBoard()
+  renderAddTask()
+  renderContacts()
+}
+
+function renderSummary() {
+
+}
+
+function renderBoard() {
+
+}
+
+function renderAddTask() {
+
+}
+
+function renderContacts() {
+  getFirstLetter()
+console.log(initials)
+}
+
+
+function getFirstLetter() {
+  contacts.forEach(function (contact) {
+    const initial = contact.name.charAt(0);
+    if (!initials.includes(initial)) {
+      initials.push(initial);
+    }
+  });
+  initials.sort();
+}
 
