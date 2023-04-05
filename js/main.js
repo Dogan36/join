@@ -119,7 +119,7 @@ function renderAddTask() {
 
 function renderContacts() {
   getFirstLetter()
-console.log(initials)
+showContacts()
 }
 
 
@@ -133,3 +133,25 @@ function getFirstLetter() {
   initials.sort();
 }
 
+function showContacts(){
+  let contactList = document.getElementById('contactsList')
+  
+  for (let i = 0; i < initials.length; i++) {
+    const initial = initials[i];
+    contactList.innerHTML+=`<div class="contactListSection" id=contactListSection${initial}><span>${initial}</span></div>
+    <div class="contactListSeperator">
+        <img src="./assets/img/contactSeperator.svg" alt="">
+    </div>`
+    let contactListSection = document.getElementById(`contactsListSection${initial}`)
+    for (let j = 0; j < contacts.length; j++) {
+      const contact = contacts[j];
+      if (contact.name.charAt(0)==initial) {
+        contactListSection.innerHTML+=`
+        <div class="contactListElement">
+        <div class="contantsAvatar"><span>AM</span></div>
+        <div class="contactsInfo"><span>Anton Mayer</span><span>antonm@gmail.com</span></div>
+    </div>`
+      }
+    }
+  }
+}
