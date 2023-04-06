@@ -105,6 +105,10 @@ cursor: pointer;
     border-radius: 58px;
 }
 
+.contactListElement:hover .contantsAvatar{
+    border: 2px solid #FFFFFF;
+}
+
 .contantsAvatar span {
     width: 19px;
     height: 14px;
