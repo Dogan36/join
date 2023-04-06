@@ -27,7 +27,5 @@ function greetingAds() {
 }
 
 function greetingCurrentUser(){
-    if (currentUser != 'guest'){
-    const [firstName] = currentUser.split(" ");  
-    document.getElementById('welcome-name-desk').innerHTML = firstName
-}}
+    document.getElementById('welcome-name-desk').innerHTML = currentUser
+}
