@@ -11,18 +11,16 @@ async function init() {
   users = await JSON.parse(backend.getItem('users')) || [];
   tasks = await JSON.parse(backend.getItem('tasks')) || [];
   contacts = await JSON.parse(backend.getItem('contacts')) || [];
-  console.log(users)
-  console.log(tasks)
-  console.log(contacts)
-  initIndex()
+  includeHTML()
 }
 
-async function initIndex() {
-  includeHTML();
-  await getCurrentUser();
-  
-}
 
+function render() {
+  renderSummary()
+  greetingAds()
+  renderBoard()
+  renderContacts()
+}
 
 
 async function setServer() {
@@ -34,8 +32,6 @@ async function setServer() {
   await backend.setItem('contacts', contactsAsText)
   await backend.setItem('users', usersAsText)
 }
-
-
 
 
 // zeige das ausgewählte Content auf index.html
@@ -78,11 +74,13 @@ function unhover(element, url) {
   element.setAttribute('src', url);
 }
 
-async function getCurrentUser() {
+
+function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
   currentUser = params.get('variable');
 
 }
+
 
 function closeOverlay() {
   document.getElementById('container-opened-task').classList.add('d-none');
@@ -90,20 +88,8 @@ function closeOverlay() {
   document.getElementById('addContactOverlay').classList.add('d-none')
 }
 
-function render() {
-  renderSummary()
-  greetingAds()
-  renderBoard()
-  renderContacts()
-}
 
-function renderSummary() {
 
-}
-
-function renderBoard() {
-
-}
 
 
 

@@ -6,8 +6,6 @@ function onMouseOutImg(id, src) {
     document.getElementById(id).setAttribute('src', src);
 }
 
-
-
 function greetingAds() {
     let now = new Date();
     let hours = now.getHours();
@@ -28,4 +26,8 @@ function greetingAds() {
 
 function greetingCurrentUser(){
     document.getElementById('welcome-name-desk').innerHTML = currentUser
+}
+
+function renderSummary() {
+    getCurrentUser();
 }
