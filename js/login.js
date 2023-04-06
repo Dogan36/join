@@ -9,16 +9,18 @@ document.addEventListener('DOMContentLoaded', function () {
     let contentContainer = document.querySelector('.loginContainer');
     logo.addEventListener('animationend', () => {
         contentContainer.classList.add('show');
+
     });
     updateCheckbox();
     addListener();
+    loadRememberedData()
 });
 
 
 function updateCheckbox() {
     var checkbox = document.querySelector('input[type="checkbox"]');
-    var pathChecked = document.getElementById('unchecked');
-    var pathUnchecked = document.getElementById('checked');
+    var pathChecked = document.getElementById('checked');
+    var pathUnchecked = document.getElementById('unchecked');
     if (checkbox.checked) {
         pathChecked.style.display = 'block';
         pathUnchecked.style.display = 'none';
@@ -138,6 +140,31 @@ async function getPassword(user) {
 
 
 function rememberMe() {
-    console.log('test')
+        const checkbox = document.getElementById('rememberMe');
+        const usernameInput = document.getElementById('loginEmail');
+        const passwordInput = document.getElementById('loginPassword');
+      
+        if (checkbox.checked) {
+          localStorage.setItem('rememberedUser', usernameInput.value);
+          localStorage.setItem('rememberedPass', passwordInput.value);
+        } else {
+            localStorage.removeItem('rememberedUser');
+            localStorage.removeItem('rememberedPass');
+            document.querySelector('.loginContainer').reset()
+        }
+
 }
+
+function loadRememberedData() {
+    const rememberedUser = localStorage.getItem('rememberedUser');
+    const rememberedPass = localStorage.getItem('rememberedPass');
+    const usernameInput = document.getElementById('loginEmail');
+    const passwordInput = document.getElementById('loginPassword');
+  
+    if (rememberedUser && rememberedPass) {
+      usernameInput.value = rememberedUser;
+      passwordInput.value = rememberedPass;
+      document.getElementById('rememberMe').checked = true;
+    }
+  }
 

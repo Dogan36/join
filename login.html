@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/mini_backend.js"></script>
+    <script src="./js/include.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/login.js"></script>
     <title>Document</title>
@@ -21,7 +22,7 @@
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
 
-        <form onsubmit="checkInputsLogin(); return false;" class="loginContainer" novalidate>
+        <form onsubmit="checkInputsLogin(); return false;" class="loginContainer"  novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -51,7 +52,7 @@
                 <div class="loginOptions">
                     <div class="rememberMe">
                         <label>
-                            <input type="checkbox" onclick="updateCheckbox()" style="display:none;">
+                            <input id="rememberMe" checked="true" type="checkbox" onclick="updateCheckbox()" style="display:none;">
                             <svg id="unchecked" width="18" height="18" viewBox="0 0 18 18" fill="none"
                                 style="display:block" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1" width="16" height="16" rx="3" fill="url(#paint0_linear_94_565)"

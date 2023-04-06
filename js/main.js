@@ -6,12 +6,14 @@ let currentUser
 let initials = []
 
 
-async function init() {
+async function init(include = false) {
   await downloadFromServer();
   users = await JSON.parse(backend.getItem('users')) || [];
   tasks = await JSON.parse(backend.getItem('tasks')) || [];
   contacts = await JSON.parse(backend.getItem('contacts')) || [];
-  includeHTML()
+  if (include) {
+    includeHTML()
+  }
 }
 
 
