@@ -4,7 +4,6 @@ let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
     let logo = document.querySelector('.logo');
     let contentContainer = document.querySelector('.loginContainer');
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCheckbox();
     addListener();
 });
-
 
 
 function updateCheckbox() {
@@ -31,15 +29,13 @@ function updateCheckbox() {
 }
 
 
-
 function addListener() {
     let passwordInput = document.getElementById('loginPassword');
     let passwordToggle = document.getElementById('loginPasswordImg');
-
     passwordInput.addEventListener('keyup', changePasswortImage)
     passwordToggle.addEventListener('click', togglePasswordVisibility);
-    
 }
+
 
 function togglePasswordVisibility() {
     let passwordInput = document.getElementById('loginPassword');
@@ -80,13 +76,13 @@ function changePasswortImage() {
 }
 
 
-
 async function checkInputsLogin() {
     document.querySelectorAll('.errorMessage').forEach(function (el) {
         el.classList.add('d-none');
     })
     checkLoginEmail()
 }
+
 
 async function checkLoginEmail() {
     const email = document.getElementById('loginEmail');
@@ -125,8 +121,7 @@ async function checkLoginPassword() {
     }
     rememberMe()
     let currentUser=user.name
-    window.location.href = 'index.html?variable=' + currentUser;
-    
+    window.location.href = 'index.html?variable=' + currentUser; 
 }
 
 
@@ -135,13 +130,14 @@ async function getUser(email) {
     return user;
 }
 
+
 async function getPassword(user) {
     const password = user.password;
     return password;
 }
 
+
 function rememberMe() {
     console.log('test')
-    
 }
 

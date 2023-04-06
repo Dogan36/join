@@ -121,3 +121,13 @@ function changePasswortImage() {
         passwordToggle.src = unVisibleIcon
     }
 }
+
+
+async function addUser() {
+    let name = document.getElementById('registerName')
+    let email = document.getElementById('registerEmail');
+    let password = document.getElementById('registerPassword')
+    users.push({ name: name.value, email: email.value, password: password.value });
+    await setServer();
+    window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
+}
