@@ -137,7 +137,7 @@ contacts {
     font-size: 21px;
     line-height: 120%;
     /* or 25px */
-
+white-space: nowrap;
     display: flex;
     align-items: center;
 

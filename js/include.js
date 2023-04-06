@@ -25,4 +25,5 @@ async function includeHTML() {
     }
   }
   greetingAds()
+  render()
 }

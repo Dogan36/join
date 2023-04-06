@@ -8,18 +8,19 @@ let initials = []
 
 async function init() {
   await downloadFromServer();
-  users = JSON.parse(backend.getItem('users')) || [];
-  tasks = JSON.parse(backend.getItem('tasks')) || [];
-  contacts = JSON.parse(backend.getItem('contacts')) || [];
+  users = await JSON.parse(backend.getItem('users')) || [];
+  tasks = await JSON.parse(backend.getItem('tasks')) || [];
+  contacts = await JSON.parse(backend.getItem('contacts')) || [];
   console.log(users)
   console.log(tasks)
   console.log(contacts)
+  initIndex()
 }
 
 async function initIndex() {
-  await includeHTML();
-  getCurrentUser();
-  render()
+  includeHTML();
+  await getCurrentUser();
+
 }
 
 
@@ -86,7 +87,7 @@ function unhover(element, url) {
   element.setAttribute('src', url);
 }
 
-function getCurrentUser() {
+async function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
   currentUser = params.get('variable');
 
@@ -101,7 +102,6 @@ function closeOverlay() {
 function render() {
   renderSummary()
   renderBoard()
-  renderAddTask()
   renderContacts()
 }
 
@@ -113,13 +113,11 @@ function renderBoard() {
 
 }
 
-function renderAddTask() {
 
-}
 
 function renderContacts() {
   getFirstLetter()
-showContacts()
+  showContacts()
 }
 
 
@@ -132,26 +130,33 @@ function getFirstLetter() {
   });
   initials.sort();
 }
-
-function showContacts(){
+function showContacts() {
   let contactList = document.getElementById('contactsList')
-  
+  contactList.innerHTML = ''
   for (let i = 0; i < initials.length; i++) {
     const initial = initials[i];
-    contactList.innerHTML+=`<div class="contactListSection" id=contactListSection${initial}><span>${initial}</span></div>
-    <div class="contactListSeperator">
+    contactList.innerHTML += `
+      <div class="contactListSection" id="contactListSection">
+        <span>${initial}</span>
+      </div>
+      <div class="contactListSeperator">
         <img src="./assets/img/contactSeperator.svg" alt="">
-    </div>`
-    let contactListSection = document.getElementById(`contactsListSection${initial}`)
-    for (let j = 0; j < contacts.length; j++) {
-      const contact = contacts[j];
-      if (contact.name.charAt(0)==initial) {
-        contactListSection.innerHTML+=`
+      </div>`;
+
+    // Call the 'Test()' function with 'initial' as an argument here
+    Test(initial);
+  }
+}
+function Test(initial) {
+  let contactList = document.getElementById('contactsList')
+  for (let j = 0; j < contacts.length; j++) {
+    const contact = contacts[j];
+    if (contact.name.charAt(0) == initial) {
+      contactList.innerHTML += `
         <div class="contactListElement">
         <div class="contantsAvatar"><span>AM</span></div>
-        <div class="contactsInfo"><span>Anton Mayer</span><span>antonm@gmail.com</span></div>
+        <div class="contactsInfo"><span>${contact.name}</span><span>${contact.email}</span></div>
     </div>`
-      }
     }
   }
 }
