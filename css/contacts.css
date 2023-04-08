@@ -79,12 +79,16 @@ contacts {
     align-items: flex-start;
     padding: 15px 25px;
     gap: 35px;
-
+cursor: pointer;
     width: 357px;
     height: 79px;
 
     background: #FFFFFF;
     border-radius: 10px;
+}
+
+.contactListElement:hover{
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
 
 .contantsAvatar {
@@ -99,6 +103,10 @@ contacts {
     background: #0190E0;
     border: 1px solid #FFFFFF;
     border-radius: 58px;
+}
+
+.contactListElement:hover .contantsAvatar{
+    border: 2px solid #FFFFFF;
 }
 
 .contantsAvatar span {
