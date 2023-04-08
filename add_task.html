@@ -16,7 +16,7 @@
             <input
               id="task-title-input0"
               class="title-input no-outline"
-              type="text"
+              type="text" required
               placeholder="Enter a title"
               title="Geben Sie hier Ihren Text ein"
             />
@@ -67,7 +67,7 @@
                     <span class="dash"></span>
                   </div>
                   <img
-                    onclick="loadNewCategoryInDropdownButtonCategory()"
+                    onclick="loadNewCategoryInDropdownButtonCategory(0)"
                     class="x-or-hook"
                     src="./assets/img/black-check.svg"
                     alt=""
@@ -87,15 +87,15 @@
             </div>
             <div id="color-container0" class="color-container d-none">
               <div
-                id="colorb-button10"
+                id="color-button0"
                 class="purple color wheel"
-                onclick="colorButton(0)"
+                onclick="colorButton(0, 0)"
               ></div>
-              <div class="red color wheel" onclick="colorButton(1)"></div>
-              <div class="green color wheel" onclick="colorButton(2)"></div>
-              <div class="yellow color wheel" onclick="colorButton(3)"></div>
-              <div class="pink color wheel" onclick="colorButton(4)"></div>
-              <div class="blue color wheel" onclick="colorButton(5)"></div>
+              <div class="red color wheel" onclick="colorButton(1, 0)"></div>
+              <div class="green color wheel" onclick="colorButton(2, 0)"></div>
+              <div class="yellow color wheel" onclick="colorButton(3, 0)"></div>
+              <div class="pink color wheel" onclick="colorButton(4, 0)"></div>
+              <div class="blue color wheel" onclick="colorButton(5, 0)"></div>
             </div>
             <p id="required0" class="required hidden">This field is required</p>
           </div>
@@ -146,11 +146,11 @@
               <label class="title">Due date</label>
             </p>
 
-            <div id="date-button">
+            <div id="date-button0">
               <input
                 class="title-input no-outline"
                 type="date"
-                id="due-date"
+                id="due-date0"
                 name=""
               />
             </div>
@@ -163,13 +163,13 @@
 
             <div class="prio-body-container">
               <div
-                id="prio-red"
+                id="prio-red0"
                 class="prio-button"
-                onclick="selectPrioOnOrOff('prio-red','divRed', 'Urgent', '#ff3c00', './assets/img/prio-urgent-icon.svg', './assets/img/prio-urgent-white-icon.svg')"
+                onclick="selectPrioOnOrOff('prio-red','divRed', 'Urgent', '#ff3c00', './assets/img/prio-urgent-icon.svg', './assets/img/prio-urgent-white-icon.svg', 0)"
               >
                 <div>Urgent</div>
                 <img
-                  id="prio-urgent-icon0
+                  id="prio-urgent-icon0"
                   class="prio-icon"
                   src="./assets/img/prio-urgent-icon.svg"
                   alt=""
@@ -182,19 +182,19 @@
                 />
               </div>
               <div
-                id="prio-yellow"
+                id="prio-yellow0"
                 class="prio-button"
-                onclick="selectPrioOnOrOff('prio-yellow', 'divYellow', 'Medium', '#ffa800', './assets/img/prio-medium-icon.svg', './assets/img/prio-medium-white-icon.svg')"
+                onclick="selectPrioOnOrOff('prio-yellow', 'divYellow', 'Medium', '#ffa800', './assets/img/prio-medium-icon.svg', './assets/img/prio-medium-white-icon.svg', 0)"
               >
                 <div>Medium</div>
                 <img
-                  id="prio-medium-icon"
+                  id="prio-medium-icon0"
                   class="prio-icon"
                   src="./assets/img/prio-medium-icon.svg"
                   alt=""
                 />
                 <img
-                  id="prio-medium-white-icon"
+                  id="prio-medium-white-icon0"
                   class="prio-icon d-none"
                   src="./assets/img/prio-medium-white-icon.svg"
                   alt=""
@@ -203,7 +203,7 @@
               <div
                 id="prio-green0"
                 class="prio-button"
-                onclick="selectPrioOnOrOff('prio-green', 'divGreen', 'Low', '#7ae229', './assets/img/prio-low-icon.svg', './assets/img/prio-low-white-icon.svg')"
+                onclick="selectPrioOnOrOff('prio-green', 'divGreen', 'Low', '#7ae229', './assets/img/prio-low-icon.svg', './assets/img/prio-low-white-icon.svg', 0)"
               >
                 <div>Low</div>
                 <img
@@ -249,7 +249,7 @@
               </div>
             </div>
             <div
-              id="Add-new-subtask-contaier0"
+              id="add-new-subtask-contaier0"
               class="new-category-contaier"
               onclick="openSubtask(0)"
             >
@@ -258,7 +258,7 @@
             </div>
             <p id="required0" class="required hidden">This field is required</p>
           </div>
-          <div id="add-task-subtask-point"></div>
+          <div id="add-task-subtask-point0"></div>
           <div class="submit-btns-container">
             <button class="clear-btn">
               <span>clear</span>

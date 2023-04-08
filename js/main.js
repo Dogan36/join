@@ -2,6 +2,7 @@ setURL('https://gruppenarbeit-485join.developerakademie.net/join/smallest_backen
 let tasks = []
 let contacts = []
 let users = []
+let categorys = []
 let currentUser
 let initials = []
 
@@ -11,6 +12,7 @@ async function init(include = false) {
   users = await JSON.parse(backend.getItem('users')) || [];
   tasks = await JSON.parse(backend.getItem('tasks')) || [];
   contacts = await JSON.parse(backend.getItem('contacts')) || [];
+  categorys = await JSON.parse(backend.getItem('categorys')) || [];
   if (include) {
     includeHTML()
   }
@@ -29,10 +31,12 @@ async function setServer() {
   let tasksAsText = JSON.stringify(tasks);
   let contactsAsText = JSON.stringify(contacts);
   let usersAsText = JSON.stringify(users)
+  let categorysAsText = JSON.stringify(categorys)
   console.log(tasksAsText)
   await backend.setItem('tasks', tasksAsText)
   await backend.setItem('contacts', contactsAsText)
   await backend.setItem('users', usersAsText)
+  await backend.setItem('categorys', categorysAsText);
 }
 
 
