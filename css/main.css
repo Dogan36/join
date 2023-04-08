@@ -380,12 +380,37 @@ indexWrapper {
     white-space:  nowrap;
 }
 
+.forgotButton{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 0px;
+gap: 10px;
 
+width: 264px;
+height: 51px;
+cursor: pointer;
+background: #2A3647;
+border-radius: 8px;
+}
+
+.forgotButton span{
+    width: 95px;
+height: 25px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+color: #FFFFFF;
+}
 
 .boardAddTaskButton:hover,
 .contactsNewContactButton:hover,
 .loginLoginButton:hover,
-.loginSignUpButton:hover{
+.loginSignUpButton:hover,
+.forgotButton:hover{
     background-color: var(--secondaryColor);
     border: 1px solid var(--secondaryColor);
 }
@@ -408,3 +433,4 @@ font-size: 12px;
 line-height: 120%;
 color: #FF001F;
 }
+

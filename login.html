@@ -17,12 +17,11 @@
 
 <body onload="init()">
     <div class="loginWrapper">
-        <div class="loginTopRight"><span>Not a  user?</span>
+        <div class="loginTopRight"><span>Not a user?</span>
             <div onclick="window.location.href='register.html'" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
-
-        <form onsubmit="checkInputsLogin(); return false;" class="loginContainer"  novalidate>
+        <form onsubmit="checkInputsLogin(); return false;" class="loginContainer" novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -39,8 +38,8 @@
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input id="loginPassword" class="loginInput" type="password"
-                                placeholder="Password" required>
+                            <input id="loginPassword" class="loginInput" type="password" placeholder="Password"
+                                required>
                             <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
                         <span id="loginPasswordError" class="errorMessage d-none">This field is required</span>
@@ -52,7 +51,8 @@
                 <div class="loginOptions">
                     <div class="rememberMe">
                         <label>
-                            <input id="rememberMe" checked="true" type="checkbox" onclick="updateCheckbox()" style="display:none;">
+                            <input id="rememberMe" checked type="checkbox" onclick="updateCheckbox()"
+                                style="display:none;">
                             <svg id="unchecked" width="18" height="18" viewBox="0 0 18 18" fill="none"
                                 style="display:block" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1" width="16" height="16" rx="3" fill="url(#paint0_linear_94_565)"
@@ -76,18 +76,49 @@
                             </svg>
                         </label>
                         <span>Remember Me</span>
-
                     </div>
                     <span>Forgot my password</span>
                 </div>
                 <div class="loginButtons">
                     <button type="submit" class="loginLoginButton"><span>Log in</span></button>
-                    <button onclick="event.preventDefault(); window.location.href='index.html?variable=guest'" class="loginGuestButton">
+                    <button onclick="event.preventDefault(); window.location.href='index.html?variable=guest'"
+                        class="loginGuestButton">
                         <span>Guest Log in</span>
                     </button>
                 </div>
             </div>
         </form>
+        <form class="resetPassword" onsubmit="resetPasswort(); return false;" novalidate>
+            <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
+                alt="">
+            <div class="resetHeadline">
+                <span>Reset your password</span>
+                <img src="assets/img/loginSeperator.svg" alt="">
+            </div>
+            <span class="resetSubtitle">Change your account password</span>
+            <div class="forgotInputs">
+                <div class="newPasswordContainer">
+                    <div class="inputFieldWithImg">
+                        <input id="newPassword" class="loginInput" type="password" placeholder="New password" required>
+                        <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                    </div>
+                    <span class="errorMessage">This field is required</span>
+                    <span class="errorMessage"></span>
+                </div>
+                <div class="confirmPasswordContainer">
+                    <div class="inputFieldWithImg">
+                        <input id="confirmPassword" class="loginInput" type="password" placeholder="Confirm password"
+                            required>
+                            <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                    </div>
+                    <span class="errorMessage">This field is required</span>
+                    <span class="errorMessage"></span>
+                </div>
+            </div>
+            <button type="submit" class="forgotButton"><span>Continue</span></button>
+        </form>
+        <form class="forgotPassword"></form>
+    </div>
 </body>
 
 </html>
