@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="./css/add_task.css">
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/desktop_template.css">
+    <link rel="stylesheet" href="./css/login.css">
 </head>
 
 <body onload="init('include')">
@@ -44,13 +45,13 @@
             <div id='contactsContent' class="indexContent d-none" w3-include-html="contacts.html"></div>
         </div>
 
-        <div onclick="closeOverlay()" class="container-opened-task d-none" id="container-opened-task">
+        <div onclick="closeOverlay()" class="container-opened-task" id="container-opened-task">
             <div class="add-task-window d-none" id="add-task-window">
                 <div class="add-task-window-off"><span onclick="closeAddTask()">x
                     </span></div>
                 <div id="add-task-window-content" w3-include-html="./assets/templates/addTaskOverlayTemplate.html">Test test test</div>
             </div>
-            <div class="addContactOverlay d-none" id="addContactOverlay" w3-include-html="./assets/templates/addContactCard.html"></div>
+            <div class="addContactOverlay" id="addContactOverlay" w3-include-html="./assets/templates/addContactCard.html"></div>
         </div>
     </indexWrapper>
 </body>
