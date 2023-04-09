@@ -96,7 +96,7 @@
                 </div>
             </div>
         </form>
-        <form class="resetPassword" onsubmit="resetPasswort(); return false;" novalidate>
+        <form class="resetPassword d-none" onsubmit="resetPasswort(); return false;" novalidate>
             <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
                 alt="">
             <div class="resetHeadline">
@@ -104,7 +104,7 @@
                 <img src="assets/img/loginSeperator.svg" alt="">
             </div>
             <span class="resetSubtitle">Change your account password</span>
-            <div class="forgotInputs">
+            <div class="resetInputs">
                 <div class="newPasswordContainer">
                     <div class="inputFieldWithImg">
                         <input id="newPassword" class="loginInput" type="password" placeholder="New password" required>
@@ -123,9 +123,26 @@
                     <span class="errorMessage"></span>
                 </div>
             </div>
-            <button type="submit" class="forgotButton"><span>Continue</span></button>
+            <button type="submit" class="resetButton"><span>Continue</span></button>
         </form>
-        <form class="forgotPassword"></form>
+        <form class="forgotPassword d-none">
+            <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
+            alt="">
+            <div class="forgotHeadline">
+                <span>I forgot my password</span>
+                <img src="assets/img/loginSeperator.svg" alt="">
+            </div>
+            <span class="forgotSubtitle">Don't worry! We will send you an email with the instructions to reset your password.</span>
+            <div class="forgotContainer">
+                <div class="inputFieldWithImg">
+                    <input id="forgotEmail" class="loginInput" type="email" placeholder="Email" required>
+                    <img src="assets/img/loginMail.svg" alt="">
+                </div>
+                <span class="errorMessage">This field is required</span>
+                <span class="errorMessage">This Email doesn´t exist</span>
+            </div>
+            <div class="forgotButton"><span>Send me the email</span></div>
+        </form>
     </div>
 </body>
 

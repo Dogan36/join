@@ -202,7 +202,7 @@ indexWrapper {
     height: 51px;
     background: var(--defaultDark);
     border-radius: 8px;
-    white-space:  nowrap;
+    white-space: nowrap;
     cursor: pointer;
 }
 
@@ -361,7 +361,6 @@ indexWrapper {
     height: 53px;
     left: 1195px;
     top: 700px;
-
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
@@ -377,60 +376,84 @@ indexWrapper {
     font-size: 21px;
     line-height: 120%;
     color: #FFFFFF;
-    white-space:  nowrap;
+    white-space: nowrap;
 }
 
-.forgotButton{
+.resetButton {
     display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 4px 0px;
-gap: 10px;
-
-width: 264px;
-height: 51px;
-cursor: pointer;
-background: #2A3647;
-border-radius: 8px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 264px;
+    height: 51px;
+    cursor: pointer;
+    background: #2A3647;
+    border-radius: 8px;
 }
 
-.forgotButton span{
+.resetButton span {
     width: 95px;
-height: 25px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 21px;
-line-height: 120%;
-color: #FFFFFF;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.forgotButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 264px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.forgotButton span {
+    width: 189px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
 }
 
 .boardAddTaskButton:hover,
 .contactsNewContactButton:hover,
 .loginLoginButton:hover,
 .loginSignUpButton:hover,
-.forgotButton:hover{
+.resetButton:hover,
+.forgotButton:hover {
     background-color: var(--secondaryColor);
     border: 1px solid var(--secondaryColor);
 }
 
-.loginGuestButton:hover{
-border: 2px solid #29ABE2;
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.loginGuestButton:hover {
+    border: 2px solid #29ABE2;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.loginGuestButton span:hover{
-    color:var(--secondaryColor)
+.loginGuestButton span:hover {
+    color: var(--secondaryColor)
 }
 
-.errorMessage{
+.errorMessage {
     white-space: nowrap;
     font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 120%;
-color: #FF001F;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    color: #FF001F;
 }
-
