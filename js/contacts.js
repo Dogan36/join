@@ -61,3 +61,8 @@ function renderContacts() {
     return nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
   }
   
+  
+function openNewContactOverlay(){
+  document.getElementById('addContactOverlay').classList.remove('d-none')
+  document.getElementById('container-opened-task').classList.remove('d-none')
+}
