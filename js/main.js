@@ -102,7 +102,8 @@ function getCurrentUser() {
 
 
 function closeOverlay() {
-  document.getElementById('container-opened-task').classList.add('d-none');
+  const container = document.getElementById('container-opened-task');
+  container.classList.add('d-none');
   document.getElementById('add-task-window').classList.add('d-none');
   document.getElementById('addContactOverlay').classList.add('d-none')
 }

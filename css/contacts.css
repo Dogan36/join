@@ -441,18 +441,7 @@ white-space: nowrap;
 }
 
 
-.addContactOverlayCreateContactButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 208px;
-    height: 61px;
-    background: var(--defaultDark);
-    border-radius: 10px;
-}
+
 
 .addContactOverlay{
     position: absolute;
@@ -463,6 +452,7 @@ white-space: nowrap;
     height: 594px;
     background: #FFFFFF;
     border-radius: 30px;
+    z-index: 2;
   }
   
 
@@ -493,18 +483,6 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 gap: 25px;
-}
-
-
-.addContactOverlayCreateContactButton span {
-    width: 154px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #FFFFFF;
 }
 
 .addContactOverlayContent{

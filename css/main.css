@@ -428,23 +428,102 @@ indexWrapper {
     line-height: 120%;
     color: #FFFFFF;
 }
+.addContactOverlayCreateContactButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.addContactOverlayCreateContactButton span {
+    width: 154px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+.addContactOverlayCancelButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addContactOverlayCancelButton span {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: var(--defaultDark);
+}
+
+
+.editContactOverlaySaveButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+
+    width: 143px;
+    height: 61px;
+
+    background: var(--defaultDark);
+    border-radius: 10px;
+}
+
+.editContactOverlaySaveButton span {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    text-align: center;
+    color: #FFFFFF;
+}
 
 .boardAddTaskButton:hover,
 .contactsNewContactButton:hover,
 .loginLoginButton:hover,
 .loginSignUpButton:hover,
 .resetButton:hover,
-.forgotButton:hover {
+.forgotButton:hover,
+.editContactOverlaySaveButton:hover,
+.addContactOverlayCreateContactButton:hover {
     background-color: var(--secondaryColor);
     border: 1px solid var(--secondaryColor);
 }
 
-.loginGuestButton:hover {
+.loginGuestButton:hover,
+.addContactOverlayCancelButton:hover {
     border: 2px solid #29ABE2;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.loginGuestButton span:hover {
+.loginGuestButton:hover span,
+.addContactOverlayCancelButton:hover span {
     color: var(--secondaryColor)
 }
 

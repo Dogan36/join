@@ -44,7 +44,12 @@
             </div>
         </div>
         <div class="addContactButtons">
-            <div class="addContactOverlayCancelButton"><span>Cancel</span><img src="/assets/img/buttonX.svg" alt=""></div>
+            <div class="addContactOverlayCancelButton" onmouseover="onMouseOverImg('addContactCancelButtonImg', '/assets/img/buttonXsecondary.svg')"
+            onmouseout="onMouseOutImg('addContactCancelButtonImg', '/assets/img/buttonX.svg')">
+                <span>Cancel</span>
+                <img id="addContactCancelButtonImg" src="/assets/img/buttonX.svg" alt="">
+              </div>
+              
             <div class="addContactOverlayCreateContactButton"><span>Create contact</span><img src="/assets/img/buttonOK.svg" alt=""></div>
         </div>
     
