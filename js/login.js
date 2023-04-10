@@ -2,7 +2,8 @@
 let visibleIcon = 'assets/img/visibleIcon.svg';
 let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
-
+let passwordInput;
+let passwordToggle;
 
 document.addEventListener('DOMContentLoaded', function () {
     let logo = document.querySelector('.logo');
@@ -168,8 +169,7 @@ function loadRememberedData() {
     }
   }
 
-  let passwordInput;
-  let passwordToggle;
+ 
  
   
   
@@ -297,4 +297,11 @@ function loadRememberedData() {
       users.push({ name: name.value, email: email.value, password: password.value });
       await setServer();
       window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
+  }
+
+  function showContentLogin(element){
+    document.querySelector('.loginContainer').classList.add('d-none')
+    document.querySelector('.signUpContainer').classList.add('d-none')
+    document.querySelector('.forgotPassword').classList.add('d-none')
+    document.querySelector(`.${element}`).classList.remove('d-none')
   }

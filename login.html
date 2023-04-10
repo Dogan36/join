@@ -26,10 +26,11 @@
 <body onload="init()">
     <div class="loginWrapper">
         <div class="loginTopRight"><span>Not a user?</span>
-            <div onclick="window.location.href='register.html'" class="loginSignUpButton"><span>Sign up</span></div>
+            <div onclick="showContentLogin('signUpContainer')" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
-        <form  class="loginContainer" onsubmit="checkInputsLogin(); return false;" novalidate>
+
+        <form class="loginContainer" onsubmit="checkInputsLogin(); return false;" novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -85,7 +86,7 @@
                         </label>
                         <span>Remember Me</span>
                     </div>
-                    <span>Forgot my password</span>
+                    <span onclick="showContentLogin('forgotPassword')">Forgot my password</span>
                 </div>
                 <div class="loginButtons">
                     <button type="submit" class="loginLoginButton"><span>Log in</span></button>
@@ -97,8 +98,8 @@
             </div>
         </form>
 
-        <form class="signUpContainer d-none" onsubmit="checkInputsSignUp(); return false" id="registerForm" novalidate>
-            <img onclick="window.location.href='login.html'" class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
+        <form class="signUpContainer d-none" onsubmit="checkInputsSignUp(); return false" novalidate>
+            <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -141,7 +142,7 @@
         </form>
 
         <form class="forgotPassword d-none">
-            <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
+            <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg"
             alt="">
             <div class="forgotHeadline">
                 <span>I forgot my password</span>
@@ -157,8 +158,7 @@
                 <span class="errorMessage">This Email doesn´t exist</span>
             </div>
             <div class="forgotButton"><span>Send me the email</span></div>
-        </form>
-        
+        </form>  
     </div>
 </body>
 
