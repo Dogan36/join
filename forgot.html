@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="fonts.css">
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/login.js"></script>
+</head>
+
+<body onload="init()">
+    <div class="signUpWrapper">
+
+        <img class="logoTopLeft" src="assets/img/logo.svg" alt="">
+
+        <form class="resetPassword" onsubmit="resetPasswort(); return false;" novalidate>
+            <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
+                alt="">
+            <div class="resetHeadline">
+                <span>Reset your password</span>
+                <img src="assets/img/loginSeperator.svg" alt="">
+            </div>
+            <span class="resetSubtitle">Change your account password</span>
+            <div class="resetInputs">
+                <div class="newPasswordContainer">
+                    <div class="inputFieldWithImg">
+                        <input id="newPassword" class="loginInput" type="password" placeholder="New password" required>
+                        <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                    </div>
+                    <span class="errorMessage">This field is required</span>
+                    <span class="errorMessage"></span>
+                </div>
+                <div class="confirmPasswordContainer">
+                    <div class="inputFieldWithImg">
+                        <input id="confirmPassword" class="loginInput" type="password" placeholder="Confirm password"
+                            required>
+                            <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                    </div>
+                    <span class="errorMessage">This field is required</span>
+                    <span class="errorMessage"></span>
+                </div>
+            </div>
+            <button type="submit" class="resetButton"><span>Continue</span></button>
+        </form>
+</body>
+
+</html>

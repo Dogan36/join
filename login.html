@@ -29,7 +29,7 @@
             <div onclick="window.location.href='register.html'" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
-        <form onsubmit="checkInputsLogin(); return false;" class="loginContainer" novalidate>
+        <form  class="loginContainer" onsubmit="checkInputsLogin(); return false;" novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -96,35 +96,50 @@
                 </div>
             </div>
         </form>
-        <form class="resetPassword d-none" onsubmit="resetPasswort(); return false;" novalidate>
-            <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
-                alt="">
-            <div class="resetHeadline">
-                <span>Reset your password</span>
-                <img src="assets/img/loginSeperator.svg" alt="">
-            </div>
-            <span class="resetSubtitle">Change your account password</span>
-            <div class="resetInputs">
-                <div class="newPasswordContainer">
-                    <div class="inputFieldWithImg">
-                        <input id="newPassword" class="loginInput" type="password" placeholder="New password" required>
-                        <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+
+        <form class="signUpContainer d-none" onsubmit="checkInputsSignUp(); return false" id="registerForm" novalidate>
+            <img onclick="window.location.href='login.html'" class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
+            <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
+            <div class="loginInputs">
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input class="loginInput" type="text" id="registerName" placeholder="Name"
+                                aria-required="true" required>
+                            <img src="assets/img/userIcon.svg" alt="">
+                        </div>
+                        <span id="registerNameError" class="errorMessage d-none">This field is required</span>
                     </div>
-                    <span class="errorMessage">This field is required</span>
-                    <span class="errorMessage"></span>
                 </div>
-                <div class="confirmPasswordContainer">
-                    <div class="inputFieldWithImg">
-                        <input id="confirmPassword" class="loginInput" type="password" placeholder="Confirm password"
-                            required>
-                            <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input class="loginInput" type="email" id="registerEmail" placeholder="Email"
+                                aria-required="true" required>
+                            <img src="assets/img/loginMail.svg" alt="">
+                        </div>
+                        <span id="registerEmailError" class="errorMessage d-none">This field is required</span>
+                        <span id="registerEmailFormatError" class="errorMessage d-none">Please insert an Email</span>
+                        <span id="registerEmailTakenError" class="errorMessage d-none">This eMail is already in use</span>
                     </div>
-                    <span class="errorMessage">This field is required</span>
-                    <span class="errorMessage"></span>
+                </div>
+                <div class="inputContainer">
+                    <div class="inputFieldContainer">
+                        <div class="inputFieldWithImg">
+                            <input id="registerPassword" class="loginInput" type="password" placeholder="Password"
+                                aria-required="true" required>
+                            <img id="registerPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                        </div>
+                        <span id="registerPasswordError" class="errorMessage d-none">This field is required</span>
+                        <span id="registerPasswordLengthError" class="errorMessage d-none">Password must contain at least 6 Characters</span>
+                    </div>
+                </div>
+                <div class="loginButtons">
+                    <button type="submit" class="loginLoginButton"><span>Sign up</span></button>
                 </div>
             </div>
-            <button type="submit" class="resetButton"><span>Continue</span></button>
         </form>
+
         <form class="forgotPassword d-none">
             <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
             alt="">
@@ -143,6 +158,7 @@
             </div>
             <div class="forgotButton"><span>Send me the email</span></div>
         </form>
+        
     </div>
 </body>
 
