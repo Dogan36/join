@@ -182,8 +182,8 @@ function loadRememberedData() {
   }
   
   function listenerPasswordImg() {
-      passwordInput = document.getElementById('registerPassword');
-      passwordToggle = document.getElementById('registerPasswordImg');
+      passwordInput = document.getElementById('signUpPassword');
+      passwordToggle = document.getElementById('signUpPasswordImg');
       visibleIcon = 'assets/img/visibleIcon.svg';
       unVisibleIcon = 'assets/img/notVisibleIcon.svg';
       standartIcon = 'assets/img/loginPassword.svg';
@@ -214,29 +214,29 @@ function loadRememberedData() {
   
   
   function checkSignUpName() {
-      if (document.getElementById('registerName').value === '') {
-          document.getElementById('registerNameError').classList.remove('d-none');
+      if (document.getElementById('signUpName').value === '') {
+          document.getElementById('signUpNameError').classList.remove('d-none');
           return true;
       } else {
-          document.getElementById('registerNameError').classList.add('d-none');
+          document.getElementById('signUpNameError').classList.add('d-none');
       }
   }
   
   
   function checkSignUpEmail() {
-      var email = document.getElementById('registerEmail').value;
+      var email = document.getElementById('signUpEmail').value;
   
       if (email === '') {
-          document.getElementById('registerEmailError').classList.remove('d-none');
+          document.getElementById('signUpEmailError').classList.remove('d-none');
           return true;
       }
       if (email.indexOf('@') === -1) {
-          document.getElementById('registerEmailFormatError').classList.remove('d-none');
+          document.getElementById('signUpEmailFormatError').classList.remove('d-none');
           return true;
       }
   
       if (checkEmailExists(email)) {
-          document.getElementById('registerEmailTakenError').classList.remove('d-none');
+          document.getElementById('signUpEmailTakenError').classList.remove('d-none');
           return true;
       }
   
@@ -251,12 +251,12 @@ function loadRememberedData() {
   }
   
   function checkSignUpPassword() {
-      if (document.getElementById('registerPassword').value === '') {
-          document.getElementById('registerPasswordError').classList.remove('d-none');
+      if (document.getElementById('signUpPassword').value === '') {
+          document.getElementById('signUpPasswordError').classList.remove('d-none');
           return true;
       }
-      if (document.getElementById('registerPassword').value.length < 7) {
-          document.getElementById('registerPasswordLengthError').classList.remove('d-none');
+      if (document.getElementById('signUpPassword').value.length < 7) {
+          document.getElementById('signUpPasswordLengthError').classList.remove('d-none');
           return true;
       }
   }
@@ -291,9 +291,9 @@ function loadRememberedData() {
   
   
   async function addUser() {
-      let name = document.getElementById('registerName')
-      let email = document.getElementById('registerEmail');
-      let password = document.getElementById('registerPassword')
+      let name = document.getElementById('signUpName')
+      let email = document.getElementById('signUpEmail');
+      let password = document.getElementById('signUpPassword')
       users.push({ name: name.value, email: email.value, password: password.value });
       await setServer();
       window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
