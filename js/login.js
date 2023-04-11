@@ -2,6 +2,7 @@
 let visibleIcon = 'assets/img/visibleIcon.svg';
 let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
+let user
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -101,6 +102,7 @@ function checkEmail(element) {
     }
     if (element == 'forgot'){
         sendNewPasswordLink()
+        return
     }
     checkPassword(`${element}`)
 }
@@ -122,7 +124,7 @@ function checkPassword(element) {
             return
         } else {
             rememberMe()
-
+            let currentUser = user.name
             window.location.href = 'index.html?variable=' + currentUser;
         }
     }
@@ -176,8 +178,8 @@ function checkPasswordLength(element) {
 }
 
 
-async function checkIncorrectPassword(element) {
-    let user = await getUser();
+function checkIncorrectPassword(element) {
+    getUser();
     const password = user.password;
     if (password !== document.getElementById(`${element}Password`).value) {
         document.getElementById(`${element}PasswordIncorrectError`).classList.remove('d-none');
@@ -190,10 +192,9 @@ async function checkIncorrectPassword(element) {
 
 function getUser() {
     let email = document.getElementById('loginEmail').value;
-    let user = users.find(user => user.email === email);
-    return user;
+    user = users.find(user => user.email === email);
+    
 }
-
 
 
 function rememberMe() {
@@ -236,9 +237,14 @@ async function addUser() {
     window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
 }
 
+
 function showContentLogin(element) {
     document.querySelector('.loginContainer').classList.add('d-none')
     document.querySelector('.signUpContainer').classList.add('d-none')
     document.querySelector('.forgotPassword').classList.add('d-none')
     document.querySelector(`.${element}`).classList.remove('d-none')
+}
+
+function sendNewPasswordLink(){
+    console.log('test')
 }
