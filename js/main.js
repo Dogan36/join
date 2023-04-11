@@ -108,7 +108,14 @@ function closeOverlay() {
   document.getElementById('addContactOverlay').classList.add('d-none')
 }
 
-
+async function addContact() {
+  let name = document.getElementById('addContactName')
+  let email = document.getElementById('addContactEmail');
+  let phone = document.getElementById('addContactPhone')
+  contacts.push({ name: name.value, email: email.value, phone: phone.value });
+  await setServer();
+  document.querySelector('.addContactOverlay').reset()
+}
 
 
 

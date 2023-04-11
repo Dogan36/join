@@ -83,8 +83,8 @@ function checkInputs(element) {
     document.querySelectorAll(`.${element}ErrorMessage`).forEach(function (el) {
         el.classList.add('d-none');
     })
-    if (element == 'signUp') {
-        checkInputNotEmpty('signUpName')
+    if (element == 'signUp' || element == 'addContact' || element == 'changeContact') {
+        checkInputNotEmpty(`${element}Name`)
     }
     checkEmail(element)
 }
@@ -95,6 +95,10 @@ function checkEmail(element) {
         return
     }
     if (checkEmailFormat(`${element}Email`)) {
+        return
+    }
+    if(element == 'addContact' || element == 'changeContact'){
+        addContact()
         return
     }
     if (checkEmailExists(`${element}Email`)) {

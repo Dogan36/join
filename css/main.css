@@ -529,7 +529,8 @@ indexWrapper {
 .loginErrorMessage,
 .signUpErrorMessage,
 .forgotErrorMessage,
-.newPasswordErrorMessage {
+.newPasswordErrorMessage,
+.addContactErrorMessage {
     white-space: nowrap;
     font-family: 'Inter';
     font-style: normal;
