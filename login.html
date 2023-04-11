@@ -141,7 +141,7 @@
             </div>
         </form>
 
-        <form class="forgotPassword d-none">
+        <form class="forgotPassword d-none" onsubmit="checkInputs('forgot'); return false" novalidate>
             <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg"
             alt="">
             <div class="forgotHeadline">
@@ -154,10 +154,12 @@
                     <input id="forgotEmail" class="loginInput" type="email" placeholder="Email" required>
                     <img src="assets/img/loginMail.svg" alt="">
                 </div>
-                <span class="forgotErrorMessage">This field is required</span>
-                <span class="forgotErrorMessage">This Email doesn´t exist</span>
+                <span id="forgotEmailError" class="forgotErrorMessage d-none">This field is required</span>
+                <span id="forgotEmailFormatError" class="forgotErrorMessage d-none">Please insert an Email</span>
+                <span id="forgotEmailInUseError" class="forgotErrorMessage d-none">This Email doesn't exist</span>
             </div>
-            <div class="forgotButton"><span>Send me the email</span></div>
+            
+            <button type="submit" class="forgotButton"><span>Send me the email</span></button>
         </form>  
     </div>
 </body>

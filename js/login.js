@@ -3,6 +3,7 @@ let visibleIcon = 'assets/img/visibleIcon.svg';
 let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
 
+
 document.addEventListener('DOMContentLoaded', function () {
     let logo = document.querySelector('.logo');
     let contentContainer = document.querySelector('.loginContainer');
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     listenerPasswordImg('login');
     listenerPasswordImg('signUp');
     loadRememberedData();
+    changePasswortImage('login')
 });
 
 
@@ -65,7 +67,6 @@ function togglePasswordVisibility(element) {
 function changePasswortImage(element) {
     let passwordInput = document.getElementById(`${element}Password`);
     let passwordToggle = document.getElementById(`${element}PasswordImg`);
-
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else if (passwordInput.type == 'text') {
@@ -77,7 +78,7 @@ function changePasswortImage(element) {
 }
 
 
-async function checkInputs(element) {
+function checkInputs(element) {
     document.querySelectorAll(`.${element}ErrorMessage`).forEach(function (el) {
         el.classList.add('d-none');
     })
@@ -88,41 +89,43 @@ async function checkInputs(element) {
 }
 
 
-async function checkEmail(element) {
+function checkEmail(element) {
     if (checkInputNotEmpty(`${element}Email`)) {
         return
     }
-
     if (checkEmailFormat(`${element}Email`)) {
         return
     }
-
     if (checkEmailExists(`${element}Email`)) {
         return
-
-    } else {
-        checkPassword(`${element}Password`)
     }
+    if (element == 'forgot'){
+        sendNewPasswordLink()
+    }
+    checkPassword(`${element}`)
 }
 
 
-async function checkPassword(element) {
-    const password = document.getElementById(`${element}`).value;
-    let userPassword = await getPassword(user);
-    if (checkInputNotEmpty(`${element}`)) {
+function checkPassword(element) {
+    const password = document.getElementById(`${element}Password`).value;
+    if (checkInputNotEmpty(`${element}Password`)) {
         return
     }
-    if (password.length < 7) {
-        document.getElementById(`${element}LengthError`).classList.remove('d-none');
+    if (checkPasswordLength(`${element}Password`)) {
         return
     }
-    if (password !== userPassword) {
-        document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
-        return
+    if (element == 'signUp') {
+        addUser()
     }
-    rememberMe()
-    let currentUser = user.name
-    window.location.href = 'index.html?variable=' + currentUser;
+    if (element === 'login') {
+        if (checkIncorrectPassword(element)) {
+            return
+        } else {
+            rememberMe()
+
+            window.location.href = 'index.html?variable=' + currentUser;
+        }
+    }
 }
 
 
@@ -139,6 +142,7 @@ function checkEmailFormat(element) {
     const input = document.getElementById(`${element}`);
     if (input.value.indexOf('@') === -1) {
         document.getElementById(`${element}FormatError`).classList.remove('d-none');
+        return true
     }
 }
 
@@ -147,38 +151,49 @@ function checkEmailExists(element) {
     const input = document.getElementById(`${element}`);
     let emailFound = false;
     for (var i = 0; i < users.length; i++) {
-      if (users[i].email === input.value) {
-        emailFound = true;
-        if (element === 'signUp') {
-          document.getElementById(`${element}InUseError`).classList.remove('d-none');
-          return true;
+        if (users[i].email === input.value) {
+            emailFound = true;
+            if (element === 'signUpEmail') {
+                document.getElementById(`${element}InUseError`).classList.remove('d-none');
+                return true;
+            }
         }
-      }
     }
-    if (!emailFound && element !== 'signUp') {
-      document.getElementById(`${element}InUseError`).classList.remove('d-none');
-      return true;
+    if (!emailFound && element !== 'signUpEmail') {
+        document.getElementById(`${element}InUseError`).classList.remove('d-none');
+        return true;
     }
     return false;
-  }
-
-function checkPasswordLength() {
-
 }
 
-function checkCorrectPassword() {
 
+function checkPasswordLength(element) {
+    let password = document.getElementById(`${element}`)
+    if (password.value.length < 6) {
+        document.getElementById(`${element}LengthError`).classList.remove('d-none');
+        return true
+    }
 }
-async function getUser(email) {
-    user = users.find(user => user.email === email);
+
+
+async function checkIncorrectPassword(element) {
+    let user = await getUser();
+    const password = user.password;
+    if (password !== document.getElementById(`${element}Password`).value) {
+        document.getElementById(`${element}PasswordIncorrectError`).classList.remove('d-none');
+        console.log('falsch')
+        return true
+    }
+    console.log('richtig')
+    return false
+}
+
+function getUser() {
+    let email = document.getElementById('loginEmail').value;
+    let user = users.find(user => user.email === email);
     return user;
 }
 
-
-async function getPassword(user) {
-    const password = user.password;
-    return password;
-}
 
 
 function rememberMe() {
@@ -208,70 +223,6 @@ function loadRememberedData() {
         usernameInput.value = rememberedUser;
         passwordInput.value = rememberedPass;
         document.getElementById('rememberMe').checked = true;
-    }
-}
-
-
-async function checkInputsSignUp() {
-    document.querySelectorAll('.errorMessage').forEach(function (el) {
-        el.classList.add('d-none');
-    });
-    var hasError = false;
-    if (checkSignUpName()) {
-        hasError = true;
-    }
-    if (checkSignUpEmail()) {
-        hasError = true;
-    }
-    if (checkSignUpPassword()) {
-        hasError = true;
-    }
-    if (!hasError) {
-        await addUser()
-    }
-}
-
-
-function checkSignUpName() {
-    if (document.getElementById('signUpName').value === '') {
-        document.getElementById('signUpNameError').classList.remove('d-none');
-        return true;
-    } else {
-        document.getElementById('signUpNameError').classList.add('d-none');
-    }
-}
-
-
-function checkSignUpEmail() {
-    var email = document.getElementById('signUpEmail').value;
-
-    if (email === '') {
-        document.getElementById('signUpEmailError').classList.remove('d-none');
-        return true;
-    }
-    if (email.indexOf('@') === -1) {
-        document.getElementById('signUpEmailFormatError').classList.remove('d-none');
-        return true;
-    }
-
-    if (checkEmailExists(email)) {
-        document.getElementById('signUpEmailTakenError').classList.remove('d-none');
-        return true;
-    }
-
-}
-
-
-
-
-function checkSignUpPassword() {
-    if (document.getElementById('signUpPassword').value === '') {
-        document.getElementById('signUpPasswordError').classList.remove('d-none');
-        return true;
-    }
-    if (document.getElementById('signUpPassword').value.length < 7) {
-        document.getElementById('signUpPasswordLengthError').classList.remove('d-none');
-        return true;
     }
 }
 
