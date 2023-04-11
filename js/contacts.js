@@ -40,7 +40,7 @@ function renderContacts() {
       const backgroundColor = contact.id
       if (contact.name.charAt(0) == initial) {
         contactList.innerHTML += `
-          <div class="contactListElement">
+          <div class="contactListElement" id='contact${j}' onclick="setActiveContact(this)">
           <div class="contantsAvatar" style="background-color: ${avatarBackgroundColors[backgroundColor]}"><span>${initials}</span></div>
           <div class="contactsInfo"><span>${contact.name}</span><span>${contact.email}</span></div>
       </div>`
@@ -65,4 +65,14 @@ function renderContacts() {
 function openNewContactOverlay(){
   document.getElementById('addContactOverlay').classList.remove('d-none')
   document.getElementById('container-opened-task').classList.remove('d-none')
+}
+
+function setActiveContact(element) {
+  var contact = document.querySelector(".contactListElementActive");
+  if(contact){
+  contact.classList.remove("contactListElementActive");
+  contact.querySelector(".contactsInfo").classList.remove("active");
+}
+  element.classList.add("contactListElementActive");
+  element.querySelector(".contactsInfo").classList.add("active");
 }
