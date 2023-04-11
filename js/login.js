@@ -2,8 +2,6 @@
 let visibleIcon = 'assets/img/visibleIcon.svg';
 let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
-let passwordInput;
-let passwordToggle;
 
 document.addEventListener('DOMContentLoaded', function () {
     let logo = document.querySelector('.logo');
@@ -13,8 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
     updateCheckbox();
-    addListener();
-    loadRememberedData()
+    listenerPasswordImg('login');
+    listenerPasswordImg('signUp');
+    loadRememberedData();
 });
 
 
@@ -32,20 +31,21 @@ function updateCheckbox() {
 }
 
 
-function addListener() {
-    let passwordInput = document.getElementById('loginPassword');
-    let passwordToggle = document.getElementById('loginPasswordImg');
-    passwordInput.addEventListener('keyup', changePasswortImage)
-    passwordToggle.addEventListener('click', togglePasswordVisibility);
-}
+function listenerPasswordImg(element) {
+    let passwordInput = document.getElementById(`${element}Password`);
+    let passwordToggle = document.getElementById(`${element}PasswordImg`);
+    passwordInput.addEventListener('keyup', function() {
+      changePasswortImage(element);
+    });
+    passwordToggle.addEventListener('click', function() {
+      togglePasswordVisibility(element);
+    });
+  }
 
 
-function togglePasswordVisibility() {
-    let passwordInput = document.getElementById('loginPassword');
-    let passwordToggle = document.getElementById('loginPasswordImg');
-    let visibleIcon = 'assets/img/visibleIcon.svg';
-    let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
-    let standartIcon = 'assets/img/loginPassword.svg';
+function togglePasswordVisibility(element) {
+    let passwordInput = document.getElementById(`${element}Password`);
+    let passwordToggle = document.getElementById(`${element}PasswordImg`);
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else {
@@ -62,12 +62,10 @@ function togglePasswordVisibility() {
 }
 
 
-function changePasswortImage() {
-    let passwordInput = document.getElementById('loginPassword');
-    let passwordToggle = document.getElementById('loginPasswordImg');
-    let visibleIcon = 'assets/img/visibleIcon.svg';
-    let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
-    let standartIcon = 'assets/img/loginPassword.svg';
+function changePasswortImage(element) {
+    let passwordInput = document.getElementById(`${element}Password`);
+    let passwordToggle = document.getElementById(`${element}PasswordImg`);
+    
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else if (passwordInput.type == 'text') {
@@ -168,30 +166,7 @@ function loadRememberedData() {
       document.getElementById('rememberMe').checked = true;
     }
   }
-
  
- 
-  
-  
-  document.addEventListener('DOMContentLoaded', function () {
-      addAllEventListener()
-  });
-  
-  function addAllEventListener() {
-      listenerPasswordImg()
-  }
-  
-  function listenerPasswordImg() {
-      passwordInput = document.getElementById('signUpPassword');
-      passwordToggle = document.getElementById('signUpPasswordImg');
-      visibleIcon = 'assets/img/visibleIcon.svg';
-      unVisibleIcon = 'assets/img/notVisibleIcon.svg';
-      standartIcon = 'assets/img/loginPassword.svg';
-      console.log('geladen')
-      passwordInput.addEventListener('keyup', changePasswortImage);
-      passwordToggle.addEventListener('click', togglePasswordVisibility);
-  }
-  
   
   async function checkInputsSignUp() {
       document.querySelectorAll('.errorMessage').forEach(function(el) {
@@ -261,33 +236,7 @@ function loadRememberedData() {
       }
   }
   
-  function togglePasswordVisibility() {
-      if (passwordInput.value === '') {
-          passwordToggle.src = standartIcon;
-      } else {
-          if (passwordInput.type === 'password') {
-              passwordInput.type = 'text';
-              passwordToggle.src = visibleIcon;
-          } else {
-              passwordInput.type = 'password';
-              if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
-                  passwordToggle.src = unVisibleIcon;
-              }
-          }
-      }
-  }
   
-  
-  function changePasswortImage() {
-      if (passwordInput.value === '') {
-          passwordToggle.src = standartIcon;
-      } else if (passwordInput.type == 'text') {
-          passwordToggle.src = visibleIcon;
-      }
-      else {
-          passwordToggle.src = unVisibleIcon
-      }
-  }
   
   
   async function addUser() {
