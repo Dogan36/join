@@ -526,7 +526,10 @@ indexWrapper {
     color: var(--secondaryColor)
 }
 
-.errorMessage {
+.loginErrorMessage,
+.signUpErrorMessage,
+.forgotErrorMessage,
+.newPasswordErrorMessage {
     white-space: nowrap;
     font-family: 'Inter';
     font-style: normal;

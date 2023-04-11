@@ -30,7 +30,7 @@
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
 
-        <form class="loginContainer" onsubmit="checkInputsLogin(); return false;" novalidate>
+        <form class="loginContainer" onsubmit="checkInputs('login'); return false;" novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -39,9 +39,9 @@
                             <input class="loginInput" type="email" id="loginEmail" placeholder="Email" required>
                             <img src="assets/img/loginMail.svg" alt="">
                         </div>
-                        <span id="loginEmailError" class="errorMessage d-none">This field is required</span>
-                        <span id="loginEmailFormatError" class="errorMessage d-none">Please insert a valid email</span>
-                        <span id="loginEmailNotFoundError" class="errorMessage d-none">Email not found</span>
+                        <span id="loginEmailError" class="loginErrorMessage d-none">This field is required</span>
+                        <span id="loginEmailFormatError" class="loginErrorMessage d-none">Please insert a valid email</span>
+                        <span id="loginEmailInUseError" class="loginErrorMessage d-none">Email not found</span>
                     </div>
                 </div>
                 <div class="inputContainer">
@@ -51,10 +51,10 @@
                                 required>
                             <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span id="loginPasswordError" class="errorMessage d-none">This field is required</span>
-                        <span id="loginPasswordLengthError" class="errorMessage d-none">Password must contain at least 6
+                        <span id="loginPasswordError" class="loginErrorMessage d-none">This field is required</span>
+                        <span id="loginPasswordLengthError" class="loginErrorMessage d-none">Password must contain at least 6
                             characters</span>
-                        <span id="loginPasswordIncorrectError" class="errorMessage d-none">Incorrect password</span>
+                        <span id="loginPasswordIncorrectError" class="loginErrorMessage d-none">Incorrect password</span>
                     </div>
                 </div>
                 <div class="loginOptions">
@@ -98,7 +98,7 @@
             </div>
         </form>
 
-        <form class="signUpContainer d-none" onsubmit="checkInputsSignUp(); return false" novalidate>
+        <form class="signUpContainer d-none" onsubmit="checkInputs('signUp'); return false" novalidate>
             <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
@@ -109,7 +109,7 @@
                                 aria-required="true" required>
                             <img src="assets/img/userIcon.svg" alt="">
                         </div>
-                        <span id="signUpNameError" class="errorMessage d-none">This field is required</span>
+                        <span id="signUpNameError" class="signUpErrorMessage d-none">This field is required</span>
                     </div>
                 </div>
                 <div class="inputContainer">
@@ -119,9 +119,9 @@
                                 aria-required="true" required>
                             <img src="assets/img/loginMail.svg" alt="">
                         </div>
-                        <span id="signUpEmailError" class="errorMessage d-none">This field is required</span>
-                        <span id="signUpEmailFormatError" class="errorMessage d-none">Please insert an Email</span>
-                        <span id="signUpEmailTakenError" class="errorMessage d-none">This eMail is already in use</span>
+                        <span id="signUpEmailError" class="signUpErrorMessage d-none">This field is required</span>
+                        <span id="signUpEmailFormatError" class="signUpErrorMessage d-none">Please insert an Email</span>
+                        <span id="signUpEmailInUseError" class="signUpErrorMessage d-none">This eMail is already in use</span>
                     </div>
                 </div>
                 <div class="inputContainer">
@@ -131,8 +131,8 @@
                                 aria-required="true" required>
                             <img id="signUpPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
-                        <span id="signUpPasswordError" class="errorMessage d-none">This field is required</span>
-                        <span id="signUpPasswordLengthError" class="errorMessage d-none">Password must contain at least 6 Characters</span>
+                        <span id="signUpPasswordError" class="signUpErrorMessage d-none">This field is required</span>
+                        <span id="signUpPasswordLengthError" class="esignUpErrorMessage d-none">Password must contain at least 6 Characters</span>
                     </div>
                 </div>
                 <div class="loginButtons">
@@ -154,8 +154,8 @@
                     <input id="forgotEmail" class="loginInput" type="email" placeholder="Email" required>
                     <img src="assets/img/loginMail.svg" alt="">
                 </div>
-                <span class="errorMessage">This field is required</span>
-                <span class="errorMessage">This Email doesn´t exist</span>
+                <span class="forgotErrorMessage">This field is required</span>
+                <span class="forgotErrorMessage">This Email doesn´t exist</span>
             </div>
             <div class="forgotButton"><span>Send me the email</span></div>
         </form>  
