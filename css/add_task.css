@@ -75,7 +75,7 @@ input {
 
 
 
-.new-category-contaier {
+.new-category-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -417,6 +417,22 @@ img.prio-icon {
     margin-right: 10px;
 }
 
+.d-none {
+    display: none;
+}
+
+/* 
+*WICHTIG!!!
+*Dient zur Auswahl für die JavaSript Funktionen (checkMandatoryFieldAssignedTo(n) in add_task.js) und (checkMandatoryFieldCategory(n) in add_task.js) 
+*/
+.selectTask {
+/* empty CSS class with no rules (leere CSS-Klasse ohne Regeln) */
+}
+
+.selectTaskAssignedTo {
+    /* empty CSS class with no rules (leere CSS-Klasse ohne Regeln) */
+}
+
 
 
 
@@ -448,3 +464,13 @@ img.prio-icon {
 }
 
 
+/* input:invalid,
+textarea:invalid {
+    border-color: red;
+    
+}
+
+input:valid,
+textarea:valid {
+    border-color: initial;
+} */
