@@ -5,14 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/register.css">
+    <link rel="preload" href="./fonts/inter-v12-latin-100.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-200.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-300.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="fonts.css">
     <script src="./js/mini_backend.js"></script>
+    <script src="./js/reset.js"></script>
     <script src="./js/main.js"></script>
-    <script src="./js/login.js"></script>
 </head>
 
 <body onload="init()">
@@ -20,7 +26,7 @@
 
         <img class="logoTopLeft" src="assets/img/logo.svg" alt="">
 
-        <form class="resetPassword" onsubmit="resetPasswort(); return false;" novalidate>
+        <form class="resetPassword" onsubmit="checkInputs('reset'); return false;" novalidate>
             <img onclick="" class="leftArrow" src="assets/img/arrow-left-line.svg"
                 alt="">
             <div class="resetHeadline">
@@ -31,20 +37,20 @@
             <div class="resetInputs">
                 <div class="newPasswordContainer">
                     <div class="inputFieldWithImg">
-                        <input id="newPassword" class="loginInput" type="password" placeholder="New password" required>
+                        <input id="resetPassword" class="loginInput" type="password" placeholder="New password" required>
                         <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
                     </div>
-                    <span class="errorMessage">This field is required</span>
-                    <span class="errorMessage"></span>
+                    <span id="resetPasswordError" class="resetErrorMessage d-none">This field is required</span>
+                    <span id="resetPasswordLengthError"class="resetErrorMessage d-none">Password must contain at least 6 Characters</span>
                 </div>
                 <div class="confirmPasswordContainer">
                     <div class="inputFieldWithImg">
-                        <input id="confirmPassword" class="loginInput" type="password" placeholder="Confirm password"
+                        <input id="resetConfirmPassword" class="loginInput" type="password" placeholder="Confirm password"
                             required>
                             <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
                     </div>
-                    <span class="errorMessage">This field is required</span>
-                    <span class="errorMessage"></span>
+                    <span id="resetConfirmPasswordError" class="resetErrorMessage d-none">This field is required</span>
+                    <span id="secondPasswordIncorrectError"class="resetErrorMessage d-none">Passwords doesn't match</span>
                 </div>
             </div>
             <button type="submit" class="resetButton"><span>Continue</span></button>
