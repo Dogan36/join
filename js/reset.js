@@ -16,9 +16,7 @@ function sendNewPasswordLink() {
     const params = `name=Join&mail=noreply@join.com&message=${message}`;
   
     xhr.send(params);
+    showConfirmation('login')
   }
 
-  function changePassword(){
-    getCurrentUser()
-    
-  }
+  

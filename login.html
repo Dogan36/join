@@ -25,6 +25,12 @@
 
 <body onload="init()">
     <div class="loginWrapper">
+        <div class="loginBlackLayer d-none">
+            <div class="loginSentConfirmation">
+                <img src="assets/img/SendCheck.svg" alt="">
+                <span>An E-Mail has been sent to you</span>
+            </div>
+        </div>
         <div class="loginTopRight"><span>Not a user?</span>
             <div onclick="showContentLogin('signUpContainer')" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
@@ -40,7 +46,8 @@
                             <img src="assets/img/loginMail.svg" alt="">
                         </div>
                         <span id="loginEmailError" class="loginErrorMessage d-none">This field is required</span>
-                        <span id="loginEmailFormatError" class="loginErrorMessage d-none">Please insert a valid email</span>
+                        <span id="loginEmailFormatError" class="loginErrorMessage d-none">Please insert a valid
+                            email</span>
                         <span id="loginEmailInUseError" class="loginErrorMessage d-none">Email not found</span>
                     </div>
                 </div>
@@ -52,9 +59,11 @@
                             <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
                         <span id="loginPasswordError" class="loginErrorMessage d-none">This field is required</span>
-                        <span id="loginPasswordLengthError" class="loginErrorMessage d-none">Password must contain at least 6
+                        <span id="loginPasswordLengthError" class="loginErrorMessage d-none">Password must contain at
+                            least 6
                             characters</span>
-                        <span id="loginPasswordIncorrectError" class="loginErrorMessage d-none">Incorrect password</span>
+                        <span id="loginPasswordIncorrectError" class="loginErrorMessage d-none">Incorrect
+                            password</span>
                     </div>
                 </div>
                 <div class="loginOptions">
@@ -99,7 +108,8 @@
         </form>
 
         <form class="signUpContainer d-none" onsubmit="checkInputs('signUp'); return false" novalidate>
-            <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg" alt="">
+            <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg"
+                alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
@@ -120,8 +130,10 @@
                             <img src="assets/img/loginMail.svg" alt="">
                         </div>
                         <span id="signUpEmailError" class="signUpErrorMessage d-none">This field is required</span>
-                        <span id="signUpEmailFormatError" class="signUpErrorMessage d-none">Please insert an Email</span>
-                        <span id="signUpEmailInUseError" class="signUpErrorMessage d-none">This eMail is already in use</span>
+                        <span id="signUpEmailFormatError" class="signUpErrorMessage d-none">Please insert an
+                            Email</span>
+                        <span id="signUpEmailInUseError" class="signUpErrorMessage d-none">This eMail is already in
+                            use</span>
                     </div>
                 </div>
                 <div class="inputContainer">
@@ -132,7 +144,8 @@
                             <img id="signUpPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
                         <span id="signUpPasswordError" class="signUpErrorMessage d-none">This field is required</span>
-                        <span id="signUpPasswordLengthError" class="signUpErrorMessage d-none">Password must contain at least 6 Characters</span>
+                        <span id="signUpPasswordLengthError" class="signUpErrorMessage d-none">Password must contain at
+                            least 6 Characters</span>
                     </div>
                 </div>
                 <div class="loginButtons">
@@ -143,12 +156,13 @@
 
         <form class="forgotPassword d-none" onsubmit="checkInputs('forgot'); return false" novalidate>
             <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg"
-            alt="">
+                alt="">
             <div class="forgotHeadline">
                 <span>I forgot my password</span>
                 <img src="assets/img/loginSeperator.svg" alt="">
             </div>
-            <span class="forgotSubtitle">Don't worry! We will send you an email with the instructions to reset your password.</span>
+            <span class="forgotSubtitle">Don't worry! We will send you an email with the instructions to reset your
+                password.</span>
             <div class="forgotContainer">
                 <div class="inputFieldWithImg">
                     <input id="forgotEmail" class="loginInput" type="email" placeholder="Email" required>
@@ -158,9 +172,11 @@
                 <span id="forgotEmailFormatError" class="forgotErrorMessage d-none">Please insert an Email</span>
                 <span id="forgotEmailInUseError" class="forgotErrorMessage d-none">This Email doesn't exist</span>
             </div>
-            
+
             <button type="submit" class="forgotButton"><span>Send me the email</span></button>
-        </form>  
+        </form>
+    </div>
+
     </div>
 </body>
 

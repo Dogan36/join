@@ -84,7 +84,7 @@ function changePasswortImage(element) {
 function getUser() {
     let email = document.getElementById('loginEmail').value;
     user = users.find(user => user.email === email);
-    
+
 }
 
 

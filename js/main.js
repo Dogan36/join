@@ -129,58 +129,46 @@ function checkInputs(element) {
 
 
 function checkEmail(element) {
-  if (element !== 'reset') {
-
-
-    if (checkInputNotEmpty(`${element}Email`)) {
-      return
-    }
-    if (checkEmailFormat(`${element}Email`)) {
-      return
-    }
-    if (element == 'addContact' || element == 'changeContact') {
-      addContact()
-      return
-    }
-    if (checkEmailExists(`${element}Email`)) {
-      return
-    }
-    if (element == 'forgot') {
-      sendNewPasswordLink()
-      return
+  if (element === 'reset') {
+    checkPassword(element);
+    return
+  }
+  const email = `${element}Email`;
+  if (!checkInputNotEmpty(email) && !checkEmailFormat(email)) {
+    if (element === 'addContact' || element === 'changeContact') {
+      addContact();
+    } else if (!checkEmailExists(email)) {
+      if (element === 'forgot') {
+        sendNewPasswordLink();
+      }
     }
   }
-  checkPassword(`${element}`)
-}
 
 
-function checkPassword(element) {
-  const password = document.getElementById(`${element}Password`).value;
-  if (checkInputNotEmpty(`${element}Password`)) {
+
+  function checkPassword(element) {
+    const password = document.getElementById(`${element}Password`).value;
+    if (checkInputNotEmpty(`${element}Password`)) {
+      if (element == 'reset') {
+        checkPassword('resetConfirm')
+      }
+      return
+    }
+    if (checkPasswordLength(`${element}Password`)) return;
     if (element == 'reset') {
-      checkPassword('resetConfirm')
-    }
-    return
-  }
-  if (checkPasswordLength(`${element}Password`)) {
-    return
-  }
-  if (element == 'reset') {
-    checkSecondPassword()
-    return
-  }
-  if (element == 'signUp') {
-    addUser()
-  }
-  if (element === 'login') {
-    if (checkIncorrectPassword(element)) {
+      checkSecondPassword()
       return
-    } else {
-      checkIn()
+    }
+    if (element == 'signUp') {
+      addUser();
+      return;
+    }
+    if (element === 'login') {
+      if (checkIncorrectPassword(element)) return;
+      checkIn();
     }
   }
 }
-
 
 function checkInputNotEmpty(element) {
   const input = document.getElementById(`${element}`);
@@ -256,6 +244,31 @@ function checkSecondPassword() {
   }
 }
 
-function updatePassword() {
-  console.log('test')
+async function updatePassword() {
+  var params = new URLSearchParams(window.location.search);
+  email = params.get('email');
+  user = users.find(user => user.email === email);
+  newPassword = document.getElementById('resetPassword').value
+  user.password = newPassword;
+  await setServer()
+  showConfirmation('forgot')
+  setTimeout(function () {
+    window.location.href = "login.html";
+  }, 2000);
 }
+
+function showConfirmation(element) {
+  const blackLayer = document.querySelector(`.${element}BlackLayer`)
+  const confirmationElement = document.querySelector(`.${element}SentConfirmation`);
+  confirmationElement.style.bottom = '-10%'
+  blackLayer.classList.remove('d-none');
+  setTimeout(() => { // wait 100ms (adjust as needed)
+    confirmationElement.style.bottom = '50%'; // animate to top position
+  }, 100);
+
+setTimeout(() => {
+  blackLayer.classList.add('d-none');
+}, 1200);
+}
+
+
