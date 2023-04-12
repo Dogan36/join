@@ -13,6 +13,16 @@
     <script src="./js/summary.js"></script>
     <script src="./js/contacts.js"></script>
     <script src="./js/add_task.js"></script>
+    
+    <link rel="preload" href="./fonts/inter-v12-latin-100.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-200.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-300.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-500.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-v12-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="./css/summary.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -20,7 +30,7 @@
     <link rel="stylesheet" href="./css/add_task.css">
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/desktop_template.css">
-    <link rel='stylesheet' type='text/css' media='screen' href='fonts.css'>
+    <link rel="stylesheet" href="./css/login.css">
 </head>
 
 <body onload="init('include')">
@@ -35,19 +45,18 @@
             <div id='contactsContent' class="indexContent d-none" w3-include-html="contacts.html"></div>
         </div>
 
-        <div onclick="closeOverlay()" class="container-opened-task d-none" id="container-opened-task">
-            <div class="add-task-window d-none" id="add-task-window">
-                <div class="add-task-window-off"><span onclick="closeAddTask()">x
-                    </span></div>
-                <div id="add-task-window-content" w3-include-html="./assets/templates/addTaskOverlayTemplate.html">Test test test</div>
-            </div>
-            <div class="addContactOverlay d-none" id="addContactOverlay" w3-include-html="./assets/templates/addContactCard.html"></div>
+        <div class="container-opened-task d-none" id="container-opened-task" onclick="closeOverlay()">
+        </div>
+        <div class="add-task-window d-none" id="add-task-window">
+            <div class="add-task-window-off"><span onclick="closeOverlay()">x</span></div>
+            <div id="add-task-window-content" w3-include-html="./assets/templates/addTaskOverlayTemplate.html">Test test test</div>
+        </div>
+
+
+        <div class="addContactOverlay d-none" id="addContactOverlay" w3-include-html="./assets/templates/addContactCard.html">
         </div>
     </indexWrapper>
 </body>
 
 
 </html>
-
-
-

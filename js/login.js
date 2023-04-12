@@ -1,7 +1,8 @@
 
 let visibleIcon = 'assets/img/visibleIcon.svg';
-let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
+let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
+let user
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -12,8 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
     updateCheckbox();
-    addListener();
-    loadRememberedData()
+    listenerPasswordImg('login');
+    listenerPasswordImg('signUp');
+    loadRememberedData();
+    changePasswortImage('login')
 });
 
 
@@ -31,20 +34,21 @@ function updateCheckbox() {
 }
 
 
-function addListener() {
-    let passwordInput = document.getElementById('loginPassword');
-    let passwordToggle = document.getElementById('loginPasswordImg');
-    passwordInput.addEventListener('keyup', changePasswortImage)
-    passwordToggle.addEventListener('click', togglePasswordVisibility);
+function listenerPasswordImg(element) {
+    let passwordInput = document.getElementById(`${element}Password`);
+    let passwordToggle = document.getElementById(`${element}PasswordImg`);
+    passwordInput.addEventListener('keyup', function () {
+        changePasswortImage(element);
+    });
+    passwordToggle.addEventListener('click', function () {
+        togglePasswordVisibility(element);
+    });
 }
 
 
-function togglePasswordVisibility() {
-    let passwordInput = document.getElementById('loginPassword');
-    let passwordToggle = document.getElementById('loginPasswordImg');
-    let visibleIcon = 'assets/img/visibleIcon.svg';
-    let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
-    let standartIcon = 'assets/img/loginPassword.svg';
+function togglePasswordVisibility(element) {
+    let passwordInput = document.getElementById(`${element}Password`);
+    let passwordToggle = document.getElementById(`${element}PasswordImg`);
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else {
@@ -54,117 +58,81 @@ function togglePasswordVisibility() {
         } else {
             passwordInput.type = 'password';
             if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
-                passwordToggle.src = unVisibleIcon;
+                passwordToggle.src = notVisibleIcon;
             }
         }
     }
 }
 
 
-function changePasswortImage() {
-    let passwordInput = document.getElementById('loginPassword');
-    let passwordToggle = document.getElementById('loginPasswordImg');
-    let visibleIcon = 'assets/img/visibleIcon.svg';
-    let unVisibleIcon = 'assets/img/notVisibleIcon.svg';
-    let standartIcon = 'assets/img/loginPassword.svg';
+function changePasswortImage(element) {
+    let passwordInput = document.getElementById(`${element}Password`);
+    let passwordToggle = document.getElementById(`${element}PasswordImg`);
     if (passwordInput.value === '') {
         passwordToggle.src = standartIcon;
     } else if (passwordInput.type == 'text') {
         passwordToggle.src = visibleIcon;
     }
     else {
-        passwordToggle.src = unVisibleIcon
+        passwordToggle.src = notVisibleIcon
     }
 }
 
 
-async function checkInputsLogin() {
-    document.querySelectorAll('.errorMessage').forEach(function (el) {
-        el.classList.add('d-none');
-    })
-    checkLoginEmail()
-}
 
 
-async function checkLoginEmail() {
-    const email = document.getElementById('loginEmail');
-    user = await getUser(email.value);
-    if (email.value === '') {
-        document.getElementById('loginEmailError').classList.remove('d-none');
-        return
-    }
-    if (email.value.indexOf('@') === -1) {
-        document.getElementById('loginEmailFormatError').classList.remove('d-none');
-        return
-    }
-    if (!user) {
-        document.getElementById('loginEmailNotFoundError').classList.remove('d-none');
-        return
-    } else {
-        checkLoginPassword()
-    }
-}
-
-
-async function checkLoginPassword() {
-    const password = document.getElementById('loginPassword').value;
-    let userPassword = await getPassword(user);
-    if (password === '') {
-        document.getElementById('loginPasswordError').classList.remove('d-none');
-        return
-    }
-    if (password.length < 7) {
-        document.getElementById('loginPasswordLengthError').classList.remove('d-none');
-        return
-    }
-    if (password !== userPassword) {
-        document.getElementById('loginPasswordIncorrectError').classList.remove('d-none');
-        return
-    }
-    rememberMe()
-    let currentUser=user.name
-    window.location.href = 'index.html?variable=' + currentUser; 
-}
-
-
-async function getUser(email) {
+function getUser() {
+    let email = document.getElementById('loginEmail').value;
     user = users.find(user => user.email === email);
-    return user;
-}
 
-
-async function getPassword(user) {
-    const password = user.password;
-    return password;
 }
 
 
 function rememberMe() {
-        const checkbox = document.getElementById('rememberMe');
-        const usernameInput = document.getElementById('loginEmail');
-        const passwordInput = document.getElementById('loginPassword');
-      
-        if (checkbox.checked) {
-          localStorage.setItem('rememberedUser', usernameInput.value);
-          localStorage.setItem('rememberedPass', passwordInput.value);
-        } else {
-            localStorage.removeItem('rememberedUser');
-            localStorage.removeItem('rememberedPass');
-            document.querySelector('.loginContainer').reset()
-        }
+    const checkbox = document.getElementById('rememberMe');
+    const usernameInput = document.getElementById('loginEmail');
+    const passwordInput = document.getElementById('loginPassword');
+
+    if (checkbox.checked) {
+        localStorage.setItem('rememberedUser', usernameInput.value);
+        localStorage.setItem('rememberedPass', passwordInput.value);
+    } else {
+        localStorage.removeItem('rememberedUser');
+        localStorage.removeItem('rememberedPass');
+        document.querySelector('.loginContainer').reset()
+    }
 
 }
+
 
 function loadRememberedData() {
     const rememberedUser = localStorage.getItem('rememberedUser');
     const rememberedPass = localStorage.getItem('rememberedPass');
     const usernameInput = document.getElementById('loginEmail');
     const passwordInput = document.getElementById('loginPassword');
-  
+
     if (rememberedUser && rememberedPass) {
-      usernameInput.value = rememberedUser;
-      passwordInput.value = rememberedPass;
-      document.getElementById('rememberMe').checked = true;
+        usernameInput.value = rememberedUser;
+        passwordInput.value = rememberedPass;
+        document.getElementById('rememberMe').checked = true;
     }
-  }
+}
+
+
+async function addUser() {
+    let name = document.getElementById('signUpName')
+    let email = document.getElementById('signUpEmail');
+    let password = document.getElementById('signUpPassword')
+    users.push({ name: name.value, email: email.value, password: password.value });
+    await setServer();
+    window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
+}
+
+
+function showContentLogin(element) {
+    document.querySelector('.loginContainer').classList.add('d-none')
+    document.querySelector('.signUpContainer').classList.add('d-none')
+    document.querySelector('.forgotPassword').classList.add('d-none')
+    document.querySelector(`.${element}`).classList.remove('d-none')
+}
 

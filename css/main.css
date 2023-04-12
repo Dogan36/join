@@ -165,7 +165,6 @@ indexWrapper {
 }
 
 
-
 .loginSignUpButton {
     display: flex;
     flex-direction: row;
@@ -202,7 +201,7 @@ indexWrapper {
     height: 51px;
     background: var(--defaultDark);
     border-radius: 8px;
-    white-space:  nowrap;
+    white-space: nowrap;
     cursor: pointer;
 }
 
@@ -361,7 +360,6 @@ indexWrapper {
     height: 53px;
     left: 1195px;
     top: 700px;
-
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
@@ -377,34 +375,236 @@ indexWrapper {
     font-size: 21px;
     line-height: 120%;
     color: #FFFFFF;
-    white-space:  nowrap;
+    white-space: nowrap;
+}
+
+.resetButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 264px;
+    height: 51px;
+    cursor: pointer;
+    background: #2A3647;
+    border-radius: 8px;
+}
+
+.resetButton span {
+    width: 95px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.forgotButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 264px;
+    height: 51px;
+    background: #2A3647;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.forgotButton span {
+    width: 189px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+.addContactOverlayCreateContactButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.addContactOverlayCreateContactButton span {
+    width: 154px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+.addContactOverlayCancelButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addContactOverlayCancelButton span {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: var(--defaultDark);
 }
 
 
+.editContactOverlaySaveButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+
+    width: 143px;
+    height: 61px;
+
+    background: var(--defaultDark);
+    border-radius: 10px;
+}
+
+.editContactOverlaySaveButton span {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    text-align: center;
+    color: #FFFFFF;
+}
 
 .boardAddTaskButton:hover,
 .contactsNewContactButton:hover,
 .loginLoginButton:hover,
-.loginSignUpButton:hover{
+.loginSignUpButton:hover,
+.resetButton:hover,
+.forgotButton:hover,
+.editContactOverlaySaveButton:hover,
+.addContactOverlayCreateContactButton:hover {
     background-color: var(--secondaryColor);
     border: 1px solid var(--secondaryColor);
 }
 
-.loginGuestButton:hover{
-border: 2px solid #29ABE2;
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+.loginGuestButton:hover,
+.addContactOverlayCancelButton:hover {
+    border: 2px solid #29ABE2;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.loginGuestButton span:hover{
-    color:var(--secondaryColor)
+.loginGuestButton:hover span,
+.addContactOverlayCancelButton:hover span {
+    color: var(--secondaryColor)
 }
 
-.errorMessage{
+.loginErrorMessage,
+.signUpErrorMessage,
+.forgotErrorMessage,
+.newPasswordErrorMessage,
+.addContactErrorMessage {
     white-space: nowrap;
     font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    color: #FF001F;
+}
+
+.loginBlackLayer,
+.forgotBlackLayer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgb(0 0 0 / 50%);
+    z-index: 1;
+}
+
+.loginSentConfirmation{
+    position: absolute;
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px 20px;
+gap: 13px;
+width: 424px;
+height: 74px;
+background: #2A3647;
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+border-radius: 20px;
+bottom: -10%;
+transition: bottom 800ms ease-out;
+}
+
+.loginSentConfirmation span{
+    width: 330px;
+    height: 28px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 120%;
+    color: #FFFFFF;
+    
+}
+
+
+.forgotSentConfirmation{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 0px;
+width: 326px;
+height: 74px;
+background: #2A3647;
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+border-radius: 20px;
+position: absolute;
+bottom:-10%;
+transition: bottom 800ms ease-out;
+}
+
+.forgotSentConfirmation span{
+  
+height: 28px;
+font-family: 'Open Sans';
 font-style: normal;
 font-weight: 400;
-font-size: 12px;
+font-size: 23px;
 line-height: 120%;
-color: #FF001F;
+color: #FFFFFF;
 }

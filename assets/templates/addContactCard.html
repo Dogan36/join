@@ -1,16 +1,55 @@
+<form id="contactOverlay"onsubmit="checkInputs('addContact'); return false;" novalidate>
+<img class="closeOverlay" onclick="closeOverlay()" src="assets/img/black-x.svg" alt="">
+<div class="addContactOverlayLeft">
+    <span class="addContactOverlayTitle">Add contact</span>
+    <span class="addContactOverlaySubtitle">Tasks are better with a team!</span>
+    <img src="/assets/img/OverlaySeperator.svg" alt="">
+    <img class="addContactOverlayLogo" src="assets/img/logo_invert.svg" alt="">
+</div>
+<img class="addContactIcon" src="assets/img/newContactIcon.svg" alt="">
+<div class="addContactOverlayContent">
+    <div class="inputContainer">
+        <div class="inputFieldContainer">
+            <div class="inputFieldWithImg">
+                <input class="loginInput" type="text" id="addContactName" placeholder="Name" aria-required="true"
+                    required>
+                <img src="assets/img/userIcon.svg" alt="">
+            </div>
+            <span id="addContactNameError" class="addContactErrorMessage d-none">This field is required</span>
+        </div>
+    </div>
+    <div class="inputContainer">
+        <div class="inputFieldContainer">
+            <div class="inputFieldWithImg">
+                <input class="loginInput" type="email" id="addContactEmail" placeholder="Email" aria-required="true"
+                    required>
+                <img src="assets/img/loginMail.svg" alt="">
+            </div>
+            <span id="addContactEmailError" class="addContactErrorMessage d-none">This field is required</span>
+            <span id="addContactEmailFormatError" class="addContactErrorMessage d-none">Please insert a valid
+                email</span>
+        </div>
+    </div>
+    <div class="inputContainer">
+        <div class="inputFieldContainer">
+            <div class="inputFieldWithImg">
+                <input id="addContactPhone" class="loginInput" placeholder="Phone"
+                    aria-required="true" required>
+                <img src="assets/img/phone.svg" alt="">
+            </div>
+            <span id="addContactPhoneError" class="newContactErrorMessage d-none">Please enter Numbers only</span>
+        </div>
+    </div>
+</div>
+<div class="addContactButtons">
+    <div class="addContactOverlayCancelButton"
+        onmouseover="onMouseOverImg('addContactCancelButtonImg', '/assets/img/buttonXsecondary.svg')"
+        onmouseout="onMouseOutImg('addContactCancelButtonImg', 'assets/img/buttonX.svg')">
+        <span>Cancel</span>
+        <img id="addContactCancelButtonImg" src="assets/img/buttonX.svg" alt="">
+    </div>
 
-    <wrapper class="addContactOverlay">
-        <img class="closeOverlay" src="/assets/img/black-x.svg" alt="">
-        <img class="addContactIcon" src="/assets/img/newContactIcon.svg" alt="">
-        <div class="addContactButtons">
-            <div class="addContactOverlayCancelButton"><span>Cancel</span><img src="/assets/img/buttonX.svg" alt=""></div>
-            <div class="addContactOverlayCreateContactButton"><span>Create contact</span><img src="/assets/img/buttonOK.svg" alt=""></div>
-        </div>
-        <div class="addContactOverlayContent"></div>
-        <div class="addContactOverlayLeft">
-            <span class="addContactOverlayTitle">Add contact</span>
-            <span class="addContactOverlaySubtitle">Tasks are better with a team!</span>
-            <img src="/assets/img/OverlaySeperator.svg" alt="">
-            <img class ="addContactOverlayLogo" src="/assets/img/logo_invert.svg" alt="">
-        </div>
-    </wrapper>
+    <button type="submit" class="addContactOverlayCreateContactButton"><span>Create contact</span><img src="assets/img/buttonOK.svg"
+            alt=""></button>
+</div>
+</form>
