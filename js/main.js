@@ -143,7 +143,7 @@ function checkEmail(element) {
       return
   }
   if (element == 'forgot'){
-      sendNewPasswordLink()
+    sendNewPasswordLink()
       return
   }
   checkPassword(`${element}`)
