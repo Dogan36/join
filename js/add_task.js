@@ -237,8 +237,8 @@ function openNewCategroy(oneCategroy, twoCategroy, threeCategroy, n) {
   document.getElementById(oneCategroy).classList.remove('d-none');
   document.getElementById(twoCategroy).classList.remove('d-none');
   document.getElementById(threeCategroy).classList.add('d-none');
-  document.getElementById(`category${n}`).value = '';
-  document.getElementById(`color-button-container${n}`).innerHTML = '';
+ //  document.getElementById(`category${n}`).value = '';
+ // document.getElementById(`color-button-container${n}`).innerHTML = '';
 }
 
 function closeNewTaskCategroy(n) {

@@ -6,7 +6,7 @@
           <h1>Add Task</h1>
         </div>
       </div>
-      <form id="myForm" action="">
+      <form id="myForm"  onsubmit="createTaskButton(0)">
         <div class="content-body-container">
           <div class="container-left">
             <div class="title-container">
@@ -176,7 +176,7 @@
                   class="title-input no-outline"
                   type="date"
                   id="due-date0"
-                  name=""
+              
                   required
                   oninput="checkMandatoryFieldDueDate(0)"
                 />
@@ -304,7 +304,7 @@
                 <span>clear</span>
                 <img src="./assets/img/black-x.svg" alt="" />
               </button>
-              <button type="submit" class="create-task-btn" onclick="createTaskButton(0)">
+              <button type="submit" class="create-task-btn">
                 <span>Create Task</span>
                 <img src="./assets/img/black-x.svg" alt="" />
               </button>

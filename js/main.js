@@ -129,10 +129,11 @@ function checkInputs(element) {
 
 
 function checkEmail(element) {
-  if (element === 'reset') {
+  if (element === 'reset' || element === 'login') {
     checkPassword(element);
     return
   }
+  
   const email = `${element}Email`;
   if (!checkInputNotEmpty(email) && !checkEmailFormat(email)) {
     if (element === 'addContact' || element === 'changeContact') {
@@ -143,32 +144,32 @@ function checkEmail(element) {
       }
     }
   }
+}
 
 
-
-  function checkPassword(element) {
-    const password = document.getElementById(`${element}Password`).value;
-    if (checkInputNotEmpty(`${element}Password`)) {
-      if (element == 'reset') {
-        checkPassword('resetConfirm')
-      }
-      return
-    }
-    if (checkPasswordLength(`${element}Password`)) return;
+function checkPassword(element) {
+  const password = document.getElementById(`${element}Password`).value;
+  if (checkInputNotEmpty(`${element}Password`)) {
     if (element == 'reset') {
-      checkSecondPassword()
-      return
+      checkPassword('resetConfirm')
     }
-    if (element == 'signUp') {
-      addUser();
-      return;
-    }
-    if (element === 'login') {
-      if (checkIncorrectPassword(element)) return;
-      checkIn();
-    }
+    return
+  }
+  if (checkPasswordLength(`${element}Password`)) return;
+  if (element == 'reset') {
+    checkSecondPassword()
+    return
+  }
+  if (element == 'signUp') {
+    addUser();
+    return;
+  }
+  if (element === 'login') {
+    if (checkIncorrectPassword(element)) return;
+    checkIn();
   }
 }
+
 
 function checkInputNotEmpty(element) {
   const input = document.getElementById(`${element}`);
@@ -241,7 +242,7 @@ function sendNewPasswordLink() {
 
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       // Success!
       console.log('Email sent!');
@@ -286,10 +287,10 @@ function showConfirmation(element) {
 
   setTimeout(() => {
     blackLayer.classList.add('d-none');
-    if(element=='forgot'){
-    window.location.href = "login.html";
-  } if(element =='login'){showContentLogin('loginContainer')}
-}, 1200);
+    if (element == 'forgot') {
+      window.location.href = "login.html";
+    } if (element == 'login') { showContentLogin('loginContainer') }
+  }, 1200);
 
 }
 
