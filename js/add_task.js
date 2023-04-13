@@ -187,8 +187,12 @@ async function addTaskNewCategory(n) {
 
   categorys.push(addTaskNewCategorys);
   categorytext.value = '';
+  document.getElementById(`color-button-container${n}`).innerHTML = ""; // Deletes the color in the input field (Löscht die Colorfabe in dem Eingabefeld)
   await setServer(); /* setSverver loads the current data from the server (setSverver lädt die aktuellen daten vom server) */
   console.log(categorys);
+  
+ 
+  
 
 }
 
@@ -237,16 +241,17 @@ function openNewCategroy(oneCategroy, twoCategroy, threeCategroy, n) {
   document.getElementById(oneCategroy).classList.remove('d-none');
   document.getElementById(twoCategroy).classList.remove('d-none');
   document.getElementById(threeCategroy).classList.add('d-none');
- //  document.getElementById(`category${n}`).value = '';
- // document.getElementById(`color-button-container${n}`).innerHTML = '';
-}
+  document.getElementById(`category${n}`).value = '';
+ document.getElementById(`color-button-container${n}`).innerHTML = '';
+ }
 
 function closeNewTaskCategroy(n) {
   document.getElementById(`new-category-container${n}`).classList.add('d-none');
   document.getElementById(`content-categroy-container${n}`).classList.add('d-none');
   document.getElementById(`color-container${n}`).classList.add('d-none');
   document.getElementById(`select-container${n}`).classList.remove('d-none');
-  renderSelectOpenTaskCategory(n)
+  renderSelectOpenTaskCategory(n);
+  
 
 
 }
@@ -574,6 +579,8 @@ function checkNewCategoryName(n) {
   } else {
     document.getElementById(`notice-new-category${n}`).classList.add('hidden');
     document.getElementById(`new-category-container${n}`).style = '';
-    // loadNewCategoryInDropdownButtonCategory(n)
+    closeNewTaskCategroy(n)
+    loadNewCategoryInDropdownButtonCategory(n)
+    
   }
 }
