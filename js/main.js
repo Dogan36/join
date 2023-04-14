@@ -18,7 +18,9 @@ const avatarBackgroundColors = ['#FF6633', '#FF33FF',
 
 const categoryColors = ['#0072B2', '#E69F00', '#009E73', '#F0E442', '#CC79A7', '#56B4E9', '#D55E00', '#5D5D5D', '#CC6633', '#66CCEE', '#B2B2B2', '#999933'];
 
-
+let visibleIcon = 'assets/img/visibleIcon.svg';
+let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
+let standartIcon = 'assets/img/loginPassword.svg';
 
 async function init(include = false) {
   await downloadFromServer();
@@ -117,103 +119,170 @@ async function addContact() {
   document.getElementById('contactOverlay').reset()
 }
 
-function checkInputs(element) {
-  document.querySelectorAll(`.${element}ErrorMessage`).forEach(function (el) {
-    el.classList.add('d-none');
-  })
-  if (element == 'signUp' || element == 'addContact' || element == 'changeContact') {
-    checkInputNotEmpty(`${element}Name`)
-  }
-  checkEmail(element)
+function listenerPasswordImg(element) {
+  let passwordInput = document.getElementById(`${element}Password`);
+  let passwordToggle = document.getElementById(`${element}PasswordImg`);
+  passwordInput.addEventListener('keyup', function () {
+      changePasswortImage(element);
+  });
+  passwordToggle.addEventListener('click', function () {
+      togglePasswordVisibility(element);
+  });
 }
 
-
-function checkEmail(element) {
-  if (element === 'reset' || element === 'login') {
-    checkPassword(element);
-    return
+function changePasswortImage(element) {
+  let passwordInput = document.getElementById(`${element}Password`);
+  let passwordToggle = document.getElementById(`${element}PasswordImg`);
+  if (passwordInput.value === '') {
+      passwordToggle.src = standartIcon;
+  } else if (passwordInput.type == 'text') {
+      passwordToggle.src = visibleIcon;
   }
-  
-  const email = `${element}Email`;
-  if (!checkInputNotEmpty(email) && !checkEmailFormat(email)) {
-    if (element === 'addContact' || element === 'changeContact') {
-      addContact();
-    } else if (!checkEmailExists(email)) {
-      if (element === 'forgot') {
-        sendNewPasswordLink();
+  else {
+      passwordToggle.src = notVisibleIcon
+  }
+}
+
+function togglePasswordVisibility(element) {
+  let passwordInput = document.getElementById(`${element}Password`);
+  let passwordToggle = document.getElementById(`${element}PasswordImg`);
+  if (passwordInput.value === '') {
+      passwordToggle.src = standartIcon;
+  } else {
+      if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          passwordToggle.src = visibleIcon;
+      } else {
+          passwordInput.type = 'password';
+          if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
+              passwordToggle.src = notVisibleIcon;
+          }
       }
-    }
   }
 }
 
-
-function checkPassword(element) {
-  const password = document.getElementById(`${element}Password`).value;
-  if (checkInputNotEmpty(`${element}Password`)) {
-    if (element == 'reset') {
-      checkPassword('resetConfirm')
-    }
-    return
-  }
-  if (checkPasswordLength(`${element}Password`)) return;
-  if (element == 'reset') {
-    checkSecondPassword()
-    return
-  }
-  if (element == 'signUp') {
-    addUser();
-    return;
-  }
-  if (element === 'login') {
-    if (checkIncorrectPassword(element)) return;
-    checkIn();
-  }
+function checkInputsLogin() {
+  document.querySelectorAll(`.loginErrorMessage`).forEach(function (el) {
+      el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('loginEmail') ? 1 : 0;
+  errorCount += checkInputEmpty('loginPassword') ? 1 : 0;
+  errorCount += checkEmailFormat('loginEmail') ? 1 : 0;
+  errorCount += checkEmailDoesntExist('loginEmail') ? 1 : 0;
+  errorCount += checkPasswordLength('loginPassword') ? 1 : 0;
+  errorCount += checkIncorrectPassword('loginPassword') ? 1 : 0;
+  if (errorCount > 0) return;
+  checkIn()
 }
 
 
-function checkInputNotEmpty(element) {
+function checkInputsSignUp() {
+  document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
+      el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('signUpName') ? 1 : 0;
+  errorCount += checkInputEmpty('signUpEmail') ? 1 : 0;
+  errorCount += checkInputEmpty('signUpPassword') ? 1 : 0;
+  errorCount += checkEmailFormat('signUpEmail') ? 1 : 0;
+  errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
+  errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
+  if (errorCount > 0) return;
+  addUser()
+}
+
+
+function checkInputsForgot() {
+  document.querySelectorAll(`.forgotErrorMessage`).forEach(function (el) {
+      el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('forgotEmail') ? 1 : 0;
+  errorCount += checkEmailFormat('forgotEmail') ? 1 : 0;
+  errorCount += checkEmailDoesntExist('forgotEmail') ? 1 : 0;
+  if (errorCount > 0) return;
+  sendNewPasswordLink()
+}
+
+
+function checkInputsReset() {
+  document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
+      el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('resetPassword') ? 1 : 0;
+  errorCount += checkInputEmpty('confirmPassword') ? 1 : 0;
+  errorCount += checkPasswordLength('resetPassword') ? 1 : 0;
+  errorCount += checkPasswordMatch() ? 1 : 0;
+  if (errorCount > 0) return;
+  updatePassword()
+}
+
+
+function checkInputEmpty(element) {
   const input = document.getElementById(`${element}`);
   if (input.value === '') {
-    document.getElementById(`${element}Error`).classList.remove('d-none');
-    return true
+      document.getElementById(`${element}Error`).classList.remove('d-none');
+      return true
   }
 }
 
 
 function checkEmailFormat(element) {
   const input = document.getElementById(`${element}`);
-  if (input.value.indexOf('@') === -1) {
-    document.getElementById(`${element}FormatError`).classList.remove('d-none');
-    return true
+  if (input.value.indexOf('@') === -1 && input.value.length > 0) {
+      document.getElementById(`${element}FormatError`).classList.remove('d-none');
+      return true
   }
 }
 
 
-function checkEmailExists(element) {
+function checkEmailExist(element) {
   const input = document.getElementById(`${element}`);
   let emailFound = false;
   for (var i = 0; i < users.length; i++) {
-    if (users[i].email === input.value) {
-      emailFound = true;
-      if (element === 'signUpEmail') {
-        document.getElementById(`${element}InUseError`).classList.remove('d-none');
-        return true;
+      if (users[i].email === input.value) {
+          document.getElementById(`${element}InUseError`).classList.remove('d-none');
+          return true;
       }
-    }
   }
-  if (!emailFound && element !== 'signUpEmail') {
-    document.getElementById(`${element}InUseError`).classList.remove('d-none');
-    return true;
+  return false
+}
+
+
+function checkEmailDoesntExist(element) {
+  const input = document.getElementById(`${element}`);
+  let emailFound = false;
+  for (var i = 0; i < users.length; i++) {
+      if (users[i].email === input.value) {
+          if (input.value.length > 0 && input.value.includes('@'))
+              return false
+      }
   }
-  return false;
+  if (input.value.length > 0 && input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
+  return true
 }
 
 
 function checkPasswordLength(element) {
   let password = document.getElementById(`${element}`)
-  if (password.value.length < 6) {
-    document.getElementById(`${element}LengthError`).classList.remove('d-none');
-    return true
+  if (password.value.length < 6 && password.value.length > 0) {
+      document.getElementById(`${element}LengthError`).classList.remove('d-none');
+      return true
+  }
+}
+
+
+function checkIncorrectPassword(element) {
+  if (getUser()) {
+      const password = document.getElementById(`${element}`).value;
+      if (user.password !== password && password.length >= 6) {
+          document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
+          return true
+      } else {
+          return false
+      }
   }
 }
 
@@ -223,17 +292,6 @@ function checkIn() {
   window.location.href = 'index.html?variable=' + currentUser;
 }
 
-function checkIncorrectPassword(element) {
-  getUser();
-  const password = user.password;
-  if (password !== document.getElementById(`${element}Password`).value) {
-    document.getElementById(`${element}PasswordIncorrectError`).classList.remove('d-none');
-    console.log('falsch')
-    return true
-  }
-  console.log('richtig')
-  return false
-}
 
 function sendNewPasswordLink() {
   let email = document.getElementById('forgotEmail').value
@@ -243,10 +301,10 @@ function sendNewPasswordLink() {
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      // Success!
-      console.log('Email sent!');
-    }
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          // Success!
+          console.log('Email sent!');
+      }
   };
 
   const message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
@@ -256,14 +314,11 @@ function sendNewPasswordLink() {
   showConfirmation('login')
 }
 
-function checkSecondPassword() {
+function checkPasswordMatch() {
   const password = document.getElementById('resetPassword').value
-  const confirmPassword = document.getElementById('resetConfirmPassword').value;
-  if (password !== confirmPassword) {
-    document.getElementById('secondPasswordIncorrectError').classList.remove('d-none');
-  } else {
-    updatePassword()
-  }
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  if (password !== confirmPassword) document.getElementById('confirmPasswordIncorrectError').classList.remove('d-none');
+      
 }
 
 async function updatePassword() {
@@ -282,16 +337,36 @@ function showConfirmation(element) {
   confirmationElement.style.bottom = '-10%'
   blackLayer.classList.remove('d-none');
   setTimeout(() => { // wait 100ms (adjust as needed)
-    confirmationElement.style.bottom = '50%'; // animate to top position
+      confirmationElement.style.bottom = '50%'; // animate to top position
   }, 100);
 
   setTimeout(() => {
-    blackLayer.classList.add('d-none');
-    if (element == 'forgot') {
-      window.location.href = "login.html";
-    } if (element == 'login') { showContentLogin('loginContainer') }
+      blackLayer.classList.add('d-none');
+      if (element == 'forgot') {
+          window.location.href = "login.html";
+      } if (element == 'login') { showContentLogin('loginContainer') }
   }, 1200);
 
 }
 
 
+function sendNewPasswordLink() {
+  let email = document.getElementById('forgotEmail').value
+  const xhr = new XMLHttpRequest();
+  const url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
+
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Success!
+      console.log('Email sent!');
+    }
+  };
+
+  const message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
+  const params = `name=Join&mail=noreply@join.com&message=${message}`;
+
+  xhr.send(params);
+  showConfirmation('login')
+}

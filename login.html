@@ -20,7 +20,7 @@
     <script src="./js/include.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/login.js"></script>
-    <title>Document</title>
+    <title>Join</title>
 </head>
 
 <body onload="init()">
@@ -36,19 +36,19 @@
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
 
-        <form class="loginContainer" onsubmit="checkInputs('login'); return false;" novalidate>
+        <form class="loginContainer" onsubmit="checkInputsLogin(); return false;" novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>
             <div class="loginInputs">
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="email" id="loginEmail" placeholder="Email" required>
+                            <input class="loginInput" type="email" id="loginEmail" placeholder="E-Mail" required>
                             <img src="assets/img/loginMail.svg" alt="">
                         </div>
                         <span id="loginEmailError" class="loginErrorMessage d-none">This field is required</span>
                         <span id="loginEmailFormatError" class="loginErrorMessage d-none">Please insert a valid
                             email</span>
-                        <span id="loginEmailInUseError" class="loginErrorMessage d-none">Email not found</span>
+                        <span id="loginEmailNotFoundError" class="loginErrorMessage d-none">E-Mail not found</span>
                     </div>
                 </div>
                 <div class="inputContainer">
@@ -107,7 +107,7 @@
             </div>
         </form>
 
-        <form class="signUpContainer d-none" onsubmit="checkInputs('signUp'); return false" novalidate>
+        <form class="signUpContainer d-none" onsubmit="checkInputsSignUp(); return false" novalidate>
             <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg"
                 alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
@@ -125,14 +125,14 @@
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input class="loginInput" type="email" id="signUpEmail" placeholder="Email"
+                            <input class="loginInput" type="email" id="signUpEmail" placeholder="E-Mail"
                                 aria-required="true" required>
                             <img src="assets/img/loginMail.svg" alt="">
                         </div>
                         <span id="signUpEmailError" class="signUpErrorMessage d-none">This field is required</span>
                         <span id="signUpEmailFormatError" class="signUpErrorMessage d-none">Please insert an
-                            Email</span>
-                        <span id="signUpEmailInUseError" class="signUpErrorMessage d-none">This eMail is already in
+                            E-Mail</span>
+                        <span id="signUpEmailInUseError" class="signUpErrorMessage d-none">This E-Mail is already in
                             use</span>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
             </div>
         </form>
 
-        <form class="forgotPassword d-none" onsubmit="checkInputs('forgot'); return false" novalidate>
+        <form class="forgotPassword d-none" onsubmit="checkInputsForgot(); return false" novalidate>
             <img onclick="showContentLogin('loginContainer')" class="leftArrow" src="assets/img/arrow-left-line.svg"
                 alt="">
             <div class="forgotHeadline">
@@ -165,12 +165,12 @@
                 password.</span>
             <div class="forgotContainer">
                 <div class="inputFieldWithImg">
-                    <input id="forgotEmail" class="loginInput" type="email" placeholder="Email" required>
+                    <input id="forgotEmail" class="loginInput" type="email" placeholder="E-Mail" required>
                     <img src="assets/img/loginMail.svg" alt="">
                 </div>
                 <span id="forgotEmailError" class="forgotErrorMessage d-none">This field is required</span>
-                <span id="forgotEmailFormatError" class="forgotErrorMessage d-none">Please insert an Email</span>
-                <span id="forgotEmailInUseError" class="forgotErrorMessage d-none">This Email doesn't exist</span>
+                <span id="forgotEmailFormatError" class="forgotErrorMessage d-none">Please insert an E-Mail</span>
+                <span id="forgotEmailNotFoundError" class="forgotErrorMessage d-none">This E-Mail doesn't exist</span>
             </div>
 
             <button type="submit" class="forgotButton"><span>Send me the email</span></button>

@@ -17,11 +17,10 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/mini_backend.js"></script>
-    <script src="./js/reset.js"></script>
     <script src="./js/main.js"></script>
 </head>
 
-<body onload="init()">
+<body onload="init(), listenerPasswordImg('reset'), listenerPasswordImg('confirm');">
     <div class="signUpWrapper">
         <div class="forgotBlackLayer d-none">
             <div class="forgotSentConfirmation">
@@ -30,7 +29,7 @@
         </div>
         <img class="logoTopLeft" src="assets/img/logo.svg" alt="">
 
-        <form class="resetPassword" onsubmit="checkInputs('reset'); return false;" novalidate>
+        <form class="resetPassword" onsubmit="checkInputsReset(); return false;" novalidate>
             <img onclick="window.location.href='login.html'" class="leftArrow" src="assets/img/arrow-left-line.svg"
                 alt="">
             <div class="resetHeadline">
@@ -42,19 +41,19 @@
                 <div class="newPasswordContainer">
                     <div class="inputFieldWithImg">
                         <input id="resetPassword" class="loginInput" type="password" placeholder="New password" required>
-                        <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                        <img id="resetPasswordImg" src="assets/img/loginPassword.svg" alt="">
                     </div>
                     <span id="resetPasswordError" class="resetErrorMessage d-none">This field is required</span>
                     <span id="resetPasswordLengthError"class="resetErrorMessage d-none">Password must contain at least 6 Characters</span>
                 </div>
                 <div class="confirmPasswordContainer">
                     <div class="inputFieldWithImg">
-                        <input id="resetConfirmPassword" class="loginInput" type="password" placeholder="Confirm password"
+                        <input id="confirmPassword" class="loginInput" type="password" placeholder="Confirm password"
                             required>
-                            <img id="loginPasswordImg" src="assets/img/loginPassword.svg" alt="">
+                            <img id="confirmPasswordImg" src="assets/img/loginPassword.svg" alt="">
                     </div>
-                    <span id="resetConfirmPasswordError" class="resetErrorMessage d-none">This field is required</span>
-                    <span id="secondPasswordIncorrectError"class="resetErrorMessage d-none">Passwords doesn't match</span>
+                    <span id="confirmPasswordError" class="resetErrorMessage d-none">This field is required</span>
+                    <span id="confirmPasswordIncorrectError"class="resetErrorMessage d-none">Passwords doesn't match</span>
                 </div>
             </div>
             <button type="submit" class="resetButton"><span>Continue</span></button>

@@ -530,7 +530,8 @@ indexWrapper {
 .signUpErrorMessage,
 .forgotErrorMessage,
 .newPasswordErrorMessage,
-.addContactErrorMessage {
+.addContactErrorMessage,
+.resetErrorMessage {
     white-space: nowrap;
     font-family: 'Inter';
     font-style: normal;

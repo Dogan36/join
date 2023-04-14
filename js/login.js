@@ -1,7 +1,3 @@
-
-let visibleIcon = 'assets/img/visibleIcon.svg';
-let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
-let standartIcon = 'assets/img/loginPassword.svg';
 let user
 
 
@@ -32,52 +28,6 @@ function updateCheckbox() {
         pathUnchecked.style.display = 'block';
     }
 }
-
-
-function listenerPasswordImg(element) {
-    let passwordInput = document.getElementById(`${element}Password`);
-    let passwordToggle = document.getElementById(`${element}PasswordImg`);
-    passwordInput.addEventListener('keyup', function () {
-        changePasswortImage(element);
-    });
-    passwordToggle.addEventListener('click', function () {
-        togglePasswordVisibility(element);
-    });
-}
-
-
-function togglePasswordVisibility(element) {
-    let passwordInput = document.getElementById(`${element}Password`);
-    let passwordToggle = document.getElementById(`${element}PasswordImg`);
-    if (passwordInput.value === '') {
-        passwordToggle.src = standartIcon;
-    } else {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            passwordToggle.src = visibleIcon;
-        } else {
-            passwordInput.type = 'password';
-            if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
-                passwordToggle.src = notVisibleIcon;
-            }
-        }
-    }
-}
-
-
-function changePasswortImage(element) {
-    let passwordInput = document.getElementById(`${element}Password`);
-    let passwordToggle = document.getElementById(`${element}PasswordImg`);
-    if (passwordInput.value === '') {
-        passwordToggle.src = standartIcon;
-    } else if (passwordInput.type == 'text') {
-        passwordToggle.src = visibleIcon;
-    }
-    else {
-        passwordToggle.src = notVisibleIcon
-    }
-}
-
 
 
 
@@ -135,4 +85,20 @@ function showContentLogin(element) {
     document.querySelector('.forgotPassword').classList.add('d-none')
     document.querySelector(`.${element}`).classList.remove('d-none')
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
