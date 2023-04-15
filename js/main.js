@@ -278,6 +278,8 @@ function checkIncorrectPassword(element) {
   }
 }
 
+
+
 function checkIn() {
   rememberMe()
   let currentUser = user.name
@@ -363,21 +365,11 @@ function sendNewPasswordLink() {
   showConfirmation('login')
 }
 
-async function addContact() {
-  let name = document.getElementById('addContactName')
-  let email = document.getElementById('addContactEmail');
-  let phone = document.getElementById('addContactPhone')
-  let initials = getInitials('addContactName');
-  contacts.push({name: name.value, email: email.value, phone: phone.value, initials: initials });
-  await setServer();
-  document.getElementById('contactOverlay').reset()
-}
-
 
 function getInitials(element){
-  document.getElementById('element')
+  const contact = document.getElementById(element)
   // Split the name into separate words
-  const nameWords = contact.name.split(" ");
+  const nameWords = contact.value.split(" ");
   // If there is only one word, return the first letter
   if (nameWords.length === 1) {
     return nameWords[0].charAt(0).toUpperCase();

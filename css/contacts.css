@@ -652,3 +652,9 @@ contacts {
     text-align: center;
     color: #FFFFFF;
 }
+
+input.loginInput[type=number]::-webkit-inner-spin-button,
+input.loginInput[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
