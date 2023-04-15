@@ -110,14 +110,6 @@ function closeOverlay() {
   document.getElementById('addContactOverlay').classList.add('d-none')
 }
 
-async function addContact() {
-  let name = document.getElementById('addContactName')
-  let email = document.getElementById('addContactEmail');
-  let phone = document.getElementById('addContactPhone')
-  contacts.push({ name: name.value, email: email.value, phone: phone.value });
-  await setServer();
-  document.getElementById('contactOverlay').reset()
-}
 
 function listenerPasswordImg(element) {
   let passwordInput = document.getElementById(`${element}Password`);
@@ -307,7 +299,7 @@ function sendNewPasswordLink() {
       }
   };
 
-  const message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
+  const message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
   const params = `name=Join&mail=noreply@join.com&message=${message}`;
 
   xhr.send(params);
@@ -369,4 +361,27 @@ function sendNewPasswordLink() {
 
   xhr.send(params);
   showConfirmation('login')
+}
+
+async function addContact() {
+  let name = document.getElementById('addContactName')
+  let email = document.getElementById('addContactEmail');
+  let phone = document.getElementById('addContactPhone')
+  let initials = getInitials('addContactName');
+  contacts.push({name: name.value, email: email.value, phone: phone.value, initials: initials });
+  await setServer();
+  document.getElementById('contactOverlay').reset()
+}
+
+
+function getInitials(element){
+  document.getElementById('element')
+  // Split the name into separate words
+  const nameWords = contact.name.split(" ");
+  // If there is only one word, return the first letter
+  if (nameWords.length === 1) {
+    return nameWords[0].charAt(0).toUpperCase();
+  }
+  // Otherwise, return the first letter of each word
+  return nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
 }

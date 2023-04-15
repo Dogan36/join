@@ -47,19 +47,6 @@ function renderContacts() {
       }
     }
   }
-
-
-  function getInitials(j){
-    const contact = contacts[j];
-    // Split the name into separate words
-    const nameWords = contact.name.split(" ");
-    // If there is only one word, return the first letter
-    if (nameWords.length === 1) {
-      return nameWords[0].charAt(0).toUpperCase();
-    }
-    // Otherwise, return the first letter of each word
-    return nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
-  }
   
   
 function openNewContactOverlay(){

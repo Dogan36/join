@@ -72,8 +72,9 @@ function loadRememberedData() {
 async function addUser() {
     let name = document.getElementById('signUpName')
     let email = document.getElementById('signUpEmail');
-    let password = document.getElementById('signUpPassword')
-    users.push({ name: name.value, email: email.value, password: password.value });
+    let password = document.getElementById('signUpPassword');
+    let initials = getInitials('signUpName')
+    users.push({name: name.value, email: email.value, password: password.value, initials: initials});
     await setServer();
     window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
 }
