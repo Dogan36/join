@@ -39,7 +39,7 @@ function showContacts(initial) {
     const backgroundColor = j
     if (contact.name.charAt(0) == initial) {
       contactList.innerHTML += `
-          <div class="contactListElement" id='contact${j}' onclick="setActiveContact(this)">
+          <div class="contactListElement" id='contact${j}' onclick="setActiveContact(${j})">
           <div class="contantsAvatar" style="background-color: ${avatarBackgroundColors[backgroundColor]}"><span>${contact.initials}</span></div>
           <div class="contactsInfo"><span>${contact.name}</span><span>${contact.email}</span></div>
       </div>`
@@ -53,15 +53,69 @@ function openNewContactOverlay() {
   document.getElementById('container-opened-task').classList.remove('d-none')
 }
 
-function setActiveContact(element) {
+function setActiveContact(j) {
   var contact = document.querySelector(".contactListElementActive");
-  if (contact) {
-    contact.classList.remove("contactListElementActive");
-    contact.querySelector(".contactsInfo").classList.remove("active");
+  var element = document.getElementById(`contact${j}`)
+  contactCard = document.querySelector(".contactsCard")
+  
+  if (contact === element) {
+      // Clicked element is already active, so remove the classes to make it inactive:
+      contact.classList.remove("contactListElementActive");
+      contactCard.classList.remove("contactsCardActive");
+      
+  } else {
+      // Clicked element is not active, so make it active by adding classes and removing them from the previous active element:
+      if (contact) {
+          contact.classList.remove("contactListElementActive");
+          contactCard.classList.remove("contactsCardActive");
+      }
+      
+      element.classList.add("contactListElementActive");
+      contactCard.classList.add("contactsCardActive");
+      setInnerContactCard(j)
   }
-  element.classList.add("contactListElementActive");
-  element.querySelector(".contactsInfo").classList.add("active");
 }
+
+
+function setInnerContactCard(j){
+  
+  let contactCard = document.querySelector('.contactsCard')
+  contactCard.innerHTML = ''
+  contactCard.innerHTML += setInnerContactCardTemplate(j)
+  
+}
+
+function setInnerContactCardTemplate(j){
+  let contact = contacts[j]
+  return `<div class="contactCardHeader">
+  <div class="contactCardAvatar" style="background-color: ${avatarBackgroundColors[j]};"><span>${contact.initials}</span></div>
+  <div class="contactCardContentHeader">
+      <span>${contact.name}</span>
+      <div onclick="popUpWindowaddTask()"class="contactCardHeaderAddTask">
+          <img src="./assets/img/contactPlus.svg" alt="">
+          <span>Add Task</span>
+      </div>
+  </div>
+</div>
+<div class="contactCardInfoHeader">
+  <span>Contact Information</span>
+  <div onclick="openEditContactOverlay(${j})" class="contactCardEdit">
+      <img src="./assets/img/editIcon.svg" alt="">
+      <span>Edit Contact</span>
+  </div>
+</div>
+<div class="contactCardInfo">
+  <div class="contactCardEmail">
+      <span>Email</span>
+      <a href="mailto:${contact.email}">${contact.email}</a>
+  </div>
+  <div class="contactCardPhone">
+      <span>Phone</span>
+      <a href="tel:${contact.phone}">${contact.phone}</a>
+  </div>
+</div>`
+}
+
 
 async function addContact() {
   let name = document.getElementById('addContactName')
