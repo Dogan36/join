@@ -1,3 +1,4 @@
+let contactToEdit
 function renderContacts() {
   getFirstLetter()
   showList()
@@ -32,6 +33,7 @@ function showList() {
   }
 }
 
+
 function showContacts(initial) {
   let contactList = document.getElementById('contactsList')
   for (let j = 0; j < contacts.length; j++) {
@@ -53,12 +55,24 @@ function openNewContactOverlay() {
   document.getElementById('container-opened-task').classList.remove('d-none')
 }
 
+function closeNewContactOverlay(){
+  document.getElementById('addContactOverlay').classList.add('d-none')
+  document.getElementById('container-opened-task').classList.add('d-none')
+}
+
+
 function openEditContactOverlay(j) {
+  contactToEdit = j
   setEditContactOverlay(j)
   document.getElementById('editContactOverlay').classList.remove('d-none')
   document.getElementById('container-opened-task').classList.remove('d-none')
 }
 
+
+function closeEditContactOverlay(){
+  document.getElementById('editContactOverlay').classList.add('d-none')
+  document.getElementById('container-opened-task').classList.add('d-none')
+}
 
 function setEditContactOverlay(j) {
   let contact = contacts[j]
@@ -144,17 +158,18 @@ async function addContact() {
   contacts.push({ name: name.value, email: email.value, phone: phone.value, initials: initials });
   await setServer();
   document.getElementById('contactOverlay').reset()
+  closeAddContactOverlay()
   renderContacts()
 }
 
-async function editContact(j) {
+async function editContact() {
   let name = document.getElementById('editContactName')
   let email = document.getElementById('editContactEmail');
   let phone = document.getElementById('editContactPhone')
   let initials = getInitials('editContactName');
-  contacts.splice(j, 1, { name: name.value, email: email.value, phone: phone.value, initials: initials });
+  contacts.splice(contactToEdit, 1, { name: name.value, email: email.value, phone: phone.value, initials: initials });
   await setServer();
-  document.getElementById('editContactOverlay').reset()
+  closeEditContactOverlay()
   renderContacts()
 }
 
