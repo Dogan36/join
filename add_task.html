@@ -6,7 +6,7 @@
           <h1>Add Task</h1>
         </div>
       </div>
-      <form id="myForm"  onsubmit="createTaskButton(0)">
+      <form id="myForm" novalidate onsubmit="createTaskButton(0)">
         <div class="content-body-container">
           <div class="container-left">
             <div class="title-container">
@@ -48,7 +48,8 @@
             </div>
             <div class="title-container">
               <p>
-                <label class="title">Category</label>
+                <!-- <label class="title">Category</label> -->
+                <label for="category0" class="title">New category name:</label>
               </p>
 
               <div>
@@ -57,10 +58,19 @@
                   class="new-category-container d-none"
                 >
                   <div class="input-and-color-button-container">
+                    <!-- <input
+                      id="category0"
+                      class="new-category-input no-outline"
+                      type="text"
+                      name="category"
+                      placeholder="New category name"
+                      required
+                    /> -->
                     <input
                       id="category0"
                       class="new-category-input no-outline"
                       type="text"
+                      name="category"
                       placeholder="New category name"
                       required
                     />
@@ -88,7 +98,9 @@
               </div>
               <div id="select-container0" class="select-container">
                 <div onclick="openNewTaskCategroy(0)" class="option selectTask">
-                  <div id="select-start-task-category0" >Select task category</div>
+                  <div id="select-start-task-category0">
+                    Select task category
+                  </div>
                   <img
                     class="arrow-icon"
                     src="./assets/img/arrow_icon.svg"
@@ -132,7 +144,7 @@
                   class="new-category-container d-none"
                 >
                   <input
-                    class=" no-outline"
+                    class="no-outline"
                     type="text"
                     placeholder="Contact email"
                     required
@@ -150,8 +162,13 @@
                 </div>
               </div>
               <div id="select-contacts-container0" class="select-container">
-                <div onclick="openSelectContactsToAssign(0); checkMandatoryFieldAssignedTo(0);" class="option selectTaskAssignedTo">
-                  <div id="select-start-task-contact">Select contacts to assign</div>
+                <div
+                  onclick="openSelectContactsToAssign(0); checkMandatoryFieldAssignedTo(0);"
+                  class="option selectTaskAssignedTo"
+                >
+                  <div id="select-start-task-contact">
+                    Select contacts to assign
+                  </div>
                   <img
                     class="arrow-icon"
                     src="./assets/img/arrow_icon.svg"
@@ -176,7 +193,6 @@
                   class="title-input no-outline"
                   type="date"
                   id="due-date0"
-              
                   required
                   oninput="checkMandatoryFieldDueDate(0)"
                 />
@@ -317,4 +333,3 @@
 
   <div></div>
 </div>
-

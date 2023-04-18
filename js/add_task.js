@@ -99,16 +99,7 @@ function closeSelectContactEmail(n) {
 }
 
 
-// JavaScript for Add Task in the Board-page
-function popUpWindowaddTask() {
-  document.getElementById('container-opened-task').classList.remove('d-none');
-  document.getElementById('add-task-window').classList.remove('d-none');
-}
 
-function popUpWindowCloseAddTask() {
-  document.getElementById('container-opened-task').classList.add('d-none');
-  document.getElementById('add-task-window').classList.add('d-none');
-}
 
 
 
@@ -237,13 +228,18 @@ function colorButton(i, n) {
 
 }
 
-function openNewCategroy(oneCategroy, twoCategroy, threeCategroy, n) {
+async function openNewCategroy(oneCategroy, twoCategroy, threeCategroy, n) {
   document.getElementById(oneCategroy).classList.remove('d-none');
   document.getElementById(twoCategroy).classList.remove('d-none');
   document.getElementById(threeCategroy).classList.add('d-none');
-  document.getElementById(`category${n}`).value = '';
- document.getElementById(`color-button-container${n}`).innerHTML = '';
+  DeleteTheContentOfTheInputField(n)
+  
  }
+
+function DeleteTheContentOfTheInputField(n){
+  document.getElementById(`new-category-container${n}`).value = "";
+  document.getElementById(`color-button-container${n}`).innerHTML = '';
+}
 
 function closeNewTaskCategroy(n) {
   document.getElementById(`new-category-container${n}`).classList.add('d-none');
@@ -277,7 +273,7 @@ function renderSelectCloseTaskCategory(n, content) {
     <img  class="arrow-icon" src="./assets/img/arrow_top_icon.svg" alt="">
   </div>
   <div id="content-categroy-container${n}">
-    <div onclick="openNewCategroy('new-category-container${n}', 'color-container${n}', 'select-container${n}')" class="option">New Category</div>
+    <div onclick="openNewCategroy('new-category-container${n}', 'color-container${n}', 'select-container${n}', ${n})" class="option">New Category</div>
   </div>
   `;
 }

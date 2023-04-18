@@ -44,12 +44,13 @@
             <div id='addTaskContent' class="indexContent d-none" w3-include-html="add_task.html"></div>
             <div id='contactsContent' class="indexContent d-none" w3-include-html="contacts.html"></div>
         </div>
-
+        <!-- background container for the pop up Windows (Hintergrundcontainer für die Popup-Fenster) -->
         <div class="container-opened-task d-none" id="container-opened-task" onclick="closeOverlay()">
+           
         </div>
-        <div class="add-task-window d-none" id="add-task-window">
-            <div class="add-task-window-off"><span onclick="closeOverlay()">x</span></div>
-            <div id="add-task-window-content" w3-include-html="./assets/templates/addTaskOverlayTemplate.html">Test test test</div>
+        
+        <div class="add-task-window d-none" id="add-task-window" w3-include-html="./assets/templates/task_form.html">
+                
         </div>
 
 
