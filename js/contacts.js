@@ -158,8 +158,9 @@ async function addContact() {
   contacts.push({ name: name.value, email: email.value, phone: phone.value, initials: initials });
   await setServer();
   document.getElementById('contactOverlay').reset()
-  closeAddContactOverlay()
+  closeNewContactOverlay()
   renderContacts()
+  setActiveContact(contacts.length-1);
 }
 
 async function editContact() {
@@ -171,6 +172,7 @@ async function editContact() {
   await setServer();
   closeEditContactOverlay()
   renderContacts()
+  setActiveContact(contactToEdit)
 }
 
 
