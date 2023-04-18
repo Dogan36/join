@@ -312,6 +312,11 @@ function deletePointsInCategoryArray() {
  *  Add Task Assigned to
  */
 
+function seltionContacts(n) {
+  dueDate = document.getElementById(`due-date${n}`).value;
+}
+
+
 function inviteNewContact(n) {
   document.getElementById(`select-contacts-container${n}`).classList.add('d-none');
   document.getElementById(`assigned-to-container${n}`).classList.remove('d-none'); 
@@ -353,8 +358,8 @@ async function renderAddTaskContacts(n) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     content.innerHTML +=/*html*/`
-    <div class="option" onclick="renderSelectContact(${i}, ${n})">
-      <div class="selection-point-container">
+        <div class="option">
+      <div class="selection-point-container" onclick="renderSelectContact(${i}, ${n})">
         <div>${contact['name']}</div>
       </div>
       <div>
@@ -379,8 +384,7 @@ function renderSelectContact(i, n) {
                   <img class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="">
                 </div>
   `;
-  pushPointsInCategoryArray(category['categorytext'], category['categoryColor'])
-
+  assignedTo = contact['name']
 }
 
 
