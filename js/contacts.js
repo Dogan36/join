@@ -53,39 +53,58 @@ function openNewContactOverlay() {
   document.getElementById('container-opened-task').classList.remove('d-none')
 }
 
+function openEditContactOverlay(j) {
+  setEditContactOverlay(j)
+  document.getElementById('editContactOverlay').classList.remove('d-none')
+  document.getElementById('container-opened-task').classList.remove('d-none')
+}
+
+
+function setEditContactOverlay(j) {
+  let contact = contacts[j]
+  document.getElementById('editContactName').value = contact.name
+  document.getElementById('editContactEmail').value = contact.email
+  document.getElementById('editContactPhone').value = contact.phone
+  document.getElementById('editContactAvartarInitials').innerHTML = contact.initials
+  document.getElementById('editContactAvartar').style = `background-color: ${avatarBackgroundColors[j]};`
+  document.getElementById('editContactOverlay').addEventListener('submit', function() {
+    checkInputsEditContact(j); return false;
+  });
+}
+
 function setActiveContact(j) {
   var contact = document.querySelector(".contactListElementActive");
   var element = document.getElementById(`contact${j}`)
   contactCard = document.querySelector(".contactsCard")
-  
+
   if (contact === element) {
-      // Clicked element is already active, so remove the classes to make it inactive:
+    // Clicked element is already active, so remove the classes to make it inactive:
+    contact.classList.remove("contactListElementActive");
+    contactCard.classList.remove("contactsCardActive");
+
+  } else {
+    // Clicked element is not active, so make it active by adding classes and removing them from the previous active element:
+    if (contact) {
       contact.classList.remove("contactListElementActive");
       contactCard.classList.remove("contactsCardActive");
-      
-  } else {
-      // Clicked element is not active, so make it active by adding classes and removing them from the previous active element:
-      if (contact) {
-          contact.classList.remove("contactListElementActive");
-          contactCard.classList.remove("contactsCardActive");
-      }
-      
-      element.classList.add("contactListElementActive");
-      contactCard.classList.add("contactsCardActive");
-      setInnerContactCard(j)
+    }
+
+    element.classList.add("contactListElementActive");
+    contactCard.classList.add("contactsCardActive");
+    setInnerContactCard(j)
   }
 }
 
 
-function setInnerContactCard(j){
-  
+function setInnerContactCard(j) {
+
   let contactCard = document.querySelector('.contactsCard')
   contactCard.innerHTML = ''
   contactCard.innerHTML += setInnerContactCardTemplate(j)
-  
+
 }
 
-function setInnerContactCardTemplate(j){
+function setInnerContactCardTemplate(j) {
   let contact = contacts[j]
   return `<div class="contactCardHeader">
   <div class="contactCardAvatar" style="background-color: ${avatarBackgroundColors[j]};"><span>${contact.initials}</span></div>
@@ -128,6 +147,18 @@ async function addContact() {
   renderContacts()
 }
 
+async function editContact(j) {
+  let name = document.getElementById('editContactName')
+  let email = document.getElementById('editContactEmail');
+  let phone = document.getElementById('editContactPhone')
+  let initials = getInitials('editContactName');
+  contacts.splice(j, 1, { name: name.value, email: email.value, phone: phone.value, initials: initials });
+  await setServer();
+  document.getElementById('editContactOverlay').reset()
+  renderContacts()
+}
+
+
 function checkInputsAddContact() {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -141,4 +172,19 @@ function checkInputsAddContact() {
     el.classList.add('d-none');
   })
   addContact()
+}
+
+function checkInputsEditContact(j) {
+  document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
+    el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('editContactName') ? 1 : 0;
+  errorCount += checkInputEmpty('editContactEmail') ? 1 : 0;
+  errorCount += checkEmailFormat('editContactEmail') ? 1 : 0;
+  if (errorCount > 0) return;
+  document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
+    el.classList.add('d-none');
+  })
+  editContact(j)
 }
