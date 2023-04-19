@@ -18,112 +18,28 @@
                 <span>To do</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
             </div>
-            <div class="boardCard">
-                <div class="boardCardInner">
-                    <div class="boardCardCategory"><span>Design</span></div>
-                    <div class="boardCardContent">
-                        <span class="boardCardTaskName">Website Redesign</span>
-                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                            v</span>
-                    </div>
-                    <div class="boardCardProgress">
-                        <progress max="2" value="1"></progress>
-                        <div><span>1</span>/<span>2</span><span> Done</span></div>
-                    </div>
-                    <div class="boardCardAssign">
-                        <div class="boardCardAssignedTo">
-                            <div class="boardAvatar"><span>DC</span></div>
-                            <div class="boardAvatar"><span>AB</span></div>
-                        </div>
-                        <img src="./assets/img/boardLowIcon.svg" alt="">
-                    </div>
-                </div>
-            </div>
+            <div id="boardContentToDo"class="boardElementContent"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>In progress</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
             </div>
-            <div class="boardCard">
-                <div class="boardCardInner">
-                    <div class="boardCardCategory"><span>Design</span></div>
-                    <div class="boardCardContent">
-                        <span class="boardCardTaskName">Website Redesign</span>
-                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                            v</span>
-                    </div>
-                    <div class="boardCardProgress">
-                        <progress max="2" value="1"></progress>
-                        <div><span>1</span>/<span>2</span><span> Done</span></div>
-                    </div>
-                    <div class="boardCardAssign">
-                        <div class="boardCardAssignedTo">
-                            <div class="boardAvatar"><span>DC</span></div>
-                            <div class="boardAvatar"><span>AB</span></div>
-                        </div>
-                        <img src="./assets/img/boardLowIcon.svg" alt="">
-                    </div>
-                </div>
-            </div>
+            <div id="boardContentInProgress" class="boardElementContent"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>Awaiting Feedback</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
             </div>
-            <div class="boardCard">
-                <div class="boardCardInner">
-                    <div class="boardCardCategory"><span>Design</span></div>
-                    <div class="boardCardContent">
-                        <span class="boardCardTaskName">Website Redesign</span>
-                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                            v</span>
-                    </div>
-                    <div class="boardCardProgress">
-                        <progress max="2" value="1"></progress>
-                        <div><span>1</span>/<span>2</span><span> Done</span></div>
-                    </div>
-                    <div class="boardCardAssign">
-                        <div class="boardCardAssignedTo">
-                            <div class="boardAvatar"><span>DC</span></div>
-                            <div class="boardAvatar"><span>AB</span></div>
-                        </div>
-                        <img src="./assets/img/boardLowIcon.svg" alt="">
-                    </div>
-                </div>
-            </div>
+            <div id="boardContentAwaiting" class="boardElementContent"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>Done</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
             </div>
-            <div class="boardCard">
-                <div class="boardCardInner">
-                    <div class="boardCardCategory"><span>Design</span></div>
-                    <div class="boardCardContent">
-                        <span class="boardCardTaskName">Website Redesign</span>
-                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                            v</span>
-                    </div>
-                    <div class="boardCardProgress">
-                        <progress max="2" value="1"></progress>
-                        <div><span>1</span>/<span>2</span><span> Done</span></div>
-                    </div>
-                    <div class="boardCardAssign">
-                        <div class="boardCardAssignedTo">
-                            <div class="boardAvatar"><span>DC</span></div>
-                            <div class="boardAvatar"><span>AB</span></div>
-                        </div>
-                        <img src="./assets/img/boardLowIcon.svg" alt="">
-                    </div>
-                </div>
-            </div>
+            <div id="boardContentDone" class="boardElementContent"></div>
         </div>
     </div>
 </div>

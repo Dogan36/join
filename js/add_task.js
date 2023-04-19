@@ -531,11 +531,12 @@ async function addTaskJasonArray() {
   let TaskJasonArray = {
     'taskTitle': title,
     'taskDescription': description,
-    'taskCategory': category,
+    'taskCategory': category[0],
     'assingnedTo': assignedTo,
     'dueDate': dueDate,
     'prio': addTaskSelectPrios,
-    'subtasks': addTaskNewSubtasks
+    'subtasks': addTaskNewSubtasks,
+    'taskProgress': 'toDo',
   }
   tasks.push(TaskJasonArray);
   await setServer();

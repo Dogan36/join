@@ -1,13 +1,13 @@
 function renderBoard() {
-//renderToDos()
+renderToDos()
 ////renderInProgress()
 //renderAwaiting()
 //renderDone()
 }
 
 function renderToDos(){
-    let toDos = tasks.filter(task => task.taskProgress === "to do")
-    let container = document.getElementById('boardElement')
+    let toDos = tasks.filter(task => task.taskProgress === "toDo")
+    let container = document.getElementById('boardContentToDo')
     console.log(toDos)
     for (let i = 0; i < toDos.length; i++) {
         const element = toDos[i];
@@ -19,12 +19,10 @@ function addBoardCard(element){
     return `
     <div class="boardCard">
                 <div class="boardCardInner">
-                    <div class="boardCardCategory"><span>${element.taskCategory.categorytext}</span></div>
+                    <div class="boardCardCategory" style="background-color:${element.taskCategory.categoryColor}"><span>${element.taskCategory.categorytext}</span></div>
                     <div class="boardCardContent">
-                        <span class="boardCardTaskName">Website Redesign</span>
-                        <span class="boardCardTaskDescription">Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Ipsa voluptate consectetur dicta hic provident nobis laborum asperiores
-                            v</span>
+                        <span class="boardCardTaskName">${element.taskTitle}</span>
+                        <span class="boardCardTaskDescription">${element.taskDescription}</span>
                     </div>
                     <div class="boardCardProgress">
                         <progress max="2" value="1"></progress>
