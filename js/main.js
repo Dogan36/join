@@ -5,6 +5,9 @@ let users = []
 let categorys = []
 let currentUser
 let initials = []
+let addTaskNewContacts = [];
+let addTaskContacts = []
+
 const avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#E6B333', '#3366E6', '#B34D4D',
   '#80B300', '#809900', '#6680B3', '#66991A',
@@ -28,6 +31,7 @@ async function init(include = false) {
   tasks = await JSON.parse(backend.getItem('tasks')) || [];
   contacts = await JSON.parse(backend.getItem('contacts')) || [];
   categorys = await JSON.parse(backend.getItem('categorys')) || [];
+  addTaskNewContacts = await JSON.parse(backend.getItem('addTaskNewContacts')) || [];
   if (include) {
     includeHTML()
   }
@@ -45,13 +49,15 @@ function render() {
 async function setServer() {
   let tasksAsText = JSON.stringify(tasks);
   let contactsAsText = JSON.stringify(contacts);
-  let usersAsText = JSON.stringify(users)
-  let categorysAsText = JSON.stringify(categorys)
-  console.log(tasksAsText)
-  await backend.setItem('tasks', tasksAsText)
-  await backend.setItem('contacts', contactsAsText)
-  await backend.setItem('users', usersAsText)
+  let usersAsText = JSON.stringify(users);
+  let categorysAsText = JSON.stringify(categorys);
+  let addTaskNewContactsText = JSON.stringify(addTaskNewContacts);
+  console.log(tasksAsText);
+  await backend.setItem('tasks', tasksAsText);
+  await backend.setItem('contacts', contactsAsText);
+  await backend.setItem('users', usersAsText);
   await backend.setItem('categorys', categorysAsText);
+  await backend.setItem('addTaskNewContacts', addTaskNewContactsText);
 }
 
 

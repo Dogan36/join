@@ -7,7 +7,7 @@ let prio;
 let tasksJsonArrays = []
 let addTaskSelectPrios = [];
 let addTaskNewSubtasks = [];
-let addTaskNewContacts = [];
+// let addTaskNewContacts = [];
 // let addTaskNewCategorys = [];
 let buttonBackgroundColor = ['#800080', '#ff0000', '#008000', '#ffba00', '#ffc0cb', '#0000ff'];
 let selectedCategory;
@@ -114,7 +114,7 @@ async function createTaskButton(n) {
   headtitle(n);
   descriptionText(n);
   selectionDueDate(n);
-  await addTaskJasonArray();
+  await addTaskJasonArray(); /* Das addTaskJasonArray() hollt sich die restlichen Punkte aus den globalen Variablen   */
   // deleteAddTaskFields(n);
   await init();
   renderSelectOpenTaskCategory(n)
@@ -323,6 +323,7 @@ function inviteNewContact(n) {
 }
 
 function openSelectContactsToAssign(n) {
+  deleteAddTaskContacts()
   document.getElementById(`select-contacts-container${n}`).innerHTML = ``;
   document.getElementById(`select-contacts-container${n}`).innerHTML = `
   <div onclick="closeSelectContactsToAssign(${n}); checkMandatoryFieldAssignedTo(${n})" class="option">
@@ -334,6 +335,7 @@ function openSelectContactsToAssign(n) {
     <img class="contact-icon" src="assets/img/contact_icon.svg" alt="">
   </div>
   `;
+  loadContactsInAddTaskContacts()
   renderAddTaskContacts(n)
 }
 
@@ -353,13 +355,14 @@ function closeSelectContactsToAssign(n) {
 async function renderAddTaskContacts(n) {
 
   let content = document.getElementById(`select-contacts-container${n}`);
+  
   // renderSelectCloseTaskCategory(n, content)
 
-  for (let i = 0; i < contacts.length; i++) {
-    const contact = contacts[i];
+  for (let i = 0; i < addTaskContacts.length; i++) {
+    const contact = addTaskContacts[i];
     content.innerHTML +=/*html*/`
         <div class="option">
-      <div class="selection-point-container" onclick="renderSelectContact(${i}, ${n})">
+      <div class="selection-point-container" onclick="renderSelectContact(${i}, ${n})" >
         <div>${contact['name']}</div>
       </div>
       <div>
@@ -370,8 +373,49 @@ async function renderAddTaskContacts(n) {
   `;
   }
 
-
 }
+
+/* Gets the email address from the New Contact field and puts it into the addTaskNewContacts array (Holt die E-Mail-Adresse aus dem Feld „Neuer Kontakt“ raus und fügt sie in das Array „addTaskNewContacts“ ein)*/ 
+function invitenNewContact(n) {
+  let inviteNewContact = document.getElementById(`invite-new-contact${n}`);
+  console.log(inviteNewContact.value)
+  addTaskNewContacts.push(inviteNewContact.value)
+  loadNewContactsInAddTaskContacts()
+  deleteAddTaskContacts()
+  loadContactsInAddTaskContacts();
+  
+  
+}
+
+function loadContactsInAddTaskContacts() {
+  
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    addTaskContacts.push(contact)
+  }
+  // loadNewContactsInAddTaskContacts()
+}
+
+/*set array (add Task Contacts) to empty*/
+function deleteAddTaskContacts() {
+  
+  addTaskContacts.splice(0, addTaskContacts.length)
+}
+ 
+function loadNewContactsInAddTaskContacts() {
+  let newContactArray = {
+    'name': addTaskNewContacts[0].split('@')[0],
+    'phone': '',
+    'email': addTaskNewContacts,
+    'initials': addTaskNewContacts[0][0]
+  }
+  
+  addTaskContacts.unshift(newContactArray)
+}
+
+
+
+
 
 function renderSelectContact(i, n) {
   let contact = contacts[i];
@@ -454,7 +498,11 @@ function closeSubtask(n) {
 function addSubtask(n) {
 
   let newSubtask = document.getElementById(`new-subtask-piont${n}`);
-  addTaskNewSubtasks.push(newSubtask.value);
+  let TaskJasonArray = {
+    'subtaskTitle': newSubtask.value, 
+    'subtaskDone': false
+  }
+  addTaskNewSubtasks.push(TaskJasonArray);
   newSubtask.value = '';
   console.log(addTaskNewSubtasks)
 }
@@ -469,7 +517,7 @@ function renderSubtaskPoint(n) {
     SubtaskPoint.innerHTML += `
     <div class="checkbox-container">
       <input class="checkbox" type="checkbox">
-      <div>${point}</div>
+      <div>${point['subtaskTitle']}</div>
     </div>
     `;
   }
