@@ -114,7 +114,8 @@ function closeOverlay() {
   container.classList.add('d-none');
   document.getElementById('add-task-window').classList.add('d-none');
   document.getElementById('addContactOverlay').classList.add('d-none');
-  document.getElementById('editContactOverlay').classList.add('d-none')
+  document.getElementById('editContactOverlay').classList.add('d-none');
+  document.getElementById('activeTaskOverlay').classList.add('d-none');
 }
 
 

@@ -503,6 +503,71 @@ indexWrapper {
     color: #FFFFFF;
 }
 
+.activeTaskDelete {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 6px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+    border: 1px solid #2A3647;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.activeTaskMove {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 6px;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 49px;
+    top: 0px;
+    background: #FFFFFF;
+    border: 1px solid #2A3647;
+}
+
+.activeTaskMove img{
+    width: 31px;
+    height: 31px;
+}
+
+.activeTaskEdit {display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 6px;
+    
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 99px;
+    top: 0px;
+    
+    /* Version 2/ main color  */
+    
+    background: #2A3647;
+    border-radius: 0px 10px 10px 0px;}
+
+
+
+.activeTaskCloseButton {
+    position: absolute;
+    left: 562.31px;
+    top: 35px;
+    cursor: pointer;
+}
+
 .boardAddTaskButton:hover,
 .contactsNewContactButton:hover,
 .loginLoginButton:hover,
@@ -510,13 +575,16 @@ indexWrapper {
 .resetButton:hover,
 .forgotButton:hover,
 .editContactOverlaySaveButton:hover,
-.addContactOverlayCreateContactButton:hover {
+.addContactOverlayCreateContactButton:hover,
+.activeTaskEdit:hover {
     background-color: var(--secondaryColor);
     border: 1px solid var(--secondaryColor);
 }
 
 .loginGuestButton:hover,
-.addContactOverlayCancelButton:hover {
+.addContactOverlayCancelButton:hover,
+.activeTaskMove:hover,
+.activeTaskDelete:hover {
     border: 2px solid #29ABE2;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
