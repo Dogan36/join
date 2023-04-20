@@ -302,5 +302,263 @@
     z-index: 2;
     display: flex;
     justify-content: flex-end;
-    
+
+}
+
+.activeTaskOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 25px;
+    isolation: isolate;
+    width: 623px;
+    height: 824px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    background-color: white;
+}
+
+.activeTaskCategory {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4px 36.5px;
+    gap: 10px;
+    width: 142px;
+    height: 40px;
+    background: #FC71FF;
+    border-radius: 8px;
+}
+
+.activeTaskCategory span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;    
+    color: #FFFFFF;
+height: 32px;
+}
+
+.activeTaskTitle {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 1px;
+width: 523px;
+height: 146px;
+font-weight: 700;
+font-size: 61px;
+line-height: 120%;
+color: #2A3647;
+
+}
+
+.activeTaskDescription {
+    width: 518px;
+height: 50px;
+font-weight: 400;
+font-size: 21px;
+line-height: 120%;
+color: #000000;
+}
+.activeTaskDueDate {
+    display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 25px;
+
+width: 246px;
+height: 25px;
+}
+.activeTaskDueDate span:first-child {
+    width: 99px;
+height: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+
+/* black */
+
+color: #000000;
+}
+.activeTaskDueDate span:last-child {
+    width: 122px;
+height: 25px;
+
+/* Version 2/t6 */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+
+/* black */
+
+color: #000000;
+}
+.activeTaskPriority {
+    display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 25px;
+width: 238px;
+height: 33px;
+}
+.activeTaskPriority span {
+    width: 82px;
+height: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+
+/* black */
+
+color: #000000;
+
+}
+.activeTaskPriorityButton {
+    /* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 18px;
+gap: 10px;
+
+width: 131px;
+height: 33px;
+
+background: #FF3D00;
+/* nuevo */
+
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+}
+
+.activeTaskPriorityButton span {
+    width: 68px;
+height: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+
+color: #FFFFFF;}
+
+.activeTaskAssignedToHeader {
+    width: 134px;
+height: 25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+
+/* black */
+
+color: #000000;
+}
+.activeTaskAssignedTo {
+    display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 25px;
+
+width: 231px;
+height: 45px;
+
+}
+.activeTaskAvartar {
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px 8px;
+gap: 10px;
+
+width: 45px;
+height: 45px;
+
+background: #9327FF;
+/* white */
+
+border: 2px solid #FFFFFF;
+border-radius: 58px;
+}
+
+.activeTaskAvartar span {
+    width: 22px;
+height: 19px;
+
+/* Version 2/body */
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 120%;
+/* or 19px */
+
+
+color: #FFFFFF;
+}
+.activeTaskAssignedTo span {
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 21px;
+line-height: 120%;
+/* or 25px */
+
+text-align: center;
+
+/* black */
+
+color: #000000;
+}
+.activeTaskEdit {
+
+}
+.activeTaskDelete {
+}
+.activeTaskMove {
+}
+
+.activeTaskCloseButton {
+    position: absolute;
+left: 562.31px;
+top: 35px;
 }
