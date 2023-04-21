@@ -1,7 +1,7 @@
 let title;
 let description;
 let category = [];
-let assignedTo;
+let selectContacts = [];
 let dueDate;
 let prio;
 let tasksJsonArrays = []
@@ -115,7 +115,7 @@ async function createTaskButton(n) {
   descriptionText(n);
   selectionDueDate(n);
   await addTaskJasonArray(); /* Das addTaskJasonArray() hollt sich die restlichen Punkte aus den globalen Variablen   */
-  // deleteAddTaskFields(n);
+  deleteAddTaskFields(n);
   await init();
   renderSelectOpenTaskCategory(n)
  }
@@ -326,7 +326,7 @@ function openSelectContactsToAssign(n) {
   deleteAddTaskContacts()
   document.getElementById(`select-contacts-container${n}`).innerHTML = ``;
   document.getElementById(`select-contacts-container${n}`).innerHTML = `
-  <div onclick="closeSelectContactsToAssign(${n}); checkMandatoryFieldAssignedTo(${n})" class="option">
+  <div onclick="closeSelectContactsToAssign(${n}); checkMandatoryFieldAssignedTo(${n})" class="option display-flex">
     <div>Select contacts to assign</div>
     <img class="arrow-icon" src="assets/img/arrow_top_icon.svg" alt="">
   </div>
@@ -336,27 +336,73 @@ function openSelectContactsToAssign(n) {
   </div>
   `;
   loadContactsInAddTaskContacts()
+  loadNewContactsInAddTaskContacts()
   renderAddTaskContacts(n)
 }
 
 function closeSelectContactsToAssign(n) {
+  document.getElementById(`invite-new-contact${n}`).value ="";
   document.getElementById(`assigned-to-container${n}`).classList.add('d-none');
   document.getElementById(`select-contacts-container${n}`).classList.remove('d-none');
-  document.getElementById(`invite-new-contact-container${n}`).classList.add('d-none');
-  document.getElementById(`select-contacts-container${n}`).innerHTML = `
-  <div onclick="openSelectContactsToAssign(${n}); checkMandatoryFieldAssignedTo(${n});" class="option selectTaskAssignedTo">
-    <div>Select contacts to assign</div>
-    <img class="arrow-icon" src="assets/img/arrow_icon.svg" alt="">
-  </div>
-  `;
+  // document.getElementById(`invite-new-contact-container${n}`).classList.add('d-none');
+  // document.getElementById(`select-contacts-container${n}`).innerHTML = `
+  // <div onclick="openSelectContactsToAssign(${n}); checkMandatoryFieldAssignedTo(${n});" class="option selectTaskAssignedTo">
+  //   <div>Select contacts to assign</div>
+  //   <img class="arrow-icon" src="assets/img/arrow_icon.svg" alt="">
+  // </div>
+  // `;
 
 }
 
+
+
+ function openAndCloseContacts(n) {
+  document.getElementById(`contacts${n}`).classList.toggle('display-flex');
+  document.getElementById(`arrow-rotate`).classList.toggle('arrow-rotate');
+  deleteAddTaskContacts()
+  loadNewContactsInAddTaskContacts()
+  loadContactsInAddTaskContacts()
+  renderAddTaskContacts(n);
+  getSelectedOptionsContacts(n)
+}
+
+function getSelectedOptionsContacts(n) {
+  let checkboxes = document.getElementsByName("option[]");
+  // toggleCheckboxes()
+  for (let i = 0; i <(selectedContacts.length); i++) {
+    let contactName = selectedContacts[i]['name']
+    if (selectedContacts[i]['name'].includes(contactName) === true) {
+      document.getElementById(`${selectedContacts[i]['name'] + n}`).checked = true ;
+    }  
+  }
+  console.log(selectedContacts);
+  
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      if (addTaskContacts[i]['name'] && !selectedContacts.some(contact => contact.name === addTaskContacts[i]['name'])) {
+        selectedContacts.push(addTaskContacts[i]);
+      }
+    } else {
+      let index = selectedContacts.findIndex(contact => contact.name === addTaskContacts[i].name);
+      if (index !== -1) {
+        selectedContacts.splice(index, 1);
+      }
+    }
+  }
+}
+
+
 async function renderAddTaskContacts(n) {
 
-  let content = document.getElementById(`select-contacts-container${n}`);
-  
+  let content = document.getElementById(`contacts${n}`);
+  content.innerHTML ='';
   // renderSelectCloseTaskCategory(n, content)
+  content.innerHTML = `
+  <div id="invite-new-contact-container${n}" onclick="inviteNewContact(${n})" class="option">
+    <div>Invite new contact</div>
+    <img class="contact-icon" src="assets/img/contact_icon.svg" alt="">
+  </div>`;
+  
 
   for (let i = 0; i < addTaskContacts.length; i++) {
     const contact = addTaskContacts[i];
@@ -366,7 +412,7 @@ async function renderAddTaskContacts(n) {
         <div>${contact['name']}</div>
       </div>
       <div>
-        <input type="checkbox">
+        <input id='${contact['name'] + n}' type="checkbox" name="option[]" value="Option ${i}"    onclick="getSelectedOptionsContacts(${n},'${contact['name']}')">
       </div>
       
     </div>
@@ -375,14 +421,18 @@ async function renderAddTaskContacts(n) {
 
 }
 
+
 /* Gets the email address from the New Contact field and puts it into the addTaskNewContacts array (Holt die E-Mail-Adresse aus dem Feld „Neuer Kontakt“ raus und fügt sie in das Array „addTaskNewContacts“ ein)*/ 
-function invitenNewContact(n) {
+async function invitenNewContact(n) {
   let inviteNewContact = document.getElementById(`invite-new-contact${n}`);
   console.log(inviteNewContact.value)
+  deleteAddTaskContacts()
   addTaskNewContacts.push(inviteNewContact.value)
   loadNewContactsInAddTaskContacts()
-  deleteAddTaskContacts()
   loadContactsInAddTaskContacts();
+  await setServer();
+  closeSelectContactsToAssign(n)
+  renderAddTaskContacts(n);
   
   
 }
@@ -403,14 +453,18 @@ function deleteAddTaskContacts() {
 }
  
 function loadNewContactsInAddTaskContacts() {
+  for (let i = 0; i < addTaskNewContacts.length; i++) {
+    // const element = addTaskNewContacts[i];
+    
   let newContactArray = {
-    'name': addTaskNewContacts[0].split('@')[0],
+    'name': addTaskNewContacts[i].split('@')[0],
     'phone': '',
-    'email': addTaskNewContacts,
-    'initials': addTaskNewContacts[0][0]
+    'email': addTaskNewContacts[i],
+    'userInitials': addTaskNewContacts[i][0]
   }
+    addTaskContacts.unshift(newContactArray)
+}
   
-  addTaskContacts.unshift(newContactArray)
 }
 
 
@@ -418,17 +472,18 @@ function loadNewContactsInAddTaskContacts() {
 
 
 function renderSelectContact(i, n) {
-  let contact = contacts[i];
+  let contact = addTaskContacts[i];
 
-  document.getElementById(`select-contacts-container${n}`).innerHTML =/*html*/`
-  <div onclick="openSelectContactsToAssign(${n}); checkMandatoryFieldAssignedTo(${n});" class="option selectTaskAssignedTo">
-                <div class="selection-point-container">
-                  <div>${contact['name']}</div>
-                </div>
-                  <img class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="">
-                </div>
-  `;
-  assignedTo = contact['name']
+  // document.getElementById(`select-contacts-container${n}`).innerHTML =/*html*/`
+  // <div onclick="openSelectContactsToAssign(${n}); checkMandatoryFieldAssignedTo(${n});" class="option selectTaskAssignedTo">
+  //               <div class="selection-point-container">
+  //                 <div>${contact['name']}</div>
+  //               </div>
+  //                 <img class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="">
+  //               </div>
+  // `;
+  selectContacts.push(contact); 
+  
 }
 
 
@@ -532,7 +587,7 @@ async function addTaskJasonArray() {
     'taskTitle': title,
     'taskDescription': description,
     'taskCategory': category,
-    'assingnedTo': assignedTo,
+    'assingnedTo': selectedContacts,
     'dueDate': dueDate,
     'prio': addTaskSelectPrios,
     'subtasks': addTaskNewSubtasks

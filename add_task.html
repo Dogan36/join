@@ -98,9 +98,9 @@
               </div>
               <div id="select-container0" class="select-container">
                 <div onclick="openNewTaskCategroy(0)" class="option selectTask">
-                  <div id="select-start-task-category0">
-                    Select task category
-                  </div>
+                  <input readonly id="select-start-task-category0" placeholder="Select task category">
+                    
+                  </input>
                   <img
                     class="arrow-icon"
                     src="./assets/img/arrow_icon.svg"
@@ -159,23 +159,46 @@
                       alt=""
                     />
                     <div class="dash-contaier"><span class="dash"></span></div>
-                    <img src="./assets/img/black-check.svg" alt="" onclick="invitenNewContact(0)" />
+                    <img
+                      src="./assets/img/black-check.svg"
+                      alt=""
+                      onclick="invitenNewContact(0)"
+                    />
                   </div>
                 </div>
               </div>
               <div id="select-contacts-container0" class="select-container">
-                <div
+                <!-- <div
                   onclick="openSelectContactsToAssign(0); checkMandatoryFieldAssignedTo(0);"
+                  class="option selectTaskAssignedTo"
+                > -->
+                <div
+                  onclick="openAndCloseContacts(0); checkMandatoryFieldAssignedTo(0);"
                   class="option selectTaskAssignedTo"
                 >
                   <div id="select-start-task-contact">
                     Select contacts to assign
                   </div>
                   <img
+                    id="arrow-rotate"
                     class="arrow-icon"
                     src="./assets/img/arrow_icon.svg"
                     alt=""
                   />
+                </div>
+                <div id="contacts0" class=" d-none">
+                  <div
+                    id="invite-new-contact-container${n}"
+                    onclick="inviteNewContact()"
+                    class="option"
+                  >
+                    <div>Invite new contact</div>
+                    <img
+                      class="contact-icon"
+                      src="assets/img/contact_icon.svg"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
               <p id="required-assigned-to0" class="required hidden">
@@ -332,6 +355,6 @@
       </form>
     </div>
   </div>
-
-  <div></div>
 </div>
+
+

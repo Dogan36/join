@@ -1,12 +1,13 @@
 setURL('https://gruppenarbeit-485join.developerakademie.net/join/smallest_backend_ever')
-let tasks = []
-let contacts = []
-let users = []
-let categorys = []
+let tasks = [];
+let contacts = [];
+let users = [];
+let categorys = [];
 let currentUser
-let initials = []
+let initials = [];
 let addTaskNewContacts = [];
-let addTaskContacts = []
+let addTaskContacts = [];
+let selectedContacts = []; 
 
 const avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#E6B333', '#3366E6', '#B34D4D',
@@ -32,6 +33,7 @@ async function init(include = false) {
   contacts = await JSON.parse(backend.getItem('contacts')) || [];
   categorys = await JSON.parse(backend.getItem('categorys')) || [];
   addTaskNewContacts = await JSON.parse(backend.getItem('addTaskNewContacts')) || [];
+  addTaskContacts = await JSON.parse(backend.getItem('addTaskContacts')) || [];
   if (include) {
     includeHTML()
   }
@@ -52,12 +54,14 @@ async function setServer() {
   let usersAsText = JSON.stringify(users);
   let categorysAsText = JSON.stringify(categorys);
   let addTaskNewContactsText = JSON.stringify(addTaskNewContacts);
+  let addTaskContactsText = JSON.stringify(addTaskContacts);
   console.log(tasksAsText);
   await backend.setItem('tasks', tasksAsText);
   await backend.setItem('contacts', contactsAsText);
   await backend.setItem('users', usersAsText);
   await backend.setItem('categorys', categorysAsText);
   await backend.setItem('addTaskNewContacts', addTaskNewContactsText);
+  await backend.setItem('addTaskContacts', addTaskContactsText);
 }
 
 
