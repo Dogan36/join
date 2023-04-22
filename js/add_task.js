@@ -586,13 +586,8 @@ async function addTaskJasonArray() {
   let TaskJasonArray = {
     'taskTitle': title,
     'taskDescription': description,
-<<<<<<< HEAD
     'taskCategory': category,
     'assingnedTo': selectedContacts,
-=======
-    'taskCategory': category[0],
-    'assingnedTo': assignedTo,
->>>>>>> aebfabc4b0f48d0348dcc4907303c804808c559e
     'dueDate': dueDate,
     'prio': addTaskSelectPrios,
     'subtasks': addTaskNewSubtasks,

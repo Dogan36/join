@@ -431,6 +431,36 @@ img.prio-icon {
     margin-right: 10px;
 }
 
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* optional: fügen Sie ein benutzerdefiniertes Symbol hinzu */
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 2px solid #2a3647;
+    outline: none;
+    background: rgb(237, 236, 236);
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+/* Definiert ein benutzerdefiniertes Symbol für das Markieren */
+input[type="checkbox"]:checked::before {
+    content: "\25CF";
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: #2a3647;
+    position: absolute;
+    top: -5.7px;
+    left: 1.1px;
+}
+
+
 
 
 
