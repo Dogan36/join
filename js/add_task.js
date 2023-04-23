@@ -589,7 +589,7 @@ async function addTaskJasonArray() {
     'taskCategory': category[0],
     'assignedTo': selectedContacts,
     'dueDate': dueDate,
-    'prio': addTaskSelectPrios,
+    'prio': addTaskSelectPrios[0],
     'subtasks': addTaskNewSubtasks,
     'taskProgress': 'toDo',
   }
