@@ -412,7 +412,7 @@ height: 12px
 .activeTaskDueDate span:last-child {
     width: 122px;
     height: 25px;
-
+white-space: nowrap;
     /* Version 2/t6 */
 
     font-family: 'Inter';

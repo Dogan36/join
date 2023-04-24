@@ -153,24 +153,17 @@ function addActiveTaskOverlayHTML(i) {
     `
 }
 
-function addActiveCardAssignedTo(element) {
-    let assignedTo = element.assignedTo;
-    return `
-    <div class="activeTaskAssignedTo">
-      ${generateActiveCardAvatarHtml(assignedTo)}
-    </div>
-  `;
-}
-
-function generateActiveCardAvatarHtml(assignedTo) {
+function addActiveCardAssignedTo(task) {
+    let assignedTo = task.assignedTo;
     let avatarHtml = '';
-
+ 
     for (let index = 0; index < assignedTo.length; index++) {
         const contact = assignedTo[index];
-        avatarHtml += ` <div class="activeTaskAvartar"><span>${contact.initials}</span></div>
-        <span>${contact.name}</span>`;
+        avatarHtml += ` <div class="activeTaskAssignedTo">
+        <div class="activeTaskAvartar"><span>${contact.initials}</span></div>
+        <span>${contact.name}</span></div>`;
     }
-
-
-return avatarHtml;
+    
+    return avatarHtml;
+  
 }
