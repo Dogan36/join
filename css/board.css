@@ -100,6 +100,11 @@
 
 }
 
+.boardElementContent{
+    display: flex;
+    flex-direction: column;
+    gap:35px
+}
 
 .boardCard {
     display: flex;
@@ -113,6 +118,7 @@
     background: #FFFFFF;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .boardCardInner {
@@ -220,6 +226,10 @@
     height: 35px;
 }
 
+.boardCardAssign img{
+    width: 17px;
+height: 12px
+}
 .boardCardAssignedTo {
     display: flex;
     flex-direction: row;
@@ -402,7 +412,7 @@
 .activeTaskDueDate span:last-child {
     width: 122px;
     height: 25px;
-
+white-space: nowrap;
     /* Version 2/t6 */
 
     font-family: 'Inter';
@@ -467,20 +477,19 @@
 }
 
 .activeTaskPriorityButton span {
-    width: 68px;
     height: 25px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-
     color: #FFFFFF;
 }
 
+.activeTaskPriorityButton img{
+    height: 12px;
+    width: 17px;
+}
 .activeTaskAssignedToHeader {
     width: 134px;
     height: 25px;
