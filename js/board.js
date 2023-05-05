@@ -103,6 +103,7 @@ function generateAvatarHtml(assignedTo) {
 function popUpWindowaddTask() {
     document.getElementById('container-opened-task').classList.remove('d-none');
     document.getElementById('add-task-window').classList.remove('d-none');
+
 }
 
 /**
@@ -120,6 +121,38 @@ function openActiveTaskOverlay(i) {
     document.getElementById('container-opened-task').classList.remove('d-none');
     document.getElementById('activeTaskOverlay').classList.remove('d-none')
 }
+
+/**
+ * fade in add Task Container left
+ * @param {*} i 
+ * @returns 
+ */
+function fadeInAddTaskContainerLeft() {
+
+
+        // let meinButton = document.getElementById('board');
+    let flyInAddTaskContainer = document.getElementById('add-task-window');
+    let addTastContainer = document.getElementById('container-opened-task');
+
+        // setTimeout(function () {
+
+        //     meinButton.click();
+
+        //     addTastContainer.classList.remove('fade-out-right');
+
+        // }, 3000);
+
+        
+            flyInAddTaskContainer.classList.add('fade-in-left');
+            flyInAddTaskContainer.classList.remove('d-none');
+            addTastContainer.classList.remove('d-none');
+            flyInAddTaskContainer.classList.remove('fade-out-right');
+            addTastContainer.classList.remove('fade-out-right');
+            // addTastContainer.classList.add('fade-in-left');
+        
+    }
+
+
 
 function addActiveTaskOverlayHTML(i) {
     let task = tasks[i]

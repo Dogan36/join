@@ -127,7 +127,7 @@ input {
 .display-flex {
     display: flex !important;
     flex-direction: column;
-    
+
 }
 
 .selection-point-container {
@@ -198,7 +198,7 @@ img.arrow-icon {
     width: 25px;
     height: 8px;
     cursor: pointer;
-    
+
 }
 
 .arrow-rotate {
@@ -258,13 +258,15 @@ img.arrow-icon {
 .prio-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     margin-top: 8px;
+    padding-top: 7px;
+    margin-bottom: 10px;
 }
 
 .prio-body-container {
     display: flex;
     gap: 10px;
+    margin-top: 5px;
 }
 
 .prio-button {
@@ -468,7 +470,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .curser-pointer {
- cursor: pointer;
+    cursor: pointer;
 }
 
 /* .fly-in-button {
@@ -492,10 +494,10 @@ input[type="checkbox"]:checked::before {
     justify-content: center;
     align-items: center;
     padding: 0px;
-    
+
     width: 326px;
     height: 74px;
-   
+
     background: #2A3647;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
@@ -518,7 +520,16 @@ input[type="checkbox"]:checked::before {
     color: white;
     transform: translateY(900%);
     animation: fly-in 1s ease-out forwards;
-    
+
+}
+
+.creat-task-clear-hover {
+    width: 15px;
+    height: 15px;
+}
+
+.creat-task-clear-hover:hover {
+    fill: #ff0000;
 }
 
 @keyframes fly-in {
@@ -529,7 +540,10 @@ input[type="checkbox"]:checked::before {
 }
 
 
-.fade-out-right {
+
+
+
+/* .fade-out-right {
     animation-name: fade-out-right;
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -545,7 +559,7 @@ input[type="checkbox"]:checked::before {
         opacity: 0;
         transform: translateX(100%);
     }
-}
+} */
 
 
 
@@ -555,7 +569,7 @@ input[type="checkbox"]:checked::before {
 *Dient zur Auswahl für die JavaSript Funktionen (checkMandatoryFieldAssignedTo(n) in add_task.js) und (checkMandatoryFieldCategory(n) in add_task.js) 
 */
 .selectTask {
-/* empty CSS class with no rules (leere CSS-Klasse ohne Regeln) */
+    /* empty CSS class with no rules (leere CSS-Klasse ohne Regeln) */
 }
 
 .selectTaskAssignedTo {
@@ -592,11 +606,7 @@ input[type="checkbox"]:checked::before {
     width: 100%;
 }
 
-@media (max-width: 1200px) {
-
-
-
-}
+@media (max-width: 1200px) {}
 
 /* input:invalid,
 textarea:invalid {

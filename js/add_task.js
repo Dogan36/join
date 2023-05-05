@@ -87,8 +87,8 @@ function deleteSelectedContacts() {
   selectedContacts.splice(length)
 }
 
-function flyIngButton(){
-  let flyInButton = document.getElementById("fly-in-button");
+function flyIngButton(n){
+  let flyInButton = document.getElementById(`fly-in-button${n}`);
       flyInButton.classList.remove('d-none');
 
   // setTimeout(() => {
@@ -96,14 +96,14 @@ function flyIngButton(){
   // }, 1000);
 }
 
-function closeFlyIngButton() {
-  let flyInButton = document.getElementById("fly-in-button");
+function closeFlyIngButton(n) {
+  let flyInButton = document.getElementById(`fly-in-button${n}`);
   flyInButton.classList.add('d-none');
 }
 
- function goToBoardPage() {
+ function goToBoardPage(n) {
   let meinButton = document.getElementById('board');
-  let flyInButton = document.getElementById("fly-in-button");
+   let flyInButton = document.getElementById(`fly-in-button${n}`);
   let addTastContainer = document.getElementById('content-add-tast-container');
    
    setTimeout(function () {
@@ -134,14 +134,21 @@ async function createTaskButton(n) {
   await init();
   renderSelectOpenTaskCategory(n);
   deleteSelectedContacts();
-  flyIngButton()
-  goToBoardPage()
+  flyIngButton(n)
+  goToBoardPage(n)
  
   
 }
 
+function clearTheInputFields(n) {
+  deleteAddTaskFields(n)
+  renderSelectOpenTaskCategory(n);
+  deleteSelectedContacts();
+  deleteRedBorderAndRequiredText(n)
+}
+
 /**
- * click on task button 
+ * Delete add task fields 
  */
 
 function deleteAddTaskFields(n) {
@@ -601,7 +608,7 @@ async function addTaskJasonArray() {
 }
 
 function checkMandatoryFieldCategory(n) {  
-  if (document.querySelector('.option.selectTask') !== null) {
+  if (document.querySelector(`.option.selectTask${n}`) !== null) {
     document.getElementById(`required-category${n}`).classList.remove('hidden');
     document.getElementById(`select-container${n}`).style.border = '2px solid red';
   } else {
@@ -675,83 +682,26 @@ function checkPrio(n) {
   let prioColorRed = document.getElementById(`prio-red${n}`);
   let prioColorYellow = document.getElementById(`prio-yellow${n}`);
   let prioColorGreen = document.getElementById(`prio-green${n}`);
+  
   if (!prioColorRed.classList.contains('prio-red') && !prioColorYellow.classList.contains('prio-yellow') && !prioColorGreen.classList.contains('prio-green')) {
     prioColorRed.style.border = '2px solid red';
     prioColorYellow.style.border = '2px solid red';
     prioColorGreen.style.border = '2px solid red';
+    document.getElementById(`required-prio${n}`).classList.remove('hidden');
+  
   } else {
     prioColorRed.style = '';
     prioColorYellow.style = '';
     prioColorGreen.style = '';
+    document.getElementById(`required-prio${n}`).classList.add('hidden');
   } 
-  // else if () {
-
-  // }
-
-  // if (color == 'prio-red' && color == 'prio-yellow' && color == 'prio-green' ) {
-  //   // if (!prioColorRed.classList.contains('prio-red')) {
-  //     prioColorRed.style.border = '2px solid red';
-  //     prioColorYellow.style.border = '2px solid red';
-  //     prioColorGreen.style.border = '2px solid red';
-      
-  //     // deleteJasonPrio()
-  //   } else {
-      
-  //     prioColorRed.style = '';
-  //     prioColorYellow.style = '';
-  //     prioColorGreen.style = '';
-  //   }
-  // } else if (!prioColorYellow.classList.contains('prio-yellow')) {
-  //   if ()
-  //   prioColorRed.style.border = '2px solid red';
-  //   prioColorYellow.style.border = '2px solid red';
-  //   prioColorGreen.style.border = '2px solid red';
-
-  // } else if (prioColorRed.classList.contains('prio-red')) {
-  //   prioColorRed.style = '';
-  //   prioColorYellow.style = '';
-  //   prioColorGreen.style = '';
-  // }
-
-
-
-// } else if (color == 'prio-yellow') {
-//   if (divYellow.classList.contains("prio-yellow")) {
-//     document.getElementById(`prio-yellow${n}`).classList.remove('prio-yellow');
-//     document.getElementById(`prio-medium-icon${n}`).src = './assets/img/prio-medium-icon.svg';
-//     deleteJasonPrio();
-//   } else {
-
-//     document.getElementById(`prio-yellow${n}`).classList.add('prio-yellow');
-//     document.getElementById(`prio-medium-icon${n}`).src = './assets/img/prio-medium-white-icon.svg';
-//     document.getElementById(`prio-urgent-icon${n}`).src = './assets/img/prio-urgent-icon.svg';
-//     document.getElementById(`prio-low-icon${n}`).src = './assets/img/prio-low-icon.svg';
-//     document.getElementById(`prio-red${n}`).classList.remove('prio-red');
-//     document.getElementById(`prio-green${n}`).classList.remove('prio-green');
-//     deleteJasonPrio();
-//   }
-
-// } else if (color == 'prio-green') {
-//   if (divGreen.classList.contains("prio-green")) {
-//     document.getElementById(`prio-green${n}`).classList.remove('prio-green');
-//     document.getElementById(`prio-low-icon${n}`).src = './assets/img/prio-low-icon.svg';
-//     deleteJasonPrio();
-//   } else {
-
-//     document.getElementById(`prio-green${n}`).classList.add('prio-green');
-//     document.getElementById(`prio-low-icon${n}`).src = './assets/img/prio-low-white-icon.svg';
-//     document.getElementById(`prio-urgent-icon${n}`).src = './assets/img/prio-urgent-icon.svg';
-//     document.getElementById(`prio-medium-icon${n}`).src = './assets/img/prio-medium-icon.svg';
-//     document.getElementById(`prio-red${n}`).classList.remove('prio-red');
-//     document.getElementById(`prio-yellow${n}`).classList.remove('prio-yellow');
-//     deleteJasonPrio();
-//   }
+ 
 }
 
 function inputMandatoryFieldsCheck(n) {
   let inputFeldTitle = document.getElementById(`task-title-input${n}`); 
   let textareaFeldDescription = document.getElementById(`add-task-description${n}`);
-  let FeldCategory = document.querySelector('.option.selectTask');
+  let FeldCategory = document.querySelector(`.option.selectTask${n}`);
   let contactClassList = document.getElementById(`contacts${n}`);
   let inputFeldDueDate = document.getElementById(`due-date${n}`);
   let prioColorRed = document.getElementById(`prio-red${n}`);
@@ -766,4 +716,29 @@ function inputMandatoryFieldsCheck(n) {
     return; 
   }
 }
-
+/**
+ * 
+ * @param {*} n 
+ */
+function deleteRedBorderAndRequiredText(n) {
+  /*clear title inpupt*/
+  document.getElementById(`required-title${n}`).classList.add('hidden');
+  document.getElementById(`task-title-input${n}`).style = '';
+  /*clear description inpupt*/
+  document.getElementById(`required-description${n}`).classList.add('hidden');
+  document.getElementById(`add-task-description${n}`).style = '';
+  /*clear category inpupt*/
+  document.getElementById(`required-category${n}`).classList.add('hidden');
+  document.getElementById(`select-container${n}`).style = '';
+  /*clear assigned-to inpupt*/
+  document.getElementById(`required-assigned-to${n}`).classList.add('hidden');
+  document.getElementById(`select-contacts-container${n}`).style = '';
+  /*clear due-date inpupt*/
+  document.getElementById(`required-due-date${n}`).classList.add('hidden');
+  document.getElementById(`due-date${n}`).style = '';
+  /*clear prio inpupt*/
+  document.getElementById(`prio-red${n}`).style = '';
+  document.getElementById(`prio-yellow${n}`).style = '';
+  document.getElementById(`prio-green${n}`).style = '';
+  document.getElementById(`required-prio${n}`).classList.add('hidden');
+}

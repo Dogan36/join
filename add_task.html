@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div id="select-container0" class="select-container">
-                <div onclick="openNewTaskCategroy(0)" class="option selectTask">
+                <div onclick="openNewTaskCategroy(0)" class="option selectTask0">
                   <input readonly id="select-start-task-category0" class="input-outline" placeholder="Select task category">
                     
                   </input>
@@ -290,7 +290,7 @@
                   />
                 </div>
               </div>
-              <p id="required00" class="required hidden">
+              <p id="required-prio0" class="required hidden">
                 This field is required
               </p>
             </div>
@@ -314,12 +314,14 @@
                     onclick="closeSelectContactEmail(0)"
                     src="./assets/img/black-x.svg"
                     alt=""
+                   
                   />
                   <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
                   <img
                     onclick="addNewSubtask(0)"
                     src="./assets/img/black-check.svg"
                     alt=""
+                    
                   />
                 </div>
               </div>
@@ -341,13 +343,13 @@
             </div>
             <div id="add-task-subtask-point0"></div>
             <div class="submit-btns-container">
-              <button  class="clear-btn" onclick="deleteAddTaskFields(0)">
+              <button  class="clear-btn" onclick="clearTheInputFields(0); return false" >
                 <span>clear</span>
-                <img src="./assets/img/black-x.svg" alt="" />
+                <img src="./assets/img/creatTaskX.svg" alt="" class="creat-task-clear-hover"  onmouseover="hover(this,'./assets/img/creatTaskHoverX.svg');" onmouseout="unhover(this, './assets/img/creatTaskX.svg');"/>
               </button>
               <button type="submit" class="create-task-btn">
                 <span>Create Task</span>
-                <img src="./assets/img/black-x.svg" alt="" />
+                <img src="./assets/img/creatTaskCheck.svg" alt="" />
               </button>
             </div>
           </div>
@@ -360,7 +362,7 @@
 
 <!-- <button id="fly-in-button" class="d-none">Klick mich</button> -->
 
-<div id="fly-in-button" class="fly-in task-added-to-board-container d-none">
+<div id="fly-in-button0" class="fly-in task-added-to-board-container d-none">
   <div class="task-added-to-board">Task added to board</div>
   <img src="./assets/img/boardIcon.svg" alt="">
 </div>
