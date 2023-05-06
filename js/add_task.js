@@ -103,21 +103,39 @@ function closeFlyIngButton(n) {
 
  function goToBoardPage(n) {
   let meinButton = document.getElementById('board');
-   let flyInButton = document.getElementById(`fly-in-button${n}`);
-  let addTastContainer = document.getElementById('content-add-tast-container');
+  let flyInButton = document.getElementById(`fly-in-button${n}`);
+  let addTaskContainer = document.getElementById('content-add-task-container');
+  let addTaskWindowOverlayContainer = document.getElementById('container-opened-task');
+  let addTaskWindowContainer = document.getElementById('add-task-window');
+   let taskaddedtoboardButton = document.getElementById('fly-in-button1'); 
    
    setTimeout(function () {
     
      meinButton.click();
-    
-     addTastContainer.classList.remove('fade-out-right');
+     addTaskWindowOverlayContainer.classList.remove('fade-in-left');
+     addTaskContainer.classList.remove('fade-out-right');
+     addTaskContainer.classList.add('fade-out-right');
+     addTaskWindowContainer.classList.remove('fade-in-left');
+     addTaskWindowContainer.classList.add('fade-out-right');
+     addTaskWindowOverlayContainer.classList.add('fade-out-right');
 
    }, 3000);
 
    setTimeout(function () {
-     flyInButton.classList.add('d-none');
-     addTastContainer.classList.add('fade-out-right');
+    
+     addTaskContainer.classList.add('fade-out-right');
+     taskaddedtoboardButton.classList.add('fade-out-right');
+     
    }, 2000);
+
+   setTimeout(function () {
+     
+     addTaskContainer.classList.remove('fade-out-right');
+     taskaddedtoboardButton.classList.remove('fade-out-right');
+
+   }, 3000);
+
+   
 }
 
 /**

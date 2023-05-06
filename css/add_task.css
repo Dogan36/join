@@ -74,7 +74,10 @@ input {
 }
 
 
-
+.content-add-tast-body-container {
+    display: flex;
+    justify-content: center;
+}
 
 
 .new-category-container {
@@ -214,14 +217,14 @@ img.arrow-icon {
     height: 25px;
 }
 
-.content-add-tast-container {
+.content-add-task-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
 }
 
-.content-add-tast-body-container {
+.content-add-task-body-container {
     display: flex;
     justify-content: center;
     width: 75%;
