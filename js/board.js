@@ -79,6 +79,8 @@ function generateAvatarHtml(assignedTo) {
     if (assignedTo.length === 3) {
         for (let index = 0; index < assignedTo.length; index++) {
             const contact = assignedTo[index];
+            const backgroundIndex = contacts.indexOf(contact);
+           
             avatarHtml += `<div class="boardAvatar"><span>${contact.initials}</span></div>`;
         }
     } else if (assignedTo.length > 3) {
@@ -138,9 +140,7 @@ function addActiveTaskOverlayHTML(i) {
     </div>
     <div class="activeTaskAssignedToHeader">Assigned To:</div>
     <div id="activeTaskAssignedToContainer">
-      
         ${addActiveCardAssignedTo(task)}
-       
     </div>
     <div class="activeTaskButtons">
         <div onmouseover="hover(activeTaskDelete, 'assets/img/deleteHover.svg')" onmouseout="hover(activeTaskDelete, 'assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
@@ -156,14 +156,11 @@ function addActiveTaskOverlayHTML(i) {
 function addActiveCardAssignedTo(task) {
     let assignedTo = task.assignedTo;
     let avatarHtml = '';
- 
     for (let index = 0; index < assignedTo.length; index++) {
         const contact = assignedTo[index];
         avatarHtml += ` <div class="activeTaskAssignedTo">
         <div class="activeTaskAvartar"><span>${contact.initials}</span></div>
         <span>${contact.name}</span></div>`;
     }
-    
     return avatarHtml;
-  
 }
