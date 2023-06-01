@@ -1,12 +1,12 @@
-<div class="content-add-tast-container">
-  <div class="content-add-tast-body-container">
+<div id="content-add-task-container" class="content-add-task-container">
+  <div class="content-add-task-body-container">
     <div class="content-head-container">
       <div class="add-tast-container">
         <div class="hader-add-task-container">
           <h1>Add Task</h1>
         </div>
       </div>
-      <form id="myForm" novalidate onsubmit="createTaskButton(0); return false">
+      <form id="myForm" novalidate onsubmit="checkMandatoryFields(0); return false">
         <div class="content-body-container">
           <div class="container-left">
             <div class="title-container">
@@ -97,8 +97,8 @@
                 </div>
               </div>
               <div id="select-container0" class="select-container">
-                <div onclick="openNewTaskCategroy(0)" class="option selectTask">
-                  <input readonly id="select-start-task-category0" placeholder="Select task category">
+                <div onclick="openNewTaskCategroy(0)" class="option selectTask0">
+                  <input readonly id="select-start-task-category0" class="input-outline" placeholder="Select task category">
                     
                   </input>
                   <img
@@ -152,17 +152,17 @@
                     required
                   />
 
-                  <div class="img-container">
+                  <div class="img-container curser-pointer">
                     <img
                       onclick="closeSelectContactsToAssign(0)"
                       src="./assets/img/black-x.svg"
                       alt=""
                     />
-                    <div class="dash-contaier"><span class="dash"></span></div>
+                    <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
                     <img
                       src="./assets/img/black-check.svg"
                       alt=""
-                      onclick="invitenNewContact(0)"
+                      onclick="checkNewContactField(0)"
                     />
                   </div>
                 </div>
@@ -215,7 +215,7 @@
 
               <div id="date-button0">
                 <input
-                  class="title-input no-outline"
+                  class="title-input no-outline curser-pointer"
                   type="date"
                   id="due-date0"
                   required
@@ -290,7 +290,7 @@
                   />
                 </div>
               </div>
-              <p id="required00" class="required hidden">
+              <p id="required-prio0" class="required hidden">
                 This field is required
               </p>
             </div>
@@ -301,7 +301,7 @@
 
               <div
                 id="new-subtask-container0"
-                class="new-category-container d-none"
+                class="new-category-container d-none "
               >
                 <input
                   id="new-subtask-piont0"
@@ -309,23 +309,25 @@
                   type="text"
                   placeholder="New Subtasks"
                 />
-                <div class="img-container">
+                <div class="img-container curser-pointer">
                   <img
                     onclick="closeSelectContactEmail(0)"
                     src="./assets/img/black-x.svg"
                     alt=""
+                   
                   />
-                  <div class="dash-contaier"><span class="dash"></span></div>
+                  <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
                   <img
                     onclick="addNewSubtask(0)"
                     src="./assets/img/black-check.svg"
                     alt=""
+                    
                   />
                 </div>
               </div>
               <div
                 id="add-new-subtask-container0"
-                class="new-category-container"
+                class="new-category-container curser-pointer"
                 onclick="openSubtask(0)"
               >
                 <div class="Add-new-subtask">Add new subtask</div>
@@ -341,13 +343,13 @@
             </div>
             <div id="add-task-subtask-point0"></div>
             <div class="submit-btns-container">
-              <button class="clear-btn">
+              <button  class="clear-btn" onclick="clearTheInputFields(0); return false" >
                 <span>clear</span>
-                <img src="./assets/img/black-x.svg" alt="" />
+                <img src="./assets/img/creatTaskX.svg" alt="" class="creat-task-clear-hover"  onmouseover="hover(this,'./assets/img/creatTaskHoverX.svg');" onmouseout="unhover(this, './assets/img/creatTaskX.svg');"/>
               </button>
               <button type="submit" class="create-task-btn">
                 <span>Create Task</span>
-                <img src="./assets/img/black-x.svg" alt="" />
+                <img src="./assets/img/creatTaskCheck.svg" alt="" />
               </button>
             </div>
           </div>
@@ -355,6 +357,13 @@
       </form>
     </div>
   </div>
+
 </div>
 
+<!-- <button id="fly-in-button" class="d-none">Klick mich</button> -->
+
+<div id="fly-in-button0" class="fly-in task-added-to-board-container d-none">
+  <div class="task-added-to-board">Task added to board</div>
+  <img src="./assets/img/boardIcon.svg" alt="">
+</div>
 

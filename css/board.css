@@ -577,3 +577,53 @@ white-space: nowrap;
     cursor: pointer;
 }
 
+/*
+* Add Task css in the board page 
+*/
+
+.task-added-to-board-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.fade-in-left {
+    animation-name: fade-in-left;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(10000%);
+    }
+
+   200%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+ .fade-out-right {
+    animation-name: fade-out-right;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+}
+
+
+
+ @keyframes fade-out-right {
+     0% {
+         opacity: 0;
+         transform: translateX(10000%);
+     }
+
+     200% {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }

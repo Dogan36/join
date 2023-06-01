@@ -53,7 +53,12 @@ function showContacts(initial) {
 function openNewContactOverlay() {
   document.getElementById('addContactOverlay').classList.remove('d-none')
   document.getElementById('container-opened-task').classList.remove('d-none')
+  document.getElementById('addContactOverlay').classList.remove('fade-out-right');
+  document.getElementById('addContactOverlay').classList.add('fade-in-left');
+  document.getElementById('container-opened-task').classList.remove('fade-out-right');
+  document.getElementById('container-opened-task').classList.add('fade-in-left');
 }
+
 
 function closeNewContactOverlay(){
   document.getElementById('addContactOverlay').classList.add('d-none')

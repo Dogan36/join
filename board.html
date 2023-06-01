@@ -6,7 +6,8 @@
                 <input placeholder="Find Task" type="text" name="Find Task" id="findTaskInput">
                 <img src="./assets/img/seperator.svg" alt=""><img src="./assets/img/searchIcon.svg" alt="">
             </div>
-            <button onclick="popUpWindowaddTask();"
+            <!-- popUpWindowaddTask();  -->
+            <button onclick="fadeInAddTaskContainerLeft()" 
                 class="boardAddTaskButton"><span>Add Task</span> <img src="./assets/img/plusIcon.svg" alt=""></button>
             <!-- <button w3-include-html ="add_task_html";
                 class="boardAddTaskButton"><span>Add Task</span> <img src="./assets/img/plusIcon.svg" alt=""></button>     -->
@@ -16,28 +17,28 @@
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>To do</span>
-                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
+                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')" onclick="popUpWindowaddTask()">
             </div>
             <div id="boardContentToDo"class="boardElementContent"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>In progress</span>
-                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
+                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')" onclick="popUpWindowaddTask()">
             </div>
             <div id="boardContentInProgress" class="boardElementContent"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>Awaiting Feedback</span>
-                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
+                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')" onclick="popUpWindowaddTask()">
             </div>
             <div id="boardContentAwaiting" class="boardElementContent"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>Done</span>
-                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')">
+                <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hover(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="unhover(this, './assets/img/boardPlusIcon.svg')" onclick="popUpWindowaddTask()">
             </div>
             <div id="boardContentDone" class="boardElementContent"></div>
         </div>
