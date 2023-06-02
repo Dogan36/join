@@ -1,0 +1,6 @@
+{
+    "tasks": "[]",
+    "contacts": "[{\"name\":\"Lisa Müller\",\"phone\":\"004915234567890\",\"email\":\"lisa.mueller@yahoo.com\",\"initials\":\"LM\"},{\"name\":\"Hans Schmidt\",\"phone\":\"004917435678901\",\"email\":\"hans.schmidt@hotmail.com\",\"initials\":\"HS\"},{\"name\":\"Julia Wagner\",\"phone\":\"004919834567890\",\"email\":\"julia.wagner@web.de\",\"initials\":\"JW\"},{\"name\":\"Felix Bauer\",\"phone\":\"00491234567891\",\"email\":\"felix.bauer@outlook.com\",\"initials\":\"FB\"},{\"name\":\"Anna Schneider\",\"phone\":\"004915234567891\",\"email\":\"anna.schneider@t-online.de\",\"initials\":\"AS\"}]",
+    "users": "[{\"name\":\"Dogan Celik\",\"email\":\"dogancelik86@gmail.com\",\"password\":\"Join123\",\"initials\":\"DC\"}]",
+    "categorys": "[{\"categorytext\":\"Auto\",\"categoryColor\":\"#0000ff\"},{\"categorytext\":\"VW\",\"categoryColor\":\"#008000\"},{\"categorytext\":\"BMW\",\"categoryColor\":\"#800080\"},{\"categorytext\":\"Ford\",\"categoryColor\":\"#ff0000\"},{\"categorytext\":\"Opel\",\"categoryColor\":\"#ffba00\"}]"
+}
