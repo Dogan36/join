@@ -20,10 +20,10 @@ let buttonBackgroundColor = [
   '#808080'    // Gray
 ];
 let selectedColor;
+let n = 0
 
 
 function checkMandatoryFields(n) {
-
   let errorCount = 0;
   errorCount += checkMandatoryFieldTitle(n) ? 1 : 0;
   errorCount += checkMandatoryFieldDescription(n) ? 1 : 0;
@@ -84,14 +84,8 @@ function checkMandatoryFieldAssignedTo(n) {
 
 function checkMandatoryFieldDueDate(n) {
   let inputFeldDueDate = document.getElementById(`due-date${n}`);
-  if (inputFeldDueDate.value === '') {
-    document.getElementById(`required-due-date${n}`).classList.remove('hidden');
-    document.getElementById(`due-date${n}`).style.border = '2px solid red';
-    return true
-  } else {
-    clearDueDateWarnings()
-    return false
-  }
+  if (inputFeldDueDate.value === '') addDueDateWarnings()
+    else clearDueDateWarnings()
 }
 
 
@@ -562,30 +556,22 @@ async function addTaskJsonArray() {
 
 
 function checkMandatoryFieldCategory(n) {
-  if (document.querySelector(`.option.selectTask${n}`) !== null) {
-    document.getElementById(`required-category${n}`).classList.remove('hidden');
-    document.getElementById(`select-container${n}`).style.border = '2px solid red';
-    return true
-  } else {
-    clearCategoryWarnings()
-    return false
-  }
+  if (document.querySelector(`.option.selectTask${n}`) !== null) addCategoryWarnings()
+  else clearCategoryWarnings()
 }
 
 
 function checkNewCategoryName(n) {
   let name = document.getElementById(`category${n}`);
   let color = document.getElementById(`color-button-container${n}`);
-  if (name.value === '' || color.style === '') {
-    document.getElementById(`new-category-container${n}`).style.border = '2px solid red';
-    document.getElementById(`notice-new-category${n}`).classList.remove('hidden');
-  } else {
-    document.getElementById(`notice-new-category${n}`).classList.add('hidden');
-    document.getElementById(`new-category-container${n}`).style = '';
+  if (name.value === '' || color.style === '') addNewCategoryWarning()
+  else {
+    clearNewCategoryWarning()
     closeNewTaskCategroy(n)
     loadNewCategoryInDropdownButtonCategory(n)
   }
 }
+
 
 
 function checkPrio(n) {
@@ -593,10 +579,7 @@ function checkPrio(n) {
   let prioColorYellow = document.getElementById(`prio-yellow${n}`);
   let prioColorGreen = document.getElementById(`prio-green${n}`);
   if (!prioColorRed.classList.contains('prio-red') && !prioColorYellow.classList.contains('prio-yellow') && !prioColorGreen.classList.contains('prio-green')) {
-    prioColorRed.style.border = '2px solid red';
-    prioColorYellow.style.border = '2px solid red';
-    prioColorGreen.style.border = '2px solid red';
-    document.getElementById(`required-prio${n}`).classList.remove('hidden');
+    addPrioWarnings()
     return true
   } else {
     clearPrioWarnings()
@@ -616,14 +599,47 @@ function deleteRedBorderAndRequiredText(n) {
 }
 
 
+function addTitleWarnings() {
+  document.getElementById(`required-title${n}`).classList.remove('hidden');
+  document.getElementById(`task-title-input${n}`).style.border = '2px solid red';
+}
+
+
 function clearTitleWarnings() {
   document.getElementById(`required-title${n}`).classList.add('hidden');
   document.getElementById(`task-title-input${n}`).style = '';
 }
 
+
+function addDescriptionWarnings() {
+  document.getElementById(`required-description${n}`).classList.remove('hidden');
+  document.getElementById(`add-task-description${n}`).style.border = '2px solid red';
+}
+
+
 function clearDescriptionWarnings() {
   document.getElementById(`required-description${n}`).classList.add('hidden');
   document.getElementById(`add-task-description${n}`).style = '';
+}
+
+
+function addNewCategoryWarning() {
+  document.getElementById(`new-category-container${n}`).style.border = '2px solid red';
+  document.getElementById(`notice-new-category${n}`).classList.remove('hidden');
+}
+
+
+function clearNewCategoryWarning() {
+  document.getElementById(`notice-new-category${n}`).classList.add('hidden');
+  document.getElementById(`new-category-container${n}`).style = '';
+}
+
+
+function addPrioWarnings() {
+  document.getElementById(`prio-red${n}`).style.border = '2px solid red';
+  document.getElementById(`prio-yellow${n}`).style.border = '2px solid red';
+  document.getElementById(`prio-green${n}`).style.border = '2px solid red';
+  document.getElementById(`required-prio${n}`).classList.remove('hidden');
 }
 
 
@@ -635,56 +651,55 @@ function clearPrioWarnings() {
 }
 
 
+function addCategoryWarnings() {
+  document.getElementById(`required-category${n}`).classList.remove('hidden');
+  document.getElementById(`select-container${n}`).style.border = '2px solid red';
+
+}
+
+
 function clearCategoryWarnings() {
   document.getElementById(`required-category${n}`).classList.add('hidden');
   document.getElementById(`select-container${n}`).style = '';
 
 }
 
-function clearAssignedTowarnings() {
-  document.getElementById(`required-assigned-to${n}`).classList.add('hidden');
-  document.getElementById(`select-contacts-container${n}`).style = '';
-}
-
-function clearDueDateWarnings() {
-  document.getElementById(`required-due-date${n}`).classList.add('hidden');
-  document.getElementById(`due-date${n}`).style = '';
-}
-
-function addTitleWarnings() {
-  document.getElementById(`required-title${n}`).classList.remove('hidden');
-  document.getElementById(`task-title-input${n}`).style.border = '2px solid red';
-}
-
-function addDescriptionWarnings() {
-  document.getElementById(`required-description${n}`).classList.remove('hidden');
-  document.getElementById(`add-task-description${n}`).style = '';
-}
-
-
-function addPrioWarnings() {
-  document.getElementById(`prio-red${n}`).style = '';
-  document.getElementById(`prio-yellow${n}`).style = '';
-  document.getElementById(`prio-green${n}`).style = '';
-  document.getElementById(`required-prio${n}`).classList.remove('hidden');
-}
-
-
-function addCategoryWarnings() {
-  document.getElementById(`required-category${n}`).classList.remove('hidden');
-  document.getElementById(`select-container${n}`).style = '2px solid red';
-
-}
 
 function addAssignedTowarnings() {
   document.getElementById(`required-assigned-to${n}`).classList.remove('hidden');
   document.getElementById(`select-contacts-container${n}`).style.border = '2px solid red';
 }
 
+
+function clearAssignedTowarnings() {
+  document.getElementById(`required-assigned-to${n}`).classList.add('hidden');
+  document.getElementById(`select-contacts-container${n}`).style = '';
+}
+
+
 function addDueDateWarnings() {
   document.getElementById(`required-due-date${n}`).classList.remove('hidden');
-  document.getElementById(`due-date${n}`).style = '2px solid red';
+  document.getElementById(`due-date${n}`).style.border = '2px solid red';
 }
+
+
+function clearDueDateWarnings() {
+  document.getElementById(`required-due-date${n}`).classList.add('hidden');
+  document.getElementById(`due-date${n}`).style = '';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function choosePrio(element, color) {
   let divClicked = document.getElementById(`${element}`)
@@ -703,9 +718,9 @@ function changePrioButtonIcon(element) {
 
 function resetPrioButtons() {
   document.getElementById('prio-red0').classList.remove('prio-red')
-  document.getElementById('prio-urgent-icon0').src = 'assets/img/prio-urgent-icon.svg'
   document.getElementById('prio-yellow0').classList.remove('prio-yellow')
-  document.getElementById('prio-medium-icon0').src = 'assets/img/prio-medium-icon.svg'
   document.getElementById('prio-green0').classList.remove('prio-green')
+  document.getElementById('prio-urgent-icon0').src = 'assets/img/prio-urgent-icon.svg'
+  document.getElementById('prio-medium-icon0').src = 'assets/img/prio-medium-icon.svg'
   document.getElementById('prio-low-icon0').src = 'assets/img/prio-low-icon.svg'
 }
