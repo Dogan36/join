@@ -114,7 +114,8 @@ input {
     width: 422px;
 }
 
-.option {
+.contactsOption,
+.categoryOption {
     display: flex;
     padding: 13px 21px;
     font-size: 21px;
@@ -461,7 +462,12 @@ input[type="checkbox"]:checked::before {
 .input-outline {
     outline: none;
     cursor: pointer;
+    
 }
+
+.input-outline::placeholder{
+    color:black
+    }
 
 .curser-pointer {
     cursor: pointer;
@@ -611,4 +617,4 @@ textarea:invalid {
 input:valid,
 textarea:valid {
     border-color: initial;
-} */
+} *

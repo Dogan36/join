@@ -32,43 +32,30 @@
         </div>
         <div class="title-container">
           <p>
-            <!-- <label class="title">Category</label> -->
-            <label for="category0" class="title">New category name:</label>
+            <label for="category0" class="title">Category</label>
           </p>
 
-          <div>
-            <div id="new-category-container0" class="new-category-container d-none">
-              <div class="input-and-color-button-container">
-                <!-- <input
-                      id="category0"
-                      class="new-category-input no-outline"
-                      type="text"
-                      name="category"
-                      placeholder="New category name"
-                      required
-                    /> -->
-                <input id="category0" class="new-category-input no-outline" type="text" name="category"
-                  placeholder="New category name" required />
-                <div id="color-button-container0"></div>
-              </div>
-
-              <div class="img-container">
-                <img class="x-or-hook" onclick="closeNewTaskCategroy(0)" src="./assets/img/black-x.svg" alt="" />
-                <div class="dash-container">
-                  <span class="dash"></span>
-                </div>
-                <img onclick="checkNewCategoryName(0)" class="x-or-hook" src="./assets/img/black-check.svg" alt="" />
-              </div>
-            </div>
-          </div>
           <div id="select-container0" class="select-container">
-            <div onclick="openNewTaskCategroy(0)" class="option selectTask0">
-              <input readonly id="select-start-task-category0" class="input-outline" placeholder="Select task category">
-
-              </input>
-              <img class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />
+            
+          </div>
+          
+          <div id="new-category-container0" class="new-category-container d-none">
+            <div class="input-and-color-button-container">
+              <input id="category0" class="new-category-input no-outline" type="text" name="category"
+              placeholder="New category name" required />
+              <div id="color-button-container0"></div>
+            </div>
+            
+            <div class="img-container">
+              <img class="x-or-hook" onclick="closeAddTaskNewCategory(0)" src="./assets/img/black-x.svg" alt="" />
+              <div class="dash-container">
+                <span class="dash"></span>
+              </div>
+              <img onclick="checkNewCategoryName(0)" class="x-or-hook" src="./assets/img/black-check.svg" alt="" />
             </div>
           </div>
+          
+
           <div id="color-container0" class="color-container d-none">
             <div id="color-button0" class="purple color wheel" onclick="colorButton(0, 0)"></div>
             <div class="red color wheel" onclick="colorButton(1, 0)"></div>
@@ -80,10 +67,13 @@
           <p id="required-category0" class="required hidden">
             This field is required
           </p>
-          <p id="notice-new-category0" class="required hidden">
-            Please enter name and color
-          </p>
+         
+
+          
         </div>
+
+
+        
         <div class="title-container">
           <p>
             <label class="title">Assigned to</label>
@@ -106,15 +96,14 @@
                   onclick="openSelectContactsToAssign(0); checkMandatoryFieldAssignedTo(0);"
                   class="option selectTaskAssignedTo"
                 > -->
-            <div onclick="openAndCloseContacts(0); checkMandatoryFieldAssignedTo(0);"
-              class="option selectTaskAssignedTo">
+            <div onclick="openAndCloseContacts(0); checkMandatoryFieldAssignedTo(0);" class="contactsOption">
               <div id="select-start-task-contact">
                 Select contacts to assign
               </div>
               <img id="arrow-rotate" class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />
             </div>
             <div id="contacts0" class=" d-none">
-              <div id="invite-new-contact-container${n}" onclick="inviteNewContact()" class="option">
+              <div id="invite-new-contact-container${n}" onclick="inviteNewContact()" class="contactOption">
                 <div>Invite new contact</div>
                 <img class="contact-icon" src="assets/img/contact_icon.svg" alt="" />
               </div>
@@ -147,7 +136,7 @@
 
           <div class="prio-body-container">
             <div id="prio-red0" class="prio-button" onclick="choosePrio(id, 'prio-red')">
-      
+
               <div>Urgent</div>
               <img id="prio-urgent-icon0" class="prio-icon" src="./assets/img/prio-urgent-icon.svg" alt="" />
             </div>

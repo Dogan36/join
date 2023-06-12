@@ -45,6 +45,9 @@ function render() {
   greetingAds()
   renderBoard()
   renderContacts()
+  renderAddTaskCategorySelect()
+  renderTaskCategory(n)
+  //renderAddTaskAssignedTo()
 }
 
 
