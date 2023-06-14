@@ -67,9 +67,6 @@
           <p id="required-category0" class="required hidden">
             This field is required
           </p>
-         
-
-          
         </div>
 
 
@@ -79,38 +76,22 @@
             <label class="title">Assigned to</label>
           </p>
 
-          <div>
+          
             <div id="assigned-to-container0" class="new-category-container d-none">
               <input id="invite-new-contact0" class="no-outline" type="email" placeholder="Contact email"
                 aria-required="true" required />
-
               <div class="img-container curser-pointer">
-                <img onclick="closeSelectContactsToAssign(0)" src="./assets/img/black-x.svg" alt="" />
+                <img onclick="closeInviteNewContact(n)" src="./assets/img/black-x.svg" alt="" />
                 <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
                 <img src="./assets/img/black-check.svg" alt="" onclick="checkNewContactField(0)" />
               </div>
             </div>
-          </div>
+          
           <div id="select-contacts-container0" class="select-container">
-            <!-- <div
-                  onclick="openSelectContactsToAssign(0); checkMandatoryFieldAssignedTo(0);"
-                  class="option selectTaskAssignedTo"
-                > -->
-            <div onclick="openAndCloseContacts(0); checkMandatoryFieldAssignedTo(0);" class="contactsOption">
-              <div id="select-start-task-contact">
-                Select contacts to assign
-              </div>
-              <img id="arrow-rotate" class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />
-            </div>
-            <div id="contacts0" class=" d-none">
-              <div id="invite-new-contact-container${n}" onclick="inviteNewContact()" class="contactOption">
-                <div>Invite new contact</div>
-                <img class="contact-icon" src="assets/img/contact_icon.svg" alt="" />
-              </div>
-            </div>
+            
           </div>
           <p id="required-assigned-to0" class="required hidden">
-            This field is required
+            Please enter a valid E-Mail
           </p>
         </div>
       </div>

@@ -46,8 +46,9 @@ function render() {
   renderBoard()
   renderContacts()
   renderAddTaskCategorySelect()
-  renderTaskCategory(n)
-  //renderAddTaskAssignedTo()
+  renderAddTaskCategorys(n)
+  renderAddTaskContactsSelect()
+  renderAddTaskContacts(n)
 }
 
 

@@ -7,7 +7,7 @@ function renderContacts() {
 
 function getFirstLetter() {
   contacts.forEach(function (contact) {
-    const initial = contact.name.charAt(0);
+    const initial = contact.name.charAt(0).toUpperCase();
     if (!initials.includes(initial)) {
       initials.push(initial);
     }
@@ -19,7 +19,7 @@ function showList() {
   let contactList = document.getElementById('contactsList')
   contactList.innerHTML = ''
   for (let i = 0; i < initials.length; i++) {
-    const initial = initials[i];
+    const initial = initials[i].toUpperCase();
     contactList.innerHTML += `
         <div class="contactListSection" id="contactListSection">
           <span>${initial}</span>
@@ -39,10 +39,10 @@ function showContacts(initial) {
   for (let j = 0; j < contacts.length; j++) {
     const contact = contacts[j];
     const backgroundColor = j
-    if (contact.name.charAt(0) == initial) {
+    if (contact.name.charAt(0).toUpperCase() == initial) {
       contactList.innerHTML += `
           <div class="contactListElement" id='contact${j}' onclick="setActiveContact(${j})">
-          <div class="contantsAvatar" style="background-color: ${avatarBackgroundColors[backgroundColor]}"><span>${contact.initials}</span></div>
+          <div class="contantsAvatar" style="background-color: ${avatarBackgroundColors[backgroundColor]}"><span>${contact.initials.toUpperCase()}</span></div>
           <div class="contactsInfo"><span>${contact.name}</span><span>${contact.email}</span></div>
       </div>`
     }
