@@ -42,9 +42,10 @@
     </div>
 </div>
 <div class="addContactButtons">
-    <div class="addContactOverlayCancelButton"
-        onmouseover="onMouseOverImg('addContactCancelButtonImg', '/assets/img/buttonXsecondary.svg')"
-        onmouseout="onMouseOutImg('addContactCancelButtonImg', 'assets/img/buttonX.svg')">
+    <div class="overlayCancelButton"
+    
+        onmouseover="hover('addContactCancelButtonImg', 'assets/img/buttonXsecondary.svg'); console.log('test') "
+        onmouseout="unhover('addContactCancelButtonImg', 'assets/img/buttonX.svg')">
         <span>Cancel</span>
         <img id="addContactCancelButtonImg" src="assets/img/buttonX.svg" alt="">
     </div>

@@ -450,7 +450,7 @@ indexWrapper {
     line-height: 120%;
     color: #FFFFFF;
 }
-.addContactOverlayCancelButton {
+.overlayCancelButton {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -464,7 +464,7 @@ indexWrapper {
     cursor: pointer;
 }
 
-.addContactOverlayCancelButton span {
+.overlayCancelButton span {
     width: 69px;
     height: 25px;
     font-family: 'Inter';
@@ -582,7 +582,7 @@ indexWrapper {
 }
 
 .loginGuestButton:hover,
-.addContactOverlayCancelButton:hover,
+.overlayCancelButton:hover,
 .activeTaskMove:hover,
 .activeTaskDelete:hover {
     border: 2px solid #29ABE2;
@@ -590,7 +590,7 @@ indexWrapper {
 }
 
 .loginGuestButton:hover span,
-.addContactOverlayCancelButton:hover span {
+.overlayCancelButton:hover span {
     color: var(--secondaryColor)
 }
 
@@ -676,4 +676,24 @@ font-weight: 400;
 font-size: 23px;
 line-height: 120%;
 color: #FFFFFF;
+}
+
+.overlayContainer{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.overlay {
+    position: absolute;
+    transition: left 0.5s ease-in-out;
+    left: 150%;
+    transform: translate(-50%, -50%);
+}
+
+.overlayActive{
+    left: 50%;
+    
 }

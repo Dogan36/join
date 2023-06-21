@@ -78,88 +78,38 @@ function generateAvatarHtml(assignedTo) {
 
     if (assignedTo.length === 3) {
         for (let index = 0; index < assignedTo.length; index++) {
-            const contact = assignedTo[index];
-            const backgroundIndex = contacts.indexOf(contact);
+            let assignedToIndex = assignedTo[index]
+            let backgroundColor = avatarBackgroundColors[assignedTo[index]];
+            let contact = contacts[assignedToIndex];
            
-            avatarHtml += `<div class="boardAvatar"><span>${contact.initials}</span></div>`;
+            avatarHtml += `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>`;
         }
     } else if (assignedTo.length > 3) {
         for (let index = 0; index < 2; index++) {
-            const contact = assignedTo[index];
-            avatarHtml += `<div class="boardAvatar"><span>${contact.initials}</span></div>`;
+            let assignedToIndex = assignedTo[index]
+            let backgroundColor = avatarBackgroundColors[assignedTo[index]];
+            let contact = contacts[assignedToIndex];
+            avatarHtml += `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>`;
         }
         avatarHtml += `<div class="boardAvatar" style="background-color:black"><span>+${assignedTo.length - 2}</span></div>`;
     } else {
         for (let index = 0; index < assignedTo.length; index++) {
-            const contact = assignedTo[index];
-            avatarHtml += `<div class="boardAvatar"><span>${contact.initials}</span></div>`;
+            let assignedToIndex = assignedTo[index]
+            let backgroundColor = avatarBackgroundColors[assignedTo[index]];
+            let contact = contacts[assignedToIndex];
+            avatarHtml += `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>`;
         }
     }
 
     return avatarHtml;
 }
 
-/**
- * Opens the Add Task pop-up window in the board page. (Öffnet das Pop up Fenster Add Task in der board Seite.)
- */
-function popUpWindowaddTask() {
-    document.getElementById('container-opened-task').classList.remove('d-none');
-    document.getElementById('add-task-window').classList.remove('d-none');
-
-}
-
-/**
- * Closes the Add Task pop-up window in the board page. (Schließt das Pop up Fenster Add Task in der board Seite.)
- */
-function popUpWindowCloseAddTask() {
-    document.getElementById('container-opened-task').classList.add('d-none');
-    document.getElementById('add-task-window').classList.add('d-none');
-}
-
-function openActiveTaskOverlay(i) {
-    let activeTask = tasks[i];
-    document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
-
-    document.getElementById('container-opened-task').classList.remove('d-none');
-    document.getElementById('activeTaskOverlay').classList.remove('d-none')
-}
-
-/**
- * fade in add Task Container left
- * @param {*} i 
- * @returns 
- */
-function fadeInAddTaskContainerLeft() {
-
-
-        // let meinButton = document.getElementById('board');
-    let flyInAddTaskContainer = document.getElementById('add-task-window');
-    let addTastContainer = document.getElementById('container-opened-task');
-
-        // setTimeout(function () {
-
-        //     meinButton.click();
-
-        //     addTastContainer.classList.remove('fade-out-right');
-
-        // }, 3000);
-
-        
-            flyInAddTaskContainer.classList.add('fade-in-left');
-            flyInAddTaskContainer.classList.remove('d-none');
-            addTastContainer.classList.remove('d-none');
-            flyInAddTaskContainer.classList.remove('fade-out-right');
-            addTastContainer.classList.remove('fade-out-right');
-            // addTastContainer.classList.add('fade-in-left');
-        
-    }
-
 
 
 function addActiveTaskOverlayHTML(i) {
     let task = tasks[i]
     return `
-    <div class="activeTaskOverlay">
+    
     <div class="activeTaskCategory" style="background-color:${task.taskCategory.categoryColor}"><span>${task.taskCategory.categorytext}</span></div>
     <div class="activeTaskTitle">${task.taskTitle}</div>
     <div class="activeTaskDescription">${task.taskDescription}</div>
@@ -182,7 +132,7 @@ function addActiveTaskOverlayHTML(i) {
     </div>
     <img onclick="closeOverlay()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
 </div>
-</div>
+
     `
 }
 

@@ -15,6 +15,7 @@ function getFirstLetter() {
   initials.sort();
 }
 
+
 function showList() {
   let contactList = document.getElementById('contactsList')
   contactList.innerHTML = ''
@@ -50,34 +51,10 @@ function showContacts(initial) {
 }
 
 
-function openNewContactOverlay() {
-  document.getElementById('addContactOverlay').classList.remove('d-none')
-  document.getElementById('container-opened-task').classList.remove('d-none')
-  document.getElementById('addContactOverlay').classList.remove('fade-out-right');
-  document.getElementById('addContactOverlay').classList.add('fade-in-left');
-  document.getElementById('container-opened-task').classList.remove('fade-out-right');
-  document.getElementById('container-opened-task').classList.add('fade-in-left');
-}
 
 
-function closeNewContactOverlay(){
-  document.getElementById('addContactOverlay').classList.add('d-none')
-  document.getElementById('container-opened-task').classList.add('d-none')
-}
 
 
-function openEditContactOverlay(j) {
-  contactToEdit = j
-  setEditContactOverlay(j)
-  document.getElementById('editContactOverlay').classList.remove('d-none')
-  document.getElementById('container-opened-task').classList.remove('d-none')
-}
-
-
-function closeEditContactOverlay(){
-  document.getElementById('editContactOverlay').classList.add('d-none')
-  document.getElementById('container-opened-task').classList.add('d-none')
-}
 
 function setEditContactOverlay(j) {
   let contact = contacts[j]
@@ -129,7 +106,7 @@ function setInnerContactCardTemplate(j) {
   <div class="contactCardAvatar" style="background-color: ${avatarBackgroundColors[j]};"><span>${contact.initials}</span></div>
   <div class="contactCardContentHeader">
       <span>${contact.name}</span>
-      <div onclick="popUpWindowaddTask()"class="contactCardHeaderAddTask">
+      <div onclick="openAddTaskOverlay()"class="contactCardHeaderAddTask">
           <img src="./assets/img/contactPlus.svg" alt="">
           <span>Add Task</span>
       </div>
@@ -163,10 +140,13 @@ async function addContact() {
   contacts.push({ name: name.value, email: email.value, phone: phone.value, initials: initials });
   await setServer();
   document.getElementById('contactOverlay').reset()
-  closeNewContactOverlay()
+  closeOverlay()
   renderContacts()
   setActiveContact(contacts.length-1);
+  debugger
+  flyInButton(n)
 }
+
 
 async function editContact() {
   let name = document.getElementById('editContactName')

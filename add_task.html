@@ -4,7 +4,7 @@
     <h1>Add Task</h1>
   </div>
 
-  <form id="myForm" novalidate onsubmit="checkMandatoryFields(0); return false">
+  <form id="addTaskForm" novalidate onsubmit="checkMandatoryFields(0); return false">
     <div class="content-body-container">
       <div class="container-left">
         <div class="title-container">
@@ -103,9 +103,10 @@
           </p>
 
           <div id="date-button0">
-            <input class="title-input no-outline curser-pointer" type="date" id="due-date0" required
+            <input class="title-input no-outline cursor-pointer" type="date" id="due-date0" required
               oninput="checkMandatoryFieldDueDate(0)" />
           </div>
+          
           <p id="required-due-date0" class="required hidden">
             This field is required
           </p>
@@ -144,7 +145,7 @@
             <input id="new-subtask-piont0" class="new-category-input no-outline" type="text"
               placeholder="New Subtasks" />
             <div class="img-container curser-pointer">
-              <img onclick="closeSelectContactEmail(0)" src="./assets/img/black-x.svg" alt="" />
+              <img onclick="closeSubtask(0)" src="./assets/img/black-x.svg" alt="" />
               <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
               <img onclick="addNewSubtask(0)" src="./assets/img/black-check.svg" alt="" />
             </div>
@@ -159,12 +160,15 @@
         </div>
         <div id="add-task-subtask-point0"></div>
         <div class="submit-btns-container">
-          <button class="clear-btn" onclick="clearTheInputFields(0); return false">
-            <span>clear</span>
-            <img src="./assets/img/creatTaskX.svg" alt="" class="creat-task-clear-hover"
-              onmouseover="hover(this,'./assets/img/creatTaskHoverX.svg');"
-              onmouseout="unhover(this, './assets/img/creatTaskX.svg');" />
-          </button>
+          
+          <div class="overlayCancelButton"
+    
+
+        onmouseover="hover('addTaskClearButton', './assets/img/buttonXsecondary.svg'); console.log('test') "
+        onmouseout="unhover('addTaskClearButton', 'assets/img/buttonX.svg')">
+        <span>Cancel</span>
+        <img id="addTaskClearButton"  src="assets/img/buttonX.svg" alt="">
+    </div>
           <button type="submit" class="create-task-btn">
             <span>Create Task</span>
             <img src="./assets/img/creatTaskCheck.svg" alt="" />

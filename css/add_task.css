@@ -473,20 +473,6 @@ input[type="checkbox"]:checked::before {
     cursor: pointer;
 }
 
-/* .fly-in-button {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    position: relative;
-    bottom: -50px;
-    transition: bottom 0.5s ease-in-out;
-}
-
-.fly-in-button:hover {
-    bottom: 0;
-} */
 
 .task-added-to-board-container {
     display: flex;
@@ -520,7 +506,7 @@ input[type="checkbox"]:checked::before {
     color: white;
     transform: translateY(900%);
     animation: fly-in 1s ease-out forwards;
-
+position: absolute;
 }
 
 .creat-task-clear-hover {
@@ -542,39 +528,6 @@ input[type="checkbox"]:checked::before {
 
 
 
-
-/* .fade-out-right {
-    animation-name: fade-out-right;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fade-out-right {
-    from {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-} */
-
-
-
-
-/* 
-*WICHTIG!!!
-*Dient zur Auswahl für die JavaSript Funktionen (checkMandatoryFieldAssignedTo(n) in add_task.js) und (checkMandatoryFieldCategory(n) in add_task.js) 
-*/
-.selectTask {
-    /* empty CSS class with no rules (leere CSS-Klasse ohne Regeln) */
-}
-
-.selectTaskAssignedTo {
-    /* empty CSS class with no rules (leere CSS-Klasse ohne Regeln) */
-}
 
 
 

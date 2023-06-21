@@ -5,9 +5,7 @@ let users = [];
 let categorys = [];
 let currentUser
 let initials = [];
-let addTaskNewContacts = [];
-let addTaskContacts = [];
-let selectedContacts = []; 
+
 
 const avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#E6B333', '#3366E6', '#B34D4D',
@@ -49,6 +47,7 @@ function render() {
   renderAddTaskCategorys(n)
   renderAddTaskContactsSelect()
   renderAddTaskContacts(n)
+  setCurrentDate()
 }
 
 
@@ -59,7 +58,6 @@ async function setServer() {
   let categorysAsText = JSON.stringify(categorys);
   let addTaskNewContactsText = JSON.stringify(addTaskNewContacts);
   let addTaskContactsText = JSON.stringify(addTaskContacts);
-  console.log(tasksAsText);
   await backend.setItem('tasks', tasksAsText);
   await backend.setItem('contacts', contactsAsText);
   await backend.setItem('users', usersAsText);
@@ -102,13 +100,20 @@ function setActiveIcon() {
 
 // ändere img bei hover auf buttons
 function hover(element, url) {
-  element.setAttribute('src', url);
+  document.getElementById(`${element}`).setAttribute('src', url);
 }
 
 function unhover(element, url) {
+  document.getElementById(`${element}`).setAttribute('src', url);
+}
+
+function hoverThis(element, url) {
   element.setAttribute('src', url);
 }
 
+function unhoverThis(element, url) {
+  element.setAttribute('src', url);
+}
 
 function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
@@ -116,20 +121,6 @@ function getCurrentUser() {
 
 }
 
-
-function closeOverlay() {
-  // const container = document.getElementById('container-opened-task');
-  // container.classList.add('d-none');
-  // document.getElementById('add-task-window').classList.add('d-none');
-  document.getElementById('addContactOverlay').classList.add('fade-out-right');
-  // document.getElementById('editContactOverlay').classList.add('d-none');
-  // document.getElementById('activeTaskOverlay').classList.add('d-none');
-  document.getElementById('add-task-window').classList.remove('fade-in-left');
-  document.getElementById('add-task-window').classList.add('fade-out-right');
-  document.getElementById('container-opened-task').classList.remove('fade-in-left');
-  document.getElementById('container-opened-task').classList.add('fade-out-right');
-  
-}
 
 
 function listenerPasswordImg(element) {
@@ -397,4 +388,60 @@ function getInitials(element){
   }
   // Otherwise, return the first letter of each word
   return nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
+}
+
+
+
+function openAddTaskOverlay() {
+  showDarkBackground()
+  document.getElementById('addTaskOverlay').classList.add('overlayActive');
+}
+
+
+function openActiveTaskOverlay(i) {
+  let activeTask = tasks[i];
+  document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
+  showDarkBackground()
+  document.getElementById('activeTaskOverlay').classList.add('overlayActive')
+}
+
+function openNewContactOverlay() {
+  showDarkBackground()
+  document.getElementById('addContactOverlay').classList.add('overlayActive')
+
+}
+
+
+function closeNewContactOverlay(){
+  document.getElementById('addContactOverlay').classList.add('d-none')
+  document.getElementById('container-opened-task').classList.add('d-none')
+}
+
+function openEditContactOverlay(j) {
+  contactToEdit = j
+  setEditContactOverlay(j)
+  document.getElementById('editContactOverlay').classList.add('overlayActive')
+  showDarkBackground()
+}
+
+function showDarkBackground(){
+  document.getElementById('darkBackgroundContainer').classList.remove('d-none');
+}
+
+function closeDarkBackground(){
+  document.getElementById('darkBackgroundContainer').classList.add('d-none');
+}
+
+function closeOverlay() {
+ let overlay = document.querySelector('.overlayActive')
+ if (overlay) overlay.classList.remove('overlayActive');
+  setTimeout(closeDarkBackground, 500)
+}
+
+
+
+
+function closeEditContactOverlay(){
+  document.getElementById('editContactOverlay').classList.add('d-none')
+  document.getElementById('container-opened-task').classList.add('d-none')
 }

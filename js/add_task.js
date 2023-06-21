@@ -1,11 +1,10 @@
 let title;
 let description;
 let category
-let selectContacts = [];
+let selectedContacts = [];
 let dueDate;
 let prio;
-let tasksJsonArrays = []
-let addTaskSelectPrios
+let subtasks = []
 let addTaskNewSubtasks = [];
 let buttonBackgroundColor = [
   '#800080',   // Purple
@@ -49,160 +48,26 @@ function checkMandatoryFields(n) {
   errorCount += checkPrio(n) ? 1 : 0;
   if (errorCount > 0) return;
   addTask(n)
+
 }
 
 async function addTask(n) {
-  title = document.getElementById(`task-title-input${n}`).value;
-  description = document.getElementById(`add-task-description${n}`).value;
-  dueDate = document.getElementById(`due-date${n}`).value;
+  selectContactToAssign(n)
   await addTaskJsonArray(); /* Das addTaskJasonArray() hollt sich die restlichen Punkte aus den globalen Variablen   */
-  document.getElementById('myForm').reset()
-  deleteAddTaskFields(n);
-  await init();
-  renderSelectTaskCategory(n);
-  deleteSelectedContacts();
-  flyIngButton(n)
+  flyInButton(n)
   goToBoardPage(n)
+  
 }
-
-
-
-
-function flyIngButton(n) {
-  let flyInButton = document.getElementById(`fly-in-button${n}`);
-  flyInButton.classList.remove('d-none');
-
-
-}
-
-
-
-function closeFlyIngButton(n) {
-  let flyInButton = document.getElementById(`fly-in-button${n}`);
-  flyInButton.classList.add('d-none');
-}
-
-function goToBoardPage(n) {
-  let meinButton = document.getElementById('board');
-  let flyInButton = document.getElementById(`fly-in-button${n}`);
-  let addTaskContainer = document.getElementById('content-add-task-container');
-  let addTaskWindowOverlayContainer = document.getElementById('container-opened-task');
-  let addTaskWindowContainer = document.getElementById('add-task-window');
-  let taskaddedtoboardButton = document.getElementById('fly-in-button1');
-
-  setTimeout(function () {
-
-    meinButton.click();
-    addTaskWindowOverlayContainer.classList.remove('fade-in-left');
-    addTaskContainer.classList.remove('fade-out-right');
-    addTaskContainer.classList.add('fade-out-right');
-    addTaskWindowContainer.classList.remove('fade-in-left');
-    addTaskWindowContainer.classList.add('fade-out-right');
-    addTaskWindowOverlayContainer.classList.add('fade-out-right');
-
-  }, 3000);
-
-  setTimeout(function () {
-
-    addTaskContainer.classList.add('fade-out-right');
-    taskaddedtoboardButton.classList.add('fade-out-right');
-
-  }, 2000);
-
-  setTimeout(function () {
-
-    addTaskContainer.classList.remove('fade-out-right');
-    taskaddedtoboardButton.classList.remove('fade-out-right');
-
-  }, 3000);
-
-
-}
-
-
-
-function clearTheInputFields(n) {
-  deleteAddTaskFields(n)
-  renderSelectTaskCategory(n);
-  deleteSelectedContacts();
-  deleteRedBorderAndRequiredText(n)
-}
-
-
-
-function deleteAddTaskFields(n) {
-  document.getElementById(`task-title-input${n}`).value = '';
-  document.getElementById(`add-task-description${n}`).value = '';
-  document.getElementById(`due-date${n}`).value = '';
-  document.getElementById(`add-task-subtask-point${n}`).innerHTML = '';
-  /* Prio button initial situation (Prio Button in Ausgangssituation setzen)  */
-  resetPrioButtons()
-}
-
-
-function seltionContacts(n) {
-  dueDate = document.getElementById(`due-date${n}`).value;
-}
-
-
-
-
-
-function openSubtask(n) {
-  document.getElementById(`add-new-subtask-container${n}`).classList.add('d-none');
-  document.getElementById(`new-subtask-container${n}`).classList.remove('d-none');
-}
-
-function addNewSubtask(n) {
-  addSubtask(n);
-  closeSubtask(n);
-  renderSubtaskPoint(n);
-}
-
-function closeSubtask(n) {
-  document.getElementById(`add-new-subtask-container${n}`).classList.remove('d-none');
-  document.getElementById(`new-subtask-container${n}`).classList.add('d-none');
-}
-
-function addSubtask(n) {
-
-  let newSubtask = document.getElementById(`new-subtask-piont${n}`);
-  let TaskJasonArray = {
-    'subtaskTitle': newSubtask.value,
-    'subtaskDone': false
-  }
-  addTaskNewSubtasks.push(TaskJasonArray);
-  newSubtask.value = '';
-  console.log(addTaskNewSubtasks)
-}
-
-function renderSubtaskPoint(n) {
-
-  let SubtaskPoint = document.getElementById(`add-task-subtask-point${n}`);
-  SubtaskPoint.innerHTML = '';
-  for (let i = 0; i < addTaskNewSubtasks.length; i++) {
-    const point = addTaskNewSubtasks[i];
-    SubtaskPoint.innerHTML += `
-    <div class="checkbox-container">
-      <input class="checkbox" type="checkbox">
-      <div>${point['subtaskTitle']}</div>
-    </div>`;
-  }
-}
-
-/**
- * Add Task Jason Array
- */
 
 async function addTaskJsonArray() {
   let taskJsonArray = {
-    'taskTitle': title,
-    'taskDescription': description,
+    'taskTitle': title = document.getElementById(`task-title-input${n}`).value,
+    'taskDescription': document.getElementById(`add-task-description${n}`).value,
     'taskCategory': category,
     'assignedTo': selectedContacts,
-    'dueDate': dueDate,
-    'prio': addTaskSelectPrios,
-    'subtasks': addTaskNewSubtasks,
+    'dueDate': document.getElementById(`due-date${n}`).value,
+    'prio': prio,
+    'subtasks': subtasks,
     'taskProgress': 'toDo',
   }
   tasks.push(taskJsonArray);
@@ -214,7 +79,37 @@ async function addTaskJsonArray() {
 
 
 
-function deleteRedBorderAndRequiredText(n) {
+function clearTheInputFields(n) {
+  deleteAddTaskFields(n)
+  clearWarnings(n)
+}
+
+
+
+function deleteAddTaskFields(n) {
+  document.getElementById(`task-title-input${n}`).value = '';
+  document.getElementById(`add-task-description${n}`).value = '';
+  document.getElementById(`due-date${n}`).value = '';
+  document.getElementById(`add-task-subtask-point${n}`).innerHTML = '';
+
+  resetPrioButtons()
+}
+
+
+
+
+/**
+ * Add Task Jason Array
+ */
+
+
+
+
+
+
+
+
+function clearWarnings(n) {
   clearTitleWarnings(n)
   clearDescriptionWarnings(n)
   clearCategoryWarnings(n)
@@ -313,12 +208,20 @@ function clearDueDateWarnings() {
 }
 
 
-
 function choosePrio(element, color) {
+  clearPrioWarnings()
   let divClicked = document.getElementById(`${element}`)
+  setPrio(element)
   resetPrioButtons()
   divClicked.classList.add(`${color}`)
   changePrioButtonIcon(element)
+}
+
+
+function setPrio(element) {
+  if (element == 'prio-red0') prio = prios[0]
+  if (element == 'prio-yellow0') prio = prios[1]
+  if (element == 'prio-green0') prio = prios[2]
 }
 
 
@@ -341,35 +244,39 @@ function resetPrioButtons() {
 
 function checkMandatoryFieldTitle(n) {
   let inputFeldTitle = document.getElementById(`task-title-input${n}`);
-  if (inputFeldTitle.value === '') addTitleWarnings()
+  if (inputFeldTitle.value === '') {
+    addTitleWarnings()
+    return true
+  }
   else clearTitleWarnings()
 }
 
 
 function checkMandatoryFieldDescription(n) {
   let textareaFeldDescription = document.getElementById(`add-task-description${n}`);
-  if (textareaFeldDescription.value === '') addDescriptionWarnings()
+  if (textareaFeldDescription.value === '') {
+    addDescriptionWarnings()
+    return true}
   else clearDescriptionWarnings()
 }
 
 
-function checkMandatoryFieldAssignedTo(n) {
-  let contactClassList = document.getElementById(`contacts${n}`);
-  if (selectedContacts.length === 0 && !contactClassList.classList.contains('display-flex')) addAssignedTowarnings()
-  else clearAssignedTowarnings()
-}
 
 
 function checkMandatoryFieldDueDate(n) {
   let inputFeldDueDate = document.getElementById(`due-date${n}`);
-  if (inputFeldDueDate.value === '') addDueDateWarnings()
+  if (inputFeldDueDate.value === '') {
+    addDueDateWarnings()
+    return true}
   else clearDueDateWarnings()
 }
 
 
 function checkMandatoryFieldCategory(n) {
-  console.log(document.querySelector(`.categoryOption.selectTask`));
-  if (category=='') addCategoryWarnings()
+ 
+  if (category == undefined) {
+    addCategoryWarnings();
+    return true}
   else clearCategoryWarnings(n)
 }
 
@@ -440,14 +347,14 @@ function openAddTaskCategory() {
 function closeAddTaskCategory() {
   document.getElementById(`content-category-container`).classList.add('d-none')
   document.querySelector(`.arrow-icon`).classList.remove('arrow-rotate')
-  category=''
+  category = ''
   checkMandatoryFieldCategory(n)
 }
 
 
 function openNewCategoryInput() {
-  clearCategoryWarnings()
-  category==''
+  // clearCategoryWarnings()
+  category == ''
   document.getElementById('new-category-container0').classList.remove('d-none');
   document.getElementById('color-container0').classList.remove('d-none');
   document.getElementById('select-container0').classList.add('d-none');
@@ -518,8 +425,8 @@ function categoryTemplate(category) {
 }
 
 
-function renderAddTaskContactsSelect(){
-  document.getElementById(`select-contacts-container0`).innerHTML =`
+function renderAddTaskContactsSelect() {
+  document.getElementById(`select-contacts-container0`).innerHTML = `
   <div onclick="toggleAddTaskContacts(0)" class="contactsOption">
               <div id="select-start-task-contact">
                 Select contacts to assign
@@ -531,28 +438,28 @@ function renderAddTaskContactsSelect(){
           `
 }
 
-function renderAddTaskContacts(){
+function renderAddTaskContacts() {
   let content = document.getElementById(`contacts${n}`);
-    content.innerHTML = '';
-    // renderCloseTaskCategory(n, content)
-    content.innerHTML = `
+  content.innerHTML = '';
+  // renderCloseTaskCategory(n, content)
+  content.innerHTML = `
     <div id="invite-new-contact-container${n}" onclick="openInviteNewContact(${n})" class="contactsOption">
       <div>Invite new contact</div>
       <img class="contact-icon" src="assets/img/contact_icon.svg" alt="">
     </div>`;
-  
-    for (let i = 0; i < contacts.length; i++) {
-      const contact = contacts[i];
-      content.innerHTML +=/*html*/`
+
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    content.innerHTML +=/*html*/`
           <div class="contactsOption">
         <div class="selection-point-container">
           <div>${contact['name']}</div>
         </div>
         <div>
-          <input id='${contact['name'] + n}' type="checkbox" name="option[]" value="Option ${i}" onclick="selectContactToAssign(${n},'contacts[i]')">
+          <input id='${contact['name'] + n}' type="checkbox" name="option[]" value="Option ${i}")">
         </div>    
       </div>`;
-    }
+  }
 }
 
 
@@ -575,7 +482,7 @@ function openAddTaskContacts() {
 function closeAddTaskContacts() {
   document.getElementById(`contacts0`).classList.add('d-none')
   document.getElementById(`arrow-rotate`).classList.remove('arrow-rotate')
-  
+
 }
 
 function openInviteNewContact(n) {
@@ -585,7 +492,7 @@ function openInviteNewContact(n) {
 
 function closeInviteNewContact(n) {
   clearInviteNewContactValue()
-  document.getElementById(`invite-new-contact${n}`).value=''
+  document.getElementById(`invite-new-contact${n}`).value = ''
   document.getElementById(`select-contacts-container${n}`).classList.remove('d-none');
   document.getElementById(`assigned-to-container${n}`).classList.add('d-none');
 }
@@ -605,7 +512,7 @@ async function addInviteContact() {
   let email = document.getElementById(`invite-new-contact${n}`);
   let name = email.value.split('@')[0];
   let phone = ""
-  let initials = document.getElementById(`invite-new-contact${n}`).value.charAt(0).toUpperCase() ;
+  let initials = document.getElementById(`invite-new-contact${n}`).value.charAt(0).toUpperCase();
   contacts.unshift({ name: name, email: email.value, phone: phone, initials: initials });
   await setServer();
   renderContacts()
@@ -614,31 +521,95 @@ async function addInviteContact() {
   openAddTaskContacts()
 }
 
-function clearInviteNewContactValue(){
-  document.getElementById(`invite-new-contact${n}`).value=''
+function clearInviteNewContactValue() {
+  document.getElementById(`invite-new-contact${n}`).value = ''
 }
 
 function selectContactToAssign(n) {
   let checkboxes = document.getElementsByName("option[]");
-  // toggleCheckboxes()
-  // for (let i = 0; i <(selectedContacts.length); i++) {
-  //   let contactName = selectedContacts[i]['name']
-  //   if (selectedContacts[i]['name'].includes(contactName) === true) {
-  //     document.getElementById(`${selectedContacts[i]['name'] + n}`).checked = true ;
-  //   }  
-  // }
-  console.log(selectedContacts);
-
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      if (addTaskContacts[i]['name'] && !selectedContacts.some(contact => contact.name === addTaskContacts[i]['name'])) {
-        selectedContacts.push(addTaskContacts[i]);
-      }
-    } else {
-      let index = selectedContacts.findIndex(contact => contact.name === addTaskContacts[i].name);
-      if (index !== -1) {
-        selectedContacts.splice(index, 1);
-      }
+      selectedContacts.push(i);
     }
   }
+}
+
+function deleteSelectedContacts() {
+  let checkboxes = document.getElementsByName("option[]");
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = false 
+  }
+}
+
+// Funktion, um das aktuelle Datum im Format "yyyy-mm-dd" zu erhalten
+function getCurrentDate() {
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = String(today.getMonth() + 1).padStart(2, '0');
+  var day = String(today.getDate()).padStart(2, '0');
+  return year + '-' + month + '-' + day;
+}
+
+function setCurrentDate() {
+  document.getElementById('due-date0').setAttribute('min', getCurrentDate());
+}
+
+function openSubtask(n) {
+  document.getElementById(`add-new-subtask-container${n}`).classList.add('d-none');
+  document.getElementById(`new-subtask-container${n}`).classList.remove('d-none');
+}
+
+function closeSubtask(n) {
+  document.getElementById(`add-new-subtask-container${n}`).classList.remove('d-none');
+  document.getElementById(`new-subtask-container${n}`).classList.add('d-none');
+}
+
+function addNewSubtask(n) {
+  let newSubtaskInput = document.getElementById(`new-subtask-piont${n}`);
+  if (newSubtaskInput.value !== '') {
+    let newSubtask = {
+      'subtaskTitle': newSubtaskInput.value,
+      'subtaskDone': false
+    }
+    subtasks.push(newSubtask)
+    newSubtaskInput.value = '';
+    renderSubtasks(n)
+  }
+}
+
+function renderSubtasks(n) {
+  let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
+  subtasksContainer.innerHTML = '';
+  for (let i = 0; i < subtasks.length; i++) {
+    const subtask = subtasks[i];
+    subtasksContainer.innerHTML += `
+    <div class="checkbox-container">
+  <input class="checkbox" type="checkbox" checked>
+  <div>${subtask['subtaskTitle']}</div>
+</div>
+`;
+  }
+}
+
+function flyInButton(n) {
+  let flyInButton = document.getElementById(`fly-in-button${n}`);
+  flyInButton.classList.remove('d-none');
+}
+
+function closeFlyInButton(n) {
+  let flyInButton = document.getElementById(`fly-in-button${n}`);
+  flyInButton.classList.add('d-none');
+}
+
+function goToBoardPage(n) {
+  let meinButton = document.getElementById('board');
+  renderBoard()
+  setTimeout(function () {
+    meinButton.click();
+    document.getElementById('addTaskForm').reset()
+    deleteAddTaskFields(n);
+    deleteSelectedContacts();
+    closeOverlay()
+    closeFlyInButton(n)
+  }, 3000);
 }
