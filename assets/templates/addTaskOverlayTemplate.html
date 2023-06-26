@@ -1,364 +1,179 @@
-<div id="content-add-tast-container" class="content-add-tast-container">
-  <div class="content-add-tast-body-container">
-    <div class="content-head-container">
-      <div class="add-tast-container">
-        <div class="hader-add-task-container">
-          <h1>Add Task</h1>
+<div class="add-task">
+  <div class="add-task-header">
+    <h1>Add Task</h1>
+  </div>
+
+  <form id="addTaskForm" novalidate onsubmit="checkMandatoryFields(1); return false">
+    <div class="content-body-container">
+      <div class="container-left">
+        <div class="title-container">
+          <p>
+            <label class="title">Title</label>
+          </p>
+
+          <input id="task-title-input1" class="title-input no-outline" type="text" placeholder="Enter a title"
+            title="Geben Sie hier Ihren Text ein" autocomplete="off" required oninput="checkMandatoryFieldTitle(1)" />
+          <p id="required-title1" class="required hidden">
+            This field is required
+          </p>
+        </div>
+        <div class="title-container">
+          <p>
+            <label class="title">Description</label>
+          </p>
+
+          <textarea id="add-task-description1" class="description-field no-outline" type="text"
+            placeholder="Enter a title" title="Geben Sie hier Ihren Text ein" required
+            oninput="checkMandatoryFieldDescription(1)"></textarea>
+          <p id="required-description1" class="required hidden">
+            This field is required
+          </p>
+        </div>
+        <div class="title-container">
+          <p>
+            <label for="category1" class="title">Category</label>
+          </p>
+
+          <div id="select-container1" class="select-container">
+
+          </div>
+
+          <div id="new-category-container1" class="new-category-container d-none">
+            <div class="input-and-color-button-container">
+              <input id="category1" class="new-category-input no-outline" type="text" name="category"
+                placeholder="New category name" required />
+              <div id="color-button-container1"></div>
+            </div>
+
+            <div class="img-container">
+              <img class="x-or-hook" onclick="closeAddTaskNewCategory(1)" src="./assets/img/black-x.svg" alt="" />
+              <div class="dash-container">
+                <span class="dash"></span>
+              </div>
+              <img onclick="checkNewCategoryName(1)" class="x-or-hook" src="./assets/img/black-check.svg" alt="" />
+            </div>
+          </div>
+
+
+          <div id="color-container1" class="color-container d-none">
+            <div id="color-button1" class="purple color wheel" onclick="colorButton(1, 1)"></div>
+            <div class="red color wheel" onclick="colorButton(1, 1)"></div>
+            <div class="green color wheel" onclick="colorButton(2, 1)"></div>
+            <div class="yellow color wheel" onclick="colorButton(3, 1)"></div>
+            <div class="pink color wheel" onclick="colorButton(4, 1)"></div>
+            <div class="blue color wheel" onclick="colorButton(5, 1)"></div>
+          </div>
+          <p id="required-category1" class="required hidden">
+            This field is required
+          </p>
+        </div>
+
+
+
+        <div class="title-container">
+          <p>
+            <label class="title">Assigned to</label>
+          </p>
+
+
+          <div id="assigned-to-container1" class="new-category-container d-none">
+            <input id="invite-new-contact1" class="no-outline" type="email" placeholder="Contact email"
+              aria-required="true" required />
+            <div class="img-container curser-pointer">
+              <img onclick="closeInviteNewContact(1)" src="./assets/img/black-x.svg" alt="" />
+              <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
+              <img src="./assets/img/black-check.svg" alt="" onclick="checkNewContactField(1)" />
+            </div>
+          </div>
+
+          <div id="select-contacts-container1" class="select-container">
+
+          </div>
+          <p id="required-assigned-to1" class="required hidden">
+            Please enter a valid E-Mail
+          </p>
         </div>
       </div>
-      <form id="myForm" novalidate onsubmit="checkMandatoryFields(1); return false">
-        <div class="content-body-container">
-          <div class="container-left">
-            <div class="title-container">
-              <p>
-                <label class="title">Title</label>
-              </p>
+      <div class="container-center"></div>
+      <div class="container-right">
+        <div class="title-container">
+          <p>
+            <label class="title">Due date</label>
+          </p>
 
-              <input
-                id="task-title-input1"
-                class="title-input no-outline"
-                type="text"
-                placeholder="Enter a title"
-                title="Geben Sie hier Ihren Text ein"
-                autocomplete="off"
-                required
-                oninput="checkMandatoryFieldTitle(1)"
-              />
-              <p id="required-title1" class="required hidden">
-                This field is required
-              </p>
-            </div>
-            <div class="title-container">
-              <p>
-                <label class="title">Description</label>
-              </p>
-
-              <textarea
-                id="add-task-description1"
-                class="description-field no-outline"
-                type="text"
-                placeholder="Enter a title"
-                title="Geben Sie hier Ihren Text ein"
-                required
-                oninput="checkMandatoryFieldDescription(1)"
-              ></textarea>
-              <p id="required-description1" class="required hidden">
-                This field is required
-              </p>
-            </div>
-            <div class="title-container">
-              <p>
-                
-                <label for="category1" class="title">New category name:</label>
-              </p>
-
-              <div>
-                <div
-                  id="new-category-container1"
-                  class="new-category-container d-none"
-                >
-                  <div class="input-and-color-button-container">
-                    <!-- <input
-                      id="category1"
-                      class="new-category-input no-outline"
-                      type="text"
-                      name="category"
-                      placeholder="New category name"
-                      required
-                    /> -->
-                    <input
-                      id="category1"
-                      class="new-category-input no-outline"
-                      type="text"
-                      name="category"
-                      placeholder="New category name"
-                      required
-                    />
-                    <div id="color-button-container1"></div>
-                  </div>
-
-                  <div class="img-container">
-                    <img
-                      class="x-or-hook"
-                      onclick="closeNewTaskCategroy(1)"
-                      src="./assets/img/black-x.svg"
-                      alt=""
-                    />
-                    <div class="dash-contaier">
-                      <span class="dash"></span>
-                    </div>
-                    <img
-                      onclick="checkNewCategoryName(1)"
-                      class="x-or-hook"
-                      src="./assets/img/black-check.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div id="select-container1" class="select-container">
-                <div onclick="openNewTaskCategroy(1)" class="option selectTask1">
-                  <input readonly id="select-start-task-category1" class="input-outline" placeholder="Select task category">
-                    
-                  </input>
-                  <img
-                    class="arrow-icon"
-                    src="./assets/img/arrow_icon.svg"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div id="color-container1" class="color-container d-none">
-                <div
-                  id="color-button1"
-                  class="purple color wheel"
-                  onclick="colorButton(0, 1)"
-                ></div>
-                <div class="red color wheel" onclick="colorButton(1, 1)"></div>
-                <div
-                  class="green color wheel"
-                  onclick="colorButton(2, 1)"
-                ></div>
-                <div
-                  class="yellow color wheel"
-                  onclick="colorButton(3, 1)"
-                ></div>
-                <div class="pink color wheel" onclick="colorButton(4, 1)"></div>
-                <div class="blue color wheel" onclick="colorButton(5, 1)"></div>
-              </div>
-              <p id="required-category1" class="required hidden">
-                This field is required
-              </p>
-              <p id="notice-new-category1" class="required hidden">
-                Please enter name and color
-              </p>
-            </div>
-            <div class="title-container">
-              <p>
-                <label class="title">Assigned to</label>
-              </p>
-
-              <div>
-                <div
-                  id="assigned-to-container1"
-                  class="new-category-container d-none"
-                >
-                  <input
-                    id="invite-new-contact1"
-                    class="no-outline"
-                    type="email"
-                    placeholder="Contact email"
-                    aria-required="true"
-                    required
-                  />
-
-                  <div class="img-container curser-pointer">
-                    <img
-                      onclick="closeSelectContactsToAssign(1)"
-                      src="./assets/img/black-x.svg"
-                      alt=""
-                    />
-                    <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
-                    <img
-                      src="./assets/img/black-check.svg"
-                      alt=""
-                      onclick="checkNewContactField(1)"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div id="select-contacts-container1" class="select-container">
-                
-                <div
-                  onclick="openAndCloseContacts(1); checkMandatoryFieldAssignedTo(1);"
-                  class="option selectTaskAssignedTo"
-                >
-                  <div id="select-start-task-contact">
-                    Select contacts to assign
-                  </div>
-                  <img
-                    id="arrow-rotate"
-                    class="arrow-icon"
-                    src="./assets/img/arrow_icon.svg"
-                    alt=""
-                  />
-                </div>
-                <div id="contacts1" class=" d-none">
-                  <div
-                    id="invite-new-contact-container${n}"
-                    onclick="inviteNewContact()"
-                    class="option"
-                  >
-                    <div>Invite new contact</div>
-                    <img
-                      class="contact-icon"
-                      src="assets/img/contact_icon.svg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <p id="required-assigned-to1" class="required hidden">
-                This field is required
-              </p>
-            </div>
+          <div id="date-button1">
+            <input class="title-input no-outline cursor-pointer" type="date" id="due-date1" required
+              oninput="checkMandatoryFieldDueDate(1)" />
           </div>
-          <div class="container-center"></div>
-          <div class="container-right">
-            <div class="title-container">
-              <p>
-                <label class="title">Due date</label>
-              </p>
 
-              <div id="date-button1">
-                <input
-                  class="title-input no-outline curser-pointer"
-                  type="date"
-                  id="due-date1"
-                  required
-                  oninput="checkMandatoryFieldDueDate(1)"
-                />
-              </div>
-              <p id="required-due-date1" class="required hidden">
-                This field is required
-              </p>
-            </div>
-            <div class="prio-container">
-              <p>
-                <label class="title">Prio</label>
-              </p>
-
-              <div class="prio-body-container">
-                <div
-                  id="prio-red1"
-                  class="prio-button"
-                  onclick="selectPrioOnOrOff('prio-red','divRed', 'Urgent', '#ff3c00', './assets/img/prio-urgent-icon.svg', './assets/img/prio-urgent-white-icon.svg', 1)"
-                >
-                  <div>Urgent</div>
-                  <img
-                    id="prio-urgent-icon1"
-                    class="prio-icon"
-                    src="./assets/img/prio-urgent-icon.svg"
-                    alt=""
-                  />
-                  <img
-                    id="prio-urgent-white-icon1"
-                    class="prio-icon d-none"
-                    src="./assets/img/prio-urgent-white-icon.svg"
-                    alt=""
-                  />
-                </div>
-                <div
-                  id="prio-yellow1"
-                  class="prio-button"
-                  onclick="selectPrioOnOrOff('prio-yellow', 'divYellow', 'Medium', '#ffa800', './assets/img/prio-medium-icon.svg', './assets/img/prio-medium-white-icon.svg', 1)"
-                >
-                  <div>Medium</div>
-                  <img
-                    id="prio-medium-icon1"
-                    class="prio-icon"
-                    src="./assets/img/prio-medium-icon.svg"
-                    alt=""
-                  />
-                  <img
-                    id="prio-medium-white-icon1"
-                    class="prio-icon d-none"
-                    src="./assets/img/prio-medium-white-icon.svg"
-                    alt=""
-                  />
-                </div>
-                <div
-                  id="prio-green1"
-                  class="prio-button"
-                  onclick="selectPrioOnOrOff('prio-green', 'divGreen', 'Low', '#7ae229', './assets/img/prio-low-icon.svg', './assets/img/prio-low-white-icon.svg', 1)"
-                >
-                  <div>Low</div>
-                  <img
-                    id="prio-low-icon1"
-                    class="prio-icon"
-                    src="./assets/img/prio-low-icon.svg"
-                    alt=""
-                  />
-                  <img
-                    id="prio-low-white-icon1"
-                    class="prio-icon d-none"
-                    src="./assets/img/prio-low-white-icon.svg"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <p id="required-prio1" class="required hidden">
-                This field is required
-              </p>
-            </div>
-            <div class="subtask-container">
-              <p>
-                <label class="title">Subtasks</label>
-              </p>
-
-              <div
-                id="new-subtask-container1"
-                class="new-category-container d-none "
-              >
-                <input
-                  id="new-subtask-piont1"
-                  class="new-category-input no-outline"
-                  type="text"
-                  placeholder="New Subtasks"
-                />
-                <div class="img-container curser-pointer">
-                  <img
-                    onclick="closeSelectContactEmail(1)"
-                    src="./assets/img/black-x.svg"
-                    alt=""
-                  />
-                  <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
-                  <img
-                    onclick="addNewSubtask(1)"
-                    src="./assets/img/black-check.svg"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div
-                id="add-new-subtask-container1"
-                class="new-category-container curser-pointer"
-                onclick="openSubtask(1)"
-              >
-                <div class="Add-new-subtask">Add new subtask</div>
-                <img
-                  class="plus-icon"
-                  src="./assets/img/plus-icon.svg"
-                  alt=""
-                />
-              </div>
-              <p id="required1" class="required hidden">
-                This field is required
-              </p>
-            </div>
-            <div id="add-task-subtask-point1"></div>
-            <div class="submit-btns-container">
-              <button  class="clear-btn" onclick="clearTheInputFields(1); return false">
-                <span>clear</span>
-                <img src="./assets/img/black-x.svg" alt="" />
-              </button>
-              <button type="submit" class="create-task-btn">
-                <span>Create Task</span>
-                <img src="./join/assets/img/creatTaskCheck.svg" alt="" />
-              </button>
-            </div>
-          </div>
+          <p id="required-due-date1" class="required hidden">
+            This field is required
+          </p>
         </div>
-      </form>
+        <div class="prio-container">
+          <p>
+            <label class="title">Prio</label>
+          </p>
+
+          <div class="prio-body-container">
+            <div id="prio-red1" class="prio-button" onclick="choosePrio(id, 'prio-red')">
+
+              <div>Urgent</div>
+              <img id="prio-urgent-icon1" class="prio-icon" src="./assets/img/prio-urgent-icon.svg" alt="" />
+            </div>
+            <div id="prio-yellow1" class="prio-button" onclick="choosePrio(id, 'prio-yellow')">
+              <div>Medium</div>
+              <img id="prio-medium-icon1" class="prio-icon" src="./assets/img/prio-medium-icon.svg" alt="" />
+            </div>
+            <div id="prio-green1" class="prio-button" onclick="choosePrio(id, 'prio-green')">
+              <div>Low</div>
+              <img id="prio-low-icon1" class="prio-icon" src="./assets/img/prio-low-icon.svg" alt="" />
+            </div>
+          </div>
+
+          <p id="required-prio1" class="required hidden">
+            This field is required
+          </p>
+        </div>
+        <div class="subtask-container">
+          <p>
+            <label class="title">Subtasks</label>
+          </p>
+
+          <div id="new-subtask-container1" class="new-category-container d-none ">
+            <input id="new-subtask-piont1" class="new-category-input no-outline" type="text"
+              placeholder="New Subtasks" />
+            <div class="img-container curser-pointer">
+              <img onclick="closeSubtask(1)" src="./assets/img/black-x.svg" alt="" />
+              <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
+              <img onclick="addNewSubtask(1)" src="./assets/img/black-check.svg" alt="" />
+            </div>
+          </div>
+          <div id="add-new-subtask-container1" class="new-category-container curser-pointer" onclick="openSubtask(1)">
+            <div class="Add-new-subtask">Add new subtask</div>
+            <img class="plus-icon" src="./assets/img/plus-icon.svg" alt="" />
+          </div>
+          <p id="required1" class="required hidden">
+            This field is required
+          </p>
+        </div>
+        <div id="add-task-subtask-point1"></div>
+        <div class="submit-btns-container">
+
+          <div class="overlayCancelButton" onclick="clearTheInputFields(1)"
+            onmouseover="hover('addTaskClearButton', './assets/img/buttonXsecondary.svg'); console.log('test') "
+            onmouseout="unhover('addTaskClearButton', 'assets/img/buttonX.svg')">
+            <span>Cancel</span>
+            <img id="addTaskClearButton" src="assets/img/buttonX.svg" alt="">
+          </div>
+          <button type="submit" class="create-task-btn">
+            <span>Create Task</span>
+            <img src="./assets/img/creatTaskCheck.svg" alt="" />
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-
+  </form>
 </div>
 
-<div class="task-added-to-board-button-container">
-  <div id="fly-in-button1" class="fly-in task-added-to-board-container d-none">
-    <div class="task-added-to-board">Task added to board</div>
-    <img src="./assets/img/boardIcon.svg" alt="">
-  </div>
-</div>
 

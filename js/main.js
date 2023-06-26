@@ -7,7 +7,7 @@ let currentUser
 let initials = [];
 
 
-const avatarBackgroundColors = ['#FF6633', '#FF33FF',
+let avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#E6B333', '#3366E6', '#B34D4D',
   '#80B300', '#809900', '#6680B3', '#66991A',
   '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A',
@@ -18,7 +18,7 @@ const avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
   '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 
-const categoryColors = ['#0072B2', '#E69F00', '#009E73', '#F0E442', '#CC79A7', '#56B4E9', '#D55E00', '#5D5D5D', '#CC6633', '#66CCEE', '#B2B2B2', '#999933'];
+let categoryColors = ['#0072B2', '#E69F00', '#009E73', '#F0E442', '#CC79A7', '#56B4E9', '#D55E00', '#5D5D5D', '#CC6633', '#66CCEE', '#B2B2B2', '#999933'];
 
 let visibleIcon = 'assets/img/visibleIcon.svg';
 let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
@@ -43,9 +43,9 @@ function render() {
   greetingAds()
   renderBoard()
   renderContacts()
-  renderAddTaskCategorySelect()
+  renderAddTaskCategorySelect(n)
   renderAddTaskCategorys(n)
-  renderAddTaskContactsSelect()
+  renderAddTaskContactsSelect(n)
   renderAddTaskContacts(n)
   setCurrentDate()
 }
@@ -225,7 +225,7 @@ function checkInputsReset() {
 
 
 function checkInputEmpty(element) {
-  const input = document.getElementById(`${element}`);
+  let input = document.getElementById(`${element}`);
   if (input.value === '') {
       document.getElementById(`${element}Error`).classList.remove('d-none');
       return true
@@ -234,7 +234,7 @@ function checkInputEmpty(element) {
 
 
 function checkEmailFormat(element) {
-  const input = document.getElementById(`${element}`);
+  let input = document.getElementById(`${element}`);
   if (input.value.indexOf('@') === -1 && input.value.length > 0) {
       document.getElementById(`${element}FormatError`).classList.remove('d-none');
       return true
@@ -243,7 +243,7 @@ function checkEmailFormat(element) {
 
 
 function checkEmailExist(element) {
-  const input = document.getElementById(`${element}`);
+  let input = document.getElementById(`${element}`);
   let emailFound = false;
   for (var i = 0; i < users.length; i++) {
       if (users[i].email === input.value) {
@@ -256,7 +256,7 @@ function checkEmailExist(element) {
 
 
 function checkEmailDoesntExist(element) {
-  const input = document.getElementById(`${element}`);
+  let input = document.getElementById(`${element}`);
   let emailFound = false;
   for (var i = 0; i < users.length; i++) {
       if (users[i].email === input.value) {
@@ -280,7 +280,7 @@ function checkPasswordLength(element) {
 
 function checkIncorrectPassword(element) {
   if (getUser()) {
-      const password = document.getElementById(`${element}`).value;
+      let password = document.getElementById(`${element}`).value;
       if (user.password !== password && password.length >= 6) {
           document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
           return true
@@ -301,8 +301,8 @@ function checkIn() {
 
 function sendNewPasswordLink() {
   let email = document.getElementById('forgotEmail').value
-  const xhr = new XMLHttpRequest();
-  const url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
+  let xhr = new XMLHttpRequest();
+  let url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
 
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -313,16 +313,16 @@ function sendNewPasswordLink() {
       }
   };
 
-  const message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
-  const params = `name=Join&mail=noreply@join.com&message=${message}`;
+  let message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
+  let params = `name=Join&mail=noreply@join.com&message=${message}`;
 
   xhr.send(params);
   showConfirmation('login')
 }
 
 function checkPasswordMatch() {
-  const password = document.getElementById('resetPassword').value
-  const confirmPassword = document.getElementById('confirmPassword').value;
+  let password = document.getElementById('resetPassword').value
+  let confirmPassword = document.getElementById('confirmPassword').value;
   if (password !== confirmPassword) document.getElementById('confirmPasswordIncorrectError').classList.remove('d-none');
       
 }
@@ -338,8 +338,8 @@ async function updatePassword() {
 }
 
 function showConfirmation(element) {
-  const blackLayer = document.querySelector(`.${element}BlackLayer`)
-  const confirmationElement = document.querySelector(`.${element}SentConfirmation`);
+  let blackLayer = document.querySelector(`.${element}BlackLayer`)
+  let confirmationElement = document.querySelector(`.${element}SentConfirmation`);
   confirmationElement.style.bottom = '-10%'
   blackLayer.classList.remove('d-none');
   setTimeout(() => { // wait 100ms (adjust as needed)
@@ -358,8 +358,8 @@ function showConfirmation(element) {
 
 function sendNewPasswordLink() {
   let email = document.getElementById('forgotEmail').value
-  const xhr = new XMLHttpRequest();
-  const url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
+  let xhr = new XMLHttpRequest();
+  let url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
 
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -370,8 +370,8 @@ function sendNewPasswordLink() {
     }
   };
 
-  const message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
-  const params = `name=Join&mail=noreply@join.com&message=${message}`;
+  let message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
+  let params = `name=Join&mail=noreply@join.com&message=${message}`;
 
   xhr.send(params);
   showConfirmation('login')
@@ -379,9 +379,9 @@ function sendNewPasswordLink() {
 
 
 function getInitials(element){
-  const contact = document.getElementById(element)
+  let contact = document.getElementById(element)
   // Split the name into separate words
-  const nameWords = contact.value.split(" ");
+  let nameWords = contact.value.split(" ");
   // If there is only one word, return the first letter
   if (nameWords.length === 1) {
     return nameWords[0].charAt(0).toUpperCase();

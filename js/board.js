@@ -4,6 +4,7 @@ function renderBoard() {
     let containerInProgress = document.getElementById('boardContentInProgress')
     let containerAwaiting = document.getElementById('boardContentAwaiting')
     let containerDone = document.getElementById('boardContentDone')
+    
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
         if (element.taskProgress === 'toDo') {
@@ -140,9 +141,12 @@ function addActiveCardAssignedTo(task) {
     let assignedTo = task.assignedTo;
     let avatarHtml = '';
     for (let index = 0; index < assignedTo.length; index++) {
-        const contact = assignedTo[index];
+        let assignedToIndex = assignedTo[index]
+        let backgroundColor = avatarBackgroundColors[assignedToIndex];
+        let contact = contacts[assignedToIndex];
+        
         avatarHtml += ` <div class="activeTaskAssignedTo">
-        <div class="activeTaskAvartar"><span>${contact.initials}</span></div>
+        <div class="activeTaskAvartar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>
         <span>${contact.name}</span></div>`;
     }
     return avatarHtml;
