@@ -137,9 +137,9 @@ function addActiveTaskOverlayHTML(i) {
         ${addActiveCardSubtasks(i)}
     </div>
     <div class="activeTaskButtons">
-        <div onmouseover="hover(activeTaskDelete, 'assets/img/deleteHover.svg')" onmouseout="hover(activeTaskDelete, 'assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
-        <div onmouseover="hover(activeTaskMove, 'assets/img/moveHover.svg')" onmouseout="hover(activeTaskMove, 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
-        <div class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
+        <div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', '/assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', '/assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
+        <div onclick="openTaskMove(${i})" onmouseover="hover('activeTaskMove', '/assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
+        <div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
     </div>
     <img onclick="closeOverlay()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
 </div>

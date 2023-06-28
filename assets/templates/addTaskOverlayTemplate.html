@@ -116,16 +116,16 @@
           </p>
 
           <div class="prio-body-container">
-            <div id="prio-red1" class="prio-button" onclick="choosePrio(id, 'prio-red')">
+            <div id="prio-red1" class="prio-button" onclick="choosePrio('prio-red')">
 
               <div>Urgent</div>
               <img id="prio-urgent-icon1" class="prio-icon" src="./assets/img/prio-urgent-icon.svg" alt="" />
             </div>
-            <div id="prio-yellow1" class="prio-button" onclick="choosePrio(id, 'prio-yellow')">
+            <div id="prio-yellow1" class="prio-button" onclick="choosePrio('prio-yellow')">
               <div>Medium</div>
               <img id="prio-medium-icon1" class="prio-icon" src="./assets/img/prio-medium-icon.svg" alt="" />
             </div>
-            <div id="prio-green1" class="prio-button" onclick="choosePrio(id, 'prio-green')">
+            <div id="prio-green1" class="prio-button" onclick="choosePrio('prio-green')">
               <div>Low</div>
               <img id="prio-low-icon1" class="prio-icon" src="./assets/img/prio-low-icon.svg" alt="" />
             </div>
@@ -162,7 +162,7 @@
 
           <div class="overlayCancelButton" onclick="clearTheInputFields()"
             onmouseover="hover('addTaskClearButton1', './assets/img/buttonXsecondary.svg'); console.log('test') "
-            onmouseout="unhover('addTaskClearButton1', 'assets/img/buttonX.svg')">
+            onmouseout="hover('addTaskClearButton1', 'assets/img/buttonX.svg')">
             <span>Cancel</span>
             <img id="addTaskClearButton1" src="assets/img/buttonX.svg" alt="">
           </div>

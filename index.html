@@ -46,16 +46,19 @@
         </div>
         <!-- background container for the pop up Windows (Hintergrundcontainer für die Popup-Fenster) -->
         <div class="darkBackgroundContainer d-none" id="darkBackgroundContainer" onclick="closeOverlay()"></div>
-        <div class="overlay addTaskOverlay" id="addTaskOverlay" w3-include-html="./assets/templates/addTaskOverlayTemplate.html"></div>
+        <div class="overlay addTaskOverlay" id="addTaskOverlay"
+            w3-include-html="./assets/templates/addTaskOverlayTemplate.html"></div>
+        <div class="overlay addTaskOverlay" id="editTaskOverlay"
+            w3-include-html="./assets/templates/editTaskOverlayTemplate.html"></div>
         <div class="overlay activeTaskOverlay" id="activeTaskOverlay"></div>
-        <div class="overlay addContactOverlay" id="addContactOverlay" w3-include-html="./assets/templates/addContactCard.html"></div>
-        <div class="overlay editContactOverlay" id="editContactOverlay" w3-include-html="./assets/templates/editContactCard.html"></div>
+        <div class="overlay addContactOverlay" id="addContactOverlay"
+            w3-include-html="./assets/templates/addContactCard.html"></div>
+        <div class="overlay editContactOverlay" id="editContactOverlay"
+            w3-include-html="./assets/templates/editContactCard.html"></div>
     </indexWrapper>
 
     <div id="fly-in-button" class="fly-in task-added-to-board-container d-none">
-        <div class="task-added-to-board">Task added to board</div>
-        <img src="./assets/img/boardIcon.svg" alt="">
-      </div>
+    </div>
 </body>
 
 

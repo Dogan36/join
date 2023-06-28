@@ -43,14 +43,16 @@ function render() {
   greetingAds()
   renderBoard()
   renderContacts()
+  renderAddTaskDropdowns()
+    setCurrentDate()
+}
+
+function renderAddTaskDropdowns(){
   renderAddTaskCategorySelect()
   renderAddTaskCategorys()
   renderAddTaskContactsSelect()
   renderAddTaskContacts()
-  setCurrentDate()
 }
-
-
 async function setServer() {
   render()
   let tasksAsText = JSON.stringify(tasks);
@@ -107,17 +109,11 @@ function hover(element, url) {
   document.getElementById(`${element}`).setAttribute('src', url);
 }
 
-function unhover(element, url) {
-  document.getElementById(`${element}`).setAttribute('src', url);
-}
 
 function hoverThis(element, url) {
   element.setAttribute('src', url);
 }
 
-function unhoverThis(element, url) {
-  element.setAttribute('src', url);
-}
 
 function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
@@ -399,10 +395,7 @@ function getInitials(element){
 function openAddTaskOverlay() {
   clearTheInputFields()
   n=1;
-  renderAddTaskCategorySelect()
-  renderAddTaskCategorys()
-  renderAddTaskContactsSelect()
-  renderAddTaskContacts()
+ renderAddTaskDropdowns()
   showDarkBackground()
   document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
@@ -413,6 +406,17 @@ function openActiveTaskOverlay(i) {
   document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
   showDarkBackground()
   document.getElementById('activeTaskOverlay').classList.add('overlayActive')
+}
+
+function openEditTaskOverlay(i) {
+    
+  closeActiveTaskOverlay()
+  clearTheInputFields()
+  n=2;
+  renderAddTaskDropdowns()
+  showDarkBackground()
+  document.getElementById('editTaskOverlay').classList.add('overlayActive')
+  setEditTaskOverlay(i)
 }
 
 function openNewContactOverlay() {
@@ -442,19 +446,83 @@ function closeDarkBackground(){
   document.getElementById('darkBackgroundContainer').classList.add('d-none');
 }
 
+
 function closeOverlay() {
-  
- let overlay = document.querySelector('.overlayActive')
+   let overlay = document.querySelector('.overlayActive')
  if (overlay) overlay.classList.remove('overlayActive');
  n=0
  setServer()
   setTimeout(closeDarkBackground, 500)
 }
 
-
-
-
+function closeActiveTaskOverlay(){
+  document.getElementById('activeTaskOverlay').classList.remove('overlayActive')
+}
 function closeEditContactOverlay(){
   document.getElementById('editContactOverlay').classList.add('d-none')
   document.getElementById('container-opened-task').classList.add('d-none')
+}
+
+function changeflyInButton(confirmation) {
+  let flyInButton = document.getElementById(`fly-in-button`);
+  if (confirmation == 'taskAdded') {
+    flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Task added to board</div>
+  <img id="confirmationImg"src="./assets/img/boardIcon.svg" alt="">`}
+ else if (confirmation == 'taskDeleted'){
+  flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Task deleted</div>
+  <img id="confirmationImg"src="./assets/img/deleteWhite.svg" alt="">`
+ }
+ else if (confirmation == 'taskMoved'){
+  flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Task Moved</div>
+  <img id="confirmationImg" src="./assets/img/moveWhite.svg" alt="">`
+ }
+else if (confirmation == 'taskUpdated'){
+  flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Task Updated</div>
+  <img id="confirmationImg" src="./assets/img/deleteWhite.svg" alt="">`
+}
+}
+
+function setEditTaskOverlay(i){
+let task=tasks[i]
+console.log(task)
+document.getElementById('task-title-input2').value = task.taskTitle
+document.getElementById('add-task-description2').value = task.taskDescription
+document.getElementById('due-date2').value = task.dueDate
+setCategory(i)
+setContacts(i)
+}
+
+function setCategory(i){
+let categoryID = tasks[i].taskCategory.categoryId
+selectCategory(`${categoryID}`)
+}
+
+function setContacts(i){
+let contactamount = tasks[i].assignedTo.length
+let contactIDs = []
+let checkboxes = document.getElementsByName(`option[]${n}`);
+
+for (var j = 0;j<contactamount ;j++){
+  var contId = tasks[i].assignedTo[j];
+contactIDs.push(contId)
+}
+
+  for (let k = 0; k < checkboxes.length; k++) {
+    if(contactIDs.includes(k)){
+    checkboxes[k].checked = true
+    }
+  }
+}
+
+function setPrio(i){
+  debugger
+ let prio=tasks[i].prio.ID
+  let divClicked = document.getElementById(`${prio}2`)
+  divClicked.classList.add(`${prio}`)
+  changePrioButtonIcon(prio)
+
 }
