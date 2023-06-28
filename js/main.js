@@ -43,33 +43,37 @@ function render() {
   greetingAds()
   renderBoard()
   renderContacts()
-  renderAddTaskCategorySelect(n)
-  renderAddTaskCategorys(n)
-  renderAddTaskContactsSelect(n)
-  renderAddTaskContacts(n)
+  renderAddTaskCategorySelect()
+  renderAddTaskCategorys()
+  renderAddTaskContactsSelect()
+  renderAddTaskContacts()
   setCurrentDate()
 }
 
 
 async function setServer() {
+  render()
   let tasksAsText = JSON.stringify(tasks);
   let contactsAsText = JSON.stringify(contacts);
   let usersAsText = JSON.stringify(users);
   let categorysAsText = JSON.stringify(categorys);
   let addTaskNewContactsText = JSON.stringify(addTaskNewContacts);
   let addTaskContactsText = JSON.stringify(addTaskContacts);
+
   await backend.setItem('tasks', tasksAsText);
   await backend.setItem('contacts', contactsAsText);
   await backend.setItem('users', usersAsText);
   await backend.setItem('categorys', categorysAsText);
   await backend.setItem('addTaskNewContacts', addTaskNewContactsText);
   await backend.setItem('addTaskContacts', addTaskContactsText);
+  
 }
 
 
 // zeige das ausgewählte Content auf index.html
 function showContent(x) {
   var content = document.querySelectorAll(".indexContent");
+  clearTheInputFields();
   content.forEach(function (element) {
     element.classList.add("d-none");
   });
@@ -393,6 +397,12 @@ function getInitials(element){
 
 
 function openAddTaskOverlay() {
+  clearTheInputFields()
+  n=1;
+  renderAddTaskCategorySelect()
+  renderAddTaskCategorys()
+  renderAddTaskContactsSelect()
+  renderAddTaskContacts()
   showDarkBackground()
   document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
@@ -433,8 +443,11 @@ function closeDarkBackground(){
 }
 
 function closeOverlay() {
+  
  let overlay = document.querySelector('.overlayActive')
  if (overlay) overlay.classList.remove('overlayActive');
+ n=0
+ setServer()
   setTimeout(closeDarkBackground, 500)
 }
 

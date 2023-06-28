@@ -3,7 +3,7 @@
     <h1>Add Task</h1>
   </div>
 
-  <form id="addTaskForm" novalidate onsubmit="checkMandatoryFields(n); return false">
+  <form id="addTaskForm0" novalidate onsubmit="checkMandatoryFields(); return false">
     <div class="content-body-container">
       <div class="container-left">
         <div class="title-container">
@@ -12,7 +12,7 @@
           </p>
 
           <input id="task-title-input0" class="title-input no-outline" type="text" placeholder="Enter a title"
-            title="Geben Sie hier Ihren Text ein" autocomplete="off" required oninput="checkMandatoryFieldTitle(n)" />
+            title="Geben Sie hier Ihren Text ein" autocomplete="off" required oninput="checkMandatoryFieldTitle()" />
           <p id="required-title0" class="required hidden">
             This field is required
           </p>
@@ -24,7 +24,7 @@
 
           <textarea id="add-task-description0" class="description-field no-outline" type="text"
             placeholder="Enter a title" title="Geben Sie hier Ihren Text ein" required
-            oninput="checkMandatoryFieldDescription(n)"></textarea>
+            oninput="checkMandatoryFieldDescription()"></textarea>
           <p id="required-description0" class="required hidden">
             This field is required
           </p>
@@ -46,11 +46,11 @@
             </div>
 
             <div class="img-container">
-              <img class="x-or-hook" onclick="closeAddTaskNewCategory(n)" src="./assets/img/black-x.svg" alt="" />
+              <img class="x-or-hook" onclick="closeAddTaskNewCategory()" src="./assets/img/black-x.svg" alt="" />
               <div class="dash-container">
                 <span class="dash"></span>
               </div>
-              <img onclick="checkNewCategoryName(n)" class="x-or-hook" src="./assets/img/black-check.svg" alt="" />
+              <img onclick="checkNewCategoryName()" class="x-or-hook" src="./assets/img/black-check.svg" alt="" />
             </div>
           </div>
 
@@ -80,9 +80,9 @@
             <input id="invite-new-contact0" class="no-outline" type="email" placeholder="Contact email"
               aria-required="true" required />
             <div class="img-container curser-pointer">
-              <img onclick="closeInviteNewContact(n)" src="./assets/img/black-x.svg" alt="" />
+              <img onclick="closeInviteNewContact()" src="./assets/img/black-x.svg" alt="" />
               <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
-              <img src="./assets/img/black-check.svg" alt="" onclick="checkNewContactField(n)" />
+              <img src="./assets/img/black-check.svg" alt="" onclick="checkNewContactField()" />
             </div>
           </div>
 
@@ -103,7 +103,7 @@
 
           <div id="date-button0">
             <input class="title-input no-outline cursor-pointer" type="date" id="due-date0" required
-              oninput="checkMandatoryFieldDueDate(n)" />
+              oninput="checkMandatoryFieldDueDate()" />
           </div>
 
           <p id="required-due-date0" class="required hidden">
@@ -141,15 +141,15 @@
           </p>
 
           <div id="new-subtask-container0" class="new-category-container d-none ">
-            <input id="new-subtask-piont0" class="new-category-input no-outline" type="text"
+            <input id="new-subtask-point0" class="new-category-input no-outline" type="text"
               placeholder="New Subtasks" />
             <div class="img-container curser-pointer">
-              <img onclick="closeSubtask(n)" src="./assets/img/black-x.svg" alt="" />
+              <img onclick="closeSubtask()" src="./assets/img/black-x.svg" alt="" />
               <div class="dash-contaier curser-pointer"><span class="dash"></span></div>
-              <img onclick="addNewSubtask(n)" src="./assets/img/black-check.svg" alt="" />
+              <img onclick="addNewSubtask()" src="./assets/img/black-check.svg" alt="" />
             </div>
           </div>
-          <div id="add-new-subtask-container0" class="new-category-container curser-pointer" onclick="openSubtask(n)">
+          <div id="add-new-subtask-container0" class="new-category-container curser-pointer" onclick="openSubtask()">
             <div class="Add-new-subtask">Add new subtask</div>
             <img class="plus-icon" src="./assets/img/plus-icon.svg" alt="" />
           </div>
@@ -160,11 +160,11 @@
         <div id="add-task-subtask-point0"></div>
         <div class="submit-btns-container">
 
-          <div class="overlayCancelButton" onclick="clearTheInputFields(n)"
-            onmouseover="hover('addTaskClearButton', './assets/img/buttonXsecondary.svg'); console.log('test') "
-            onmouseout="unhover('addTaskClearButton', 'assets/img/buttonX.svg')">
+          <div class="overlayCancelButton" onclick="clearTheInputFields()"
+            onmouseover="hover('addTaskClearButton0', './assets/img/buttonXsecondary.svg'); console.log('test') "
+            onmouseout="unhover('addTaskClearButton0', 'assets/img/buttonX.svg')">
             <span>Cancel</span>
-            <img id="addTaskClearButton" src="assets/img/buttonX.svg" alt="">
+            <img id="addTaskClearButton0" src="assets/img/buttonX.svg" alt="">
           </div>
           <button type="submit" class="create-task-btn">
             <span>Create Task</span>

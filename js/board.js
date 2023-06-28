@@ -4,7 +4,7 @@ function renderBoard() {
     let containerInProgress = document.getElementById('boardContentInProgress')
     let containerAwaiting = document.getElementById('boardContentAwaiting')
     let containerDone = document.getElementById('boardContentDone')
-    
+    clearBoardBeforeRender()
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
         if (element.taskProgress === 'toDo') {
@@ -24,7 +24,13 @@ function renderBoard() {
 }
 
 
+function clearBoardBeforeRender(){
+    document.getElementById('boardContentToDo').innerHTML='';
+    document.getElementById('boardContentInProgress').innerHTML='';
+    document.getElementById('boardContentAwaiting').innerHTML='';
+    document.getElementById('boardContentDone').innerHTML='';
 
+}
 
 function addBoardCard(element, i) {
     return `
@@ -123,8 +129,12 @@ function addActiveTaskOverlayHTML(i) {
         <div class="activeTaskPriorityButton" style="background-color:${task.prio.backgroundColor}"><span>${task.prio.name}</span><img src="${task.prio.iconWhite}" alt=""></div>
     </div>
     <div class="activeTaskAssignedToHeader">Assigned To:</div>
-    <div id="activeTaskAssignedToContainer">
+    <div id="activeTaskAssignedToContainer" class="activeTaskAssignedToContainer">
         ${addActiveCardAssignedTo(task)}
+    </div>
+    <div class="activeTaskAssignedToHeader">Subtasks:</div>
+    <div id="activeTaskSubtasksContainer" class="activeTaskSubtasksContainer">
+        ${addActiveCardSubtasks(i)}
     </div>
     <div class="activeTaskButtons">
         <div onmouseover="hover(activeTaskDelete, 'assets/img/deleteHover.svg')" onmouseout="hover(activeTaskDelete, 'assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
@@ -150,4 +160,24 @@ function addActiveCardAssignedTo(task) {
         <span>${contact.name}</span></div>`;
     }
     return avatarHtml;
+}
+
+function addActiveCardSubtasks(i){
+  
+    let subtasks = tasks[i].subtasks;
+    let subtasksHtml = '';
+    for (let index = 0; index < subtasks.length; index++) {
+        let subtask = subtasks[index]
+        let checkboxId = `active-card-subtask-checkbox-${n}-${index}`;
+        console.log(index)
+        subtasksHtml += `
+        <div>
+        <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index})">
+        <label for="${checkboxId}"></label> 
+        <div class="activeTaskAssignedTo">
+            <span>${subtask.subtaskTitle}</span>
+        </div>
+        </div>`;
+    }
+    return subtasksHtml;
 }

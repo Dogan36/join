@@ -563,7 +563,7 @@ indexWrapper {
 
 .activeTaskCloseButton {
     position: absolute;
-    left: 562.31px;
+    right: 60px;
     top: 35px;
     cursor: pointer;
 }
@@ -696,4 +696,54 @@ color: #FFFFFF;
 .overlayActive{
     left: 50%;
     
+}
+
+.activeTaskAssignedToContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 59%;
+    height: 180px;
+    padding-top: 5px;
+}
+
+.activeTaskAssignedToContainer::-webkit-scrollbar-thumb {
+    background-color: #2A3647;
+    border-radius: 100px;
+}
+.activeTaskAssignedToContainer::-webkit-scrollbar-track {
+    background-color: #D1D1D1;
+    border-radius: 100px;
+    margin-block: 2px;
+}
+
+.activeTaskAssignedToContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+.activeTaskSubtasksContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    width: 59%;
+}
+
+.activeTaskSubtasksContainer div{
+    display: flex;
+    align-items: center;
+}
+
+.activeTaskSubtasksContainer::-webkit-scrollbar-thumb {
+    background-color: #2A3647;
+    border-radius: 100px;
+}
+.activeTaskSubtasksContainer::-webkit-scrollbar-track {
+    background-color: #D1D1D1;
+    border-radius: 100px;
+    margin-block: 2px;
+}
+
+.activeTaskSubtasksContainer::-webkit-scrollbar {
+    width: 10px;
 }

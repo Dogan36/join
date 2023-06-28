@@ -65,7 +65,7 @@ async function addTask() {
 
 async function addTaskJsonArray() {
   let taskJsonArray = {
-    'taskTitle': title = document.getElementById(`task-title-input${n}`).value,
+    'taskTitle': document.getElementById(`task-title-input${n}`).value,
     'taskDescription': document.getElementById(`add-task-description${n}`).value,
     'taskCategory': category,
     'assignedTo': selectedContacts,
@@ -97,6 +97,17 @@ function deleteAddTaskFields() {
   document.getElementById(`add-task-subtask-point${n}`).innerHTML = '';
 
   resetPrioButtons()
+  resetSelectedContacts()
+  resetSubtasks()
+ 
+}
+
+function resetSelectedContacts(){
+selectedContacts=[]
+}
+
+function resetSubtasks(){
+subtasks=[]
 }
 
 
@@ -315,7 +326,7 @@ function renderAddTaskCategorySelect() {
   <div onclick="toggleAddTaskCategory()" class="categoryOption selectTask">
   <input readonly id="select-start-task-category${n}" class="input-outline"
   placeholder="Select task category"></input>
-  <img class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />
+  <img class="arrow-icon" id="arrowIconCategory${n}" src="./assets/img/arrow_icon.svg" alt="" />
 </div>
 <div id="content-category-container${n}" class="d-none">
   <div onclick="openNewCategoryInput()" class="categoryOption">New Category</div>
@@ -348,7 +359,7 @@ function openNewCategoryInput() {
   category == ''
   document.getElementById(`new-category-container${n}`).classList.remove('d-none');
   document.getElementById(`color-container${n}`).classList.remove('d-none');
-  document.getElementById(`select-container`).classList.add('d-none');
+  document.getElementById(`select-container${n}`).classList.add('d-none');
 }
 
 function closeAddTaskNewCategory() {
@@ -422,7 +433,7 @@ function renderAddTaskContactsSelect() {
               <div id="select-start-task-contact${n}">
                 Select contacts to assign
               </div>
-              <img id="arrow-rotate" class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />
+              <img id="arrow-rotate${n}" class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />
             </div>
             <div id="contacts${n}" class="d-none">
               </div>
@@ -448,6 +459,8 @@ function renderAddTaskContacts() {
         </div>
         <div>
           <input id='${contact['name'] + n}' type="checkbox" name="option[]${n}" value="Option ${i}")">
+        
+        <label for="${contact['name'] + n}"></label>
         </div>    
       </div>`;
   }
@@ -524,7 +537,7 @@ function selectContactToAssign() {
   }
 }
 
-function deleteSelectedContacts() {
+function uncheckSelectedContacts() {
   let checkboxes = document.getElementsByName(`option[]${n}`);
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = false 
@@ -544,18 +557,18 @@ function setCurrentDate() {
   document.getElementById(`due-date${n}`).setAttribute('min', getCurrentDate());
 }
 
-function openSubtask(n) {
+function openSubtask() {
   document.getElementById(`add-new-subtask-container${n}`).classList.add('d-none');
   document.getElementById(`new-subtask-container${n}`).classList.remove('d-none');
 }
 
-function closeSubtask(n) {
+function closeSubtask() {
   document.getElementById(`add-new-subtask-container${n}`).classList.remove('d-none');
   document.getElementById(`new-subtask-container${n}`).classList.add('d-none');
 }
 
-function addNewSubtask(n) {
-  let newSubtaskInput = document.getElementById(`new-subtask-piont${n}`);
+function addNewSubtask() {
+  let newSubtaskInput = document.getElementById(`new-subtask-point${n}`);
   if (newSubtaskInput.value !== '') {
     let newSubtask = {
       'subtaskTitle': newSubtaskInput.value,
@@ -563,7 +576,7 @@ function addNewSubtask(n) {
     }
     subtasks.push(newSubtask)
     newSubtaskInput.value = '';
-    renderSubtasks(n)
+    renderSubtasks()
   }
 }
 
@@ -572,14 +585,23 @@ function renderSubtasks() {
   subtasksContainer.innerHTML = '';
   for (let i = 0; i < subtasks.length; i++) {
     let subtask = subtasks[i];
+    let checkboxId = `subtask-checkbox-${n}-${i}`; // ID mit n-Wert und Index i
     subtasksContainer.innerHTML += `
-    <div class="checkbox-container">
-  <input class="checkbox" type="checkbox" checked>
-  <div>${subtask['subtaskTitle']}</div>
-</div>
-`;
+      <div class="checkbox-container">
+        <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''}>
+        <label for="${checkboxId}"></label>
+        <div>${subtask['subtaskTitle']}</div>
+      </div>
+    `;
+
+    let checkbox = document.getElementById(checkboxId);
+    checkbox.addEventListener('change', function() {
+      subtask['subtaskDone'] = this.checked;
+    });
   }
 }
+
+
 
 function flyInButton() {
   let flyInButton = document.getElementById(`fly-in-button`);
@@ -598,8 +620,16 @@ function goToBoardPage() {
     meinButton.click();
     document.getElementById(`addTaskForm${n}`).reset()
     deleteAddTaskFields();
-    deleteSelectedContacts();
+    uncheckSelectedContacts();
     closeOverlay()
     closeFlyInButton()
   }, 3000);
+}
+
+function updateSubtaskDone(checked, i, index) {
+
+console.log(i)
+console.log(index)
+    tasks[i].subtasks[index]['subtaskDone'] = checked;
+  
 }
