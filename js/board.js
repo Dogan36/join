@@ -1,3 +1,6 @@
+let currentDraggedElement
+let emptyBoxOpen = false
+
 function renderBoard() {
 
     let containerToDo = document.getElementById('boardContentToDo')
@@ -5,9 +8,10 @@ function renderBoard() {
     let containerAwaiting = document.getElementById('boardContentAwaiting')
     let containerDone = document.getElementById('boardContentDone')
     clearBoardBeforeRender()
+   
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
-        if (element.taskProgress === 'toDo') {
+        if (element.taskProgress === 'toDo' || element.taskProgress == '') {
             containerToDo.innerHTML += addBoardCard(element, i)
         }
         if (element.taskProgress === 'inProgress') {
@@ -24,17 +28,28 @@ function renderBoard() {
 }
 
 
-function clearBoardBeforeRender(){
-    document.getElementById('boardContentToDo').innerHTML='';
-    document.getElementById('boardContentInProgress').innerHTML='';
-    document.getElementById('boardContentAwaiting').innerHTML='';
-    document.getElementById('boardContentDone').innerHTML='';
+function clearBoardBeforeRender() {
+    
+    document.getElementById('boardContentToDo').innerHTML = addEmptyBoardCard('toDoEmptyBoardCard')
+    document.getElementById('boardContentInProgress').innerHTML = addEmptyBoardCard('inProgressEmptyBoardCard')
+    document.getElementById('boardContentAwaiting').innerHTML= addEmptyBoardCard('awaitingEmptyBoardCard')
+    document.getElementById('boardContentDone').innerHTML = addEmptyBoardCard('doneEmptyBoardCard')
 
 }
 
-function addBoardCard(element, i) {
+function addEmptyBoardCard(id) {
     return `
-    <div class="boardCard" onclick="openActiveTaskOverlay(${i})">
+      <div id="${id}" class="boardCard boardCardDrag d-none" ondragover ="allowDrop(event)" ondragleave="closeEmptyDragBox('${id}')">
+                  
+      </div>
+    `;
+  }
+  
+
+function addBoardCard(element, i) {
+
+    return `
+    <div draggable ="true" class="boardCard" ondragstart = "startDragging(${i})" onclick="openActiveTaskOverlay(${i})">
                 <div class="boardCardInner">
                     <div class="boardCardCategory" style="background-color:${element.taskCategory.categoryColor}"><span>${element.taskCategory.categorytext}</span></div>
                     <div class="boardCardContent">
@@ -45,6 +60,7 @@ function addBoardCard(element, i) {
                     
                     <div class="boardCardAssign">
                     ${addBoardCardAssignedTo(element)}
+                    
                         <img src="${element.prio.iconColor}" alt="">
                     </div>
                 </div>
@@ -88,7 +104,7 @@ function generateAvatarHtml(assignedTo) {
             let assignedToIndex = assignedTo[index]
             let backgroundColor = avatarBackgroundColors[assignedTo[index]];
             let contact = contacts[assignedToIndex];
-           
+
             avatarHtml += `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>`;
         }
     } else if (assignedTo.length > 3) {
@@ -136,16 +152,36 @@ function addActiveTaskOverlayHTML(i) {
     <div id="activeTaskSubtasksContainer" class="activeTaskSubtasksContainer">
         ${addActiveCardSubtasks(i)}
     </div>
+    <div class = "activeTaskChangeContainer">
+    <div class = "activeTaskMoveContainer">
+    <div class="activeTaskMoveButtonHeader">Move to ...</div>
+<div onclick="moveTo(${i}, 'toDo')" class="activeTaskMoveButton">To Do</div>
+<div onclick="moveTo(${i}, 'inProgress')" class="activeTaskMoveButton">In Progress</div>
+<div onclick="moveTo(${i}, 'awaiting')" class="activeTaskMoveButton">Awaiting Feedback</div>
+<div onclick="moveTo(${i}, 'done')" class="activeTaskMoveButton">Done</div>
+    </div>
     <div class="activeTaskButtons">
-        <div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', '/assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', '/assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
-        <div onclick="openTaskMove(${i})" onmouseover="hover('activeTaskMove', '/assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
-        <div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
+    <div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', '/assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', '/assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
+    <div onclick="toogleTaskMove()" onmouseover="hover('activeTaskMove', '/assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
+    <div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
+    </div>
     </div>
     <img onclick="closeOverlay()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
 </div>
 
     `
 }
+
+
+
+function toogleTaskMove() {
+    let container = document.querySelector('.activeTaskMoveContainer');
+    if (container.classList.contains('activeTaskMoveContainerOpen')) container.classList.remove('activeTaskMoveContainerOpen')
+    else container.classList.add('activeTaskMoveContainerOpen')
+}
+
+
+
 
 function addActiveCardAssignedTo(task) {
     let assignedTo = task.assignedTo;
@@ -154,7 +190,7 @@ function addActiveCardAssignedTo(task) {
         let assignedToIndex = assignedTo[index]
         let backgroundColor = avatarBackgroundColors[assignedToIndex];
         let contact = contacts[assignedToIndex];
-        
+
         avatarHtml += ` <div class="activeTaskAssignedTo">
         <div class="activeTaskAvartar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>
         <span>${contact.name}</span></div>`;
@@ -162,14 +198,14 @@ function addActiveCardAssignedTo(task) {
     return avatarHtml;
 }
 
-function addActiveCardSubtasks(i){
-  
+function addActiveCardSubtasks(i) {
+
     let subtasks = tasks[i].subtasks;
     let subtasksHtml = '';
     for (let index = 0; index < subtasks.length; index++) {
         let subtask = subtasks[index]
         let checkboxId = `active-card-subtask-checkbox-${n}-${index}`;
-        console.log(index)
+
         subtasksHtml += `
         <div>
         <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index})">
@@ -181,3 +217,41 @@ function addActiveCardSubtasks(i){
     }
     return subtasksHtml;
 }
+
+
+function moveTo(i, progress) {
+    let task = tasks[i]
+    task.taskProgress = `${progress}`
+    showConfirmation('taskMoved')
+    setServer()
+    setTimeout(closeConfirmation, 2000)
+   
+}
+
+function moveToDrop(progress) {
+    let task = tasks[currentDraggedElement]
+    task.taskProgress = `${progress}`
+   
+    setServer()
+    
+}
+
+function startDragging(i) {
+    currentDraggedElement = i
+    showEmptyDragBox()
+}
+
+function allowDrop(ev){
+    ev.preventDefault()
+}
+
+
+
+function showEmptyDragBox(id) {
+    document.getElementById(id).classList.remove('d-none')
+}
+
+function closeEmptyDragBox(id) {
+    document.getElementById(id).classList.add('d-none');
+    emptyBoxOpen = false;
+  }

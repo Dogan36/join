@@ -505,16 +505,15 @@ indexWrapper {
 
 .activeTaskDelete {
     display: flex;
-    flex-direction: row;
+
     justify-content: center;
     align-items: center;
-    padding: 0px;
-    gap: 6px;
-    position: absolute;
+   
+ margin-right: -1px;
+   
     width: 50px;
     height: 50px;
-    left: 0px;
-    top: 0px;
+    
     background: #FFFFFF;
     border: 1px solid #2A3647;
     border-radius: 10px 0px 0px 10px;
@@ -522,16 +521,14 @@ indexWrapper {
 
 .activeTaskMove {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
+   
     gap: 6px;
-    position: absolute;
+    
     width: 50px;
     height: 50px;
-    left: 49px;
-    top: 0px;
+  
     background: #FFFFFF;
     border: 1px solid #2A3647;
 }
@@ -541,18 +538,16 @@ indexWrapper {
     height: 31px;
 }
 
-.activeTaskEdit {display: flex;
-    flex-direction: row;
+.activeTaskEdit {
+    display: flex;
+   
     justify-content: center;
     align-items: center;
-    padding: 0px;
-    gap: 6px;
+    margin-left: -1px;
     
-    position: absolute;
     width: 50px;
     height: 50px;
-    left: 99px;
-    top: 0px;
+  
     
     /* Version 2/ main color  */
     
@@ -691,6 +686,7 @@ color: #FFFFFF;
     transition: left 0.5s ease-in-out;
     left: 150%;
     transform: translate(-50%, -50%);
+    overflow-y: auto;
 }
 
 .overlayActive{
@@ -724,7 +720,7 @@ color: #FFFFFF;
 .activeTaskSubtasksContainer{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
     overflow-y: auto;
     width: 59%;
 }
@@ -747,3 +743,281 @@ color: #FFFFFF;
 .activeTaskSubtasksContainer::-webkit-scrollbar {
     width: 10px;
 }
+
+.overlay::-webkit-scrollbar {
+    margin-left:-10px;
+    width: 10px;
+}
+
+.overlay::-webkit-scrollbar-thumb {
+    background-color: #2A3647;
+    border-radius: 100px;
+}
+
+.overlay::-webkit-scrollbar-track {
+    background-color: #D1D1D1;
+    border-radius: 100px;
+    margin-block: 35px;
+}
+
+
+.activeTaskOverlay {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    gap: 25px;
+    isolation: isolate;
+    width: 623px;
+    height: 824px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    background-color: white;
+}
+
+.activeTaskCategory {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4px 36.5px;
+    gap: 10px;
+    width: 142px;
+    height: 40px;
+    background: #FC71FF;
+    border-radius: 8px;
+}
+
+.activeTaskCategory span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 120%;
+    color: #FFFFFF;
+    height: 32px;
+}
+
+.activeTaskTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 1px;
+    width: 523px;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    color: #2A3647;
+
+}
+
+.activeTaskDescription {
+    width: 518px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #000000;
+}
+
+.activeTaskDueDate {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 25px;
+
+    width: 246px;
+    height: 25px;
+}
+
+.activeTaskDueDate span:first-child {
+    width: 99px;
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    /* black */
+
+    color: #000000;
+}
+
+.activeTaskDueDate span:last-child {
+    width: 122px;
+    height: 25px;
+white-space: nowrap;
+    
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    /* black */
+
+    color: #000000;
+}
+
+.activeTaskPriority {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 25px;
+    width: 238px;
+    height: 33px;
+}
+
+.activeTaskPriority span {
+    width: 82px;
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    /* black */
+
+    color: #000000;
+
+}
+
+.activeTaskPriorityButton {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 18px;
+    gap: 10px;
+
+    width: 131px;
+    height: 33px;
+
+    background: #FF3D00;
+    /* nuevo */
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.activeTaskPriorityButton span {
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.activeTaskPriorityButton img{
+    height: 12px;
+    width: 17px;
+}
+.activeTaskAssignedToHeader {
+    width: 134px;
+    height: 25px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+
+    /* black */
+
+    color: #000000;
+}
+
+.activeTaskAssignedTo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 25px;
+
+    width: 231px;
+    height: 60px;
+
+}
+
+.activeTaskAvartar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 8px;
+    gap: 10px;
+
+    width: 45px;
+    height: 45px;
+
+    background: #9327FF;
+    /* white */
+
+    border: 2px solid #FFFFFF;
+    border-radius: 58px;
+}
+
+
+.activeTaskAssignedTo span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    /* or 25px */
+
+    text-align: center;
+
+    /* black */
+
+    color: #000000;
+}
+
+.activeTaskAvartar span {
+    width: 22px;
+    height: 19px;
+
+    /* Version 2/body */
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+
+    color: #FFFFFF;
+}
+
+.activeTaskButtons {
+    display: flex;
+}
+
+
+
+
+  

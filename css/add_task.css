@@ -12,7 +12,10 @@ body {
     flex-direction: column;
     width: 100%;
     padding: 0px 65px 0 65px;
+   
 }
+
+
 
 .add-task-header{
     display: flex;

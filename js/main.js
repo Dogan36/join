@@ -68,7 +68,6 @@ async function setServer() {
   await backend.setItem('categorys', categorysAsText);
   await backend.setItem('addTaskNewContacts', addTaskNewContactsText);
   await backend.setItem('addTaskContacts', addTaskContactsText);
-  
 }
 
 
@@ -450,6 +449,7 @@ function closeDarkBackground(){
 function closeOverlay() {
    let overlay = document.querySelector('.overlayActive')
  if (overlay) overlay.classList.remove('overlayActive');
+ clearTheInputFields()
  n=0
  setServer()
   setTimeout(closeDarkBackground, 500)
@@ -482,47 +482,7 @@ function changeflyInButton(confirmation) {
 else if (confirmation == 'taskUpdated'){
   flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Task Updated</div>
-  <img id="confirmationImg" src="./assets/img/deleteWhite.svg" alt="">`
+  <img id="confirmationImg" src="./assets/img/boardIcon.svg" alt="">`
 }
 }
 
-function setEditTaskOverlay(i){
-let task=tasks[i]
-console.log(task)
-document.getElementById('task-title-input2').value = task.taskTitle
-document.getElementById('add-task-description2').value = task.taskDescription
-document.getElementById('due-date2').value = task.dueDate
-setCategory(i)
-setContacts(i)
-}
-
-function setCategory(i){
-let categoryID = tasks[i].taskCategory.categoryId
-selectCategory(`${categoryID}`)
-}
-
-function setContacts(i){
-let contactamount = tasks[i].assignedTo.length
-let contactIDs = []
-let checkboxes = document.getElementsByName(`option[]${n}`);
-
-for (var j = 0;j<contactamount ;j++){
-  var contId = tasks[i].assignedTo[j];
-contactIDs.push(contId)
-}
-
-  for (let k = 0; k < checkboxes.length; k++) {
-    if(contactIDs.includes(k)){
-    checkboxes[k].checked = true
-    }
-  }
-}
-
-function setPrio(i){
-  debugger
- let prio=tasks[i].prio.ID
-  let divClicked = document.getElementById(`${prio}2`)
-  divClicked.classList.add(`${prio}`)
-  changePrioButtonIcon(prio)
-
-}

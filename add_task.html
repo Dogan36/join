@@ -11,7 +11,7 @@
             <label class="title">Title</label>
           </p>
 
-          <input id="task-title-input0" class="title-input no-outline" type="text" placeholder="Enter a title"
+          <input id="task-title-input0" class="title-input no-outline" type="text" placeholder="Enter a title" maxlength="40"
             title="Geben Sie hier Ihren Text ein" autocomplete="off" required oninput="checkMandatoryFieldTitle()" />
           <p id="required-title0" class="required hidden">
             This field is required
@@ -22,7 +22,7 @@
             <label class="title">Description</label>
           </p>
 
-          <textarea id="add-task-description0" class="description-field no-outline" type="text"
+          <textarea id="add-task-description0" class="description-field no-outline" type="text" maxlength="100"
             placeholder="Enter a title" title="Geben Sie hier Ihren Text ein" required
             oninput="checkMandatoryFieldDescription()"></textarea>
           <p id="required-description0" class="required hidden">
@@ -41,7 +41,7 @@
           <div id="new-category-container0" class="new-category-container d-none">
             <div class="input-and-color-button-container">
               <input id="category0" class="new-category-input no-outline" type="text" name="category"
-                placeholder="New category name" required />
+                placeholder="New category name" maxlength="9" required />
               <div id="color-button-container0"></div>
             </div>
 
@@ -141,7 +141,7 @@
           </p>
 
           <div id="new-subtask-container0" class="new-category-container d-none ">
-            <input id="new-subtask-point0" class="new-category-input no-outline" type="text"
+            <input id="new-subtask-point0" class="new-category-input no-outline" type="text" maxlength="40"
               placeholder="New Subtasks" />
             <div class="img-container curser-pointer">
               <img onclick="closeSubtask()" src="./assets/img/black-x.svg" alt="" />
