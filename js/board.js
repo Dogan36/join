@@ -2,52 +2,32 @@ let currentDraggedElement
 let emptyBoxOpen = false
 
 function renderBoard() {
-
     let containerToDo = document.getElementById('boardContentToDo')
     let containerInProgress = document.getElementById('boardContentInProgress')
     let containerAwaiting = document.getElementById('boardContentAwaiting')
     let containerDone = document.getElementById('boardContentDone')
     clearBoardBeforeRender()
-   
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
-        if (element.taskProgress === 'toDo' || element.taskProgress == '') {
-            containerToDo.innerHTML += addBoardCard(element, i)
-        }
-        if (element.taskProgress === 'inProgress') {
-            containerInProgress.innerHTML += addBoardCard(element, i)
-        }
-        if (element.taskProgress === 'awaiting') {
-            containerAwaiting.innerHTML += addBoardCard(element, i)
-        }
-        if (element.taskProgress === 'done') {
-            containerDone.innerHTML += addBoardCard(element, i)
-        }
+        if (element.taskProgress === 'toDo' || element.taskProgress == '') containerToDo.innerHTML += addBoardCard(element, i)
+        if (element.taskProgress === 'inProgress') containerInProgress.innerHTML += addBoardCard(element, i)
+        if (element.taskProgress === 'awaiting') containerAwaiting.innerHTML += addBoardCard(element, i)
+        if (element.taskProgress === 'done') containerDone.innerHTML += addBoardCard(element, i)
     }
-
+    addLastEmptyBoardCard()
 }
 
 
 function clearBoardBeforeRender() {
-    
-    document.getElementById('boardContentToDo').innerHTML = addEmptyBoardCard('toDoEmptyBoardCard')
-    document.getElementById('boardContentInProgress').innerHTML = addEmptyBoardCard('inProgressEmptyBoardCard')
-    document.getElementById('boardContentAwaiting').innerHTML= addEmptyBoardCard('awaitingEmptyBoardCard')
-    document.getElementById('boardContentDone').innerHTML = addEmptyBoardCard('doneEmptyBoardCard')
-
+    document.getElementById('boardContentToDo').innerHTML = ''
+    document.getElementById('boardContentInProgress').innerHTML = ''
+    document.getElementById('boardContentAwaiting').innerHTML = ''
+    document.getElementById('boardContentDone').innerHTML = ''
 }
 
-function addEmptyBoardCard(id) {
-    return `
-      <div id="${id}" class="boardCard boardCardDrag d-none" ondragover ="allowDrop(event)" ondragleave="closeEmptyDragBox('${id}')">
-                  
-      </div>
-    `;
-  }
-  
 
-function addBoardCard(element, i) {
 
+function addBoardCard(element, i) { 
     return `
     <div draggable ="true" class="boardCard" ondragstart = "startDragging(${i})" onclick="openActiveTaskOverlay(${i})">
                 <div class="boardCardInner">
@@ -57,16 +37,15 @@ function addBoardCard(element, i) {
                         <span class="boardCardTaskDescription">${element.taskDescription}</span>
                     </div>
                     ${addBoardCardSubtask(element)}
-                    
                     <div class="boardCardAssign">
                     ${addBoardCardAssignedTo(element)}
-                    
                         <img src="${element.prio.iconColor}" alt="">
                     </div>
                 </div>
             </div>
-    `
+            `
 }
+
 
 function addBoardCardSubtask(element) {
     let subtasks = element.subtasks
@@ -87,6 +66,7 @@ function addBoardCardSubtask(element) {
     }
 }
 
+
 function addBoardCardAssignedTo(element) {
     let assignedTo = element.assignedTo;
     return `
@@ -96,37 +76,37 @@ function addBoardCardAssignedTo(element) {
   `;
 }
 
+
 function generateAvatarHtml(assignedTo) {
     let avatarHtml = '';
-
     if (assignedTo.length === 3) {
-        for (let index = 0; index < assignedTo.length; index++) {
-            let assignedToIndex = assignedTo[index]
-            let backgroundColor = avatarBackgroundColors[assignedTo[index]];
-            let contact = contacts[assignedToIndex];
-
-            avatarHtml += `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>`;
-        }
+        avatarHtml = generateAvatarsHtml(assignedTo, 0, 3);
     } else if (assignedTo.length > 3) {
-        for (let index = 0; index < 2; index++) {
-            let assignedToIndex = assignedTo[index]
-            let backgroundColor = avatarBackgroundColors[assignedTo[index]];
-            let contact = contacts[assignedToIndex];
-            avatarHtml += `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>`;
-        }
-        avatarHtml += `<div class="boardAvatar" style="background-color:black"><span>+${assignedTo.length - 2}</span></div>`;
+        const firstTwoAvatarsHtml = generateAvatarsHtml(assignedTo, 0, 2);
+        const remainingAvatarsHtml = `<div class="boardAvatar" style="background-color:black"><span>+${assignedTo.length - 2}</span></div>`;
+        avatarHtml = firstTwoAvatarsHtml + remainingAvatarsHtml;
     } else {
-        for (let index = 0; index < assignedTo.length; index++) {
-            let assignedToIndex = assignedTo[index]
-            let backgroundColor = avatarBackgroundColors[assignedTo[index]];
-            let contact = contacts[assignedToIndex];
-            avatarHtml += `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>`;
-        }
+        avatarHtml = generateAvatarsHtml(assignedTo, 0, assignedTo.length);
     }
-
     return avatarHtml;
 }
 
+
+function generateAvatarsHtml(assignedTo, startIndex, endIndex) {
+    let avatarsHtml = '';
+    for (let index = startIndex; index < endIndex; index++) {
+        const assignedToIndex = assignedTo[index];
+        const backgroundColor = avatarBackgroundColors[assignedTo[index]];
+        const contact = contacts[assignedToIndex];
+        avatarsHtml += generateAvatarHtmlElement(backgroundColor, contact.initials);
+    }
+    return avatarsHtml;
+}
+
+
+function generateAvatarHtmlElement(backgroundColor, initials) {
+    return `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${initials}</span></div>`;
+}
 
 
 function addActiveTaskOverlayHTML(i) {
@@ -161,17 +141,15 @@ function addActiveTaskOverlayHTML(i) {
 <div onclick="moveTo(${i}, 'done')" class="activeTaskMoveButton">Done</div>
     </div>
     <div class="activeTaskButtons">
-    <div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', '/assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', '/assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
-    <div onclick="toogleTaskMove()" onmouseover="hover('activeTaskMove', '/assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
+    <div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', 'assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', 'assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
+    <div onclick="toogleTaskMove()" onmouseover="hover('activeTaskMove', 'assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
     <div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
     </div>
     </div>
     <img onclick="closeOverlay()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
 </div>
-
     `
 }
-
 
 
 function toogleTaskMove() {
@@ -179,8 +157,6 @@ function toogleTaskMove() {
     if (container.classList.contains('activeTaskMoveContainerOpen')) container.classList.remove('activeTaskMoveContainerOpen')
     else container.classList.add('activeTaskMoveContainerOpen')
 }
-
-
 
 
 function addActiveCardAssignedTo(task) {
@@ -198,14 +174,13 @@ function addActiveCardAssignedTo(task) {
     return avatarHtml;
 }
 
-function addActiveCardSubtasks(i) {
 
+function addActiveCardSubtasks(i) {
     let subtasks = tasks[i].subtasks;
     let subtasksHtml = '';
     for (let index = 0; index < subtasks.length; index++) {
         let subtask = subtasks[index]
         let checkboxId = `active-card-subtask-checkbox-${n}-${index}`;
-
         subtasksHtml += `
         <div>
         <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index})">
@@ -225,33 +200,37 @@ function moveTo(i, progress) {
     showConfirmation('taskMoved')
     setServer()
     setTimeout(closeConfirmation, 2000)
-   
 }
+
 
 function moveToDrop(progress) {
     let task = tasks[currentDraggedElement]
     task.taskProgress = `${progress}`
-   
     setServer()
-    
+
 }
+
 
 function startDragging(i) {
     currentDraggedElement = i
-    showEmptyDragBox()
+    closeEmptyDragBox()
 }
 
-function allowDrop(ev){
+
+function allowDrop(ev) {
     ev.preventDefault()
 }
-
 
 
 function showEmptyDragBox(id) {
     document.getElementById(id).classList.remove('d-none')
 }
 
-function closeEmptyDragBox(id) {
-    document.getElementById(id).classList.add('d-none');
-    emptyBoxOpen = false;
-  }
+
+function closeEmptyDragBox() {
+    let boxes = document.querySelectorAll('.boardCardDrag')
+    for (let index = 0; index < boxes.length; index++) {
+        const box = boxes[index];
+        box.classList.add('d-none')
+    }
+}

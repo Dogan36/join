@@ -442,14 +442,14 @@ input[type="checkbox"] + label {
     display: inline-block;
     width: 18px;
     height: 18px;
-    background-image: url(/assets/img/checkboxUnchecked.svg);
+    background-image: url(../assets/img/checkboxUnchecked.svg);
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
   }
   
   input[type="checkbox"]:checked + label {
-    background-image: url(/assets/img/checkboxChecked.svg);
+    background-image: url(../assets/img/checkboxChecked.svg);
   }
   
 

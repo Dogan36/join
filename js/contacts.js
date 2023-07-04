@@ -51,11 +51,6 @@ function showContacts(initial) {
 }
 
 
-
-
-
-
-
 function setEditContactOverlay(j) {
   let contact = contacts[j]
   document.getElementById('editContactName').value = contact.name
@@ -67,6 +62,7 @@ function setEditContactOverlay(j) {
     checkInputsEditContact(j); return false;
   });
 }
+
 
 function setActiveContact(j) {
   var contact = document.querySelector(".contactListElementActive");
@@ -93,12 +89,11 @@ function setActiveContact(j) {
 
 
 function setInnerContactCard(j) {
-
   let contactCard = document.querySelector('.contactsCard')
   contactCard.innerHTML = ''
   contactCard.innerHTML += setInnerContactCardTemplate(j)
-
 }
+
 
 function setInnerContactCardTemplate(j) {
   let contact = contacts[j]
@@ -143,7 +138,7 @@ async function addContact() {
   closeOverlay()
   renderContacts()
   setActiveContact(contacts.length-1);
-  debugger
+ 
   flyInButton(n)
 }
 
@@ -175,6 +170,7 @@ function checkInputsAddContact() {
   })
   addContact()
 }
+
 
 function checkInputsEditContact(j) {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
