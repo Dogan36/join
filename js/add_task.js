@@ -7,6 +7,7 @@ let prio;
 let subtasks = []
 let addTaskNewSubtasks = [];
 let indexOfEditedTask
+let taskProgress
 let buttonBackgroundColor = [
   '#800080',   // Purple
   '#ff0000',   // Red
@@ -81,6 +82,7 @@ async function addTaskJsonArray() {
 
 
 function getAddTaskJson() {
+  console.log(taskProgress)
   let taskJsonArray =
   {
     'taskTitle': document.getElementById(`task-title-input${n}`).value,
@@ -90,7 +92,7 @@ function getAddTaskJson() {
     'dueDate': document.getElementById(`due-date${n}`).value,
     'prio': prio,
     'subtasks': subtasks,
-    'taskProgress': '',
+    'taskProgress': taskProgress,
   }
   return taskJsonArray
 }

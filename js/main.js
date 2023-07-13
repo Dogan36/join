@@ -391,7 +391,10 @@ function getInitials(element){
 
 
 
-function openAddTaskOverlay() {
+function openAddTaskOverlay(progress) {
+  if(progress) taskProgress = progress
+  else progress = toDo
+  console.log(taskProgress)
   clearTheInputFields()
   n=1;
  renderAddTaskDropdowns()
@@ -408,7 +411,8 @@ function openActiveTaskOverlay(i) {
 }
 
 function openEditTaskOverlay(i) {
-    
+  taskProgress = tasks[i].taskProgress
+  console.log(taskProgress)
   closeOverlay()
   clearTheInputFields()
   n=2;
