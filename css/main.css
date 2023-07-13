@@ -987,12 +987,7 @@ white-space: nowrap;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-    text-align: center;
-
-    /* black */
-
+ 
     color: #000000;
 }
 

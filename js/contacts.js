@@ -150,7 +150,9 @@ async function editContact() {
   let initials = getInitials('editContactName');
   contacts.splice(contactToEdit, 1, { name: name.value, email: email.value, phone: phone.value, initials: initials });
   await setServer();
-  closeEditContactOverlay()
+  showConfirmation('contactUpdated')
+  setTimeout(closeConfirmation,2000)
+  closeOverlay()
   renderContacts()
   setActiveContact(contactToEdit)
 }

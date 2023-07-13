@@ -409,11 +409,12 @@ function openActiveTaskOverlay(i) {
 
 function openEditTaskOverlay(i) {
     
-  closeActiveTaskOverlay()
+  closeOverlay()
   clearTheInputFields()
   n=2;
   renderAddTaskDropdowns()
-  showDarkBackground()
+  setTimeout(showDarkBackground,500)
+  
   document.getElementById('editTaskOverlay').classList.add('overlayActive')
   setEditTaskOverlay(i)
 }
@@ -455,13 +456,8 @@ function closeOverlay() {
   setTimeout(closeDarkBackground, 500)
 }
 
-function closeActiveTaskOverlay(){
-  document.getElementById('activeTaskOverlay').classList.remove('overlayActive')
-}
-function closeEditContactOverlay(){
-  document.getElementById('editContactOverlay').classList.add('d-none')
-  document.getElementById('container-opened-task').classList.add('d-none')
-}
+
+
 
 function changeflyInButton(confirmation) {
   let flyInButton = document.getElementById(`fly-in-button`);
@@ -482,7 +478,12 @@ function changeflyInButton(confirmation) {
 else if (confirmation == 'taskUpdated'){
   flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Task Updated</div>
-  <img id="confirmationImg" src="./assets/img/boardIcon.svg" alt="">`
+  <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
+}
+else if (confirmation == 'contactUpdated'){
+  flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Contact Updated</div>
+  <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
 }
 }
 

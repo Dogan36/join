@@ -213,7 +213,6 @@ function moveToDrop(progress) {
 
 function startDragging(i) {
     currentDraggedElement = i
-    closeEmptyDragBox()
 }
 
 
