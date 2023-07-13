@@ -14,7 +14,7 @@ function renderBoard() {
         if (element.taskProgress === 'awaiting') containerAwaiting.innerHTML += addBoardCard(element, i)
         if (element.taskProgress === 'done') containerDone.innerHTML += addBoardCard(element, i)
     }
-    
+
 }
 
 
@@ -27,7 +27,7 @@ function clearBoardBeforeRender() {
 
 
 
-function addBoardCard(element, i) { 
+function addBoardCard(element, i) {
     return `
     <div draggable ="true" class="boardCard" ondragstart = "startDragging(${i})" onclick="openActiveTaskOverlay(${i})">
                 <div class="boardCardInner">
@@ -229,3 +229,27 @@ function highlightBoardElement(id) {
 function highlightBoardElementOff(id) {
     document.getElementById(id).classList.remove('boardElementContentHighlight')
 }
+
+function findTask() {
+    let searchInput = document.getElementById('findTaskInput');
+
+
+    let searchTerm = searchInput.value.toLowerCase();
+
+    // Alle div-Elemente mit der Klasse "boardCard"
+    let boardCards = document.getElementsByClassName('boardCard');
+
+    // Schleife durch alle boardCard-Elemente
+    for (let i = 0; i < boardCards.length; i++) {
+        let taskNameElement = boardCards[i].querySelector('.boardCardTaskName');
+        let taskName = taskNameElement.textContent.toLowerCase();
+
+        // Überprüfen, ob der Task-Name nicht mit dem Suchbegriff beginnt
+        if (!taskName.startsWith(searchTerm)) {
+            boardCards[i].classList.add('d-none');
+        } else {
+            boardCards[i].classList.remove('d-none');
+        }
+    }
+}
+
