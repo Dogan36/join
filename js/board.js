@@ -14,7 +14,7 @@ function renderBoard() {
         if (element.taskProgress === 'awaiting') containerAwaiting.innerHTML += addBoardCard(element, i)
         if (element.taskProgress === 'done') containerDone.innerHTML += addBoardCard(element, i)
     }
-    addLastEmptyBoardCard()
+    
 }
 
 
@@ -222,15 +222,10 @@ function allowDrop(ev) {
 }
 
 
-function showEmptyDragBox(id) {
-    document.getElementById(id).classList.remove('d-none')
+function highlightBoardElement(id) {
+    document.getElementById(id).classList.add('boardElementContentHighlight')
 }
 
-
-function closeEmptyDragBox() {
-    let boxes = document.querySelectorAll('.boardCardDrag')
-    for (let index = 0; index < boxes.length; index++) {
-        const box = boxes[index];
-        box.classList.add('d-none')
-    }
+function highlightBoardElementOff(id) {
+    document.getElementById(id).classList.remove('boardElementContentHighlight')
 }

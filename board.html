@@ -19,28 +19,28 @@
                 <span>To do</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hoverThis(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="hoverThis(this, './assets/img/boardPlusIcon.svg')" onclick="openAddTaskOverlay()">
             </div>
-            <div id="boardContentToDo"class="boardElementContent" ondrop="moveToDrop('toDo')" ondragover="allowDrop(event); showEmptyDragBox('toDoEmptyBoardCard')"></div>
+            <div id="boardContentToDo"class="boardElementContent" ondrop="moveToDrop('toDo'); highlightBoardElementOff('boardContentToDo')" ondragover="allowDrop(event); highlightBoardElement('boardContentToDo')" ondragleave="highlightBoardElementOff('boardContentToDo')"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>In progress</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hoverThis(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="hoverThis(this, './assets/img/boardPlusIcon.svg')" onclick="openAddTaskOverlay()">
             </div>
-            <div id="boardContentInProgress" class="boardElementContent" ondrop="moveToDrop('inProgress')" ondragover="allowDrop(event); showEmptyDragBox('inProgressEmptyBoardCard')"></div>
+            <div id="boardContentInProgress" class="boardElementContent" ondrop="moveToDrop('inProgress'); highlightBoardElementOff('boardContentInProgress')" ondragover="allowDrop(event); highlightBoardElement('boardContentInProgress')" ondragleave="highlightBoardElementOff('boardContentInProgress')"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>Awaiting Feedback</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hoverThis(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="hoverThis(this, './assets/img/boardPlusIcon.svg')" onclick="openAddTaskOverlay()">
             </div>
-            <div id="boardContentAwaiting" class="boardElementContent"  ondrop="moveToDrop('awaiting')" ondragover="allowDrop(event); showEmptyDragBox('awaitingEmptyBoardCard')"></div>
+            <div id="boardContentAwaiting" class="boardElementContent"  ondrop="moveToDrop('awaiting'); highlightBoardElementOff('boardContentAwaiting')" ondragover="allowDrop(event); highlightBoardElement('boardContentAwaiting')" ondragleave="highlightBoardElementOff('boardContentAwaiting')"></div>
         </div>
         <div class="boardElement">
             <div class="boardElementHeader">
                 <span>Done</span>
                 <img src="./assets/img/boardPlusIcon.svg" alt="" onmouseover="hoverThis(this,'./assets/img/boardPlusIconHover.svg');" onmouseout="hoverThis(this, './assets/img/boardPlusIcon.svg')" onclick="openAddTaskOverlay()">
             </div>
-            <div id="boardContentDone" class="boardElementContent" ondrop="moveToDrop('done')" ondragover="allowDrop(event); showEmptyDragBox('doneEmptyBoardCard')"></div>
+            <div id="boardContentDone" class="boardElementContent" ondrop="moveToDrop('done'); highlightBoardElementOff('boardContentDone')" ondragover="allowDrop(event); highlightBoardElement('boardContentDone')" ondragleave="highlightBoardElementOff('boardContentDone')"></div>
         </div>
     </div>
 </div>
