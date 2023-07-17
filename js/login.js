@@ -75,16 +75,26 @@ async function addUser() {
     let password = document.getElementById('signUpPassword');
     let initials = getInitials('signUpName')
     users.push({name: name.value, email: email.value, password: password.value, initials: initials});
+    showConfirmation('signedUp')
     await setServer();
-    window.location.href = 'login.html?msg=Du hast dich erfolgreich registriert';
+    setTimeout(function() {
+        closeConfirmation();
+        closeDarkBackground();
+        showContentLogin('loginContainer');
+      }, 3000);
 }
 
 
 function showContentLogin(element) {
+    document.querySelector('.loginTopRight').classList.add('d-none')
     document.querySelector('.loginContainer').classList.add('d-none')
     document.querySelector('.signUpContainer').classList.add('d-none')
     document.querySelector('.forgotPassword').classList.add('d-none')
     document.querySelector(`.${element}`).classList.remove('d-none')
+
+    if(element=='loginContainer' || element =='forgotPassword'){
+        document.querySelector('.loginTopRight').classList.remove('d-none')
+    }
 }
 
 

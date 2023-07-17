@@ -44,6 +44,7 @@
             <div id='addTaskContent' class="indexContent d-none" w3-include-html="add_task.html"></div>
             <div id='contactsContent' class="indexContent d-none" w3-include-html="contacts.html"></div>
             <div id='legalContent' class="indexContent d-none" w3-include-html="legal.html"></div>
+            <div id='helpContent' class="indexContent d-none" w3-include-html="help.html"></div>
         </div>
         <!-- background container for the pop up Windows (Hintergrundcontainer für die Popup-Fenster) -->
         <div class="darkBackgroundContainer d-none" id="darkBackgroundContainer" onclick="closeOverlay()"></div>
@@ -58,7 +59,9 @@
             w3-include-html="./assets/templates/editContactCard.html"></div>
     </indexWrapper>
 
-    <div id="fly-in-button" class="fly-in task-added-to-board-container d-none">
+    <div id="fly-in-button" class="fly-in task-added-to-board-container d-none"></div>
+    <div class="log-out-modal d-none" onclick="logOut()">
+        <span>Log out</span>
     </div>
 </body>
 

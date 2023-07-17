@@ -3,7 +3,7 @@ let tasks = [];
 let contacts = [];
 let users = [];
 let categorys = [];
-let currentUser
+let currentUser = 'Guest'
 let initials = [];
 
 
@@ -39,22 +39,24 @@ async function init(include = false) {
 
 
 function render() {
+  getCurrentUser()
   renderSummary()
   greetingAds()
   renderBoard()
   renderContacts()
   renderAddTaskDropdowns()
-    setCurrentDate()
+  renderUserInitials()
+  setCurrentDate()
 }
 
-function renderAddTaskDropdowns(){
+function renderAddTaskDropdowns() {
   renderAddTaskCategorySelect()
   renderAddTaskCategorys()
   renderAddTaskContactsSelect()
   renderAddTaskContacts()
 }
 async function setServer() {
-  render()
+
   let tasksAsText = JSON.stringify(tasks);
   let contactsAsText = JSON.stringify(contacts);
   let usersAsText = JSON.stringify(users);
@@ -70,7 +72,14 @@ async function setServer() {
   await backend.setItem('addTaskContacts', addTaskContactsText);
 }
 
-
+function renderUserInitials() {
+  let nameWords = currentUser.split(" ");
+  if (nameWords.length === 1) {
+    let initialsCurrentUser = nameWords[0].charAt(0).toUpperCase();
+  }
+  let initialsCurrentUser = nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
+  document.querySelector('.headerUserProfilInitials').innerHTML = initialsCurrentUser
+}
 // zeige das ausgewählte Content auf index.html
 function showContent(x) {
   var content = document.querySelectorAll(".indexContent");
@@ -116,7 +125,10 @@ function hoverThis(element, url) {
 
 function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
-  currentUser = params.get('variable');
+
+  let currentUserURL = params.get('variable');
+  if (currentUserURL) currentUser = currentUserURL
+
 
 }
 
@@ -126,10 +138,10 @@ function listenerPasswordImg(element) {
   let passwordInput = document.getElementById(`${element}Password`);
   let passwordToggle = document.getElementById(`${element}PasswordImg`);
   passwordInput.addEventListener('keyup', function () {
-      changePasswortImage(element);
+    changePasswortImage(element);
   });
   passwordToggle.addEventListener('click', function () {
-      togglePasswordVisibility(element);
+    togglePasswordVisibility(element);
   });
 }
 
@@ -137,12 +149,12 @@ function changePasswortImage(element) {
   let passwordInput = document.getElementById(`${element}Password`);
   let passwordToggle = document.getElementById(`${element}PasswordImg`);
   if (passwordInput.value === '') {
-      passwordToggle.src = standartIcon;
+    passwordToggle.src = standartIcon;
   } else if (passwordInput.type == 'text') {
-      passwordToggle.src = visibleIcon;
+    passwordToggle.src = visibleIcon;
   }
   else {
-      passwordToggle.src = notVisibleIcon
+    passwordToggle.src = notVisibleIcon
   }
 }
 
@@ -150,23 +162,23 @@ function togglePasswordVisibility(element) {
   let passwordInput = document.getElementById(`${element}Password`);
   let passwordToggle = document.getElementById(`${element}PasswordImg`);
   if (passwordInput.value === '') {
-      passwordToggle.src = standartIcon;
+    passwordToggle.src = standartIcon;
   } else {
-      if (passwordInput.type === 'password') {
-          passwordInput.type = 'text';
-          passwordToggle.src = visibleIcon;
-      } else {
-          passwordInput.type = 'password';
-          if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
-              passwordToggle.src = notVisibleIcon;
-          }
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      passwordToggle.src = visibleIcon;
+    } else {
+      passwordInput.type = 'password';
+      if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
+        passwordToggle.src = notVisibleIcon;
       }
+    }
   }
 }
 
 function checkInputsLogin() {
   document.querySelectorAll(`.loginErrorMessage`).forEach(function (el) {
-      el.classList.add('d-none');
+    el.classList.add('d-none');
   })
   let errorCount = 0;
   errorCount += checkInputEmpty('loginEmail') ? 1 : 0;
@@ -181,8 +193,9 @@ function checkInputsLogin() {
 
 
 function checkInputsSignUp() {
+
   document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
-      el.classList.add('d-none');
+    el.classList.add('d-none');
   })
   let errorCount = 0;
   errorCount += checkInputEmpty('signUpName') ? 1 : 0;
@@ -192,13 +205,14 @@ function checkInputsSignUp() {
   errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
   errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
   if (errorCount > 0) return;
+
   addUser()
 }
 
 
 function checkInputsForgot() {
   document.querySelectorAll(`.forgotErrorMessage`).forEach(function (el) {
-      el.classList.add('d-none');
+    el.classList.add('d-none');
   })
   let errorCount = 0;
   errorCount += checkInputEmpty('forgotEmail') ? 1 : 0;
@@ -211,7 +225,7 @@ function checkInputsForgot() {
 
 function checkInputsReset() {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
-      el.classList.add('d-none');
+    el.classList.add('d-none');
   })
   let errorCount = 0;
   errorCount += checkInputEmpty('resetPassword') ? 1 : 0;
@@ -226,8 +240,8 @@ function checkInputsReset() {
 function checkInputEmpty(element) {
   let input = document.getElementById(`${element}`);
   if (input.value === '') {
-      document.getElementById(`${element}Error`).classList.remove('d-none');
-      return true
+    document.getElementById(`${element}Error`).classList.remove('d-none');
+    return true
   }
 }
 
@@ -235,8 +249,8 @@ function checkInputEmpty(element) {
 function checkEmailFormat(element) {
   let input = document.getElementById(`${element}`);
   if (input.value.indexOf('@') === -1 && input.value.length > 0) {
-      document.getElementById(`${element}FormatError`).classList.remove('d-none');
-      return true
+    document.getElementById(`${element}FormatError`).classList.remove('d-none');
+    return true
   }
 }
 
@@ -245,10 +259,10 @@ function checkEmailExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
   for (var i = 0; i < users.length; i++) {
-      if (users[i].email === input.value) {
-          document.getElementById(`${element}InUseError`).classList.remove('d-none');
-          return true;
-      }
+    if (users[i].email === input.value) {
+      document.getElementById(`${element}InUseError`).classList.remove('d-none');
+      return true;
+    }
   }
   return false
 }
@@ -258,10 +272,10 @@ function checkEmailDoesntExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
   for (var i = 0; i < users.length; i++) {
-      if (users[i].email === input.value) {
-          if (input.value.length > 0 && input.value.includes('@'))
-              return false
-      }
+    if (users[i].email === input.value) {
+      if (input.value.length > 0 && input.value.includes('@'))
+        return false
+    }
   }
   if (input.value.length > 0 && input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
   return true
@@ -271,21 +285,21 @@ function checkEmailDoesntExist(element) {
 function checkPasswordLength(element) {
   let password = document.getElementById(`${element}`)
   if (password.value.length < 6 && password.value.length > 0) {
-      document.getElementById(`${element}LengthError`).classList.remove('d-none');
-      return true
+    document.getElementById(`${element}LengthError`).classList.remove('d-none');
+    return true
   }
 }
 
 
 function checkIncorrectPassword(element) {
   if (getUser()) {
-      let password = document.getElementById(`${element}`).value;
-      if (user.password !== password && password.length >= 6) {
-          document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
-          return true
-      } else {
-          return false
-      }
+    let password = document.getElementById(`${element}`).value;
+    if (user.password !== password && password.length >= 6) {
+      document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
+      return true
+    } else {
+      return false
+    }
   }
 }
 
@@ -306,10 +320,10 @@ function sendNewPasswordLink() {
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-          // Success!
-          console.log('Email sent!');
-      }
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Success!
+      console.log('Email sent!');
+    }
   };
 
   let message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
@@ -323,7 +337,7 @@ function checkPasswordMatch() {
   let password = document.getElementById('resetPassword').value
   let confirmPassword = document.getElementById('confirmPassword').value;
   if (password !== confirmPassword) document.getElementById('confirmPasswordIncorrectError').classList.remove('d-none');
-      
+
 }
 
 async function updatePassword() {
@@ -336,24 +350,17 @@ async function updatePassword() {
   showConfirmation('forgot')
 }
 
-function showConfirmation(element) {
-  let blackLayer = document.querySelector(`.${element}BlackLayer`)
-  let confirmationElement = document.querySelector(`.${element}SentConfirmation`);
-  confirmationElement.style.bottom = '-10%'
-  blackLayer.classList.remove('d-none');
-  setTimeout(() => { // wait 100ms (adjust as needed)
-      confirmationElement.style.bottom = '50%'; // animate to top position
-  }, 100);
-
-  setTimeout(() => {
-      blackLayer.classList.add('d-none');
-      if (element == 'forgot') {
-          window.location.href = "login.html";
-      } if (element == 'login') { showContentLogin('loginContainer') }
-  }, 1200);
-
+function showConfirmation(confirmation) {
+  showDarkBackground()
+  let flyInButton = document.getElementById(`fly-in-button`);
+  changeflyInButton(confirmation)
+  flyInButton.classList.remove('d-none');
 }
 
+function closeConfirmation() {
+  let flyInButton = document.getElementById(`fly-in-button`);
+  flyInButton.classList.add('d-none');
+}
 
 function sendNewPasswordLink() {
   let email = document.getElementById('forgotEmail').value
@@ -362,7 +369,7 @@ function sendNewPasswordLink() {
 
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       // Success!
       console.log('Email sent!');
@@ -373,11 +380,12 @@ function sendNewPasswordLink() {
   let params = `name=Join&mail=noreply@join.com&message=${message}`;
 
   xhr.send(params);
-  showConfirmation('login')
+  
+  showConfirmation('newPassword')
 }
 
 
-function getInitials(element){
+function getInitials(element) {
   let contact = document.getElementById(element)
   // Split the name into separate words
   let nameWords = contact.value.split(" ");
@@ -392,12 +400,12 @@ function getInitials(element){
 
 
 function openAddTaskOverlay(progress) {
-  if(progress) taskProgress = progress
-  else progress = toDo
+  if (progress) taskProgress = progress
+  else progress = 'toD'
   console.log(taskProgress)
   clearTheInputFields()
-  n=1;
- renderAddTaskDropdowns()
+  n = 1;
+  renderAddTaskDropdowns()
   showDarkBackground()
   document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
@@ -415,10 +423,10 @@ function openEditTaskOverlay(i) {
   console.log(taskProgress)
   closeOverlay()
   clearTheInputFields()
-  n=2;
+  n = 2;
   renderAddTaskDropdowns()
-  setTimeout(showDarkBackground,500)
-  
+  setTimeout(showDarkBackground, 500)
+
   document.getElementById('editTaskOverlay').classList.add('overlayActive')
   setEditTaskOverlay(i)
 }
@@ -430,7 +438,7 @@ function openNewContactOverlay() {
 }
 
 
-function closeNewContactOverlay(){
+function closeNewContactOverlay() {
   document.getElementById('addContactOverlay').classList.add('d-none')
   document.getElementById('container-opened-task').classList.add('d-none')
 }
@@ -442,21 +450,21 @@ function openEditContactOverlay(j) {
   showDarkBackground()
 }
 
-function showDarkBackground(){
+function showDarkBackground() {
   document.getElementById('darkBackgroundContainer').classList.remove('d-none');
 }
 
-function closeDarkBackground(){
+function closeDarkBackground() {
   document.getElementById('darkBackgroundContainer').classList.add('d-none');
 }
 
 
 function closeOverlay() {
-   let overlay = document.querySelector('.overlayActive')
- if (overlay) overlay.classList.remove('overlayActive');
- clearTheInputFields()
- n=0
- setServer()
+  let overlay = document.querySelector('.overlayActive')
+  if (overlay) overlay.classList.remove('overlayActive');
+  clearTheInputFields()
+  n = 0
+  setServer()
   setTimeout(closeDarkBackground, 500)
 }
 
@@ -469,25 +477,46 @@ function changeflyInButton(confirmation) {
     flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Task added to board</div>
   <img id="confirmationImg"src="./assets/img/boardIcon.svg" alt="">`}
- else if (confirmation == 'taskDeleted'){
-  flyInButton.innerHTML = `
+  else if (confirmation == 'taskDeleted') {
+    flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Task deleted</div>
   <img id="confirmationImg"src="./assets/img/deleteWhite.svg" alt="">`
- }
- else if (confirmation == 'taskMoved'){
-  flyInButton.innerHTML = `
+  }
+  else if (confirmation == 'taskMoved') {
+    flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Task Moved</div>
   <img id="confirmationImg" src="./assets/img/moveWhite.svg" alt="">`
- }
-else if (confirmation == 'taskUpdated'){
-  flyInButton.innerHTML = `
+  }
+  else if (confirmation == 'taskUpdated') {
+    flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Task Updated</div>
   <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
-}
-else if (confirmation == 'contactUpdated'){
-  flyInButton.innerHTML = `
+  }
+  else if (confirmation == 'contactUpdated') {
+    flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Contact Updated</div>
   <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
+  }
+  else if (confirmation == 'newPassword') {
+    flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">An e-mail has beend send</div>
+  <img id="confirmationImg" src="./assets/img/SendCheck.svg" alt="">`
+  }
+
+  else if (confirmation == 'signedUp') {
+    flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Signed up successfully</div>
+  <img id="confirmationImg" src="./assets/img/userIcon.svg" alt="">`
+  }
 }
+
+function toggleLogout() {
+  let button = document.querySelector('.log-out-modal')
+  if (button.classList.contains('d-none')) button.classList.remove('d-none')
+  else button.classList.add('d-none')
+}
+
+function logOut() {
+  window.location.href = 'login.html';
 }
 

@@ -24,13 +24,8 @@
 </head>
 
 <body onload="init()">
-    <div class="loginWrapper">
-        <div class="loginBlackLayer d-none">
-            <div class="loginSentConfirmation">
-                <img src="assets/img/SendCheck.svg" alt="">
-                <span>An E-Mail has been sent to you</span>
-            </div>
-        </div>
+    <indexWrapper>
+        <div class="darkBackgroundContainer d-none" id="darkBackgroundContainer"></div>
         <div class="loginTopRight"><span>Not a user?</span>
             <div onclick="showContentLogin('signUpContainer')" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
@@ -175,9 +170,10 @@
 
             <button type="submit" class="forgotButton"><span>Send me the email</span></button>
         </form>
-    </div>
+    </indexWrapper>
+    <div id="fly-in-button" class="fly-in task-added-to-board-container d-none"></div>
 
-    </div>
 </body>
 
 </html>
+

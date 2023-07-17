@@ -635,19 +635,10 @@ function renderSubtasks() {
 }
 
 
-function showConfirmation(confirmation) {
-  showDarkBackground()
-  let flyInButton = document.getElementById(`fly-in-button`);
-  changeflyInButton(confirmation)
-  flyInButton.classList.remove('d-none');
-}
 
 
-function closeConfirmation() {
 
-  let flyInButton = document.getElementById(`fly-in-button`);
-  flyInButton.classList.add('d-none');
-}
+
 
 
 function goToBoardPage() {
