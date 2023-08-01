@@ -199,6 +199,7 @@ function moveTo(i, progress) {
     task.taskProgress = `${progress}`
     showConfirmation('taskMoved')
     setServer()
+    renderBoard()
     setTimeout(closeConfirmation, 2000)
 }
 
@@ -207,7 +208,7 @@ function moveToDrop(progress) {
     let task = tasks[currentDraggedElement]
     task.taskProgress = `${progress}`
     setServer()
-
+    renderBoard()
 }
 
 

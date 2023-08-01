@@ -140,6 +140,7 @@ white-space: nowrap;
     font-size: 16px;
     line-height: 120%;
     color: var(--secondaryColor);
+    cursor:default
 }
 
 .rememberMe span {
@@ -368,4 +369,9 @@ text-align: center;
 img[src="assets/img/notVisibleIcon.svg"]:hover,
 img[src="assets/img/visibleIcon.svg"]:hover {
   cursor: pointer;
+}
+
+#unchecked,
+#checked{
+    cursor: pointer;
 }

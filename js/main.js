@@ -401,9 +401,9 @@ function getInitials(element) {
 
 function openAddTaskOverlay(progress) {
   if (progress) taskProgress = progress
-  else progress = 'toD'
-  console.log(taskProgress)
+  else progress = 'toDo'
   clearTheInputFields()
+  choosenCategory = undefined
   n = 1;
   renderAddTaskDropdowns()
   showDarkBackground()

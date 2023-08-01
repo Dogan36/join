@@ -78,6 +78,7 @@ async function addTaskJsonArray() {
     showConfirmation('taskUpdated')
   }
   await setServer();
+  renderBoard()
 }
 
 
@@ -286,7 +287,7 @@ function checkMandatoryFieldDueDate() {
 
 function checkMandatoryFieldCategory() {
 
-  if (choosenCategory == '') {
+  if (choosenCategory == undefined) {
     addCategoryWarnings();
     return true
   }
@@ -362,13 +363,13 @@ function openAddTaskCategory() {
 function closeAddTaskCategory() {
   document.getElementById(`content-category-container${n}`).classList.add('d-none')
   document.getElementById(`arrowIconCategory${n}`).classList.remove('arrow-rotate')
-  choosenCategory = ''
+  choosenCategory = undefined
   checkMandatoryFieldCategory()
 }
 
 
 function openNewCategoryInput() {
-  choosenCategory == ''
+  choosenCategory = undefined
   document.getElementById(`new-category-container${n}`).classList.remove('d-none');
   document.getElementById(`color-container${n}`).classList.remove('d-none');
   document.getElementById(`select-container${n}`).classList.add('d-none');
