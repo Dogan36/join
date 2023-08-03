@@ -1144,3 +1144,60 @@ color: #A8A8A8;
     color:var(--secondaryColor);
     scale: 1.1;
 }
+
+.helpContent{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 24px;
+padding-bottom: 40px;
+}
+
+.helpContent h2{
+    color: var(--black, #000);
+font-family: Inter;
+font-size: 27px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%; /* 32.4px */
+}
+
+.helpSteps{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+align-self: stretch;
+}
+
+.helpStep{
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+    align-self: stretch; 
+}
+
+.helpStepNumber{
+    color: var(--black, #000);
+    font-family: Inter;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 32.4px */
+}
+
+.helpStepText{
+    flex: 1 0 0;}
+ 
+.helpStepHeader{
+    color: var(--black, #000);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 24px */
+    }
+
+    .helpJoin{
+        color:var(--secondaryColor)
+    }

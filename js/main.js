@@ -514,8 +514,13 @@ function toggleLogout() {
   let button = document.querySelector('.log-out-modal')
   if (button.classList.contains('d-none')) button.classList.remove('d-none')
   else button.classList.add('d-none')
+  setTimeout(closeLogout, 2000)
 }
 
+function closeLogout(){
+  let button = document.querySelector('.log-out-modal')
+  if (!button.classList.contains('d-none')) button.classList.add('d-none')
+}
 function logOut() {
   window.location.href = 'login.html';
 }
