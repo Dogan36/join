@@ -26,10 +26,12 @@
 <body onload="init()">
     <indexWrapper>
         <div class="darkBackgroundContainer d-none" id="darkBackgroundContainer"></div>
+        <div class="blackBackgroundContainer" id="blackBackgroundContainer"></div>
         <div class="loginTopRight"><span>Not a user?</span>
             <div onclick="showContentLogin('signUpContainer')" class="loginSignUpButton"><span>Sign up</span></div>
         </div>
         <img class="logo" src="assets/img/logo.svg" alt="">
+        <img class="logoInvert" src="assets/img/logo_invert.svg" alt="">
 
         <form class="loginContainer" onsubmit="checkInputsLogin(); return false;" novalidate>
             <div class="loginHeadline"><span>Log in</span><img src="assets/img/loginSeperator.svg" alt=""></div>

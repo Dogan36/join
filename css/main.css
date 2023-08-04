@@ -89,81 +89,6 @@ indexWrapper {
     z-index: 1;
 }
 
-.loginWrapper {
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-}
-
-.logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: 334px;
-    width: 274px;
-    transform: translate(-50%, -50%);
-    animation-name: logo-animation;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-.loginContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 35px 0px;
-    gap: 35px;
-    background: #FFFFFF;
-    width: 652px;
-    height: 513px;
-
-    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-    border-radius: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.loginContainer.show {
-    opacity: 1;
-}
-
-.logo-animation {
-    animation-name: logo-animation;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-.logo-animation:last-of-type {
-    animation-name: logo-animation, show-content;
-}
-
-@keyframes show-content {
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes logo-animation {
-    0% {
-        width: 274px;
-        height: 334px;
-    }
-
-    100% {
-        width: 100.03px;
-        height: 121.97px;
-        transform: translate(0, 0);
-        top: 80px;
-        left: 77px;
-    }
-}
-
 
 .loginSignUpButton {
     display: flex;
@@ -265,7 +190,6 @@ indexWrapper {
     line-height: 120%;
     color: white;
 }
-
 
 
 .boardAddTaskButton {
@@ -663,11 +587,11 @@ indexWrapper {
     border-radius: 20px;
     position: absolute;
     z-index: 2;
-    }
+}
 
-    .task-added-to-board-container img{
-        height: 40px;
-    }
+.task-added-to-board-container img {
+    height: 40px;
+}
 
 .fly-in {
     bottom: 0;
@@ -707,6 +631,10 @@ indexWrapper {
     z-index: 1;
     cursor: pointer;
 }
+
+
+
+
 
 .forgotSentConfirmation {
     display: flex;
@@ -1111,94 +1039,95 @@ indexWrapper {
     background-color: var(--defaultDark);
     border-radius: 20px;
     border-top-right-radius: 0;
-cursor: pointer;
+    cursor: pointer;
 }
 
-.notice{
-    display: inline-flex;
-justify-content: center;
-align-items: flex-start;
-gap: 16px;
-position: absolute;
-bottom: 40px;
-left: 50%;
-transform: translateX(-50%);
 
-}
 
-.noticeButton{
+.noticeButton {
     cursor: pointer;
     display: flex;
-padding: 8px;
-align-items: center;
-gap: 8px;
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 120%;
-color: #A8A8A8;
-text-decoration: none;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    color: #A8A8A8;
+    text-decoration: none;
+    white-space: nowrap
 }
 
-.noticeButton:hover{
-    color:var(--secondaryColor);
+.noticeButton:hover {
+    color: var(--secondaryColor);
     scale: 1.1;
 }
 
-.helpContent{
+.helpContent {
     display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 24px;
-padding-bottom: 40px;
-}
-
-.helpContent h2{
-    color: var(--black, #000);
-font-family: Inter;
-font-size: 27px;
-font-style: normal;
-font-weight: 700;
-line-height: 120%; /* 32.4px */
-}
-
-.helpSteps{
-    display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 16px;
-align-self: stretch;
-}
-
-.helpStep{
-    display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 35px;
-    align-self: stretch; 
+    gap: 24px;
+    padding-bottom: 40px;
 }
 
-.helpStepNumber{
+.helpContent h2 {
     color: var(--black, #000);
     font-family: Inter;
     font-size: 27px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; /* 32.4px */
+    line-height: 120%;
+    /* 32.4px */
 }
 
-.helpStepText{
-    flex: 1 0 0;}
- 
-.helpStepHeader{
+.helpSteps {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.helpStep {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+    align-self: stretch;
+}
+
+.helpStepNumber {
+    color: var(--black, #000);
+    font-family: Inter;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 32.4px */
+}
+
+.helpStepText {
+    flex: 1 0 0;
+}
+
+.helpStepHeader {
     color: var(--black, #000);
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; /* 24px */
-    }
+    line-height: 120%;
+    /* 24px */
+}
 
-    .helpJoin{
-        color:var(--secondaryColor)
-    }
+.helpJoin {
+    color: var(--secondaryColor)
+}
+
+@media screen and (max-width: 450px) {
+.loginLoginButton, .loginGuestButton {
+    width: 180px;
+}
+}

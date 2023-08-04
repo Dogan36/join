@@ -4,8 +4,12 @@ let user
 document.addEventListener('DOMContentLoaded', function () {
     let logo = document.querySelector('.logo');
     let contentContainer = document.querySelector('.loginContainer');
+    let loginTopRight = document.querySelector('.loginTopRight')
+    let notice = document.querySelector('.notice')
     logo.addEventListener('animationend', () => {
+        loginTopRight.classList.add('show');
         contentContainer.classList.add('show');
+        notice.classList.add('show');
 
     });
     updateCheckbox();
