@@ -24,5 +24,5 @@ async function includeHTML() {
       return;
     }
   }
-  render()
+  isContentLoaded = true
 }

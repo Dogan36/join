@@ -5,6 +5,7 @@ let users = [];
 let categorys = [];
 let currentUser = 'Guest'
 let initials = [];
+let isContentLoaded = false
 
 
 let avatarBackgroundColors = ['#FF6633', '#FF33FF',
@@ -34,9 +35,19 @@ async function init(include = false) {
   addTaskContacts = await JSON.parse(backend.getItem('addTaskContacts')) || [];
   if (include) {
     includeHTML()
+   
   }
 }
 
+function callRender() {
+  if (isContentLoaded) {
+    render();
+  } else {
+      setTimeout(callRender, 100); // Warten und erneut versuchen
+  }
+}
+
+callRender()
 
 function render() {
   getCurrentUser()
