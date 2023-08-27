@@ -13,17 +13,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
     updateCheckbox();
+    updateCheckboxConfirmationTerms();
     listenerPasswordImg('login');
     listenerPasswordImg('signUp');
+    listenerPasswordImg('confirm');
     loadRememberedData();
     changePasswortImage('login')
 });
 
 
 function updateCheckbox() {
-    var checkbox = document.querySelector('input[type="checkbox"]');
+    var checkbox = document.getElementById('rememberMe');
     var pathChecked = document.getElementById('checked');
     var pathUnchecked = document.getElementById('unchecked');
+    if (checkbox.checked) {
+        pathChecked.style.display = 'block';
+        pathUnchecked.style.display = 'none';
+    } else {
+        pathChecked.style.display = 'none';
+        pathUnchecked.style.display = 'block';
+    }
+}
+function updateCheckboxConfirmationTerms() {
+    var checkbox = document.getElementById('confirmationTerms');
+    var pathChecked = document.getElementById('checkedTerms');
+    var pathUnchecked = document.getElementById('uncheckedTerms');
     if (checkbox.checked) {
         pathChecked.style.display = 'block';
         pathUnchecked.style.display = 'none';
@@ -91,15 +105,17 @@ async function addUser() {
 
 function showContentLogin(element) {
     document.querySelector('.loginTopRight').classList.add('d-none')
-    document.querySelector('.loginContainer').classList.add('d-none')
-    document.querySelector('.signUpContainer').classList.add('d-none')
+    document.getElementById('loginContainer').classList.add('d-none')
+    document.getElementById('signUpContainer').classList.add('d-none')
     document.querySelector('.forgotPassword').classList.add('d-none')
-    document.querySelector(`.${element}`).classList.remove('d-none')
+    document.getElementById(`${element}`).classList.remove('d-none')
 
     if(element=='loginContainer' || element =='forgotPassword'){
         document.querySelector('.loginTopRight').classList.remove('d-none')
     }
 }
+
+
 
 
 

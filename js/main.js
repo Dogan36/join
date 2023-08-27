@@ -212,9 +212,11 @@ function checkInputsSignUp() {
   errorCount += checkInputEmpty('signUpName') ? 1 : 0;
   errorCount += checkInputEmpty('signUpEmail') ? 1 : 0;
   errorCount += checkInputEmpty('signUpPassword') ? 1 : 0;
+  errorCount += checkInputEmpty('signUpPasswordConfirm') ? 1 : 0;
   errorCount += checkEmailFormat('signUpEmail') ? 1 : 0;
   errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
   errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
+  errorCount += checkPasswordConfirm('signUpPassword') ? 1 : 0;
   if (errorCount > 0) return;
 
   addUser()
@@ -301,6 +303,14 @@ function checkPasswordLength(element) {
   }
 }
 
+function checkPasswordConfirm(){
+  let password = document.getElementById('signUpPassword')
+  let passwordConfirm = document.getElementById('signUpPasswordConfirm')
+  if (password.value != passwordConfirm.value) {
+    document.getElementById('signUpPasswordConfirmIdenticalError').classList.remove('d-none');
+    return true
+  }
+}
 
 function checkIncorrectPassword(element) {
   if (getUser()) {
@@ -536,3 +546,9 @@ function logOut() {
   window.location.href = 'login.html';
 }
 
+function resetSignUpInputs(){
+  document.querySelector('.signUpContainer').reset();
+  document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
+      el.classList.add('d-none');
+    })
+}
