@@ -35,7 +35,7 @@ async function init(include = false) {
   addTaskContacts = await JSON.parse(backend.getItem('addTaskContacts')) || [];
   if (include) {
     includeHTML()
-   
+
   }
 }
 
@@ -43,7 +43,7 @@ function callRender() {
   if (isContentLoaded) {
     render();
   } else {
-      setTimeout(callRender, 100); // Warten und erneut versuchen
+    setTimeout(callRender, 100); // Warten und erneut versuchen
   }
 }
 
@@ -217,6 +217,7 @@ function checkInputsSignUp() {
   errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
   errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
   errorCount += checkPasswordConfirm('signUpPassword') ? 1 : 0;
+  errorCount += checkPrivacyChecked() ? 1 : 0;
   if (errorCount > 0) return;
 
   addUser()
@@ -303,7 +304,7 @@ function checkPasswordLength(element) {
   }
 }
 
-function checkPasswordConfirm(){
+function checkPasswordConfirm() {
   let password = document.getElementById('signUpPassword')
   let passwordConfirm = document.getElementById('signUpPasswordConfirm')
   if (password.value != passwordConfirm.value) {
@@ -324,7 +325,15 @@ function checkIncorrectPassword(element) {
   }
 }
 
-
+function checkPrivacyChecked() {
+  let checkbox = document.getElementById('confirmationTerms');
+  if (checkbox.checked != true) {
+    document.getElementById('signUpPrivacyError').classList.remove('d-none')
+    return true
+  } else {
+    return false
+  }
+}
 
 function checkIn() {
   rememberMe()
@@ -401,7 +410,7 @@ function sendNewPasswordLink() {
   let params = `name=Join&mail=noreply@join.com&message=${message}`;
 
   xhr.send(params);
-  
+
   showConfirmation('newPassword')
 }
 
@@ -538,7 +547,7 @@ function toggleLogout() {
   setTimeout(closeLogout, 2000)
 }
 
-function closeLogout(){
+function closeLogout() {
   let button = document.querySelector('.log-out-modal')
   if (!button.classList.contains('d-none')) button.classList.add('d-none')
 }
@@ -546,9 +555,9 @@ function logOut() {
   window.location.href = 'login.html';
 }
 
-function resetSignUpInputs(){
+function resetSignUpInputs() {
   document.querySelector('.signUpContainer').reset();
   document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
-      el.classList.add('d-none');
-    })
+    el.classList.add('d-none');
+  })
 }

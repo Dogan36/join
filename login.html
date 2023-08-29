@@ -104,7 +104,7 @@
             </div>
         </form>
 
-        <form id="signUpContainer" class="loginContainer d-none" style="opacity: 1;" onsubmit="checkInputsSignUp(); return false" novalidate>
+        <form id="signUpContainer" class="signUpContainer d-none" style="opacity: 1;" onsubmit="checkInputsSignUp(); return false" novalidate>
             <img onclick="showContentLogin('loginContainer'); resetSignUpInputs()" class="leftArrow" src="assets/img/arrow-left-line.svg"
                 alt="">
             <div class="loginHeadline"><span>Sign up</span><img src="assets/img/loginSeperator.svg" alt=""></div>
@@ -148,7 +148,7 @@
                 <div class="inputContainer">
                     <div class="inputFieldContainer">
                         <div class="inputFieldWithImg">
-                            <input id="confirmPassword" class="loginInput" type="password" placeholder="Confirm Password"
+                            <input id="signUpPasswordConfirm" class="loginInput" type="password" placeholder="Confirm Password"
                                 aria-required="true" required>
                             <img id="confirmPasswordImg" src="assets/img/loginPassword.svg" alt="">
                         </div>
@@ -184,6 +184,7 @@
                     </label>
                     <span>I accept the <a href="legal.html" target="_blank">Privacy Policy</a></span>
                 </div>
+                <span id="signUpPrivacyError" class="signUpErrorMessage d-none">Please confirm the Privacy Policy</span>
                 <div class="loginButtons">
                     <button type="submit" class="loginLoginButton"><span>Sign up</span></button>
                 </div>
