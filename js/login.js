@@ -107,10 +107,10 @@ function showContentLogin(element) {
     document.querySelector('.loginTopRight').classList.add('d-none')
     document.getElementById('loginContainer').classList.add('d-none')
     document.getElementById('signUpContainer').classList.add('d-none')
-    document.querySelector('.forgotPassword').classList.add('d-none')
+    document.getElementById('forgotPassword').classList.add('d-none')
     document.getElementById(`${element}`).classList.remove('d-none')
 
-    if(element=='loginContainer' || element =='forgotPassword'){
+    if(element=='loginContainer'){
         document.querySelector('.loginTopRight').classList.remove('d-none')
     }
 }

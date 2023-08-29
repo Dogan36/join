@@ -434,11 +434,16 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     position: absolute;
     width: 826px;
     height: 462px;
-    left: calc(50% - 826px/2);
-    top: calc(50% - 462px/2 - 0.5px);
+    justify-content: space-around;
+    padding: 3.41vh 0px;
     background: #FFFFFF;
+    min-width: 505px;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 96%;
 }
 
 .forgotHeadline {
@@ -448,12 +453,11 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     padding: 0px;
     gap: 24px;
 
-    width: 626px;
-    height: 97px;
+    width: 80%;
 }
 
 .forgotHeadline span {
-    width: 626px;
+    
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -463,7 +467,7 @@ img[src="assets/img/visibleIcon.svg"]:hover {
 }
 
 .forgotSubtitle {
-    width: 656px;
+  width: 80%;
     height: 50px;
 
     /* Version 2/t6 */
@@ -522,6 +526,19 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     .loginContainer {
         min-height: 440px;
         top: 59%
+    }
+
+    .forgotPassword{
+        min-height: 440px;
+        top: 59%
+    }
+
+    .forgotHeadline {
+    
+        width: 70%;
+    }
+    .notice {
+        bottom: 10px;
     }
 
     @keyframes logo-animation {
@@ -663,7 +680,8 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         height: 48vh;
     }
 
-    .loginInput {
+    .loginInput,
+    .forgotContainer {
         max-width: 91%;
 
     }
@@ -689,6 +707,16 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         justify-content: space-around;
     }
 
+    .forgotPassword{
+        width: 96%;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 78%;
+        top: 54%;
+        min-width: unset;
+        justify-content: space-around;  
+    }
+
     .inputContainer {
         max-width: 100%;
         height: auto;
@@ -710,9 +738,7 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         align-items: center;
     }
 
-    .notice {
-        bottom: 22px;
-    }
+    
 
     .inputFieldWithImg {
         padding: 12px 12px;
