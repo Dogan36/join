@@ -114,13 +114,15 @@ function setActiveElement(element) {
 
 function setActiveIcon() {
   var icons = document.getElementsByClassName("desktopTemplateMenuElements");
-  for (var i = 0; i < icons.length; i++) {
+  for (var i = 0; i < 4; i++) {
     var img = icons[i].querySelector("img");
     img.src = img.src.replace("_active.svg", ".svg");
   }
   var icon = document.querySelector(".desktopTemplateIconActive");
   var img = icon.querySelector("img");
+  if (img){
   img.src = img.src.replace(".svg", "_active.svg");
+  }
 }
 
 // ändere img bei hover auf buttons

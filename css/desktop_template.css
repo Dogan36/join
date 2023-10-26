@@ -147,7 +147,7 @@ cursor: pointer;
     height: 20px;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1080px){
 .desktopTemplate{
     display: none;
 }

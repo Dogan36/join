@@ -149,7 +149,7 @@ border-radius: 10px;
     height: 20px;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1080px){
     .mobileTemplate{
         display: flex;
     }

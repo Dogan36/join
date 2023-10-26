@@ -5,7 +5,7 @@
     align-items: center;
     padding: 20px 36px 20px 116px;
     gap: 34px;
-    width: 100%;
+    max-width:calc(100% - var(--mobileTemplate-width));
     height: 89px;
 
     background: #FFFFFF;
@@ -61,4 +61,9 @@
   font-size: 20px;
   color: white;
   cursor: pointer;
+}
+
+.logoHeaderMobile{
+    height: 100%;
+    display: none;
 }

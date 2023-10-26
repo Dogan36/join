@@ -3,7 +3,7 @@ body {
     background-color: #F5F5F5;;
 }
 
-.container-all {
+.summary {
     margin-left: 123px;
     margin-top:82px
 }
@@ -13,7 +13,7 @@ body {
     align-items: center;
 }
 
-.summary {
+.summaryHeadline {
     width: 315px;
     height: 73px;
     font-family: 'Inter';
@@ -24,6 +24,7 @@ body {
     color: #000000;
     flex: none;
     flex-grow: 0;
+   
 }
 
 .v-line {

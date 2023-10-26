@@ -376,14 +376,7 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     border-radius: 30px;
 }
 
-.leftArrow {
-    position: absolute;
-    width: 37px;
-    height: 37px;
-    left: 31px;
-    top: 35px;
-    cursor: pointer;
-}
+
 
 .resetHeadline {
     display: flex;
