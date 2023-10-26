@@ -257,19 +257,21 @@
 
 .rememberMe a {
     text-decoration: none;
+    
 }
+
+
 
 .loginOptions span {
     width: 154px;
     height: 19px;
-    cursor: pointer;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
     color: var(--secondaryColor);
-    cursor: default;
+    
     flex-wrap: nowrap;
 }
 
@@ -291,7 +293,13 @@
 
 }
 
+.remember-me-text {
+    cursor: default;
+}
 
+.forgotPasswordText{
+    cursor: pointer;
+}
 
 .loginTopRight {
     display: flex;
@@ -507,7 +515,15 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     cursor: pointer;
 }
 
-
+.leftArrowLegal {
+    position: absolute;
+    width: 37px;
+    height: 37px;
+    right: 6vw;
+    top: 198px;
+    cursor: pointer;
+    z-index: 1;
+}
 
 #unchecked,
 #checked,

@@ -61,7 +61,6 @@
 }
 
 h1 {
-    height: 73px;
     font-style: normal;
     font-weight: 700;
     font-size: 61px;
@@ -82,7 +81,9 @@ indexWrapper {
 }
 
 .indexContent {
-    height: 100%;
+    display: flex;
+ height: 100%;
+    overflow-y: auto;
 }
 
 .indexHeader {
@@ -674,7 +675,7 @@ indexWrapper {
 .overlay {
     position: absolute;
     transition: left 0.5s ease-in-out;
-    left: 150%;
+    left: 500%;
     transform: translate(-50%, -50%);
     overflow-y: auto;
 }
@@ -1017,11 +1018,10 @@ indexWrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
-
-    padding: 82px 8.3vw 82px 120px;
+    padding: 83px 8.3vw 8.3vw 8.3vw;
     overflow-y: auto;
     position: relative;
-    gap: 20px
+    gap: 20px;
 }
 
 .log-out-modal {
@@ -1131,3 +1131,16 @@ indexWrapper {
     width: 180px;
 }
 }
+
+@media screen and (max-width: 1000px) {
+    indexWrapper{
+        flex-direction: column-reverse;
+    }
+    .indexContent{
+        
+            height: calc(100% - var(--mobileTemplate-height));
+      
+    }
+    }
+    
+    
