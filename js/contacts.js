@@ -133,7 +133,7 @@ async function addContact() {
   let phone = document.getElementById('addContactPhone')
   let initials = getInitials('addContactName');
   contacts.push({ name: name.value, email: email.value, phone: phone.value, initials: initials });
-  await setServer();
+  await setItem('contacts', contacts);
   document.getElementById('contactOverlay').reset()
   closeOverlay()
   renderContacts()
@@ -149,7 +149,7 @@ async function editContact() {
   let phone = document.getElementById('editContactPhone')
   let initials = getInitials('editContactName');
   contacts.splice(contactToEdit, 1, { name: name.value, email: email.value, phone: phone.value, initials: initials });
-  await setServer();
+  await setItem('contacts', contacts);
   showConfirmation('contactUpdated')
   setTimeout(closeConfirmation,2000)
   closeOverlay()

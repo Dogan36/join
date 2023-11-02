@@ -1,8 +1,9 @@
-setURL('https://dogan-celik.developerakademie.net/join/smallest_backend_ever')
+
 let tasks = [];
-let contacts = [];
+let contacts =  [];
 let users = [];
 let categorys = [];
+let addTaskContacts=[];
 let currentUser = 'Guest'
 let initials = [];
 let isContentLoaded = false
@@ -26,16 +27,47 @@ let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
 
 async function init(include = false) {
-  await downloadFromServer();
-  users = await JSON.parse(backend.getItem('users')) || [];
-  tasks = await JSON.parse(backend.getItem('tasks')) || [];
-  contacts = await JSON.parse(backend.getItem('contacts')) || [];
-  categorys = await JSON.parse(backend.getItem('categorys')) || [];
-  addTaskNewContacts = await JSON.parse(backend.getItem('addTaskNewContacts')) || [];
-  addTaskContacts = await JSON.parse(backend.getItem('addTaskContacts')) || [];
+  await loadUsers()
+  await loadTasks()
+  await loadContacts()
+  await loadCategorys()
+
+ // addTaskContacts =  JSON.parse(await getItem('addTaskContacts')) || [];
   if (include) {
     includeHTML()
 
+  }
+}
+
+async function loadUsers(){
+  try {
+      users = JSON.parse(await getItem('users'));
+  } catch(e){
+      console.error('Loading error:', e);
+  }
+}
+
+async function loadTasks(){
+  try {
+      tasks = JSON.parse(await getItem('tasks'));
+  } catch(e){
+      console.error('Loading error:', ErrorTasks);
+  }
+}
+
+async function loadContacts(){
+  try {
+      contacts = JSON.parse(await getItem('contacts'));
+  } catch(e){
+      console.error('Loading error:', ErrorContacts);
+  }
+}
+
+async function loadCategorys(){
+  try {
+      categorys = JSON.parse(await getItem('categorys'));
+  } catch(e){
+      console.error('Loading error:', e);
   }
 }
 
@@ -66,22 +98,8 @@ function renderAddTaskDropdowns() {
   renderAddTaskContactsSelect()
   renderAddTaskContacts()
 }
-async function setServer() {
 
-  let tasksAsText = JSON.stringify(tasks);
-  let contactsAsText = JSON.stringify(contacts);
-  let usersAsText = JSON.stringify(users);
-  let categorysAsText = JSON.stringify(categorys);
-  let addTaskNewContactsText = JSON.stringify(addTaskNewContacts);
-  let addTaskContactsText = JSON.stringify(addTaskContacts);
 
-  await backend.setItem('tasks', tasksAsText);
-  await backend.setItem('contacts', contactsAsText);
-  await backend.setItem('users', usersAsText);
-  await backend.setItem('categorys', categorysAsText);
-  await backend.setItem('addTaskNewContacts', addTaskNewContactsText);
-  await backend.setItem('addTaskContacts', addTaskContactsText);
-}
 
 function renderUserInitials() {
   let nameWords = currentUser.split(" ");
@@ -378,7 +396,7 @@ async function updatePassword() {
   user = users.find(user => user.email === email);
   newPassword = document.getElementById('resetPassword').value
   user.password = newPassword;
-  await setServer()
+  await setItem('users', users)
   showConfirmation('forgot')
 }
 
@@ -496,7 +514,7 @@ function closeOverlay() {
   if (overlay) overlay.classList.remove('overlayActive');
   clearTheInputFields()
   n = 0
-  setServer()
+  
   setTimeout(closeDarkBackground, 500)
 }
 

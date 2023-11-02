@@ -7,7 +7,7 @@ let prio;
 let subtasks = []
 let addTaskNewSubtasks = [];
 let indexOfEditedTask
-let taskProgress
+let taskProgress = 'toDo';
 let buttonBackgroundColor = [
   '#800080',   // Purple
   '#ff0000',   // Red
@@ -77,13 +77,12 @@ async function addTaskJsonArray() {
     tasks.splice(indexOfEditedTask, 1, taskJsonArray);
     showConfirmation('taskUpdated')
   }
-  await setServer();
+  await setItem('tasks', tasks);
   renderBoard()
 }
 
 
 function getAddTaskJson() {
-  console.log(taskProgress)
   let taskJsonArray =
   {
     'taskTitle': document.getElementById(`task-title-input${n}`).value,
@@ -406,7 +405,7 @@ async function addNewCategory() {
     'categoryColor': selectedColor
   }
   categorys.push(newCategory);
-  await setServer();
+  await setItem('categorys', categorys);
 }
 
 
@@ -418,7 +417,7 @@ function resetNewCategoryInput() {
 
 async function deleteCategory(i) {
   categorys.splice(i, 1);
-  await setServer();
+  await setItem('categorys', categorys);
   renderAddTaskCategorys()
   toggleAddTaskCategory()
 }
@@ -542,7 +541,7 @@ async function addInviteContact() {
   let phone = ""
   let initials = document.getElementById(`invite-new-contact${n}`).value.charAt(0).toUpperCase();
   contacts.unshift({ name: name, email: email.value, phone: phone, initials: initials });
-  await setServer();
+  await setItem('contacts', contacts);
   renderContacts()
   closeInviteNewContact()
   renderAddTaskContacts()
