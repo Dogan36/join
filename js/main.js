@@ -122,30 +122,37 @@ function showContent(x) {
 
 // zeige welcher Content aktuell ausgewählt ist
 function setActiveElement(element) {
-  debugger
-  var icons = document.querySelectorAll(".desktopTemplateIconActive");
+   var icons = document.querySelectorAll(".desktopTemplateIconActive");
   icons.forEach(function(icon) {
     icon.classList.remove("desktopTemplateIconActive");
   });
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
-  document.getElementById('legalNoticeMobile').classList.remove('desktopTemplateIconActive')
-  element.classList.add("desktopTemplateIconActive");
  
-  element+Mobile.classList.add("desktopTemplateIconActive");
+  element.classList.add("desktopTemplateIconActive");
   setActiveIcon(element)
 }
 
-function setActiveIcon(element) {
+function setActiveIcon() {
   var icons = document.getElementsByClassName("desktopTemplateMenuElements");
+  var iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
   for (var i = 0; i < 4; i++) {
     var img = icons[i].querySelector("img");
     img.src = img.src.replace("_active.svg", ".svg");
   }
-  var icon = document.querySelector(".desktopTemplateIconActive");
-  var img = icon.querySelector("img");
+  for (var i = 0; i < 4; i++) {
+    var img = iconsMobile[i].querySelector("img");
+    img.src = img.src.replace("_active.svg", ".svg");
+  }
+  var iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
+  iconsActive.forEach(function(iconActive) {
+    var img = iconActive.querySelector("img");
+  
   if (img){
   img.src = img.src.replace(".svg", "_active.svg");
   }
+  
+  });
+  
 }
 
 // ändere img bei hover auf buttons

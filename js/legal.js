@@ -20,7 +20,7 @@ function setActiveElement(element) {
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
   document.getElementById('legalNoticeMobile').classList.remove('desktopTemplateIconActive')
     element.classList.add("desktopTemplateIconActive");
-    document.getElementById('mobileElementName').classList.add("desktopTemplateIconActive");
+    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
 
 }
 
