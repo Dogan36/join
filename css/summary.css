@@ -11,20 +11,16 @@ body {
 .headline-summary {
     display: flex;
     align-items: center;
+    gap: 30px;
 }
 
 .summaryHeadline {
-    width: 315px;
-    height: 73px;
-    font-family: 'Inter';
-    font-style: normal;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 73px;
     line-height: 120%;
     color: #000000;
     flex: none;
     flex-grow: 0;
-   
 }
 
 .v-line {
@@ -38,7 +34,6 @@ body {
 .everything-in-a-nutshell {
     width: 384px;
     height: 32px;
-    margin-left: 30px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;

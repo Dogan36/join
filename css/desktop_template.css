@@ -148,8 +148,13 @@ cursor: pointer;
 }
 
 @media screen and (max-width: 1080px){
-.desktopTemplate{
-    display: none;
-}
+    .desktopTemplate{
+        display: none;
+    }
+    
 
+    .desktopTemplateLegal{
+        display: none;
+    }
+    
 }
