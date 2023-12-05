@@ -65,8 +65,10 @@
     </indexWrapper>
 
     <div id="fly-in-button" class="fly-in task-added-to-board-container d-none"></div>
-    <div class="log-out-modal d-none" onclick="logOut()">
-        <span>Log out</span>
+    <div class="log-out-modal d-none">
+        <span class="logoutPrivacy" onclick="showContent('privacyContent')">Privacy Policy</span>
+        <span class="logoutPrivacy" onclick="showContent('legalContent')">Legal Notice</span>
+        <span onclick="logOut()">Log out</span>
     </div>
 </body>
 

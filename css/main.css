@@ -1035,8 +1035,10 @@ indexWrapper {
 
 .log-out-modal {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 15px;
     position: absolute;
     top: 73px;
     right: 61px;
@@ -1051,7 +1053,9 @@ indexWrapper {
     cursor: pointer;
 }
 
-
+.logoutPrivacy{
+    display: none;
+}
 
 .noticeButton {
     cursor: pointer;
@@ -1166,6 +1170,10 @@ indexWrapper {
     .header {
         padding-left: 36px;
     }
+
+    .logoutPrivacy{
+        display: flex
+    }    
 }
 
 @media screen and (max-width: 1200px) {
