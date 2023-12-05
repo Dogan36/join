@@ -1,9 +1,9 @@
 
 let tasks = [];
-let contacts =  [];
+let contacts = [];
 let users = [];
 let categorys = [];
-let addTaskContacts=[];
+let addTaskContacts = [];
 let currentUser = 'Guest'
 let initials = [];
 let isContentLoaded = false
@@ -32,42 +32,42 @@ async function init(include = false) {
   await loadContacts()
   await loadCategorys()
 
- // addTaskContacts =  JSON.parse(await getItem('addTaskContacts')) || [];
+  // addTaskContacts =  JSON.parse(await getItem('addTaskContacts')) || [];
   if (include) {
     includeHTML()
 
   }
 }
 
-async function loadUsers(){
+async function loadUsers() {
   try {
-      users = JSON.parse(await getItem('users'));
-  } catch(e){
-      console.error('Loading error:', e);
+    users = JSON.parse(await getItem('users'));
+  } catch (e) {
+    console.error('Loading error:', e);
   }
 }
 
-async function loadTasks(){
+async function loadTasks() {
   try {
-      tasks = JSON.parse(await getItem('tasks'));
-  } catch(e){
-      console.error('Loading error:', ErrorTasks);
+    tasks = JSON.parse(await getItem('tasks'));
+  } catch (e) {
+    console.error('Loading error:', ErrorTasks);
   }
 }
 
-async function loadContacts(){
+async function loadContacts() {
   try {
-      contacts = JSON.parse(await getItem('contacts'));
-  } catch(e){
-      console.error('Loading error:', ErrorContacts);
+    contacts = JSON.parse(await getItem('contacts'));
+  } catch (e) {
+    console.error('Loading error:', ErrorContacts);
   }
 }
 
-async function loadCategorys(){
+async function loadCategorys() {
   try {
-      categorys = JSON.parse(await getItem('categorys'));
-  } catch(e){
-      console.error('Loading error:', e);
+    categorys = JSON.parse(await getItem('categorys'));
+  } catch (e) {
+    console.error('Loading error:', e);
   }
 }
 
@@ -122,12 +122,12 @@ function showContent(x) {
 
 // zeige welcher Content aktuell ausgewählt ist
 function setActiveElement(element) {
-   var icons = document.querySelectorAll(".desktopTemplateIconActive");
-  icons.forEach(function(icon) {
+  var icons = document.querySelectorAll(".desktopTemplateIconActive");
+  icons.forEach(function (icon) {
     icon.classList.remove("desktopTemplateIconActive");
   });
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
- 
+
   element.classList.add("desktopTemplateIconActive");
   setActiveIcon(element)
 }
@@ -144,15 +144,15 @@ function setActiveIcon() {
     img.src = img.src.replace("_active.svg", ".svg");
   }
   var iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
-  iconsActive.forEach(function(iconActive) {
+  iconsActive.forEach(function (iconActive) {
     var img = iconActive.querySelector("img");
-  
-  if (img){
-  img.src = img.src.replace(".svg", "_active.svg");
-  }
-  
+
+    if (img) {
+      img.src = img.src.replace(".svg", "_active.svg");
+    }
+
   });
-  
+
 }
 
 // ändere img bei hover auf buttons
@@ -526,7 +526,7 @@ function closeOverlay() {
   if (overlay) overlay.classList.remove('overlayActive');
   clearTheInputFields()
   n = 0
-  
+
   setTimeout(closeDarkBackground, 500)
 }
 
