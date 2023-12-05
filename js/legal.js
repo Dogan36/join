@@ -9,11 +9,19 @@ function showContent(x) {
 
 
 function setActiveElement(element) {
-    var icon = document.querySelector(".desktopTemplateIconActive");
+    
+    var icons = document.querySelectorAll(".desktopTemplateIconActive");
+    var elementName = element.id;
+    var mobileElementName = elementName + "Mobile";
+  icons.forEach(function(icon) {
     icon.classList.remove("desktopTemplateIconActive");
+  });
 
-    document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
+  document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
+  document.getElementById('legalNoticeMobile').classList.remove('desktopTemplateIconActive')
     element.classList.add("desktopTemplateIconActive");
+    document.getElementById('mobileElementName').classList.add("desktopTemplateIconActive");
+
 }
 
 
@@ -31,7 +39,9 @@ callTarget()
 
 function getTarget() {
     let legalButton = document.getElementById('legalNotice')
+    let privacyButton = document.getElementById('privacyPolicy')
     let params = new URLSearchParams(window.location.search);
     let targetURL = params.get('target');
-    if (targetURL) legalButton.click();
+    if (targetURL) legalButton.click()
+    else privacyButton.click()
 }

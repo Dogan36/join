@@ -122,15 +122,20 @@ function showContent(x) {
 
 // zeige welcher Content aktuell ausgewählt ist
 function setActiveElement(element) {
-  var icon = document.querySelector(".desktopTemplateIconActive");
-  icon.classList.remove("desktopTemplateIconActive");
-
+  debugger
+  var icons = document.querySelectorAll(".desktopTemplateIconActive");
+  icons.forEach(function(icon) {
+    icon.classList.remove("desktopTemplateIconActive");
+  });
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
+  document.getElementById('legalNoticeMobile').classList.remove('desktopTemplateIconActive')
   element.classList.add("desktopTemplateIconActive");
+ 
+  element+Mobile.classList.add("desktopTemplateIconActive");
   setActiveIcon(element)
 }
 
-function setActiveIcon() {
+function setActiveIcon(element) {
   var icons = document.getElementsByClassName("desktopTemplateMenuElements");
   for (var i = 0; i < 4; i++) {
     var img = icons[i].querySelector("img");
