@@ -1,11 +1,12 @@
 body {
     margin: 0;
-    background-color: #F5F5F5;;
+    background-color: #F5F5F5;
+    ;
 }
 
 .summary {
     margin-left: 123px;
-    margin-top:82px
+    margin-top: 82px
 }
 
 .headline-summary {
@@ -32,8 +33,6 @@ body {
 }
 
 .everything-in-a-nutshell {
-    width: 384px;
-    height: 32px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -81,6 +80,7 @@ body {
     align-items: center;
     gap: 61px;
     width: 580px;
+
     height: 150px;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -105,13 +105,13 @@ body {
     cursor: pointer;
 }
 
-.button-v3 svg{
-    fill:#2a3647;
-    stroke:fff
+.button-v3 svg {
+    fill: #2a3647;
+    stroke: fff
 }
 
-.button-v3:hover svg{
-    fill:fff;
+.button-v3:hover svg {
+    fill: fff;
     stroke: #2a3647;
 }
 
@@ -192,7 +192,7 @@ img.pen-icon {
     transform: scale(1.1);
     background-color: #2A3647;
     transition: transform 0.3s ease-in-out;
-    
+
 }
 
 .button-v1:hover .button-text-v1-v3 {
@@ -235,4 +235,90 @@ img.pen-icon {
     font-size: 64px;
     font-weight: 700;
     color: #29ABE2;
+}
+
+@media screen and (max-width: 1080px) {
+    .summary {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        justify-content: space-around;
+    }
+
+    .body-summary-container {
+        justify-content: center;
+        height: 54vh;
+    }
+
+.headline-summary{
+    align-items: flex-start;
+}
+
+    .summaryHeadline {
+        font-size: 9vw;
+    }
+
+    .everything-in-a-nutshell {
+        font-size: 3vw;
+    }
+
+    .container-button {
+        margin-top: 25px;
+        max-width: 90vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .container-button-head,
+    .container-button-bottom {
+        gap: 0;
+        justify-content: space-between;
+        max-width: 100%;
+    }
+
+    .headline-summary {
+        align-self: flex-start;
+        gap: 7%;
+        flex-direction: column;
+        
+    }
+
+    .headlineSeperator {
+        order: 1;
+        rotate: -90deg;
+        transform-origin: top;
+        position: relative;
+        top: 10px;
+    }
+
+    .button-v1 {
+        max-width: 20vw;
+        max-height: 20vw;
+    }
+
+    .button-v2 {
+        max-width: 90vw;
+        max-height: 20vw;
+    }
+
+    .button-v3 {
+        max-width: 40%;
+        max-height: 20vw;
+    }
+}
+
+@media screen and (max-width: 700px){
+
+    .summaryHeadline {
+        font-size: 47px;
+    }
+
+    .everything-in-a-nutshell {
+        font-size: 20px;
+    }
+
 }

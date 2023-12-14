@@ -1157,7 +1157,8 @@ indexWrapper {
     }
 
     .indexContent {
-
+        align-items: center;
+        justify-content: center;
         height: calc(100% - 80px - 89px);
         overflow-y: auto;
 
