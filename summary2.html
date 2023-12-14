@@ -9,15 +9,15 @@
         <div class="container-button">
           <div class="container-button-head">
             <div onclick="document.getElementById('board').click()" class="button-v1 button-number-hover-effect hover-effect ">
-              <span id="summaryCountInBoard" class="button-nummber-v1-v3"></span>
+              <span id="summaryCountInBoard" class="button-number"></span>
               <span class="button-text-v1-v3 ">Tasks in Board</span>
             </div>
             <div  onclick="document.getElementById('board').click()"class="button-v1 button-number-hover-effect hover-effect">
-              <div id="summaryCountProgress" class="button-nummber-v1-v3"></div>
+              <div id="summaryCountProgress" class="button-number"></div>
               <div class="button-text-v1-v3">Tasks in Progress</div>
             </div>
             <div onclick="document.getElementById('board').click()" class="button-v1 button-number-hover-effect hover-effect">
-              <div id="summaryCountAwaiting" class="button-nummber-v1-v3"></div>
+              <div id="summaryCountAwaiting" class="button-number"></div>
               <div class="button-text-v1-v3">Tasks in Feedback</div>
             </div>
           </div>
@@ -31,15 +31,15 @@
                   alt=""
                 />
               </div>
-              <div>
-                <div id="summaryCountUrgent"class="button-nummber-v2"></div>
-                <div class="button-text-v2">Urgent</div>
+              <div class="button-v2-content">
+                <span id="summaryCountUrgent"class="button-number"></span>
+                <span class="button-text-v2">Urgent</span>
               </div>
             </div>
             <div class="v-line-grey"></div>
             <div>
               <div id="summaryNextDeadline"class="button-text-v2"></div>
-              <div class="">Upcoming Deadline</div>
+              <div class="button-v2-text-bold">Upcoming Deadline</div>
             </div>
           </div>
           <div class="container-button-bottom">
@@ -47,7 +47,7 @@
             onmouseout="hover('pen-icon', './assets/img/pen_icon.svg')">
               <img id="pen-icon" class="pen-icon" src="./assets/img/pen_icon.svg" alt="" />
               <div>
-                <div id="summaryCountToDo"class="button-nummber-v1-v3"></div>
+                <div id="summaryCountToDo"class="button-number"></div>
                 <div class="button-text-v1-v3">To-do</div>
               </div>
             </div>
@@ -55,7 +55,7 @@
             onmouseout="hover('hook-icon', './assets/img/hook_icon.svg')">
               <img id="hook-icon" class="hook-icon" src="./assets/img/hook_icon.svg" alt="">
               <div>
-                  <div id="summaryCountDone" class="button-nummber-v1-v3"></div>
+                  <div id="summaryCountDone" class="button-number"></div>
                   <div class="button-text-v1-v3">Done</div>
               </div>
           </div>

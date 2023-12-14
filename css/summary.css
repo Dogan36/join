@@ -68,7 +68,7 @@ body {
     height: 170px;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
-    border-radius: 30px;
+    border-radius: 20px;
     flex: none;
     cursor: pointer;
 }
@@ -84,7 +84,7 @@ body {
     height: 150px;
     background: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 30px;
+    border-radius: 20px;
     flex: none;
     flex-grow: 0;
     cursor: pointer;
@@ -97,7 +97,7 @@ body {
     gap: 18px;
     width: 272.5px;
     height: 150px;
-    border-radius: 30px;
+    border-radius: 20px;
     background-color: white;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     margin-right: 35px;
@@ -130,7 +130,7 @@ body {
     flex-grow: 0;
 }
 
-img.pen-icon {
+.pen-icon {
     width: 69px;
     height: 69px;
 }
@@ -150,15 +150,16 @@ img.pen-icon {
     color: #2A3647;
 }
 
-.button-nummber-v2 {
-    width: 50px;
-    height: 56px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 47px;
-    line-height: 120%;
-    text-align: center;
+.button-v2-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-v2-text-bold{
+    font-weight: 700;
+    font-size: 21px;
 }
 
 .container-urgent-left {
@@ -180,7 +181,7 @@ img.pen-icon {
     flex-grow: 0;
 }
 
-.button-nummber-v1-v3 {
+.button-number {
     font-family: 'Inter';
     font-size: 64px;
     font-style: normal;
@@ -243,7 +244,7 @@ img.pen-icon {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100%;
+        height: 93%;
         justify-content: space-around;
     }
 
@@ -252,9 +253,9 @@ img.pen-icon {
         height: 54vh;
     }
 
-.headline-summary{
-    align-items: flex-start;
-}
+    .headline-summary {
+        align-items: flex-start;
+    }
 
     .summaryHeadline {
         font-size: 9vw;
@@ -265,12 +266,13 @@ img.pen-icon {
     }
 
     .container-button {
-        margin-top: 25px;
+        margin-top: 20px;
         max-width: 90vw;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        gap: 20px;
     }
 
     .container-button-head,
@@ -284,7 +286,7 @@ img.pen-icon {
         align-self: flex-start;
         gap: 7%;
         flex-direction: column;
-        
+
     }
 
     .headlineSeperator {
@@ -296,22 +298,68 @@ img.pen-icon {
     }
 
     .button-v1 {
-        max-width: 20vw;
-        max-height: 20vw;
+        max-width: 26.5vw;
+        max-height: 26.5vw;
+
     }
+
+
+
 
     .button-v2 {
         max-width: 90vw;
-        max-height: 20vw;
+        max-height: 26.5vw;
     }
 
+
+
     .button-v3 {
-        max-width: 40%;
-        max-height: 20vw;
+        max-width: 47%;
+        max-height: 26.5vw;
+        margin: 0;
     }
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 700px) {
+
+    .container-button{
+        flex-direction: column-reverse;
+    }
+
+    .button-number {
+
+        font-size: 13vw;
+
+    }
+
+    .button-text-v1-v3 {
+        height: unset;
+        width: 18vw;
+        font-size: 3vw;
+    }
+.button-v3{
+    gap: unset;
+    justify-content: space-around;
+}
+    .button-text-v2{
+        height: unset;
+        font-size: 3vw;
+    }
+
+    .button-v2-text-bold{
+        font-weight: 700;
+        font-size: 4vw;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .summary{
+        height: unset;
+    }
+    .headline-summary {
+        height: 14vh;
+    }
 
     .summaryHeadline {
         font-size: 47px;
@@ -321,4 +369,23 @@ img.pen-icon {
         font-size: 20px;
     }
 
+    .orange-button{
+        width: 12vw;
+        height: 12vw;
+    }
+
+    .pen-icon,
+    .hook-icon{
+        width: 13vw;
+        height: 13vw;
+    }
+
+    .button-v2{
+        justify-content: space-around;
+        gap:unset
+    }
+
+    .v-line-grey{
+        max-height: 21vw;
+    }
 }
