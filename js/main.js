@@ -122,14 +122,20 @@ function showContent(x) {
 
 // zeige welcher Content aktuell ausgewählt ist
 function setActiveElement(element) {
+
+  
+  var mobileElementName = element + "Mobile";
   var icons = document.querySelectorAll(".desktopTemplateIconActive");
   icons.forEach(function (icon) {
     icon.classList.remove("desktopTemplateIconActive");
   });
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
+  document.getElementById('privacyPolicy').classList.remove('desktopTemplateIconActive')
 
-  element.classList.add("desktopTemplateIconActive");
-  setActiveIcon(element)
+
+  document.getElementById(`${element}`).classList.add("desktopTemplateIconActive");
+  document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
+  setActiveIcon()
 }
 
 function setActiveIcon() {
