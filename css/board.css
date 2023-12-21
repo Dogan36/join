@@ -47,7 +47,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-   
+
     padding: 0px;
     gap: 26px;
     flex-wrap: wrap;
@@ -58,8 +58,8 @@
     flex-direction: column;
     align-items: center;
     padding: 0px;
-   gap:35px;
-   min-height: 300px;
+    gap: 35px;
+    min-height: 300px;
 }
 
 
@@ -100,15 +100,15 @@
 
 }
 
-.boardElementContent{
+.boardElementContent {
     display: flex;
     flex-direction: column;
     min-width: 230px;
     flex-grow: 1;
-    gap:35px
+    gap: 35px
 }
 
-.boardElementContentHighlight{
+.boardElementContentHighlight {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -125,15 +125,15 @@
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
     cursor: pointer;
-    
+
 }
 
-.boardCardDrag{
+.boardCardDrag {
     height: 35px;
     width: 250px;
 }
 
-.boardCardDragActive{
+.boardCardDragActive {
     border: 1px dashed gray;
     margin-top: 35px;
     margin-bottom: 35px;
@@ -163,7 +163,7 @@
 }
 
 .boardCardCategory span {
-    
+
     height: 19px;
     text-align: center;
     font-family: 'Inter';
@@ -245,10 +245,11 @@
     height: 35px;
 }
 
-.boardCardAssign img{
+.boardCardAssign img {
     width: 17px;
-height: 12px
+    height: 12px
 }
+
 .boardCardAssignedTo {
     display: flex;
     flex-direction: row;
@@ -295,15 +296,15 @@ height: 12px
 .addTaskOverlay {
     display: flex;
     flex-direction: column;
-    
+
     position: absolute;
-   
+
     background-color: white;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     z-index: 2;
     height: 85%;
-   
+
     transform: translate(-50%, -50%);
     top: 50%;
 }
@@ -340,7 +341,7 @@ height: 12px
         transform: translateX(10000%);
     }
 
-   200%{
+    200% {
         opacity: 1;
         transform: translateX(0);
     }
@@ -348,7 +349,7 @@ height: 12px
 
 
 
- .fade-out-right {
+.fade-out-right {
     animation-name: fade-out-right;
     animation-duration: 2s;
     animation-fill-mode: forwards;
@@ -358,7 +359,7 @@ height: 12px
 
 
 
-.activeTaskChangeContainer{
+.activeTaskChangeContainer {
 
     bottom: 62px;
     position: absolute;
@@ -366,29 +367,29 @@ height: 12px
     cursor: pointer !important;
     display: flex;
     flex-direction: column;
- 
+
     border-bottom: none;
     border-radius: 10px;
     justify-content: flex-end;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 }
 
-.activeTaskMoveContainer{
- 
-padding-left: 5px;
-padding-right: 5px;
-height: 0px;
-overflow-y: hidden;
+.activeTaskMoveContainer {
+
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 0px;
+    overflow-y: hidden;
 }
 
-.activeTaskMoveContainerOpen{
+.activeTaskMoveContainerOpen {
     height: 160px;
-   
+
 }
 
 
 .activeTaskMoveButtonHeader {
-   font-weight: bold;
+    font-weight: bold;
     font-size: 16px;
     align-items: center;
     height: 32px;
@@ -401,27 +402,52 @@ overflow-y: hidden;
     height: 32px;
 }
 
-.activeTaskMoveButton:hover{
+.activeTaskMoveButton:hover {
     box-shadow: 0px -3px 4px rgba(0, 0, 0, 0.25);
     transform: scale(1.05);
 }
 
 
 
- @keyframes fade-out-right {
-     0% {
-         opacity: 0;
-         transform: translateX(10000%);
-     }
+@keyframes fade-out-right {
+    0% {
+        opacity: 0;
+        transform: translateX(10000%);
+    }
 
-     200% {
-         opacity: 1;
-         transform: translateX(0);
-     }
- }
+    200% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
- @media screen and (max-width: 1375px) {
-    .boardElement{
+@media screen and (max-width: 1375px) {
+    .boardElement {
         flex: 1 0 33%;
     }
- }
+}
+
+@media screen and (max-width: 1080px) {
+
+
+
+    .findTask {
+        position: absolute;
+        top: 126px;
+        left: 63px;
+        width: calc(100% - 130px);
+           }
+
+           .boardContent{
+            margin-top: 50px;
+           }
+
+           .boardAddTaskButton span{
+            display: none;
+            
+           }
+
+           .boardAddTaskButton{
+            width: 51px;
+           }
+}
