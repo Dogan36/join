@@ -26,6 +26,11 @@ body {
     justify-content: space-between;
 }
 
+.addTaskHeadline{
+    font-size: 61px;
+    font-weight: 700;
+}
+
 .title-container {
     display: flex;
     flex-direction: column;
@@ -514,15 +519,12 @@ input[type="checkbox"] + label {
 
 
 
-@media (max-width: 1200px) {}
+@media (max-width: 1080px) {
 
-/* input:invalid,
-textarea:invalid {
-    border-color: red;
-    
+.
+
+    .add-task{
+        height: 100%;
+    }
 }
 
-input:valid,
-textarea:valid {
-    border-color: initial;
-} *

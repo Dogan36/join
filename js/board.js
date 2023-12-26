@@ -8,13 +8,13 @@ function renderBoard() {
     let containerDone = document.getElementById('boardContentDone')
     clearBoardBeforeRender()
     for (let i = 0; i < tasks.length; i++) {
-        const element = tasks[i];
+        let element = tasks[i];
         if (element.taskProgress === 'toDo' || element.taskProgress == '') containerToDo.innerHTML += addBoardCard(element, i)
         if (element.taskProgress === 'inProgress') containerInProgress.innerHTML += addBoardCard(element, i)
         if (element.taskProgress === 'awaiting') containerAwaiting.innerHTML += addBoardCard(element, i)
         if (element.taskProgress === 'done') containerDone.innerHTML += addBoardCard(element, i)
     }
-
+addContentEmptyDiv()
 }
 
 
@@ -46,6 +46,25 @@ function addBoardCard(element, i) {
             `
 }
 
+function addContentEmptyDiv() {
+    let containerToDo = document.getElementById('boardContentToDo');
+    let containerInProgress = document.getElementById('boardContentInProgress');
+    let containerAwaiting = document.getElementById('boardContentAwaiting');
+    let containerDone = document.getElementById('boardContentDone');
+    
+    if (containerToDo.innerHTML === '') {
+        containerToDo.innerHTML += '<div class="boardElementEmpty">No Tasks To Do</div>';
+    }
+    if (containerInProgress.innerHTML === '') {
+        containerInProgress.innerHTML += '<div class="boardElementEmpty">No Tasks In Progress</div>';
+    }
+    if (containerAwaiting.innerHTML === '') {
+        containerAwaiting.innerHTML += '<div class="boardElementEmpty">No Tasks Awaiting Feedback</div>';
+    }
+    if (containerDone.innerHTML === '') {
+        containerDone.innerHTML += '<div class="boardElementEmpty">No Tasks Done</div>';
+    }
+}
 
 function addBoardCardSubtask(element) {
     let subtasks = element.subtasks
@@ -82,8 +101,8 @@ function generateAvatarHtml(assignedTo) {
     if (assignedTo.length === 3) {
         avatarHtml = generateAvatarsHtml(assignedTo, 0, 3);
     } else if (assignedTo.length > 3) {
-        const firstTwoAvatarsHtml = generateAvatarsHtml(assignedTo, 0, 2);
-        const remainingAvatarsHtml = `<div class="boardAvatar" style="background-color:black"><span>+${assignedTo.length - 2}</span></div>`;
+        let firstTwoAvatarsHtml = generateAvatarsHtml(assignedTo, 0, 2);
+        let remainingAvatarsHtml = `<div class="boardAvatar" style="background-color:black"><span>+${assignedTo.length - 2}</span></div>`;
         avatarHtml = firstTwoAvatarsHtml + remainingAvatarsHtml;
     } else {
         avatarHtml = generateAvatarsHtml(assignedTo, 0, assignedTo.length);
@@ -95,9 +114,9 @@ function generateAvatarHtml(assignedTo) {
 function generateAvatarsHtml(assignedTo, startIndex, endIndex) {
     let avatarsHtml = '';
     for (let index = startIndex; index < endIndex; index++) {
-        const assignedToIndex = assignedTo[index];
-        const backgroundColor = avatarBackgroundColors[assignedTo[index]];
-        const contact = contacts[assignedToIndex];
+        let assignedToIndex = assignedTo[index];
+        let backgroundColor = avatarBackgroundColors[assignedTo[index]];
+        let contact = contacts[assignedToIndex];
         avatarsHtml += generateAvatarHtmlElement(backgroundColor, contact.initials);
     }
     return avatarsHtml;

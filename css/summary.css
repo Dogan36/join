@@ -253,17 +253,10 @@ body {
         height: 54vh;
     }
 
-    .headline-summary {
-        align-items: flex-start;
-    }
+   
 
-    .summaryHeadline {
-        font-size: 9vw;
-    }
 
-    .everything-in-a-nutshell {
-        font-size: 3vw;
-    }
+    
 
     .container-button {
         margin-top: 20px;
@@ -284,6 +277,7 @@ body {
 
     .headline-summary {
         align-self: flex-start;
+        align-items: flex-start;
         gap: 7%;
         flex-direction: column;
 
@@ -350,24 +344,18 @@ body {
         font-weight: 700;
         font-size: 4vw;
     }
-
+    .everything-in-a-nutshell {
+        font-size: 25px;
+    }
 }
 
 @media screen and (max-width: 500px) {
     .summary{
         height: unset;
     }
-    .headline-summary {
-        height: 14vh;
-    }
 
-    .summaryHeadline {
-        font-size: 47px;
-    }
 
-    .everything-in-a-nutshell {
-        font-size: 20px;
-    }
+    
 
     .orange-button{
         width: 12vw;

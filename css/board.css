@@ -108,6 +108,20 @@
     gap: 35px
 }
 
+.boardElementEmpty{
+    width: 250px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px;
+    background-color: #E7E7E7;
+    color: #A8A8A8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: none;
+}
+
 .boardElementContentHighlight {
     background-color: rgba(0, 0, 0, 0.2);
 }
@@ -440,6 +454,7 @@
 
            .boardContent{
             margin-top: 50px;
+            padding-bottom: 50px;
            }
 
            .boardAddTaskButton span{
@@ -450,4 +465,16 @@
            .boardAddTaskButton{
             width: 51px;
            }
+}
+
+@media screen and (max-width:650px) {
+    .boardElement {
+        flex: 1 0 50%;
+        gap: 0;
+        min-height: unset;
+    }
+
+    .boardElementEmpty{
+        display: flex;
+    }
 }

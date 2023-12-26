@@ -1138,16 +1138,25 @@ indexWrapper {
         display: block;
     }
 }
-
+@media screen and (max-width: 700px) {
+    h1{
+        font-size: 56px;
+        
+    }
+}
 @media screen and (max-width: 610px) {
     .header p {
         display: none;
     }
 
-    h1{
-        font-size: 56px;
-        
-    }
+    
+
+}
+
+@media screen and (max-width: 700px) {
+   .indexContent{
+    align-items: normal;
+   }
 
 }
 
