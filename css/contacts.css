@@ -58,7 +58,7 @@ contacts {
     align-items: center;
     padding: 10px;
     gap: 10px;
-    width: 357px;
+    width: 95vw;
     height: 60px;
 }
 
@@ -530,7 +530,7 @@ contacts {
     position: absolute;
     top: 50%;
     max-width: 95vw;
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - 80px);
     transform: translate(-50%, -50%);
     width: 1212px;
     height: 594px;
@@ -851,11 +851,7 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
       
     }
 
-    .addContactOverlay,
-    .editContactOverlay{
-        width: 500px;
-        height: calc(100vh - 180px);
-    }
+    
 
     .addContactOverlayLeft{
         width: 100%;
@@ -897,6 +893,10 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
         z-index: 2;
     }
 
+    .contactsNewContactButton{
+        z-index: 0;
+    }
+
 }
 
 @media screen and (max-width: 1080px) {
@@ -921,6 +921,22 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
         display: none;
 
     }
+
+    .contactsLeft{
+        max-width: 100vw;
+        padding: 0 30px;
+        align-items: center;
+    }
+
+    .contactListSection,
+    .contactListSection span,
+    .contactListSeperator,
+    .contactListSeperator img,
+    .contactListElement{
+        max-width: 100%;
+    }
+
+   
 
 }
 

@@ -506,7 +506,8 @@
         flex-direction: row;
         overflow-x: scroll;
         width: 100%;
-       scroll-snap-type: x mandatory;
+       scroll-snap-type: x mandatory ;
+       scroll-snap-align: start
     }
 
   .activeTaskChangeContainer{

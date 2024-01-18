@@ -475,7 +475,7 @@ function openAddTaskOverlay(progress) {
   n = 1;
   renderAddTaskDropdowns()
   showDarkBackground()
-  document.getElementById('addTaskOverlay').classList.add('overlayActive');
+    document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
 
 
@@ -483,6 +483,7 @@ function openActiveTaskOverlay(i) {
   let activeTask = tasks[i];
   document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
   showDarkBackground()
+ 
   document.getElementById('activeTaskOverlay').classList.add('overlayActive')
 }
 
@@ -494,7 +495,6 @@ function openEditTaskOverlay(i) {
   n = 2;
   renderAddTaskDropdowns()
   setTimeout(showDarkBackground, 500)
-
   document.getElementById('editTaskOverlay').classList.add('overlayActive')
   setEditTaskOverlay(i)
 }
@@ -528,6 +528,7 @@ function closeDarkBackground() {
 
 
 function closeOverlay() {
+
   let overlay = document.querySelector('.overlayActive')
   if (overlay) overlay.classList.remove('overlayActive');
   clearTheInputFields()
