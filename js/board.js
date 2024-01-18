@@ -264,7 +264,7 @@ function findTask() {
         let taskName = taskNameElement.textContent.toLowerCase();
 
         // Überprüfen, ob der Task-Name nicht mit dem Suchbegriff beginnt
-        if (!taskName.startsWith(searchTerm)) {
+        if (!taskName.includes(searchTerm)) {
             boardCards[i].classList.add('d-none');
         } else {
             boardCards[i].classList.remove('d-none');

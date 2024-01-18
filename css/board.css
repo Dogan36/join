@@ -464,6 +464,11 @@
     .boardAddTaskButton {
         width: 51px;
     }
+
+    .overlay{
+        
+        padding: 20px;
+    }
 }
 
 @media screen and (max-width:650px) {
@@ -504,5 +509,8 @@
        scroll-snap-type: x mandatory;
     }
 
-  
+  .activeTaskChangeContainer{
+    bottom:30px;
+    right:30px
+  }
 }

@@ -1,5 +1,7 @@
 let contactToEdit
+
 function renderContacts() {
+ initials=[]
   getFirstLetter()
   showList()
 }
@@ -23,6 +25,9 @@ function getFirstLetter() {
 
 function showList() {
   let contactList = document.getElementById('contactsList')
+  
+if(initials.length>0){
+  
   contactList.innerHTML = ''
   for (let i = 0; i < initials.length; i++) {
     const initial = initials[i].toUpperCase();
@@ -37,6 +42,7 @@ function showList() {
     // Call the 'Test()' function with 'initial' as an argument here
     showContacts(initial);
   }
+}
 }
 
 
