@@ -77,6 +77,7 @@ indexWrapper {
     flex-direction: column;
     height: 100%;
     flex-grow: 1;
+    width: calc(100% - 232px);
 
 }
 
@@ -84,6 +85,8 @@ indexWrapper {
     display: flex;
     height: 100%;
     overflow-y: auto;
+   
+   
 }
 
 .indexHeader {
@@ -292,7 +295,7 @@ indexWrapper {
     position: absolute;
     width: 193px;
     height: 53px;
-    left: 1195px;
+    right: 100px;
     top: 700px;
     background: var(--defaultDark);
     border: 1px solid var(--defaultDark);
@@ -509,7 +512,8 @@ indexWrapper {
 .forgotButton:hover,
 .editContactOverlaySaveButton:hover,
 .addContactOverlayCreateContactButton:hover,
-.activeTaskEdit:hover {
+.activeTaskEdit:hover,
+.contactsMenuButton:hover {
     background-color: var(--secondaryColor);
     border: 1px solid var(--secondaryColor);
 }
@@ -1165,6 +1169,10 @@ indexWrapper {
         flex-direction: column-reverse;
     }
 
+.indexContainer{
+    width: 100%;
+}
+
     .indexContent {
         align-items: center;
         justify-content: center;
@@ -1172,6 +1180,7 @@ indexWrapper {
         overflow-y: auto;
 
     }
+   
 
     .logoHeaderMobile {
         display: block;

@@ -7,13 +7,18 @@ function renderContacts() {
 
 function getFirstLetter() {
   contacts.forEach(function (contact) {
-    const initial = contact.name.charAt(0).toUpperCase();
-    if (!initials.includes(initial)) {
-      initials.push(initial);
+    const name = contact.name;
+    
+    if (name !== 'Kontakt gelöscht') {
+      const initial = name.charAt(0).toUpperCase();
+      if (!initials.includes(initial)) {
+        initials.push(initial);
+      }
     }
   });
   initials.sort();
 }
+
 
 
 function showList() {
@@ -40,7 +45,10 @@ function showContacts(initial) {
   for (let j = 0; j < contacts.length; j++) {
     const contact = contacts[j];
     const backgroundColor = j
-    if (contact.name.charAt(0).toUpperCase() == initial) {
+    if (contact.name.charAt(0).toUpperCase() === initial && contact.name !== 'Kontakt gelöscht') 
+      // Der Code, der ausgeführt werden soll, wenn die Bedingung wahr ist
+  
+   {
       contactList.innerHTML += `
           <div class="contactListElement" id='contact${j}' onclick="setActiveContact(${j})">
           <div class="contantsAvatar" style="background-color: ${avatarBackgroundColors[backgroundColor]}"><span>${contact.initials.toUpperCase()}</span></div>
@@ -58,7 +66,7 @@ function setEditContactOverlay(j) {
   document.getElementById('editContactPhone').value = contact.phone
   document.getElementById('editContactAvartarInitials').innerHTML = contact.initials
   document.getElementById('editContactAvartar').style = `background-color: ${avatarBackgroundColors[j]};`
-  document.getElementById('editContactOverlay').addEventListener('submit', function() {
+  document.getElementById('editContactOverlay').addEventListener('submit', function () {
     checkInputsEditContact(j); return false;
   });
 }
@@ -83,6 +91,7 @@ function setActiveContact(j) {
 
     element.classList.add("contactListElementActive");
     contactCard.classList.add("contactsCardActive");
+    document.querySelector('.contactsRight').classList.add("contactsRightMobileActive")
     setInnerContactCard(j)
   }
 }
@@ -101,18 +110,21 @@ function setInnerContactCardTemplate(j) {
   <div class="contactCardAvatar" style="background-color: ${avatarBackgroundColors[j]};"><span>${contact.initials}</span></div>
   <div class="contactCardContentHeader">
       <span>${contact.name}</span>
-      <div onclick="openAddTaskOverlay()"class="contactCardHeaderAddTask">
-          <img src="./assets/img/contactPlus.svg" alt="">
-          <span>Add Task</span>
+      <div class="contactCardEdits">
+      <div onclick="openEditContactOverlay(${j})" class="contactCardEdit">
+      <img src="./assets/img/editIcon.svg" alt="">
+      <span>Edit</span>
       </div>
+      <div onclick="deleteContact(${j})" class="contactCardEdit">
+      <img src="./assets/img/delete.svg" alt="">
+      <span>Delete</span>
+      </div>
+  </div>
   </div>
 </div>
 <div class="contactCardInfoHeader">
   <span>Contact Information</span>
-  <div onclick="openEditContactOverlay(${j})" class="contactCardEdit">
-      <img src="./assets/img/editIcon.svg" alt="">
-      <span>Edit Contact</span>
-  </div>
+  
 </div>
 <div class="contactCardInfo">
   <div class="contactCardEmail">
@@ -137,11 +149,24 @@ async function addContact() {
   document.getElementById('contactOverlay').reset()
   closeOverlay()
   renderContacts()
-  setActiveContact(contacts.length-1);
- 
+  setActiveContact(contacts.length - 1);
+
   flyInButton(n)
 }
 
+async function deleteContact(j){
+  let name = 'Kontakt gelöscht'
+  let email = ''
+  let phone = ''
+  let initials = 'KG'
+  contacts.splice(j, 1, { name: name, email: email, phone: phone, initials: initials });
+  await setItem('contacts', contacts);
+  showConfirmation('contactDeleted')
+  setTimeout(closeConfirmation, 2000)
+  closeOverlay()
+  document.querySelector(".contactsCard").classList.remove('contactsCardActive')
+  renderContacts()
+}
 
 async function editContact() {
   let name = document.getElementById('editContactName')
@@ -151,7 +176,7 @@ async function editContact() {
   contacts.splice(contactToEdit, 1, { name: name.value, email: email.value, phone: phone.value, initials: initials });
   await setItem('contacts', contacts);
   showConfirmation('contactUpdated')
-  setTimeout(closeConfirmation,2000)
+  setTimeout(closeConfirmation, 2000)
   closeOverlay()
   renderContacts()
   setActiveContact(contactToEdit)
@@ -187,4 +212,21 @@ function checkInputsEditContact(j) {
     el.classList.add('d-none');
   })
   editContact(j)
+}
+
+function closeContactsRightMobile() {
+  document.querySelector('.contactsRight').classList.remove("contactsRightMobileActive");
+  var contact = document.querySelector(".contactListElementActive");
+
+
+
+  contact.classList.remove("contactListElementActive");
+}
+
+function toggleEdits() {
+  let edits = document.querySelector(".contactCardEdits")
+  if (edits.style.display == 'flex') { edits.style.display = 'none' }
+  else {edits.style.display = 'flex'}
+  ;
+
 }

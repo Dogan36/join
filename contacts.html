@@ -1,17 +1,22 @@
 <contacts>
-    <div class="contactsLeft" id="contactsList">
+    <button class="contactsNewContactButton" onclick="openNewContactOverlay()"><span>New Contact</span><img
+            src="./assets/img/addContactIcon.svg" alt=""></button>
+    
+        <div class="contactsLeft" id="contactsList">
 
-    </div>
-    <div class="contactsRight">
-        <div class="contactsRightHeader">
-            <h1>Contacts</h1><img src="./assets/img/contactsSeperator.svg" alt=""><span>Better with a Team</span>
         </div>
-        <div class="contactsCardContainer">
-            <div class="contactsCard">
-                
+        <div class="contactsRight">
+            <img onclick="closeContactsRightMobile()" class="closeContactArrow" src="assets/img/arrow-left-line.svg"
+                alt="">
+            <div class="contactsRightHeader">
+                <h1>Contacts</h1><img src="./assets/img/contactsSeperator.svg" alt=""><span
+                    class="everything-in-a-nutshell">Better with a Team</span>
             </div>
+            <div class="contactsCardContainer">
+                <div class="contactsCard">
+
+                </div>
+            </div>
+            <button onclick="toggleEdits()" class="contactsMenuButton"><img class="contactsMenu" src="./assets/img/more_vert.svg" alt=""></button>
         </div>
-        <button class="contactsNewContactButton" onclick="openNewContactOverlay()"><span>New Contact</span><img
-                src="./assets/img/addContactIcon.svg" alt=""></button>
-    </div>
 </contacts>

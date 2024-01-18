@@ -576,6 +576,12 @@ function changeflyInButton(confirmation) {
   <div id="confirmationText" class="task-added-to-board">Signed up successfully</div>
   <img id="confirmationImg" src="./assets/img/userIcon.svg" alt="">`
   }
+
+  else if (confirmation == 'contactDeleted') {
+    flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Contact deleted</div>
+  <img id="confirmationImg" src="./assets/img/deleteWhite.svg" alt="">`
+  }
 }
 
 function toggleLogout() {
