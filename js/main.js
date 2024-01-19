@@ -123,7 +123,7 @@ function showContent(x) {
 // zeige welcher Content aktuell ausgewählt ist
 function setActiveElement(element) {
 
-  
+
   var mobileElementName = element + "Mobile";
   var icons = document.querySelectorAll(".desktopTemplateIconActive");
   icons.forEach(function (icon) {
@@ -134,7 +134,10 @@ function setActiveElement(element) {
 
 
   document.getElementById(`${element}`).classList.add("desktopTemplateIconActive");
-  document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
+
+  if (!(element === 'privacyPolicy' || element === 'legalNotice')) {
+    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
+  }
   setActiveIcon()
 }
 
@@ -250,12 +253,14 @@ function checkInputsSignUp() {
   errorCount += checkInputEmpty('signUpName') ? 1 : 0;
   errorCount += checkInputEmpty('signUpEmail') ? 1 : 0;
   errorCount += checkInputEmpty('signUpPassword') ? 1 : 0;
-  errorCount += checkInputEmpty('signUpPasswordConfirm') ? 1 : 0;
+  errorCount += checkInputEmpty('confirmPassword') ? 1 : 0;
   errorCount += checkEmailFormat('signUpEmail') ? 1 : 0;
   errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
+  debugger
   errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
   errorCount += checkPasswordConfirm('signUpPassword') ? 1 : 0;
   errorCount += checkPrivacyChecked() ? 1 : 0;
+
   if (errorCount > 0) return;
 
   addUser()
@@ -344,9 +349,9 @@ function checkPasswordLength(element) {
 
 function checkPasswordConfirm() {
   let password = document.getElementById('signUpPassword')
-  let passwordConfirm = document.getElementById('signUpPasswordConfirm')
+  let passwordConfirm = document.getElementById('confirmPassword')
   if (password.value != passwordConfirm.value) {
-    document.getElementById('signUpPasswordConfirmIdenticalError').classList.remove('d-none');
+    document.getElementById('confirmPasswordConfirmIdenticalError').classList.remove('d-none');
     return true
   }
 }
@@ -475,7 +480,7 @@ function openAddTaskOverlay(progress) {
   n = 1;
   renderAddTaskDropdowns()
   showDarkBackground()
-    document.getElementById('addTaskOverlay').classList.add('overlayActive');
+  document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
 
 
@@ -483,7 +488,7 @@ function openActiveTaskOverlay(i) {
   let activeTask = tasks[i];
   document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
   showDarkBackground()
- 
+
   document.getElementById('activeTaskOverlay').classList.add('overlayActive')
 }
 
@@ -606,3 +611,25 @@ function resetSignUpInputs() {
     el.classList.add('d-none');
   })
 }
+
+
+function setupWelcomeDeskAnimation() {
+  var welcomeDesk = document.getElementById('welcomeDesk');
+
+  if (welcomeDesk) {
+      // Eventlistener für das Ende der Animation
+      welcomeDesk.addEventListener('animationend', function () {
+          // Füge eine Klasse hinzu, um das Element auszublenden
+          welcomeDesk.classList.add('animation-done');
+      });
+  } else {
+      // Wenn das Element nicht gefunden wurde, rufe die Funktion nach einer Verzögerung erneut auf
+      setTimeout(function () {
+          setupWelcomeDeskAnimation();
+      }, 1000); // Hier kannst du die Verzögerung in Millisekunden anpassen
+  }
+}
+
+// Rufe die Funktion auf, wenn das DOM vollständig geladen ist
+document.addEventListener('DOMContentLoaded', setupWelcomeDeskAnimation);
+

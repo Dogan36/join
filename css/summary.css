@@ -248,11 +248,13 @@ body {
         align-items: center;
         height: 93%;
         justify-content: space-around;
+        padding: 0px 10px 0 10px;
     }
 
     .body-summary-container {
         justify-content: center;
         height: 54vh;
+        max-width: 95vw;
     }
 
    
@@ -282,7 +284,8 @@ body {
         align-items: flex-start;
         gap: 7%;
         flex-direction: column;
-
+padding: unset;
+height: 100px;
     }
 
     .headlineSeperator {

@@ -88,13 +88,14 @@ function loadRememberedData() {
 
 
 async function addUser() {
+  
     let name = document.getElementById('signUpName')
     let email = document.getElementById('signUpEmail');
     let password = document.getElementById('signUpPassword');
     let initials = getInitials('signUpName')
     users.push({name: name.value, email: email.value, password: password.value, initials: initials});
     showConfirmation('signedUp')
-    await setServer();
+   await setItem('user', user);
     setTimeout(function() {
         closeConfirmation();
         closeDarkBackground();
