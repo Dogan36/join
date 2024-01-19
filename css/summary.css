@@ -152,14 +152,14 @@ body {
     color: #2A3647;
 }
 
-.button-v2-content{
+.button-v2-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.button-v2-text-bold{
+.button-v2-text-bold {
     font-weight: 700;
     font-size: 21px;
 }
@@ -257,11 +257,6 @@ body {
         max-width: 95vw;
     }
 
-   
-
-
-    
-
     .container-button {
         margin-top: 20px;
         max-width: 90vw;
@@ -284,8 +279,8 @@ body {
         align-items: flex-start;
         gap: 7%;
         flex-direction: column;
-padding: unset;
-height: 100px;
+        padding: unset;
+        height: 100px;
     }
 
     .headlineSeperator {
@@ -302,15 +297,10 @@ height: 100px;
 
     }
 
-
-
-
     .button-v2 {
         max-width: 90vw;
         max-height: 26.5vw;
     }
-
-
 
     .button-v3 {
         max-width: 47%;
@@ -320,15 +310,12 @@ height: 100px;
 }
 
 @media screen and (max-width: 700px) {
-
-    .container-button{
+    .container-button {
         flex-direction: column-reverse;
     }
 
     .button-number {
-
         font-size: 13vw;
-
     }
 
     .button-text-v1-v3 {
@@ -336,46 +323,46 @@ height: 100px;
         width: 18vw;
         font-size: 3vw;
     }
-.button-v3{
-    gap: unset;
-    justify-content: space-around;
-}
-    .button-text-v2{
+
+    .button-v3 {
+        gap: unset;
+        justify-content: space-around;
+    }
+
+    .button-text-v2 {
         height: unset;
         font-size: 3vw;
     }
 
-    .button-v2-text-bold{
+    .button-v2-text-bold {
         font-weight: 700;
         font-size: 4vw;
     }
+
     .everything-in-a-nutshell {
         font-size: 25px;
     }
 }
 
 @media screen and (max-width: 500px) {
-    
 
-    
-
-    .orange-button{
+    .orange-button {
         width: 12vw;
         height: 12vw;
     }
 
     .pen-icon,
-    .hook-icon{
+    .hook-icon {
         width: 13vw;
         height: 13vw;
     }
 
-    .button-v2{
+    .button-v2 {
         justify-content: space-around;
-        gap:unset
+        gap: unset
     }
 
-    .v-line-grey{
+    .v-line-grey {
         max-height: 21vw;
     }
 }

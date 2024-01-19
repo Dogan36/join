@@ -21,43 +21,24 @@
     --medPriority: #FFA800;
     --highPriority: #FF3D00;
     --avatar-color-1: #FF0000;
-    /* Rot */
     --avatar-color-2: #FFA500;
-    /* Orange */
     --avatar-color-3: #FFFF00;
-    /* Gelb */
     --avatar-color-4: #008000;
-    /* Dunkelgrün */
     --avatar-color-5: #0000FF;
-    /* Blau */
     --avatar-color-6: #800080;
-    /* Lila */
     --avatar-color-7: #FFC0CB;
-    /* Rosa */
     --avatar-color-8: #00FFFF;
-    /* Türkis */
     --avatar-color-9: #808080;
-    /* Grau */
     --avatar-color-10: #FF69B4;
-    /* Hellrosa */
     --avatar-color-11: #00FF00;
-    /* Grün */
     --avatar-color-12: #7FFFD4;
-    /* Aquamarin */
     --avatar-color-13: #9400D3;
-    /* Violett */
     --avatar-color-14: #FFD700;
-    /* Gold */
     --avatar-color-15: #FF1493;
-    /* Pink */
     --avatar-color-16: #00CED1;
-    /* Türkisblau */
     --avatar-color-17: #FF6347;
-    /* Tomatenrot */
     --avatar-color-18: #4B0082;
-    /* Indigoblau */
     --avatar-color-19: #808000;
-    /* Olivgrün */
 }
 
 h1 {
@@ -66,7 +47,8 @@ h1 {
     font-size: 61px;
     line-height: 120%;
 }
-h2{
+
+h2 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -82,21 +64,17 @@ indexWrapper {
     height: 100%;
     flex-grow: 1;
     width: calc(100% - 232px);
-
 }
 
 .indexContent {
     display: flex;
     height: 100%;
     overflow-y: auto;
-
-
 }
 
 .indexHeader {
     z-index: 1;
 }
-
 
 .leftArrow {
     position: absolute;
@@ -131,7 +109,6 @@ indexWrapper {
     color: white;
 }
 
-
 .loginLoginButton {
     display: flex;
     flex-direction: row;
@@ -148,7 +125,6 @@ indexWrapper {
 }
 
 .loginLoginButton span {
-
     height: 25px;
     font-style: normal;
     font-weight: 700;
@@ -156,8 +132,6 @@ indexWrapper {
     line-height: 120%;
     color: white;
 }
-
-
 
 .loginGuestButton {
     display: flex;
@@ -184,7 +158,6 @@ indexWrapper {
     white-space: nowrap;
 }
 
-
 .signUpSignUpButton {
     display: flex;
     flex-direction: row;
@@ -207,7 +180,6 @@ indexWrapper {
     line-height: 120%;
     color: white;
 }
-
 
 .boardAddTaskButton {
     display: flex;
@@ -236,7 +208,6 @@ indexWrapper {
     white-space: nowrap;
 }
 
-
 .addTaskCreateTaskButton {
     display: flex;
     flex-direction: row;
@@ -244,10 +215,8 @@ indexWrapper {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-
     width: 177px;
     height: 61px;
-
     background: #2A3647;
     border-radius: 10px;
 }
@@ -262,7 +231,6 @@ indexWrapper {
     line-height: 120%;
     color: white;
 }
-
 
 .addTaskClearButton {
     display: flex;
@@ -295,7 +263,6 @@ indexWrapper {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-
     position: absolute;
     width: 193px;
     height: 53px;
@@ -385,7 +352,6 @@ indexWrapper {
 
 .addContactOverlayCreateContactButton span {
     width: 154px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -419,7 +385,6 @@ indexWrapper {
     color: var(--defaultDark);
 }
 
-
 .editContactOverlaySaveButton {
     display: flex;
     flex-direction: row;
@@ -427,10 +392,8 @@ indexWrapper {
     align-items: center;
     padding: 18px 10px;
     gap: 10px;
-
     width: 143px;
     height: 61px;
-
     background: var(--defaultDark);
     border-radius: 10px;
 }
@@ -449,15 +412,11 @@ indexWrapper {
 
 .activeTaskDelete {
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     margin-right: -1px;
-
     width: 50px;
     height: 50px;
-
     background: #FFFFFF;
     border: 1px solid #2A3647;
     border-radius: 10px 0px 0px 10px;
@@ -467,12 +426,9 @@ indexWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-
     gap: 6px;
-
     width: 50px;
     height: 50px;
-
     background: #FFFFFF;
     border: 1px solid #2A3647;
 }
@@ -484,22 +440,14 @@ indexWrapper {
 
 .activeTaskEdit {
     display: flex;
-
     justify-content: center;
     align-items: center;
     margin-left: -1px;
-
     width: 50px;
     height: 50px;
-
-
-    /* Version 2/ main color  */
-
     background: #2A3647;
     border-radius: 0px 10px 10px 0px;
 }
-
-
 
 .activeTaskCloseButton {
     position: absolute;
@@ -588,7 +536,6 @@ indexWrapper {
     font-size: 23px;
     line-height: 120%;
     color: #FFFFFF;
-
 }
 
 .task-added-to-board-container {
@@ -650,10 +597,6 @@ indexWrapper {
     cursor: pointer;
 }
 
-
-
-
-
 .forgotSentConfirmation {
     display: flex;
     flex-direction: row;
@@ -671,7 +614,6 @@ indexWrapper {
 }
 
 .forgotSentConfirmation span {
-
     height: 28px;
     font-family: 'Open Sans';
     font-style: normal;
@@ -772,7 +714,6 @@ indexWrapper {
     margin-block: 35px;
 }
 
-
 .activeTaskOverlay {
     position: absolute;
     top: 50%;
@@ -825,7 +766,6 @@ indexWrapper {
     line-height: 120%;
     color: #2A3647;
     max-width: 70vw;
-
 }
 
 .activeTaskDescription {
@@ -844,7 +784,6 @@ indexWrapper {
     align-items: flex-start;
     padding: 0px;
     gap: 25px;
-
     width: 246px;
     height: 25px;
 }
@@ -852,17 +791,11 @@ indexWrapper {
 .activeTaskDueDate span:first-child {
     width: 99px;
     height: 25px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-
-    /* black */
-
     color: #000000;
 }
 
@@ -870,18 +803,11 @@ indexWrapper {
     width: 122px;
     height: 25px;
     white-space: nowrap;
-
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-
-    /* black */
-
     color: #000000;
 }
 
@@ -898,37 +824,24 @@ indexWrapper {
 .activeTaskPriority span {
     width: 82px;
     height: 25px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-
-    /* black */
-
     color: #000000;
-
 }
 
 .activeTaskPriorityButton {
-    /* Auto layout */
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 4px 18px;
     gap: 10px;
-
     width: 131px;
     height: 33px;
-
     background: #FF3D00;
-    /* nuevo */
-
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
@@ -951,17 +864,11 @@ indexWrapper {
 .activeTaskAssignedToHeader {
     width: 134px;
     height: 25px;
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
-
-    /* black */
-
     color: #000000;
 }
 
@@ -972,7 +879,6 @@ indexWrapper {
     padding: 0px;
     gap: 25px;
     height: 60px;
-
 }
 
 .activeTaskAvartar {
@@ -982,17 +888,12 @@ indexWrapper {
     align-items: center;
     padding: 10px 8px;
     gap: 10px;
-
     width: 45px;
     height: 45px;
-
     background: #9327FF;
-    /* white */
-
     border: 2px solid #FFFFFF;
     border-radius: 58px;
 }
-
 
 .activeTaskAssignedTo span {
     font-family: 'Inter';
@@ -1000,31 +901,23 @@ indexWrapper {
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-
     color: #000000;
 }
 
 .activeTaskAvartar span {
     width: 22px;
     height: 19px;
-
-    /* Version 2/body */
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    /* or 19px */
-
-
     color: #FFFFFF;
 }
 
 .activeTaskButtons {
     display: flex;
 }
-
 
 .content {
     padding: 89px 0 0 230px;
@@ -1087,8 +980,6 @@ indexWrapper {
     color: var(--secondaryColor);
     scale: 1.1;
 }
-
-
 
 .helpSteps {
     display: flex;
@@ -1154,7 +1045,6 @@ indexWrapper {
 @media screen and (max-width: 700px) {
     h1 {
         font-size: 56px;
-
     }
 }
 
@@ -1162,16 +1052,12 @@ indexWrapper {
     .header p {
         display: none;
     }
-
-
-
 }
 
 @media screen and (max-width: 700px) {
     .indexContent {
         align-items: normal;
     }
-
 }
 
 @media screen and (max-width: 1080px) {
@@ -1188,9 +1074,7 @@ indexWrapper {
         justify-content: center;
         height: calc(100% - 80px - 89px);
         overflow-y: auto;
-
     }
-
 
     .logoHeaderMobile {
         display: block;
@@ -1213,8 +1097,8 @@ indexWrapper {
         width: 100vw;
         height: 100vh;
         position: absolute;
-        top:0;
-     background-color: #f5f5f5;
+        top: 0;
+        background-color: #f5f5f5;
         z-index: 2;
         animation-name: background-ease-out;
         animation-duration: 2s;
@@ -1238,7 +1122,7 @@ indexWrapper {
 
         100% {
             opacity: 0;
-         display:none
+            display: none
         }
     }
 }
