@@ -7,7 +7,8 @@ let addTaskContacts = [];
 let currentUser = 'Guest'
 let initials = [];
 let isContentLoaded = false
-
+let isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+let favicon = document.getElementById('favicon');
 let avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#E6B333', '#3366E6', '#B34D4D',
   '#80B300', '#809900', '#6680B3', '#66991A',
@@ -551,3 +552,6 @@ function setupWelcomeDeskAnimation() {
 }
 document.addEventListener('DOMContentLoaded', setupWelcomeDeskAnimation);
 
+if (isDarkMode) {
+    favicon.href = 'assets/img/logo_invert.svg'; // Pfad zum Logo für den Dark Mode
+}

@@ -205,5 +205,4 @@ function toggleEdits() {
   let edits = document.querySelector(".contactCardEdits")
   if (edits.style.display == 'flex') edits.style.display = 'none'
   else  edits.style.display = 'flex' ;
-
 }
