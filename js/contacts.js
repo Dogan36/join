@@ -1,16 +1,14 @@
 let contactToEdit
 
 function renderContacts() {
- initials=[]
+  initials = []
   getFirstLetter()
   showList()
 }
 
-
 function getFirstLetter() {
   contacts.forEach(function (contact) {
     const name = contact.name;
-    
     if (name !== 'Kontakt gelöscht') {
       const initial = name.charAt(0).toUpperCase();
       if (!initials.includes(initial)) {
@@ -21,40 +19,31 @@ function getFirstLetter() {
   initials.sort();
 }
 
-
-
 function showList() {
   let contactList = document.getElementById('contactsList')
-  
-if(initials.length>0){
-  
-  contactList.innerHTML = ''
-  for (let i = 0; i < initials.length; i++) {
-    const initial = initials[i].toUpperCase();
-    contactList.innerHTML += `
+  if (initials.length > 0) {
+    contactList.innerHTML = ''
+    for (let i = 0; i < initials.length; i++) {
+      const initial = initials[i].toUpperCase();
+      contactList.innerHTML += `
         <div class="contactListSection" id="contactListSection">
           <span>${initial}</span>
         </div>
         <div class="contactListSeperator">
           <img src="./assets/img/contactSeperator.svg" alt="">
         </div>`;
-
-    // Call the 'Test()' function with 'initial' as an argument here
-    showContacts(initial);
+      showContacts(initial);
+    }
   }
 }
-}
-
 
 function showContacts(initial) {
   let contactList = document.getElementById('contactsList')
   for (let j = 0; j < contacts.length; j++) {
     const contact = contacts[j];
     const backgroundColor = j
-    if (contact.name.charAt(0).toUpperCase() === initial && contact.name !== 'Kontakt gelöscht') 
-      // Der Code, der ausgeführt werden soll, wenn die Bedingung wahr ist
-  
-   {
+    if (contact.name.charAt(0).toUpperCase() === initial && contact.name !== 'Kontakt gelöscht')
+    {
       contactList.innerHTML += `
           <div class="contactListElement" id='contact${j}' onclick="setActiveContact(${j})">
           <div class="contantsAvatar" style="background-color: ${avatarBackgroundColors[backgroundColor]}"><span>${contact.initials.toUpperCase()}</span></div>
@@ -63,7 +52,6 @@ function showContacts(initial) {
     }
   }
 }
-
 
 function setEditContactOverlay(j) {
   let contact = contacts[j]
@@ -77,24 +65,18 @@ function setEditContactOverlay(j) {
   });
 }
 
-
 function setActiveContact(j) {
   var contact = document.querySelector(".contactListElementActive");
   var element = document.getElementById(`contact${j}`)
   contactCard = document.querySelector(".contactsCard")
-
   if (contact === element) {
-    // Clicked element is already active, so remove the classes to make it inactive:
     contact.classList.remove("contactListElementActive");
     contactCard.classList.remove("contactsCardActive");
-
   } else {
-    // Clicked element is not active, so make it active by adding classes and removing them from the previous active element:
     if (contact) {
       contact.classList.remove("contactListElementActive");
       contactCard.classList.remove("contactsCardActive");
     }
-
     element.classList.add("contactListElementActive");
     contactCard.classList.add("contactsCardActive");
     document.querySelector('.contactsRight').classList.add("contactsRightMobileActive")
@@ -102,13 +84,11 @@ function setActiveContact(j) {
   }
 }
 
-
 function setInnerContactCard(j) {
   let contactCard = document.querySelector('.contactsCard')
   contactCard.innerHTML = ''
   contactCard.innerHTML += setInnerContactCardTemplate(j)
 }
-
 
 function setInnerContactCardTemplate(j) {
   let contact = contacts[j]
@@ -130,7 +110,6 @@ function setInnerContactCardTemplate(j) {
 </div>
 <div class="contactCardInfoHeader">
   <span>Contact Information</span>
-  
 </div>
 <div class="contactCardInfo">
   <div class="contactCardEmail">
@@ -144,7 +123,6 @@ function setInnerContactCardTemplate(j) {
 </div>`
 }
 
-
 async function addContact() {
   let name = document.getElementById('addContactName')
   let email = document.getElementById('addContactEmail');
@@ -156,11 +134,10 @@ async function addContact() {
   closeOverlay()
   renderContacts()
   setActiveContact(contacts.length - 1);
-
   flyInButton(n)
 }
 
-async function deleteContact(j){
+async function deleteContact(j) {
   let name = 'Kontakt gelöscht'
   let email = ''
   let phone = ''
@@ -188,7 +165,6 @@ async function editContact() {
   setActiveContact(contactToEdit)
 }
 
-
 function checkInputsAddContact() {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -203,7 +179,6 @@ function checkInputsAddContact() {
   })
   addContact()
 }
-
 
 function checkInputsEditContact(j) {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
@@ -223,16 +198,12 @@ function checkInputsEditContact(j) {
 function closeContactsRightMobile() {
   document.querySelector('.contactsRight').classList.remove("contactsRightMobileActive");
   var contact = document.querySelector(".contactListElementActive");
-
-
-
   contact.classList.remove("contactListElementActive");
 }
 
 function toggleEdits() {
   let edits = document.querySelector(".contactCardEdits")
-  if (edits.style.display == 'flex') { edits.style.display = 'none' }
-  else {edits.style.display = 'flex'}
-  ;
+  if (edits.style.display == 'flex') edits.style.display = 'none'
+  else  edits.style.display = 'flex' ;
 
 }

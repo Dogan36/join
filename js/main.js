@@ -8,7 +8,6 @@ let currentUser = 'Guest'
 let initials = [];
 let isContentLoaded = false
 
-
 let avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#E6B333', '#3366E6', '#B34D4D',
   '#80B300', '#809900', '#6680B3', '#66991A',
@@ -21,7 +20,6 @@ let avatarBackgroundColors = ['#FF6633', '#FF33FF',
   '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 
 let categoryColors = ['#0072B2', '#E69F00', '#009E73', '#F0E442', '#CC79A7', '#56B4E9', '#D55E00', '#5D5D5D', '#CC6633', '#66CCEE', '#B2B2B2', '#999933'];
-
 let visibleIcon = 'assets/img/visibleIcon.svg';
 let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
@@ -31,11 +29,8 @@ async function init(include = false) {
   await loadTasks()
   await loadContacts()
   await loadCategorys()
-
-  // addTaskContacts =  JSON.parse(await getItem('addTaskContacts')) || [];
   if (include) {
     includeHTML()
-
   }
 }
 
@@ -99,8 +94,6 @@ function renderAddTaskDropdowns() {
   renderAddTaskContacts()
 }
 
-
-
 function renderUserInitials() {
   let nameWords = currentUser.split(" ");
   if (nameWords.length === 1) {
@@ -109,7 +102,7 @@ function renderUserInitials() {
   let initialsCurrentUser = nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
   document.querySelector('.headerUserProfilInitials').innerHTML = initialsCurrentUser
 }
-// zeige das ausgewählte Content auf index.html
+
 function showContent(x) {
   var content = document.querySelectorAll(".indexContent");
   clearTheInputFields();
@@ -120,10 +113,7 @@ function showContent(x) {
 
 }
 
-// zeige welcher Content aktuell ausgewählt ist
 function setActiveElement(element) {
-
-
   var mobileElementName = element + "Mobile";
   var icons = document.querySelectorAll(".desktopTemplateIconActive");
   icons.forEach(function (icon) {
@@ -131,10 +121,7 @@ function setActiveElement(element) {
   });
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
   document.getElementById('privacyPolicy').classList.remove('desktopTemplateIconActive')
-
-
   document.getElementById(`${element}`).classList.add("desktopTemplateIconActive");
-
   if (!(element === 'privacyPolicy' || element === 'legalNotice')) {
     document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
   }
@@ -155,36 +142,24 @@ function setActiveIcon() {
   var iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
   iconsActive.forEach(function (iconActive) {
     var img = iconActive.querySelector("img");
-
-    if (img) {
-      img.src = img.src.replace(".svg", "_active.svg");
-    }
-
+    if (img) img.src = img.src.replace(".svg", "_active.svg");
   });
 
 }
 
-// ändere img bei hover auf buttons
 function hover(element, url) {
   document.getElementById(`${element}`).setAttribute('src', url);
 }
-
 
 function hoverThis(element, url) {
   element.setAttribute('src', url);
 }
 
-
 function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
-
   let currentUserURL = params.get('variable');
   if (currentUserURL) currentUser = currentUserURL
-
-
 }
-
-
 
 function listenerPasswordImg(element) {
   let passwordInput = document.getElementById(`${element}Password`);
@@ -200,14 +175,9 @@ function listenerPasswordImg(element) {
 function changePasswortImage(element) {
   let passwordInput = document.getElementById(`${element}Password`);
   let passwordToggle = document.getElementById(`${element}PasswordImg`);
-  if (passwordInput.value === '') {
-    passwordToggle.src = standartIcon;
-  } else if (passwordInput.type == 'text') {
-    passwordToggle.src = visibleIcon;
-  }
-  else {
-    passwordToggle.src = notVisibleIcon
-  }
+  if (passwordInput.value === '') passwordToggle.src = standartIcon;
+ else if (passwordInput.type == 'text') passwordToggle.src = visibleIcon;
+  else  passwordToggle.src = notVisibleIcon
 }
 
 function togglePasswordVisibility(element) {
@@ -221,9 +191,7 @@ function togglePasswordVisibility(element) {
       passwordToggle.src = visibleIcon;
     } else {
       passwordInput.type = 'password';
-      if (passwordToggle.src !== 'assets/img/loginPassword.svg') {
-        passwordToggle.src = notVisibleIcon;
-      }
+      if (passwordToggle.src !== 'assets/img/loginPassword.svg') passwordToggle.src = notVisibleIcon;
     }
   }
 }
@@ -243,9 +211,7 @@ function checkInputsLogin() {
   checkIn()
 }
 
-
 function checkInputsSignUp() {
-
   document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
   })
@@ -260,12 +226,9 @@ function checkInputsSignUp() {
   errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
   errorCount += checkPasswordConfirm('signUpPassword') ? 1 : 0;
   errorCount += checkPrivacyChecked() ? 1 : 0;
-
   if (errorCount > 0) return;
-
   addUser()
 }
-
 
 function checkInputsForgot() {
   document.querySelectorAll(`.forgotErrorMessage`).forEach(function (el) {
@@ -278,7 +241,6 @@ function checkInputsForgot() {
   if (errorCount > 0) return;
   sendNewPasswordLink()
 }
-
 
 function checkInputsReset() {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
@@ -293,7 +255,6 @@ function checkInputsReset() {
   updatePassword()
 }
 
-
 function checkInputEmpty(element) {
   let input = document.getElementById(`${element}`);
   if (input.value === '') {
@@ -302,7 +263,6 @@ function checkInputEmpty(element) {
   }
 }
 
-
 function checkEmailFormat(element) {
   let input = document.getElementById(`${element}`);
   if (input.value.indexOf('@') === -1 && input.value.length > 0) {
@@ -310,7 +270,6 @@ function checkEmailFormat(element) {
     return true
   }
 }
-
 
 function checkEmailExist(element) {
   let input = document.getElementById(`${element}`);
@@ -324,20 +283,16 @@ function checkEmailExist(element) {
   return false
 }
 
-
 function checkEmailDoesntExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
   for (var i = 0; i < users.length; i++) {
-    if (users[i].email === input.value) {
-      if (input.value.length > 0 && input.value.includes('@'))
-        return false
-    }
+    if (input.value.length > 0 && input.value.includes('@') && users[i].email === input.value) 
+      return false;
   }
   if (input.value.length > 0 && input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
   return true
 }
-
 
 function checkPasswordLength(element) {
   let password = document.getElementById(`${element}`)
@@ -362,9 +317,7 @@ function checkIncorrectPassword(element) {
     if (user.password !== password && password.length >= 6) {
       document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
       return true
-    } else {
-      return false
-    }
+    } else return false
   }
 }
 
@@ -373,9 +326,8 @@ function checkPrivacyChecked() {
   if (checkbox.checked != true) {
     document.getElementById('signUpPrivacyError').classList.remove('d-none')
     return true
-  } else {
-    return false
-  }
+  } else return false
+  
 }
 
 function checkIn() {
@@ -384,24 +336,19 @@ function checkIn() {
   window.location.href = 'index.html?variable=' + currentUser;
 }
 
-
 function sendNewPasswordLink() {
   let email = document.getElementById('forgotEmail').value
   let xhr = new XMLHttpRequest();
   let url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
-
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      // Success!
-      console.log('Email sent!');
     }
   };
 
   let message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
   let params = `name=Join&mail=noreply@join.com&message=${message}`;
-
   xhr.send(params);
   showConfirmation('login')
 }
@@ -410,7 +357,6 @@ function checkPasswordMatch() {
   let password = document.getElementById('resetPassword').value
   let confirmPassword = document.getElementById('confirmPassword').value;
   if (password !== confirmPassword) document.getElementById('confirmPasswordIncorrectError').classList.remove('d-none');
-
 }
 
 async function updatePassword() {
@@ -439,38 +385,28 @@ function sendNewPasswordLink() {
   let email = document.getElementById('forgotEmail').value
   let xhr = new XMLHttpRequest();
   let url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
-
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      // Success!
       console.log('Email sent!');
     }
   };
 
   let message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
   let params = `name=Join&mail=noreply@join.com&message=${message}`;
-
   xhr.send(params);
-
   showConfirmation('newPassword')
 }
 
-
 function getInitials(element) {
   let contact = document.getElementById(element)
-  // Split the name into separate words
   let nameWords = contact.value.split(" ");
-  // If there is only one word, return the first letter
   if (nameWords.length === 1) {
     return nameWords[0].charAt(0).toUpperCase();
   }
-  // Otherwise, return the first letter of each word
   return nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
 }
-
-
 
 function openAddTaskOverlay(progress) {
   if (progress) taskProgress = progress
@@ -483,12 +419,10 @@ function openAddTaskOverlay(progress) {
   document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
 
-
 function openActiveTaskOverlay(i) {
   let activeTask = tasks[i];
   document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
   showDarkBackground()
-
   document.getElementById('activeTaskOverlay').classList.add('overlayActive')
 }
 
@@ -507,9 +441,7 @@ function openEditTaskOverlay(i) {
 function openNewContactOverlay() {
   showDarkBackground()
   document.getElementById('addContactOverlay').classList.add('overlayActive')
-
 }
-
 
 function closeNewContactOverlay() {
   document.getElementById('addContactOverlay').classList.add('d-none')
@@ -531,19 +463,13 @@ function closeDarkBackground() {
   document.getElementById('darkBackgroundContainer').classList.add('d-none');
 }
 
-
 function closeOverlay() {
-
   let overlay = document.querySelector('.overlayActive')
   if (overlay) overlay.classList.remove('overlayActive');
   clearTheInputFields()
   n = 0
-
   setTimeout(closeDarkBackground, 500)
 }
-
-
-
 
 function changeflyInButton(confirmation) {
   let flyInButton = document.getElementById(`fly-in-button`);
@@ -576,13 +502,11 @@ function changeflyInButton(confirmation) {
   <div id="confirmationText" class="task-added-to-board">An e-mail has beend send</div>
   <img id="confirmationImg" src="./assets/img/SendCheck.svg" alt="">`
   }
-
   else if (confirmation == 'signedUp') {
     flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Signed up successfully</div>
   <img id="confirmationImg" src="./assets/img/userIcon.svg" alt="">`
   }
-
   else if (confirmation == 'contactDeleted') {
     flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Contact deleted</div>
@@ -601,6 +525,7 @@ function closeLogout() {
   let button = document.querySelector('.log-out-modal')
   if (!button.classList.contains('d-none')) button.classList.add('d-none')
 }
+
 function logOut() {
   window.location.href = 'login.html';
 }
@@ -612,24 +537,17 @@ function resetSignUpInputs() {
   })
 }
 
-
 function setupWelcomeDeskAnimation() {
   var welcomeDesk = document.getElementById('welcomeDesk');
-
   if (welcomeDesk) {
-      // Eventlistener für das Ende der Animation
       welcomeDesk.addEventListener('animationend', function () {
-          // Füge eine Klasse hinzu, um das Element auszublenden
           welcomeDesk.classList.add('animation-done');
       });
   } else {
-      // Wenn das Element nicht gefunden wurde, rufe die Funktion nach einer Verzögerung erneut auf
       setTimeout(function () {
           setupWelcomeDeskAnimation();
-      }, 1000); // Hier kannst du die Verzögerung in Millisekunden anpassen
+      }, 1000);
   }
 }
-
-// Rufe die Funktion auf, wenn das DOM vollständig geladen ist
 document.addEventListener('DOMContentLoaded', setupWelcomeDeskAnimation);
 

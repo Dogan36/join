@@ -9,9 +9,7 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 0px;
     gap: 103px;
-    
 }
-
 
 .logoContainer {
     width: 100.03px;
@@ -23,9 +21,8 @@
 
 .logoTemplate {
     width: 100.03px;
-height: 121.97px;
-cursor: pointer;
-   
+    height: 121.97px;
+    cursor: pointer;
 }
 
 .desktopTemplateMenu {
@@ -70,7 +67,7 @@ cursor: pointer;
 .desktopTemplateIcon {
     width: 22px;
     height: 26px;
-   color:#CDCDCD;
+    color: #CDCDCD;
 }
 
 .desktopTemplateFont {
@@ -89,14 +86,9 @@ cursor: pointer;
     background-color: #091931;
 }
 
-.desktopTemplateIconActive p{
-    color:white !important
+.desktopTemplateIconActive p {
+    color: white !important
 }
-
-
-
-
-
 
 .desktopTemplateLegalContainer {
     display: flex;
@@ -137,6 +129,7 @@ cursor: pointer;
     order: 0;
     flex-grow: 0;
 }
+
 .color-and-delete-icon-container {
     display: flex;
     align-items: center;
@@ -147,14 +140,13 @@ cursor: pointer;
     height: 20px;
 }
 
-@media screen and (max-width: 1080px){
-    .desktopTemplate{
+@media screen and (max-width: 1080px) {
+    .desktopTemplate {
         display: none;
     }
-    
 
-    .desktopTemplateLegal{
+    .desktopTemplateLegal {
         display: none;
     }
-    
+
 }

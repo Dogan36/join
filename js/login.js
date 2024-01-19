@@ -1,6 +1,5 @@
 let user
 
-
 document.addEventListener('DOMContentLoaded', function () {
     let logo = document.querySelector('.logo');
     let contentContainer = document.querySelector('.loginContainer');
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
         loginTopRight.classList.add('show');
         contentContainer.classList.add('show');
         notice.classList.add('show');
-
     });
     updateCheckbox();
     updateCheckboxConfirmationTerms();
@@ -20,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
     loadRememberedData();
     changePasswortImage('login')
 });
-
 
 function updateCheckbox() {
     var checkbox = document.getElementById('rememberMe');
@@ -34,6 +31,7 @@ function updateCheckbox() {
         pathUnchecked.style.display = 'block';
     }
 }
+
 function updateCheckboxConfirmationTerms() {
     var checkbox = document.getElementById('confirmationTerms');
     var pathChecked = document.getElementById('checkedTerms');
@@ -47,20 +45,15 @@ function updateCheckboxConfirmationTerms() {
     }
 }
 
-
-
 function getUser() {
     let email = document.getElementById('loginEmail').value;
     user = users.find(user => user.email === email);
-
 }
-
 
 function rememberMe() {
     const checkbox = document.getElementById('rememberMe');
     const usernameInput = document.getElementById('loginEmail');
     const passwordInput = document.getElementById('loginPassword');
-
     if (checkbox.checked) {
         localStorage.setItem('rememberedUser', usernameInput.value);
         localStorage.setItem('rememberedPass', passwordInput.value);
@@ -69,16 +62,13 @@ function rememberMe() {
         localStorage.removeItem('rememberedPass');
         document.querySelector('.loginContainer').reset()
     }
-
 }
-
 
 function loadRememberedData() {
     const rememberedUser = localStorage.getItem('rememberedUser');
     const rememberedPass = localStorage.getItem('rememberedPass');
     const usernameInput = document.getElementById('loginEmail');
     const passwordInput = document.getElementById('loginPassword');
-
     if (rememberedUser && rememberedPass) {
         usernameInput.value = rememberedUser;
         passwordInput.value = rememberedPass;
@@ -86,9 +76,7 @@ function loadRememberedData() {
     }
 }
 
-
-async function addUser() {
-  
+async function addUser() { 
     let name = document.getElementById('signUpName')
     let email = document.getElementById('signUpEmail');
     let password = document.getElementById('signUpPassword');
@@ -103,34 +91,13 @@ async function addUser() {
       }, 3000);
 }
 
-
 function showContentLogin(element) {
     document.querySelector('.loginTopRight').classList.add('d-none')
     document.getElementById('loginContainer').classList.add('d-none')
     document.getElementById('signUpContainer').classList.add('d-none')
     document.getElementById('forgotPassword').classList.add('d-none')
     document.getElementById(`${element}`).classList.remove('d-none')
-
     if(element=='loginContainer'){
         document.querySelector('.loginTopRight').classList.remove('d-none')
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

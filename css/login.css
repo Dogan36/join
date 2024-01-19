@@ -40,7 +40,6 @@
     justify-content: space-around;
     align-items: center;
     padding: 3.41vh 0px;
-
     background: #FFFFFF;
     width: 45%;
     min-width: 505px;
@@ -56,8 +55,6 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
-
-
 
 @keyframes logo-animation {
     0% {
@@ -109,7 +106,6 @@
         transform: translate(-50%, -50%);
     }
 
-
     100% {
         width: auto;
         height: 18%;
@@ -119,9 +115,6 @@
     }
 }
 
-
-
-
 .loginHeadline {
     display: flex;
     flex-direction: column;
@@ -130,7 +123,6 @@
     padding: 0px;
     white-space: nowrap;
     height: 9.69vh;
-
 }
 
 .loginHeadline span {
@@ -164,7 +156,6 @@
     align-items: flex-start;
     padding: 0px;
     justify-content: space-around;
-
     width: 100%;
     height: 19px;
     border: unset;
@@ -177,7 +168,6 @@
     align-items: flex-start;
     padding: 0px;
     gap: 35px;
-
     width: 341px;
     height: 51px;
 }
@@ -206,8 +196,6 @@
     height: 8.1vh;
 }
 
-
-
 .inputFieldWithImg {
     display: flex;
     justify-content: space-between;
@@ -230,7 +218,6 @@
     align-items: center;
     padding: 0px;
     gap: 10px;
-
     width: 380px;
     height: 25px;
     border: unset;
@@ -240,7 +227,6 @@
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-
 }
 
 .rememberMe {
@@ -250,17 +236,13 @@
     align-items: center;
     padding: 0px;
     gap: 20px;
-
     height: 19px;
 
 }
 
 .rememberMe a {
     text-decoration: none;
-    
 }
-
-
 
 .loginOptions span {
     width: 154px;
@@ -271,26 +253,18 @@
     font-size: 16px;
     line-height: 120%;
     color: var(--secondaryColor);
-    
     flex-wrap: nowrap;
 }
 
 .rememberMe span {
-
     height: 19px;
-
-    /* Version 2/body */
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    /* or 19px */
-
     white-space: nowrap;
     color: #000000;
-
 }
 
 .remember-me-text {
@@ -310,7 +284,6 @@
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
     position: absolute;
-
     height: 51px;
     right: 10%;
     top: 50px;
@@ -318,9 +291,6 @@
 
 .loginTopRight span {
     height: 25px;
-
-    /* Version 2/t6 */
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -328,7 +298,6 @@
     line-height: 120%;
     white-space: nowrap;
 }
-
 
 .notice {
     display: inline-flex;
@@ -341,7 +310,6 @@
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-
 }
 
 .show {
@@ -360,22 +328,16 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     padding: 44px 85px;
     gap: 35px;
     isolation: isolate;
-
     position: absolute;
     height: 537px;
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%) ;
    max-width: 95vw;
-   
     background: #FFFFFF;
-    /* shadoe backlog box */
-
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
 }
-
-
 
 .resetHeadline {
     display: flex;
@@ -383,7 +345,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     align-items: center;
     padding: 0px;
     gap: 24px;
-
     width: 627px;
     max-width: 95%;
     height: 97px;
@@ -402,16 +363,13 @@ img[src="assets/img/visibleIcon.svg"]:hover {
 }
 
 .resetSubtitle {
- 
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-
     text-align: center;
-
 }
 
 .resetInputs {
@@ -420,7 +378,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     align-items: flex-start;
     padding: 0px;
     gap: 29px;
-
     width: 422px;
     max-width: 95%;
     height: 171px;
@@ -458,13 +415,11 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     align-items: center;
     padding: 0px;
     gap: 24px;
-
     width: 80%;
 }
 
-.forgotHeadline span {
-    
-    font-family: 'Inter';
+.forgotHeadline span { 
+  font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 61px;
@@ -475,16 +430,11 @@ img[src="assets/img/visibleIcon.svg"]:hover {
 .forgotSubtitle {
   width: 80%;
     height: 50px;
-
-    /* Version 2/t6 */
-
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 21px;
     line-height: 120%;
-    /* or 25px */
-
     text-align: center;
 }
 
@@ -501,8 +451,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     top: 80px;
     left: 77px;
 }
-
-
 
 .leftArrow {
     position: absolute;
@@ -529,7 +477,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
 #uncheckedTerms {
     cursor: pointer;
 }
-
 
 @media screen and (max-width: 820px) {
     .signUpContainer {
@@ -600,9 +547,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         white-space: wrap;
     }
 }
-
-
-
 
 @media screen and (max-width: 505px) {
     .blackBackgroundContainer {
@@ -728,7 +672,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         justify-content: space-around;
     }
 
-
     .signUpContainer,
     .forgotPassword {
         width: 96%;
@@ -740,7 +683,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         justify-content: space-around;
     }
 
-    
     .forgotHeadline span{
         font-size: 36px;
     }
@@ -770,8 +712,6 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         gap: 21px;
         align-items: center;
     }
-
-    
 
     .inputFieldWithImg {
         padding: 12px 12px;

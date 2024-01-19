@@ -17,14 +17,12 @@ function renderBoard() {
 addContentEmptyDiv()
 }
 
-
 function clearBoardBeforeRender() {
     document.getElementById('boardContentToDo').innerHTML = ''
     document.getElementById('boardContentInProgress').innerHTML = ''
     document.getElementById('boardContentAwaiting').innerHTML = ''
     document.getElementById('boardContentDone').innerHTML = ''
 }
-
 
 
 function addBoardCard(element, i) {
@@ -42,8 +40,7 @@ function addBoardCard(element, i) {
                         <img src="${element.prio.iconColor}" alt="">
                     </div>
                 </div>
-            </div>
-            `
+            </div>`
 }
 
 function addContentEmptyDiv() {
@@ -51,19 +48,10 @@ function addContentEmptyDiv() {
     let containerInProgress = document.getElementById('boardContentInProgress');
     let containerAwaiting = document.getElementById('boardContentAwaiting');
     let containerDone = document.getElementById('boardContentDone');
-    
-    if (containerToDo.innerHTML === '') {
-        containerToDo.innerHTML += '<div class="boardElementEmpty">No Tasks To Do</div>';
-    }
-    if (containerInProgress.innerHTML === '') {
-        containerInProgress.innerHTML += '<div class="boardElementEmpty">No Tasks In Progress</div>';
-    }
-    if (containerAwaiting.innerHTML === '') {
-        containerAwaiting.innerHTML += '<div class="boardElementEmpty">No Tasks Awaiting Feedback</div>';
-    }
-    if (containerDone.innerHTML === '') {
-        containerDone.innerHTML += '<div class="boardElementEmpty">No Tasks Done</div>';
-    }
+    if (containerToDo.innerHTML === '') containerToDo.innerHTML += '<div class="boardElementEmpty">No Tasks To Do</div>';
+    if (containerInProgress.innerHTML === '') containerInProgress.innerHTML += '<div class="boardElementEmpty">No Tasks In Progress</div>';
+    if (containerAwaiting.innerHTML === '') containerAwaiting.innerHTML += '<div class="boardElementEmpty">No Tasks Awaiting Feedback</div>';
+    if (containerDone.innerHTML === '') containerDone.innerHTML += '<div class="boardElementEmpty">No Tasks Done</div>';
 }
 
 function addBoardCardSubtask(element) {
@@ -85,7 +73,6 @@ function addBoardCardSubtask(element) {
     }
 }
 
-
 function addBoardCardAssignedTo(element) {
     let assignedTo = element.assignedTo;
     return `
@@ -94,7 +81,6 @@ function addBoardCardAssignedTo(element) {
     </div>
   `;
 }
-
 
 function generateAvatarHtml(assignedTo) {
     let avatarHtml = '';
@@ -110,7 +96,6 @@ function generateAvatarHtml(assignedTo) {
     return avatarHtml;
 }
 
-
 function generateAvatarsHtml(assignedTo, startIndex, endIndex) {
     let avatarsHtml = '';
     for (let index = startIndex; index < endIndex; index++) {
@@ -122,23 +107,19 @@ function generateAvatarsHtml(assignedTo, startIndex, endIndex) {
     return avatarsHtml;
 }
 
-
 function generateAvatarHtmlElement(backgroundColor, initials) {
     return `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${initials}</span></div>`;
 }
 
-
 function addActiveTaskOverlayHTML(i) {
     let task = tasks[i]
     return `
-    
     <div class="activeTaskCategory" style="background-color:${task.taskCategory.categoryColor}"><span>${task.taskCategory.categorytext}</span></div>
     <div class="activeTaskTitle">${task.taskTitle}</div>
     <div class="activeTaskDescription">${task.taskDescription}</div>
     <div class="activeTaskDueDate">
         <span>Due date:</span><span>${task.dueDate}</span>
     </div>
-
     <div class="activeTaskPriority">
         <span>Priority:</span>
         <div class="activeTaskPriorityButton" style="background-color:${task.prio.backgroundColor}"><span>${task.prio.name}</span><img src="${task.prio.iconWhite}" alt=""></div>
@@ -170,13 +151,11 @@ function addActiveTaskOverlayHTML(i) {
     `
 }
 
-
 function toogleTaskMove() {
     let container = document.querySelector('.activeTaskMoveContainer');
     if (container.classList.contains('activeTaskMoveContainerOpen')) container.classList.remove('activeTaskMoveContainerOpen')
     else container.classList.add('activeTaskMoveContainerOpen')
 }
-
 
 function addActiveCardAssignedTo(task) {
     let assignedTo = task.assignedTo;
@@ -185,14 +164,12 @@ function addActiveCardAssignedTo(task) {
         let assignedToIndex = assignedTo[index]
         let backgroundColor = avatarBackgroundColors[assignedToIndex];
         let contact = contacts[assignedToIndex];
-
         avatarHtml += ` <div class="activeTaskAssignedTo">
         <div class="activeTaskAvartar" style="background-color: ${backgroundColor}"><span>${contact.initials}</span></div>
         <span>${contact.name}</span></div>`;
     }
     return avatarHtml;
 }
-
 
 function addActiveCardSubtasks(i) {
     let subtasks = tasks[i].subtasks;
@@ -212,7 +189,6 @@ function addActiveCardSubtasks(i) {
     return subtasksHtml;
 }
 
-
 function moveTo(i, progress) {
     let task = tasks[i]
     task.taskProgress = `${progress}`
@@ -222,7 +198,6 @@ function moveTo(i, progress) {
     setTimeout(closeConfirmation, 2000)
 }
 
-
 function moveToDrop(progress) {
     let task = tasks[currentDraggedElement]
     task.taskProgress = `${progress}`
@@ -230,16 +205,13 @@ function moveToDrop(progress) {
     renderBoard()
 }
 
-
 function startDragging(i) {
     currentDraggedElement = i
 }
 
-
 function allowDrop(ev) {
     ev.preventDefault()
 }
-
 
 function highlightBoardElement(id) {
     document.getElementById(id).classList.add('boardElementContentHighlight')
@@ -251,24 +223,13 @@ function highlightBoardElementOff(id) {
 
 function findTask() {
     let searchInput = document.getElementById('findTaskInput');
-
-
     let searchTerm = searchInput.value.toLowerCase();
-
-    // Alle div-Elemente mit der Klasse "boardCard"
     let boardCards = document.getElementsByClassName('boardCard');
-
-    // Schleife durch alle boardCard-Elemente
     for (let i = 0; i < boardCards.length; i++) {
         let taskNameElement = boardCards[i].querySelector('.boardCardTaskName');
         let taskName = taskNameElement.textContent.toLowerCase();
-
-        // Überprüfen, ob der Task-Name nicht mit dem Suchbegriff beginnt
-        if (!taskName.includes(searchTerm)) {
-            boardCards[i].classList.add('d-none');
-        } else {
-            boardCards[i].classList.remove('d-none');
-        }
+        if (!taskName.includes(searchTerm)) boardCards[i].classList.add('d-none');
+         else boardCards[i].classList.remove('d-none');
     }
 }
 

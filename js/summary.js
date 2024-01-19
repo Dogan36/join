@@ -8,7 +8,6 @@ let urgentCount
 function greetingAds() {
     let now = new Date();
     let hours = now.getHours();
-
     let greeting;
     if (hours >= 6 && hours < 11) {
         greeting = "Good morning";
@@ -35,7 +34,6 @@ function renderSummary() {
     renderUpcomingUrgent()
 }
 
-
 function renderCount() {
     document.getElementById('summaryCountInBoard').innerHTML = todoCount + inProgressCount + awaitingCount + doneCount;
     document.getElementById('summaryCountProgress').innerHTML = inProgressCount;
@@ -44,7 +42,6 @@ function renderCount() {
     document.getElementById('summaryCountDone').innerHTML = doneCount;
 }
 
-
 function getCount() {
     todoCount = countTasksByProgress("toDo");
     inProgressCount = countTasksByProgress("inProgress");
@@ -52,26 +49,18 @@ function getCount() {
     doneCount = countTasksByProgress("done")
 }
 
-
 function countTasksByProgress(progress) {
     let count = 0;
     for (let i = 0; i < tasks.length; i++) {
-        if (tasks[i].taskProgress == progress) {
-            count++;
-        }
-        if (progress == "toDo" && tasks[i].taskProgress == '') {
-            count++
-        }
+        if ((progress === tasks[i].taskProgress) || (progress === "toDo" && tasks[i].taskProgress === '')) count++;
     }
     return count;
 }
-
 
 function renderUpcomingUrgent() {
     document.getElementById('summaryCountUrgent').innerHTML = urgentCount;
     document.getElementById('summaryNextDeadline').innerHTML = nextDueDate
 }
-
 
 function findNextDueTask() {
     let urgentTasks = tasks.filter(task => task.prio.name === "urgent");
