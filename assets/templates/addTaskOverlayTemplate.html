@@ -10,9 +10,9 @@
           <p>
             <label class="title">Title</label>
           </p>
-
-          <input id="task-title-input1" class="title-input no-outline" type="text" placeholder="Enter a title" maxlength="20"
-            title="Geben Sie hier Ihren Text ein" autocomplete="off" required oninput="checkMandatoryFieldTitle()" />
+          <input id="task-title-input1" class="title-input no-outline" type="text" placeholder="Enter a title"
+            maxlength="20" title="Geben Sie hier Ihren Text ein" autocomplete="off" required
+            oninput="checkMandatoryFieldTitle()" />
           <p id="required-title1" class="required hidden">
             This field is required
           </p>
@@ -21,8 +21,7 @@
           <p>
             <label class="title">Description</label>
           </p>
-
-          <textarea id="add-task-description1" class="description-field no-outline" type="text"  maxlength="100"
+          <textarea id="add-task-description1" class="description-field no-outline" type="text" maxlength="100"
             placeholder="Enter a title" title="Geben Sie hier Ihren Text ein" required
             oninput="checkMandatoryFieldDescription()"></textarea>
           <p id="required-description1" class="required hidden">
@@ -33,18 +32,14 @@
           <p>
             <label for="category1" class="title">Category</label>
           </p>
-
           <div id="select-container1" class="select-container">
-
           </div>
-
           <div id="new-category-container1" class="new-category-container d-none">
             <div class="input-and-color-button-container">
-              <input id="category1" class="new-category-input no-outline" type="text" name="category"maxlength="9"
+              <input id="category1" class="new-category-input no-outline" type="text" name="category" maxlength="9"
                 placeholder="New category name" required />
               <div id="color-button-container1"></div>
             </div>
-
             <div class="img-container">
               <img class="x-or-hook" onclick="closeAddTaskNewCategory()" src="./assets/img/black-x.svg" alt="" />
               <div class="dash-container">
@@ -53,7 +48,6 @@
               <img onclick="checkNewCategoryName()" class="x-or-hook" src="./assets/img/black-check.svg" alt="" />
             </div>
           </div>
-
 
           <div id="color-container1" class="color-container d-none">
             <div id="color-button1" class="purple color wheel" onclick="colorButton(0)"></div>
@@ -68,14 +62,10 @@
           </p>
         </div>
 
-
-
         <div class="title-container">
           <p>
             <label class="title">Assigned to</label>
           </p>
-
-
           <div id="assigned-to-container1" class="new-category-container d-none">
             <input id="invite-new-contact1" class="no-outline" type="email" placeholder="Contact email"
               aria-required="true" required />
@@ -85,9 +75,7 @@
               <img src="./assets/img/black-check.svg" alt="" onclick="checkNewContactField()" />
             </div>
           </div>
-
           <div id="select-contacts-container1" class="select-container">
-
           </div>
           <p id="required-assigned-to1" class="required hidden">
             Please enter a valid E-Mail
@@ -100,12 +88,10 @@
           <p>
             <label class="title">Due date</label>
           </p>
-
           <div id="date-button1">
             <input class="title-input no-outline cursor-pointer" type="date" id="due-date1" required
               oninput="checkMandatoryFieldDueDate()" />
           </div>
-
           <p id="required-due-date1" class="required hidden">
             This field is required
           </p>
@@ -114,10 +100,8 @@
           <p>
             <label class="title">Prio</label>
           </p>
-
           <div class="prio-body-container">
             <div id="prio-red1" class="prio-button" onclick="choosePrio('prio-red')">
-
               <div class="prio-button-name">Urgent</div>
               <img id="prio-urgent-icon1" class="prio-icon" src="./assets/img/prio-urgent-icon.svg" alt="" />
             </div>
@@ -130,7 +114,6 @@
               <img id="prio-low-icon1" class="prio-icon" src="./assets/img/prio-low-icon.svg" alt="" />
             </div>
           </div>
-
           <p id="required-prio1" class="required hidden">
             This field is required
           </p>
@@ -139,7 +122,6 @@
           <p>
             <label class="title">Subtasks</label>
           </p>
-
           <div id="new-subtask-container1" class="new-category-container d-none ">
             <input id="new-subtask-point1" class="new-category-input no-outline" type="text" maxlength="40"
               placeholder="New Subtasks" />
@@ -159,7 +141,6 @@
         </div>
         <div id="add-task-subtask-point1"></div>
         <div class="submit-btns-container">
-
           <div class="overlayCancelButton" onclick="clearTheInputFields()"
             onmouseover="hover('addTaskClearButton1', './assets/img/buttonXsecondary.svg'); console.log('test') "
             onmouseout="hover('addTaskClearButton1', 'assets/img/buttonX.svg')">
@@ -175,6 +156,4 @@
     </div>
   </form>
 </div>
-
 <img onclick="closeOverlay()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
-
