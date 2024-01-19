@@ -794,11 +794,22 @@ function goToBoardPage() {
     closeConfirmation()
   }, 1000);
 }
-
+/**
+ * This function checkes if new added subtask is already done and add that info to subtask
+ * 
+ * @param {Boolean} checked This is the info if subtask checkbox is checked or not
+ * @param {number} i This is the index of the task
+ * @param {number} index This is the index of the subtask
+ */
 function updateSubtaskDone(checked, i, index) {
   tasks[i].subtasks[index]['subtaskDone'] = checked;
 }
 
+/**
+ * This function deletes task from tasks array
+ * 
+ * @param {number} i This is the index of the task
+ */
 function deleteTask(i) {
   document.getElementById('activeTaskDelete').disabled = true;
   tasks.splice(i, 1)
@@ -807,6 +818,11 @@ function deleteTask(i) {
   document.getElementById('activeTaskDelete').disabled = false;
 }
 
+/**
+ * This function renders the information of selected task into the edit task overlay
+ * 
+ * @param {number} i This is the index of the task to be shown on the edit task overlay
+ */
 function setEditTaskOverlay(i) {
   indexOfEditedTask = i
   let task = tasks[i]
@@ -820,11 +836,21 @@ function setEditTaskOverlay(i) {
   setSubtasks(i)
 }
 
+/**
+ * This function gets the category of the task from tasks array
+ * 
+ * @param {number} i This is the index of the task
+ */
 function setCategory(i) {
   let categoryID = tasks[i].taskCategory.categoryId
   selectCategory(`${categoryID}`)
 }
 
+/**
+ * This function gets the contacts of the task from tasks array and checks the checkboxes of the selected contacts
+ * 
+ * @param {number} i This is the index of the task
+ */
 function setContacts(i) {
   let contactamount = tasks[i].assignedTo.length
   let contactIDs = []
@@ -840,6 +866,11 @@ function setContacts(i) {
   }
 }
 
+/**
+ * This function gets the prio of the task from tasks array
+ * 
+ * @param {number} i This is the index of the task
+ */
 function setPrio(i) {
   let prioEdit = tasks[i].prio.ID
   let divClicked = document.getElementById(`${prioEdit}2`)
@@ -848,6 +879,11 @@ function setPrio(i) {
   prio = tasks[i].prio
 }
 
+/**
+ * This function gets the subtasks of the task from tasks array
+ * 
+ * @param {number} i This is the index of the task
+ */
 function setSubtasks(i) {
   let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
   subtasksContainer.innerHTML = '';

@@ -756,7 +756,6 @@ function setupWelcomeDeskAnimation() {
  */
 function setFavicon(isDarkMode) {
   const linkElements = document.getElementsByTagName('link');
-debugger
   for (const link of linkElements) {
       if (link.rel === 'icon') {
           if (isDarkMode) {
