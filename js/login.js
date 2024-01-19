@@ -101,3 +101,4 @@ function showContentLogin(element) {
         document.querySelector('.loginTopRight').classList.remove('d-none')
     }
 }
+

@@ -8,22 +8,29 @@ let currentUser = 'Guest'
 let initials = [];
 let isContentLoaded = false
 let isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-let favicon = document.getElementById('favicon');
+
 let avatarBackgroundColors = ['#FF6633', '#FF33FF',
-  '#E6B333', '#3366E6', '#B34D4D',
-  '#80B300', '#809900', '#6680B3', '#66991A',
-  '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A',
-  '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
-  '#66664D', '#991AFF', '#4DB3FF', '#1AB399',
-  '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
-  '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
-  '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
-  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+'#E6B333', '#3366E6', '#B34D4D',
+'#80B300', '#809900', '#6680B3', '#66991A',
+'#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A',
+'#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
+'#66664D', '#991AFF', '#4DB3FF', '#1AB399',
+'#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
+'#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+'#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
+'#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 
 let categoryColors = ['#0072B2', '#E69F00', '#009E73', '#F0E442', '#CC79A7', '#56B4E9', '#D55E00', '#5D5D5D', '#CC6633', '#66CCEE', '#B2B2B2', '#999933'];
 let visibleIcon = 'assets/img/visibleIcon.svg';
 let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
 let standartIcon = 'assets/img/loginPassword.svg';
+
+
+/**
+ * This function calls functions to load from server and includes htmls
+ *      
+ * @param {boolean} include Depending on this include HTML is called or not
+*/
 
 async function init(include = false) {
   await loadUsers()
@@ -35,6 +42,9 @@ async function init(include = false) {
   }
 }
 
+/**
+ * This function loads user data from server
+*/
 async function loadUsers() {
   try {
     users = JSON.parse(await getItem('users'));
@@ -43,6 +53,9 @@ async function loadUsers() {
   }
 }
 
+/**
+ * This function loads tasks data from server
+*/
 async function loadTasks() {
   try {
     tasks = JSON.parse(await getItem('tasks'));
@@ -51,6 +64,9 @@ async function loadTasks() {
   }
 }
 
+/**
+ * This function loads contacts data from server
+*/
 async function loadContacts() {
   try {
     contacts = JSON.parse(await getItem('contacts'));
@@ -59,6 +75,12 @@ async function loadContacts() {
   }
 }
 
+setFavicon(isDarkMode);
+document.addEventListener('DOMContentLoaded', setupWelcomeDeskAnimation);
+
+/**
+ * This function loads category data from server
+*/
 async function loadCategorys() {
   try {
     categorys = JSON.parse(await getItem('categorys'));
@@ -67,6 +89,9 @@ async function loadCategorys() {
   }
 }
 
+/**
+ * This function calls render function aber content is loaded
+ */
 function callRender() {
   if (isContentLoaded) {
     render();
@@ -77,6 +102,10 @@ function callRender() {
 
 callRender()
 
+
+/**
+ * This function renders all html
+ */
 function render() {
   getCurrentUser()
   renderSummary()
@@ -88,6 +117,9 @@ function render() {
   setCurrentDate()
 }
 
+/**
+ * This function renders all dropdowns
+ */
 function renderAddTaskDropdowns() {
   renderAddTaskCategorySelect()
   renderAddTaskCategorys()
@@ -95,6 +127,9 @@ function renderAddTaskDropdowns() {
   renderAddTaskContacts()
 }
 
+/**
+ * This function renders initals of current user
+ */
 function renderUserInitials() {
   let nameWords = currentUser.split(" ");
   if (nameWords.length === 1) {
@@ -104,6 +139,11 @@ function renderUserInitials() {
   document.querySelector('.headerUserProfilInitials').innerHTML = initialsCurrentUser
 }
 
+/**
+ * This function shows the selected content and hides all other
+ * 
+ * @param {sting} x id of the content to be shown
+ */
 function showContent(x) {
   var content = document.querySelectorAll(".indexContent");
   clearTheInputFields();
@@ -113,7 +153,11 @@ function showContent(x) {
   document.getElementById(x).classList.remove('d-none')
 
 }
-
+/**
+ * This function add classlist active on menuelement which is shown
+ * 
+ * @param {string} element id of the element which is shown
+ */
 function setActiveElement(element) {
   var mobileElementName = element + "Mobile";
   var icons = document.querySelectorAll(".desktopTemplateIconActive");
@@ -129,6 +173,9 @@ function setActiveElement(element) {
   setActiveIcon()
 }
 
+/**
+ * This function changes the Icon inside the active element for design reasons
+ */
 function setActiveIcon() {
   var icons = document.getElementsByClassName("desktopTemplateMenuElements");
   var iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
@@ -147,20 +194,40 @@ function setActiveIcon() {
   });
 
 }
-
+/**
+ * This function changes src of img on hover for design reasons
+ * 
+ * @param {string} element This is the id of the element which is hovered on
+ * @param {sting} url This is the url which is to be set on hover
+ */
 function hover(element, url) {
   document.getElementById(`${element}`).setAttribute('src', url);
 }
 
+/**
+ * This function changes src of img on hover for design reasons
+ * 
+ * @param {string} element This is "this" of the element which is hovered on
+ * @param {sting} url This is the url which is to be set on hover
+ */
 function hoverThis(element, url) {
   element.setAttribute('src', url);
 }
 
+/**
+ * This function gets the current user from the url
+ */
 function getCurrentUser() {
   var params = new URLSearchParams(window.location.search);
   let currentUserURL = params.get('variable');
   if (currentUserURL) currentUser = currentUserURL
 }
+
+/**
+ * This function sets an eventlistener for the password images on input an click
+ * 
+ * @param {sting} element This is the ID of the element which will get an eventlistener
+ */
 
 function listenerPasswordImg(element) {
   let passwordInput = document.getElementById(`${element}Password`);
@@ -173,6 +240,11 @@ function listenerPasswordImg(element) {
   });
 }
 
+/**
+ * This function changes the src of an password img
+ * 
+ * @param {string} element This is the ID of the element to be changed
+ */
 function changePasswortImage(element) {
   let passwordInput = document.getElementById(`${element}Password`);
   let passwordToggle = document.getElementById(`${element}PasswordImg`);
@@ -181,6 +253,11 @@ function changePasswortImage(element) {
   else  passwordToggle.src = notVisibleIcon
 }
 
+/**
+ * This function changes the visibility of an password 
+ * 
+ * @param {string} element This is the ID of the element to be changed
+ */
 function togglePasswordVisibility(element) {
   let passwordInput = document.getElementById(`${element}Password`);
   let passwordToggle = document.getElementById(`${element}PasswordImg`);
@@ -197,6 +274,11 @@ function togglePasswordVisibility(element) {
   }
 }
 
+/**
+ * This function checks all inputs on login page and let user check in if no errors
+ * 
+ * @returns boolean
+ */
 function checkInputsLogin() {
   document.querySelectorAll(`.loginErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -212,6 +294,11 @@ function checkInputsLogin() {
   checkIn()
 }
 
+/**
+ * This function checks all inputs on sign up page and adds user if no error
+ * 
+ * @returns boolean
+ */
 function checkInputsSignUp() {
   document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -231,6 +318,12 @@ function checkInputsSignUp() {
   addUser()
 }
 
+/**
+ * This function checks all inputs on forgot password page and sends new password link if no errors
+ * 
+ * @returns boolean
+ */
+
 function checkInputsForgot() {
   document.querySelectorAll(`.forgotErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -243,6 +336,11 @@ function checkInputsForgot() {
   sendNewPasswordLink()
 }
 
+/**
+ * This function checks all inputs on reset password page and updates password if no errors
+ * 
+ * @returns boolean
+ */
 function checkInputsReset() {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -256,6 +354,12 @@ function checkInputsReset() {
   updatePassword()
 }
 
+/**
+ * This function checks if an input is empty and shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
 function checkInputEmpty(element) {
   let input = document.getElementById(`${element}`);
   if (input.value === '') {
@@ -264,6 +368,12 @@ function checkInputEmpty(element) {
   }
 }
 
+/**
+ * This function checks if an input contains an "@" otherwise shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
 function checkEmailFormat(element) {
   let input = document.getElementById(`${element}`);
   if (input.value.indexOf('@') === -1 && input.value.length > 0) {
@@ -271,7 +381,12 @@ function checkEmailFormat(element) {
     return true
   }
 }
-
+/**
+ * This function checks if an email already exists in data otherwise shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
 function checkEmailExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
@@ -283,7 +398,12 @@ function checkEmailExist(element) {
   }
   return false
 }
-
+/**
+ * This function checks if an email doesn`t exists in data otherwise shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
 function checkEmailDoesntExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
@@ -294,7 +414,12 @@ function checkEmailDoesntExist(element) {
   if (input.value.length > 0 && input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
   return true
 }
-
+/**
+ * This function checks if an input has the minimum count of characters otherwise shows error
+ * 
+ * @param {string} element ID of element to be checked
+ * @returns boolean
+ */
 function checkPasswordLength(element) {
   let password = document.getElementById(`${element}`)
   if (password.value.length < 6 && password.value.length > 0) {
@@ -302,7 +427,11 @@ function checkPasswordLength(element) {
     return true
   }
 }
-
+/**
+ * This function checks if the password and confirmation password are identical otherwise shows error
+ * 
+ * @returns boolean
+ */
 function checkPasswordConfirm() {
   let password = document.getElementById('signUpPassword')
   let passwordConfirm = document.getElementById('confirmPassword')
@@ -311,7 +440,12 @@ function checkPasswordConfirm() {
     return true
   }
 }
-
+/**
+ * This function checks if the password is incorrect and shows error
+ * 
+ * @param {sting} element ID of the element where password is inserted
+ * @returns boolean
+ */
 function checkIncorrectPassword(element) {
   if (getUser()) {
     let password = document.getElementById(`${element}`).value;
@@ -321,7 +455,11 @@ function checkIncorrectPassword(element) {
     } else return false
   }
 }
-
+/**
+ * This functions checks if the privacy policy is checked otherwise shows error
+ * 
+ * @returns boolean
+ */
 function checkPrivacyChecked() {
   let checkbox = document.getElementById('confirmationTerms');
   if (checkbox.checked != true) {
@@ -331,35 +469,50 @@ function checkPrivacyChecked() {
   
 }
 
+/**
+ * This function lets the user check in
+ */
 function checkIn() {
   rememberMe()
   let currentUser = user.name
   window.location.href = 'index.html?variable=' + currentUser;
 }
 
+
+/**
+ * This function sends an link to the user via e-mail to reset the password
+ */
 function sendNewPasswordLink() {
   let email = document.getElementById('forgotEmail').value
   let xhr = new XMLHttpRequest();
-  let url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
+
+  let url = '//dogan-celik.developerakademie.net/join/send_mail.php';
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log('Email sent!');
     }
   };
 
-  let message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
+  let message = `Hello,\n\nPlease click on the following link to reset your password: http://dogan-celik.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
   let params = `name=Join&mail=noreply@join.com&message=${message}`;
   xhr.send(params);
-  showConfirmation('login')
+  showConfirmation('newPassword')
 }
 
+/**
+ *This function checks of password and confirm passwort are identical on reset page
+ */
 function checkPasswordMatch() {
   let password = document.getElementById('resetPassword').value
   let confirmPassword = document.getElementById('confirmPassword').value;
   if (password !== confirmPassword) document.getElementById('confirmPasswordIncorrectError').classList.remove('d-none');
 }
 
+/**
+ * This function updates the password of the user
+ */
 async function updatePassword() {
   var params = new URLSearchParams(window.location.search);
   email = params.get('email');
@@ -370,36 +523,31 @@ async function updatePassword() {
   showConfirmation('forgot')
 }
 
+/**
+ * This function shows confirmation to the user
+ * 
+ * @param {string} confirmation This is the type of confirmation the user gets 
+ */
 function showConfirmation(confirmation) {
   showDarkBackground()
   let flyInButton = document.getElementById(`fly-in-button`);
   changeflyInButton(confirmation)
   flyInButton.classList.remove('d-none');
 }
-
+/**
+ * This function closes the confirmation
+ */
 function closeConfirmation() {
   let flyInButton = document.getElementById(`fly-in-button`);
   flyInButton.classList.add('d-none');
 }
 
-function sendNewPasswordLink() {
-  let email = document.getElementById('forgotEmail').value
-  let xhr = new XMLHttpRequest();
-  let url = '//gruppenarbeit-485join.developerakademie.net/join/send_mail.php';
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log('Email sent!');
-    }
-  };
-
-  let message = `Hello,\n\nPlease click on the following link to reset your password: http://gruppenarbeit-485join.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
-  let params = `name=Join&mail=noreply@join.com&message=${message}`;
-  xhr.send(params);
-  showConfirmation('newPassword')
-}
-
+/**
+ * This function gets the Initials of a contact
+ * 
+ * @param {string} element ID of the element to get the initials from
+ * @returns string
+ */
 function getInitials(element) {
   let contact = document.getElementById(element)
   let nameWords = contact.value.split(" ");
@@ -409,6 +557,11 @@ function getInitials(element) {
   return nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
 }
 
+/**
+ * This function opens the add task overlay
+ * 
+ * @param {string} progress Preset the progress of the task to create
+ */
 function openAddTaskOverlay(progress) {
   if (progress) taskProgress = progress
   else progress = 'toDo'
@@ -419,14 +572,22 @@ function openAddTaskOverlay(progress) {
   showDarkBackground()
   document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
-
+/**
+ * This function opens the overlay with the active task
+ * 
+ * @param {number} i This is the position of the task in tasks array
+ */
 function openActiveTaskOverlay(i) {
   let activeTask = tasks[i];
   document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
   showDarkBackground()
   document.getElementById('activeTaskOverlay').classList.add('overlayActive')
 }
-
+/**
+ * This function opens the edit task overlay with the active task 
+ * 
+ * @param {number} i This is the position of the task in tasks array
+ */
 function openEditTaskOverlay(i) {
   taskProgress = tasks[i].taskProgress
   console.log(taskProgress)
@@ -438,32 +599,50 @@ function openEditTaskOverlay(i) {
   document.getElementById('editTaskOverlay').classList.add('overlayActive')
   setEditTaskOverlay(i)
 }
-
+/**
+ * This function opens the new contact overlay
+ */
 function openNewContactOverlay() {
   showDarkBackground()
   document.getElementById('addContactOverlay').classList.add('overlayActive')
 }
 
+/**
+ * This function closes the new contact overlay
+ */
 function closeNewContactOverlay() {
   document.getElementById('addContactOverlay').classList.add('d-none')
   document.getElementById('container-opened-task').classList.add('d-none')
 }
 
+/**
+ * This function opens the edit contact overlay
+ * 
+ * @param {number} j This is the position of the contact in contacts array
+ */
 function openEditContactOverlay(j) {
   contactToEdit = j
   setEditContactOverlay(j)
   document.getElementById('editContactOverlay').classList.add('overlayActive')
   showDarkBackground()
 }
-
+/**
+ * This function shows the dark background
+ */
 function showDarkBackground() {
   document.getElementById('darkBackgroundContainer').classList.remove('d-none');
 }
 
+/**
+ * This function hides the dark background
+ */
 function closeDarkBackground() {
   document.getElementById('darkBackgroundContainer').classList.add('d-none');
 }
 
+/**
+ * This function closes the active overlay
+ */
 function closeOverlay() {
   let overlay = document.querySelector('.overlayActive')
   if (overlay) overlay.classList.remove('overlayActive');
@@ -471,7 +650,11 @@ function closeOverlay() {
   n = 0
   setTimeout(closeDarkBackground, 500)
 }
-
+/**
+ * This function changes the inner html of the fly in button
+ * 
+ * @param {string} confirmation This is the change inside the fly in button
+ */
 function changeflyInButton(confirmation) {
   let flyInButton = document.getElementById(`fly-in-button`);
   if (confirmation == 'taskAdded') {
@@ -515,6 +698,9 @@ function changeflyInButton(confirmation) {
   }
 }
 
+/**
+ * This function toogles the logout modal and closes it after timeout
+ */
 function toggleLogout() {
   let button = document.querySelector('.log-out-modal')
   if (button.classList.contains('d-none')) button.classList.remove('d-none')
@@ -522,15 +708,24 @@ function toggleLogout() {
   setTimeout(closeLogout, 2000)
 }
 
+/**
+ * This function closes the logout modal
+ */
 function closeLogout() {
   let button = document.querySelector('.log-out-modal')
   if (!button.classList.contains('d-none')) button.classList.add('d-none')
 }
 
+/**
+ *This function lets the user logout 
+ */
 function logOut() {
   window.location.href = 'login.html';
 }
 
+/**
+ * This function resets all inputs and error messages on sign up
+ */
 function resetSignUpInputs() {
   document.querySelector('.signUpContainer').reset();
   document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
@@ -538,6 +733,9 @@ function resetSignUpInputs() {
   })
 }
 
+/**
+ * This function sets the welcome desk animation on responsive design and adds class after animation end
+ */
 function setupWelcomeDeskAnimation() {
   var welcomeDesk = document.getElementById('welcomeDesk');
   if (welcomeDesk) {
@@ -550,8 +748,22 @@ function setupWelcomeDeskAnimation() {
       }, 1000);
   }
 }
-document.addEventListener('DOMContentLoaded', setupWelcomeDeskAnimation);
 
-if (isDarkMode) {
-    favicon.href = 'assets/img/logo_invert.svg'; // Pfad zum Logo für den Dark Mode
+/**
+ * This function sets the src of favicon depending on darkmode
+ * 
+ * @param {boolean} isDarkMode This tells the function if darkmode is used or not
+ */
+function setFavicon(isDarkMode) {
+  const linkElements = document.getElementsByTagName('link');
+debugger
+  for (const link of linkElements) {
+      if (link.rel === 'icon') {
+          if (isDarkMode) {
+              link.href = 'assets/img/logo_invert.svg'; // Pfad zum Logo für den Dark Mode
+          } else {
+              link.href = 'assets/img/logo.svg'; // Pfad zum Standard-Logo
+          }
+      }
+  }
 }
