@@ -18,6 +18,7 @@ function renderBoard() {
         if (element.taskProgress === 'done') containerDone.innerHTML += addBoardCard(element)
     }
 addContentEmptyDiv()
+renderSummary()
 }
 
 /**
