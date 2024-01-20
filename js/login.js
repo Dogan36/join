@@ -1,5 +1,7 @@
 let user
-
+/**
+ * This functions adds various event listeners after dom content is loaded
+ */
 document.addEventListener('DOMContentLoaded', function () {
     let logo = document.querySelector('.logo');
     let contentContainer = document.querySelector('.loginContainer');
@@ -19,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
     changePasswortImage('login')
 });
 
+/**
+ * This function updates the checkbox of remember me
+ */
 function updateCheckbox() {
     var checkbox = document.getElementById('rememberMe');
     var pathChecked = document.getElementById('checked');
@@ -32,6 +37,9 @@ function updateCheckbox() {
     }
 }
 
+/**
+ * This function updates the checkbox of confirmation terms
+ */
 function updateCheckboxConfirmationTerms() {
     var checkbox = document.getElementById('confirmationTerms');
     var pathChecked = document.getElementById('checkedTerms');
@@ -44,12 +52,16 @@ function updateCheckboxConfirmationTerms() {
         pathUnchecked.style.display = 'block';
     }
 }
-
+/**
+ * This function gets the user by searching in users with the email
+ */
 function getUser() {
     let email = document.getElementById('loginEmail').value;
     user = users.find(user => user.email === email);
 }
-
+/**
+ * This function sets in local storage if user checked remember me checkbox
+ */
 function rememberMe() {
     const checkbox = document.getElementById('rememberMe');
     const usernameInput = document.getElementById('loginEmail');
@@ -64,6 +76,9 @@ function rememberMe() {
     }
 }
 
+/**
+ * This funtion loads data of remembered user from local storage and sets it if available
+ */
 function loadRememberedData() {
     const rememberedUser = localStorage.getItem('rememberedUser');
     const rememberedPass = localStorage.getItem('rememberedPass');
@@ -76,6 +91,9 @@ function loadRememberedData() {
     }
 }
 
+/**
+ * This function adds user to users array and calls confirmation
+ */
 async function addUser() { 
     let name = document.getElementById('signUpName')
     let email = document.getElementById('signUpEmail');
@@ -90,7 +108,11 @@ async function addUser() {
         showContentLogin('loginContainer');
       }, 3000);
 }
-
+/**
+ * This funtion shows choosen content and hides others.
+ * 
+ * @param {string} element This is id of the element to be shown
+ */
 function showContentLogin(element) {
     document.querySelector('.loginTopRight').classList.add('d-none')
     document.getElementById('loginContainer').classList.add('d-none')
