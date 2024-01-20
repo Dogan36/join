@@ -592,19 +592,22 @@ function renderAddTaskContacts() {
       <img class="contact-icon" src="assets/img/contact_icon.svg" alt="">
     </div>`;
 
-  for (let i = 0; i < contacts.length; i++) {
-    let contact = contacts[i];
-    content.innerHTML +=/*html*/`
-          <div class="contactsOption">
-        <div class="selection-point-container">
-          <div>${contact['name']}</div>
-        </div>
-        <div>
-          <input id='${contact['name'] + n}' type="checkbox" name="option[]${n}" value="Option ${i}")"> 
-        <label for="${contact['name'] + n}"></label>
-        </div>    
-      </div>`;
+    for (let i = 0; i < contacts.length; i++) {
+      let contact = contacts[i];
+      if (contact['name'] !== 'Contact deleted') {
+          content.innerHTML += /*html*/ `
+              <div class="contactsOption">
+                  <div class="selection-point-container">
+                      <div>${contact['name']}</div>
+                  </div>
+                  <div>
+                      <input id='${contact['name'] + n}' type="checkbox" name="option[]${n}" value="Option ${i}")"> 
+                      <label for="${contact['name'] + n}"></label>
+                  </div>    
+              </div>`;
+      }
   }
+  
 }
 
 /**
