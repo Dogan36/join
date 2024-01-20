@@ -999,7 +999,7 @@ indexWrapper {
     gap: 16px;
     align-self: stretch;
     margin-top: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .helpStep {
