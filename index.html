@@ -48,21 +48,21 @@
         </div>
         <div class="darkBackgroundContainer d-none" id="darkBackgroundContainer" onclick="closeOverlay()"></div>
         <div class="overlay addTaskOverlay" id="addTaskOverlay"
-            w3-include-html="./assets/templates/addTaskOverlayTemplate.html"></div>
+        w3-include-html="./assets/templates/addTaskOverlayTemplate.html"></div>
         <div class="overlay addTaskOverlay" id="editTaskOverlay"
-            w3-include-html="./assets/templates/editTaskOverlayTemplate.html"></div>
+        w3-include-html="./assets/templates/editTaskOverlayTemplate.html"></div>
         <div class="overlay activeTaskOverlay" id="activeTaskOverlay"></div>
         <div class="overlay addContactOverlay" id="addContactOverlay"
-            w3-include-html="./assets/templates/addContactCard.html"></div>
+        w3-include-html="./assets/templates/addContactCard.html"></div>
         <div class="overlay editContactOverlay" id="editContactOverlay"
-            w3-include-html="./assets/templates/editContactCard.html"></div>
+        w3-include-html="./assets/templates/editContactCard.html"></div>
+        
+        <div id="fly-in-button" class="fly-in task-added-to-board-container d-none"></div>
+        <div class="log-out-modal d-none">
+            <span class="logoutPrivacy" onclick="showContent('privacyContent')">Privacy Policy</span>
+            <span class="logoutPrivacy" onclick="showContent('legalContent')">Legal Notice</span>
+            <span onclick="logOut()">Log out</span>
+        </div>
     </indexWrapper>
-
-    <div id="fly-in-button" class="fly-in task-added-to-board-container d-none"></div>
-    <div class="log-out-modal d-none">
-        <span class="logoutPrivacy" onclick="showContent('privacyContent')">Privacy Policy</span>
-        <span class="logoutPrivacy" onclick="showContent('legalContent')">Legal Notice</span>
-        <span onclick="logOut()">Log out</span>
-    </div>
 </body>
 </html>
