@@ -74,7 +74,7 @@ function addContentEmptyDiv() {
  * This function generates html with the subtasks total and subtasks done of every task
  * 
  * @param {string} element json of the task
- * @returns 
+ * @returns string
  */
 function addBoardCardSubtask(element) {
     let subtasks = element.subtasks
@@ -152,7 +152,7 @@ function generateAvatarsHtml(assignedTo, endIndex) {
  * 
  * @param {string} backgroundColor This is the color of the avatar background
  * @param {sting} initials This are the initals of the avatar
- * @returns 
+ * @returns string
  */
 function generateAvatarHtmlElement(backgroundColor, initials) {
     return `<div class="boardAvatar" style="background-color: ${backgroundColor}"><span>${initials}</span></div>`;

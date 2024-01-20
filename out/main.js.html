@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: main.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: main.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+let tasks = [];
+let contacts = [];
+let users = [];
+let categorys = [];
+let addTaskContacts = [];
+let currentUser = 'Guest'
+let initials = [];
+let isContentLoaded = false
+let isDarkMode = window.matchMedia &amp;&amp; window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+let avatarBackgroundColors = ['#FF6633', '#FF33FF',
+'#E6B333', '#3366E6', '#B34D4D',
+'#80B300', '#809900', '#6680B3', '#66991A',
+'#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A',
+'#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
+'#66664D', '#991AFF', '#4DB3FF', '#1AB399',
+'#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
+'#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+'#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
+'#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+
+let categoryColors = ['#0072B2', '#E69F00', '#009E73', '#F0E442', '#CC79A7', '#56B4E9', '#D55E00', '#5D5D5D', '#CC6633', '#66CCEE', '#B2B2B2', '#999933'];
+let visibleIcon = 'assets/img/visibleIcon.svg';
+let notVisibleIcon = 'assets/img/notVisibleIcon.svg';
+let standartIcon = 'assets/img/loginPassword.svg';
+
+
+/**
+ * This function calls functions to load from server and includes htmls
+ *      
+ * @param {boolean} include Depending on this include HTML is called or not
+*/
+
+async function init(include = false) {
+  await loadUsers()
+  await loadTasks()
+  await loadContacts()
+  await loadCategorys()
+  if (include) {
+    includeHTML()
+  }
+}
+
+/**
+ * This function loads user data from server
+*/
+async function loadUsers() {
+  try {
+    users = JSON.parse(await getItem('users'));
+  } catch (e) {
+    console.error('Loading error:', e);
+  }
+}
+
+/**
+ * This function loads tasks data from server
+*/
+async function loadTasks() {
+  try {
+    tasks = JSON.parse(await getItem('tasks'));
+  } catch (e) {
+    console.error('Loading error:', ErrorTasks);
+  }
+}
+
+/**
+ * This function loads contacts data from server
+*/
+async function loadContacts() {
+  try {
+    contacts = JSON.parse(await getItem('contacts'));
+  } catch (e) {
+    console.error('Loading error:', ErrorContacts);
+  }
+}
+
+setFavicon(isDarkMode);
+document.addEventListener('DOMContentLoaded', setupWelcomeDeskAnimation);
+
+/**
+ * This function loads category data from server
+*/
+async function loadCategorys() {
+  try {
+    categorys = JSON.parse(await getItem('categorys'));
+  } catch (e) {
+    console.error('Loading error:', e);
+  }
+}
+
+/**
+ * This function calls render function aber content is loaded
+ */
+function callRender() {
+  if (isContentLoaded) {
+    render();
+  } else {
+    setTimeout(callRender, 100); // Warten und erneut versuchen
+  }
+}
+
+callRender()
+
+
+/**
+ * This function renders all html
+ */
+function render() {
+  getCurrentUser()
+  renderSummary()
+  greetingAds()
+  renderBoard()
+  renderContacts()
+  renderAddTaskDropdowns()
+  renderUserInitials()
+  setCurrentDate()
+}
+
+/**
+ * This function renders all dropdowns
+ */
+function renderAddTaskDropdowns() {
+  renderAddTaskCategorySelect()
+  renderAddTaskCategorys()
+  renderAddTaskContactsSelect()
+  renderAddTaskContacts()
+}
+
+/**
+ * This function renders initals of current user
+ */
+function renderUserInitials() {
+  let nameWords = currentUser.split(" ");
+  if (nameWords.length === 1) {
+    let initialsCurrentUser = nameWords[0].charAt(0).toUpperCase();
+  }
+  let initialsCurrentUser = nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
+  document.querySelector('.headerUserProfilInitials').innerHTML = initialsCurrentUser
+}
+
+/**
+ * This function shows the selected content and hides all other
+ * 
+ * @param {sting} x id of the content to be shown
+ */
+function showContent(x) {
+  var content = document.querySelectorAll(".indexContent");
+  clearTheInputFields();
+  content.forEach(function (element) {
+    element.classList.add("d-none");
+  });
+  document.getElementById(x).classList.remove('d-none')
+
+}
+/**
+ * This function add classlist active on menuelement which is shown
+ * 
+ * @param {string} element id of the element which is shown
+ */
+function setActiveElement(element) {
+  var mobileElementName = element + "Mobile";
+  var icons = document.querySelectorAll(".desktopTemplateIconActive");
+  icons.forEach(function (icon) {
+    icon.classList.remove("desktopTemplateIconActive");
+  });
+  document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
+  document.getElementById('privacyPolicy').classList.remove('desktopTemplateIconActive')
+  document.getElementById(`${element}`).classList.add("desktopTemplateIconActive");
+  if (!(element === 'privacyPolicy' || element === 'legalNotice')) {
+    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
+  }
+  setActiveIcon()
+}
+
+/**
+ * This function changes the Icon inside the active element for design reasons
+ */
+function setActiveIcon() {
+  var icons = document.getElementsByClassName("desktopTemplateMenuElements");
+  var iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
+  for (var i = 0; i &lt; 4; i++) {
+    var img = icons[i].querySelector("img");
+    img.src = img.src.replace("_active.svg", ".svg");
+  }
+  for (var i = 0; i &lt; 4; i++) {
+    var img = iconsMobile[i].querySelector("img");
+    img.src = img.src.replace("_active.svg", ".svg");
+  }
+  var iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
+  iconsActive.forEach(function (iconActive) {
+    var img = iconActive.querySelector("img");
+    if (img) img.src = img.src.replace(".svg", "_active.svg");
+  });
+
+}
+/**
+ * This function changes src of img on hover for design reasons
+ * 
+ * @param {string} element This is the id of the element which is hovered on
+ * @param {sting} url This is the url which is to be set on hover
+ */
+function hover(element, url) {
+  document.getElementById(`${element}`).setAttribute('src', url);
+}
+
+/**
+ * This function changes src of img on hover for design reasons
+ * 
+ * @param {string} element This is "this" of the element which is hovered on
+ * @param {sting} url This is the url which is to be set on hover
+ */
+function hoverThis(element, url) {
+  element.setAttribute('src', url);
+}
+
+/**
+ * This function gets the current user from the url
+ */
+function getCurrentUser() {
+  var params = new URLSearchParams(window.location.search);
+  let currentUserURL = params.get('variable');
+  if (currentUserURL) currentUser = currentUserURL
+}
+
+/**
+ * This function sets an eventlistener for the password images on input an click
+ * 
+ * @param {sting} element This is the ID of the element which will get an eventlistener
+ */
+
+function listenerPasswordImg(element) {
+  let passwordInput = document.getElementById(`${element}Password`);
+  let passwordToggle = document.getElementById(`${element}PasswordImg`);
+  passwordInput.addEventListener('keyup', function () {
+    changePasswortImage(element);
+  });
+  passwordToggle.addEventListener('click', function () {
+    togglePasswordVisibility(element);
+  });
+}
+
+/**
+ * This function changes the src of an password img
+ * 
+ * @param {string} element This is the ID of the element to be changed
+ */
+function changePasswortImage(element) {
+  let passwordInput = document.getElementById(`${element}Password`);
+  let passwordToggle = document.getElementById(`${element}PasswordImg`);
+  if (passwordInput.value === '') passwordToggle.src = standartIcon;
+ else if (passwordInput.type == 'text') passwordToggle.src = visibleIcon;
+  else  passwordToggle.src = notVisibleIcon
+}
+
+/**
+ * This function changes the visibility of an password 
+ * 
+ * @param {string} element This is the ID of the element to be changed
+ */
+function togglePasswordVisibility(element) {
+  let passwordInput = document.getElementById(`${element}Password`);
+  let passwordToggle = document.getElementById(`${element}PasswordImg`);
+  if (passwordInput.value === '') {
+    passwordToggle.src = standartIcon;
+  } else {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      passwordToggle.src = visibleIcon;
+    } else {
+      passwordInput.type = 'password';
+      if (passwordToggle.src !== 'assets/img/loginPassword.svg') passwordToggle.src = notVisibleIcon;
+    }
+  }
+}
+
+/**
+ * This function checks all inputs on login page and let user check in if no errors
+ * 
+ * @returns boolean
+ */
+function checkInputsLogin() {
+  document.querySelectorAll(`.loginErrorMessage`).forEach(function (el) {
+    el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('loginEmail') ? 1 : 0;
+  errorCount += checkInputEmpty('loginPassword') ? 1 : 0;
+  errorCount += checkEmailFormat('loginEmail') ? 1 : 0;
+  errorCount += checkEmailDoesntExist('loginEmail') ? 1 : 0;
+  errorCount += checkPasswordLength('loginPassword') ? 1 : 0;
+  errorCount += checkIncorrectPassword('loginPassword') ? 1 : 0;
+  if (errorCount > 0) return;
+  checkIn()
+}
+
+/**
+ * This function checks all inputs on sign up page and adds user if no error
+ * 
+ * @returns boolean
+ */
+function checkInputsSignUp() {
+  document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
+    el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('signUpName') ? 1 : 0;
+  errorCount += checkInputEmpty('signUpEmail') ? 1 : 0;
+  errorCount += checkInputEmpty('signUpPassword') ? 1 : 0;
+  errorCount += checkInputEmpty('confirmPassword') ? 1 : 0;
+  errorCount += checkEmailFormat('signUpEmail') ? 1 : 0;
+  errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
+  debugger
+  errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
+  errorCount += checkPasswordConfirm('signUpPassword') ? 1 : 0;
+  errorCount += checkPrivacyChecked() ? 1 : 0;
+  if (errorCount > 0) return;
+  addUser()
+}
+
+/**
+ * This function checks all inputs on forgot password page and sends new password link if no errors
+ * 
+ * @returns boolean
+ */
+
+function checkInputsForgot() {
+  document.querySelectorAll(`.forgotErrorMessage`).forEach(function (el) {
+    el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('forgotEmail') ? 1 : 0;
+  errorCount += checkEmailFormat('forgotEmail') ? 1 : 0;
+  errorCount += checkEmailDoesntExist('forgotEmail') ? 1 : 0;
+  if (errorCount > 0) return;
+  sendNewPasswordLink()
+}
+
+/**
+ * This function checks all inputs on reset password page and updates password if no errors
+ * 
+ * @returns boolean
+ */
+function checkInputsReset() {
+  document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
+    el.classList.add('d-none');
+  })
+  let errorCount = 0;
+  errorCount += checkInputEmpty('resetPassword') ? 1 : 0;
+  errorCount += checkInputEmpty('confirmPassword') ? 1 : 0;
+  errorCount += checkPasswordLength('resetPassword') ? 1 : 0;
+  errorCount += checkPasswordMatch() ? 1 : 0;
+  if (errorCount > 0) return;
+  updatePassword()
+}
+
+/**
+ * This function checks if an input is empty and shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
+function checkInputEmpty(element) {
+  let input = document.getElementById(`${element}`);
+  if (input.value === '') {
+    document.getElementById(`${element}Error`).classList.remove('d-none');
+    return true
+  }
+}
+
+/**
+ * This function checks if an input contains an "@" otherwise shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
+function checkEmailFormat(element) {
+  let input = document.getElementById(`${element}`);
+  if (input.value.indexOf('@') === -1 &amp;&amp; input.value.length > 0) {
+    document.getElementById(`${element}FormatError`).classList.remove('d-none');
+    return true
+  }
+}
+/**
+ * This function checks if an email already exists in data otherwise shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
+function checkEmailExist(element) {
+  let input = document.getElementById(`${element}`);
+  let emailFound = false;
+  for (var i = 0; i &lt; users.length; i++) {
+    if (users[i].email === input.value) {
+      document.getElementById(`${element}InUseError`).classList.remove('d-none');
+      return true;
+    }
+  }
+  return false
+}
+/**
+ * This function checks if an email doesn`t exists in data otherwise shows error
+ * 
+ * @param {string} element ID of the element to be checked
+ * @returns boolean
+ */
+function checkEmailDoesntExist(element) {
+  let input = document.getElementById(`${element}`);
+  let emailFound = false;
+  for (var i = 0; i &lt; users.length; i++) {
+    if (input.value.length > 0 &amp;&amp; input.value.includes('@') &amp;&amp; users[i].email === input.value) 
+      return false;
+  }
+  if (input.value.length > 0 &amp;&amp; input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
+  return true
+}
+/**
+ * This function checks if an input has the minimum count of characters otherwise shows error
+ * 
+ * @param {string} element ID of element to be checked
+ * @returns boolean
+ */
+function checkPasswordLength(element) {
+  let password = document.getElementById(`${element}`)
+  if (password.value.length &lt; 6 &amp;&amp; password.value.length > 0) {
+    document.getElementById(`${element}LengthError`).classList.remove('d-none');
+    return true
+  }
+}
+/**
+ * This function checks if the password and confirmation password are identical otherwise shows error
+ * 
+ * @returns boolean
+ */
+function checkPasswordConfirm() {
+  let password = document.getElementById('signUpPassword')
+  let passwordConfirm = document.getElementById('confirmPassword')
+  if (password.value != passwordConfirm.value) {
+    document.getElementById('confirmPasswordConfirmIdenticalError').classList.remove('d-none');
+    return true
+  }
+}
+/**
+ * This function checks if the password is incorrect and shows error
+ * 
+ * @param {sting} element ID of the element where password is inserted
+ * @returns boolean
+ */
+function checkIncorrectPassword(element) {
+  if (getUser()) {
+    let password = document.getElementById(`${element}`).value;
+    if (user.password !== password &amp;&amp; password.length >= 6) {
+      document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
+      return true
+    } else return false
+  }
+}
+/**
+ * This functions checks if the privacy policy is checked otherwise shows error
+ * 
+ * @returns boolean
+ */
+function checkPrivacyChecked() {
+  let checkbox = document.getElementById('confirmationTerms');
+  if (checkbox.checked != true) {
+    document.getElementById('signUpPrivacyError').classList.remove('d-none')
+    return true
+  } else return false
+  
+}
+
+/**
+ * This function lets the user check in
+ */
+function checkIn() {
+  rememberMe()
+  let currentUser = user.name
+  window.location.href = 'index.html?variable=' + currentUser;
+}
+
+
+/**
+ * This function sends an link to the user via e-mail to reset the password
+ */
+function sendNewPasswordLink() {
+  let email = document.getElementById('forgotEmail').value
+  let xhr = new XMLHttpRequest();
+
+  let url = '//dogan-celik.developerakademie.net/join/send_mail.php';
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+      console.log('Email sent!');
+    }
+  };
+
+  let message = `Hello,\n\nPlease click on the following link to reset your password: http://dogan-celik.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
+  let params = `name=Join&amp;mail=noreply@join.com&amp;message=${message}`;
+  xhr.send(params);
+  showConfirmation('newPassword')
+}
+
+/**
+ *This function checks of password and confirm passwort are identical on reset page
+ */
+function checkPasswordMatch() {
+  let password = document.getElementById('resetPassword').value
+  let confirmPassword = document.getElementById('confirmPassword').value;
+  if (password !== confirmPassword) document.getElementById('confirmPasswordIncorrectError').classList.remove('d-none');
+}
+
+/**
+ * This function updates the password of the user
+ */
+async function updatePassword() {
+  var params = new URLSearchParams(window.location.search);
+  email = params.get('email');
+  user = users.find(user => user.email === email);
+  newPassword = document.getElementById('resetPassword').value
+  user.password = newPassword;
+  await setItem('users', users)
+  showConfirmation('forgot')
+}
+
+/**
+ * This function shows confirmation to the user
+ * 
+ * @param {string} confirmation This is the type of confirmation the user gets 
+ */
+function showConfirmation(confirmation) {
+  showDarkBackground()
+  let flyInButton = document.getElementById(`fly-in-button`);
+  changeflyInButton(confirmation)
+  flyInButton.classList.remove('d-none');
+}
+/**
+ * This function closes the confirmation
+ */
+function closeConfirmation() {
+  let flyInButton = document.getElementById(`fly-in-button`);
+  flyInButton.classList.add('d-none');
+}
+
+/**
+ * This function gets the Initials of a contact
+ * 
+ * @param {string} element ID of the element to get the initials from
+ * @returns string
+ */
+function getInitials(element) {
+  let contact = document.getElementById(element)
+  let nameWords = contact.value.split(" ");
+  if (nameWords.length === 1) {
+    return nameWords[0].charAt(0).toUpperCase();
+  }
+  return nameWords.reduce((result, word) => result + word.charAt(0), '').toUpperCase();
+}
+
+/**
+ * This function opens the add task overlay
+ * 
+ * @param {string} progress Preset the progress of the task to create
+ */
+function openAddTaskOverlay(progress) {
+  if (progress) taskProgress = progress
+  else progress = 'toDo'
+  clearTheInputFields()
+  choosenCategory = undefined
+  n = 1;
+  renderAddTaskDropdowns()
+  showDarkBackground()
+  document.getElementById('addTaskOverlay').classList.add('overlayActive');
+}
+/**
+ * This function opens the overlay with the active task
+ * 
+ * @param {number} i This is the position of the task in tasks array
+ */
+function openActiveTaskOverlay(i) {
+  let activeTask = tasks[i];
+  document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
+  showDarkBackground()
+  document.getElementById('activeTaskOverlay').classList.add('overlayActive')
+}
+/**
+ * This function opens the edit task overlay with the active task 
+ * 
+ * @param {number} i This is the position of the task in tasks array
+ */
+function openEditTaskOverlay(i) {
+  taskProgress = tasks[i].taskProgress
+  console.log(taskProgress)
+  closeOverlay()
+  clearTheInputFields()
+  n = 2;
+  renderAddTaskDropdowns()
+  setTimeout(showDarkBackground, 500)
+  document.getElementById('editTaskOverlay').classList.add('overlayActive')
+  setEditTaskOverlay(i)
+}
+/**
+ * This function opens the new contact overlay
+ */
+function openNewContactOverlay() {
+  showDarkBackground()
+  document.getElementById('addContactOverlay').classList.add('overlayActive')
+}
+
+/**
+ * This function closes the new contact overlay
+ */
+function closeNewContactOverlay() {
+  document.getElementById('addContactOverlay').classList.add('d-none')
+  document.getElementById('container-opened-task').classList.add('d-none')
+}
+
+/**
+ * This function opens the edit contact overlay
+ * 
+ * @param {number} j This is the position of the contact in contacts array
+ */
+function openEditContactOverlay(j) {
+  contactToEdit = j
+  setEditContactOverlay(j)
+  document.getElementById('editContactOverlay').classList.add('overlayActive')
+  showDarkBackground()
+}
+/**
+ * This function shows the dark background
+ */
+function showDarkBackground() {
+  document.getElementById('darkBackgroundContainer').classList.remove('d-none');
+}
+
+/**
+ * This function hides the dark background
+ */
+function closeDarkBackground() {
+  document.getElementById('darkBackgroundContainer').classList.add('d-none');
+}
+
+/**
+ * This function closes the active overlay
+ */
+function closeOverlay() {
+  let overlay = document.querySelector('.overlayActive')
+  if (overlay) overlay.classList.remove('overlayActive');
+  clearTheInputFields()
+  n = 0
+  setTimeout(closeDarkBackground, 500)
+}
+/**
+ * This function changes the inner html of the fly in button
+ * 
+ * @param {string} confirmation This is the change inside the fly in button
+ */
+function changeflyInButton(confirmation) {
+  let flyInButton = document.getElementById(`fly-in-button`);
+  if (confirmation == 'taskAdded') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">Task added to board&lt;/div>
+  &lt;img id="confirmationImg"src="./assets/img/boardIcon.svg" alt="">`}
+  else if (confirmation == 'taskDeleted') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">Task deleted&lt;/div>
+  &lt;img id="confirmationImg"src="./assets/img/deleteWhite.svg" alt="">`
+  }
+  else if (confirmation == 'taskMoved') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">Task Moved&lt;/div>
+  &lt;img id="confirmationImg" src="./assets/img/moveWhite.svg" alt="">`
+  }
+  else if (confirmation == 'taskUpdated') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">Task Updated&lt;/div>
+  &lt;img id="confirmationImg" src="./assets/img/update.svg" alt="">`
+  }
+  else if (confirmation == 'contactUpdated') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">Contact Updated&lt;/div>
+  &lt;img id="confirmationImg" src="./assets/img/update.svg" alt="">`
+  }
+  else if (confirmation == 'newPassword') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">An e-mail has beend send&lt;/div>
+  &lt;img id="confirmationImg" src="./assets/img/SendCheck.svg" alt="">`
+  }
+  else if (confirmation == 'signedUp') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">Signed up successfully&lt;/div>
+  &lt;img id="confirmationImg" src="./assets/img/userIcon.svg" alt="">`
+  }
+  else if (confirmation == 'contactDeleted') {
+    flyInButton.innerHTML = `
+  &lt;div id="confirmationText" class="task-added-to-board">Contact deleted&lt;/div>
+  &lt;img id="confirmationImg" src="./assets/img/deleteWhite.svg" alt="">`
+  }
+}
+
+/**
+ * This function toogles the logout modal and closes it after timeout
+ */
+function toggleLogout() {
+  let button = document.querySelector('.log-out-modal')
+  if (button.classList.contains('d-none')) button.classList.remove('d-none')
+  else button.classList.add('d-none')
+  setTimeout(closeLogout, 2000)
+}
+
+/**
+ * This function closes the logout modal
+ */
+function closeLogout() {
+  let button = document.querySelector('.log-out-modal')
+  if (!button.classList.contains('d-none')) button.classList.add('d-none')
+}
+
+/**
+ *This function lets the user logout 
+ */
+function logOut() {
+  window.location.href = 'login.html';
+}
+
+/**
+ * This function resets all inputs and error messages on sign up
+ */
+function resetSignUpInputs() {
+  document.querySelector('.signUpContainer').reset();
+  document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
+    el.classList.add('d-none');
+  })
+}
+
+/**
+ * This function sets the welcome desk animation on responsive design and adds class after animation end
+ */
+function setupWelcomeDeskAnimation() {
+  var welcomeDesk = document.getElementById('welcomeDesk');
+  if (welcomeDesk) {
+      welcomeDesk.addEventListener('animationend', function () {
+          welcomeDesk.classList.add('animation-done');
+      });
+  } else {
+      setTimeout(function () {
+          setupWelcomeDeskAnimation();
+      }, 1000);
+  }
+}
+
+/**
+ * This function sets the src of favicon depending on darkmode
+ * 
+ * @param {boolean} isDarkMode This tells the function if darkmode is used or not
+ */
+function setFavicon(isDarkMode) {
+  const linkElements = document.getElementsByTagName('link');
+  for (const link of linkElements) {
+      if (link.rel === 'icon') {
+          if (isDarkMode) {
+              link.href = 'assets/img/logo_invert.svg'; // Pfad zum Logo für den Dark Mode
+          } else {
+              link.href = 'assets/img/logo.svg'; // Pfad zum Standard-Logo
+          }
+      }
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addActiveCardAssignedTo">addActiveCardAssignedTo</a></li><li><a href="global.html#addActiveCardSubtasks">addActiveCardSubtasks</a></li><li><a href="global.html#addActiveTaskOverlayHTML">addActiveTaskOverlayHTML</a></li><li><a href="global.html#addAssignedTowarnings">addAssignedTowarnings</a></li><li><a href="global.html#addBoardCard">addBoardCard</a></li><li><a href="global.html#addBoardCardAssignedTo">addBoardCardAssignedTo</a></li><li><a href="global.html#addBoardCardSubtask">addBoardCardSubtask</a></li><li><a href="global.html#addCategoryWarnings">addCategoryWarnings</a></li><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addContentEmptyDiv">addContentEmptyDiv</a></li><li><a href="global.html#addDescriptionWarnings">addDescriptionWarnings</a></li><li><a href="global.html#addDueDateWarnings">addDueDateWarnings</a></li><li><a href="global.html#addInviteContact">addInviteContact</a></li><li><a href="global.html#addNewCategory">addNewCategory</a></li><li><a href="global.html#addNewCategoryWarning">addNewCategoryWarning</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addPrioWarnings">addPrioWarnings</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#addTaskJsonArray">addTaskJsonArray</a></li><li><a href="global.html#addTitleWarnings">addTitleWarnings</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#callRender">callRender</a></li><li><a href="global.html#callTarget">callTarget</a></li><li><a href="global.html#categoryTemplate">categoryTemplate</a></li><li><a href="global.html#changePasswortImage">changePasswortImage</a></li><li><a href="global.html#changePrioButtonIcon">changePrioButtonIcon</a></li><li><a href="global.html#changeflyInButton">changeflyInButton</a></li><li><a href="global.html#checkEmailDoesntExist">checkEmailDoesntExist</a></li><li><a href="global.html#checkEmailExist">checkEmailExist</a></li><li><a href="global.html#checkEmailFormat">checkEmailFormat</a></li><li><a href="global.html#checkIn">checkIn</a></li><li><a href="global.html#checkIncorrectPassword">checkIncorrectPassword</a></li><li><a href="global.html#checkInputEmpty">checkInputEmpty</a></li><li><a href="global.html#checkInputsAddContact">checkInputsAddContact</a></li><li><a href="global.html#checkInputsEditContact">checkInputsEditContact</a></li><li><a href="global.html#checkInputsForgot">checkInputsForgot</a></li><li><a href="global.html#checkInputsLogin">checkInputsLogin</a></li><li><a href="global.html#checkInputsReset">checkInputsReset</a></li><li><a href="global.html#checkInputsSignUp">checkInputsSignUp</a></li><li><a href="global.html#checkMandatoryFieldCategory">checkMandatoryFieldCategory</a></li><li><a href="global.html#checkMandatoryFieldDescription">checkMandatoryFieldDescription</a></li><li><a href="global.html#checkMandatoryFieldDueDate">checkMandatoryFieldDueDate</a></li><li><a href="global.html#checkMandatoryFieldTitle">checkMandatoryFieldTitle</a></li><li><a href="global.html#checkMandatoryFields">checkMandatoryFields</a></li><li><a href="global.html#checkNewCategoryName">checkNewCategoryName</a></li><li><a href="global.html#checkNewContactField">checkNewContactField</a></li><li><a href="global.html#checkPasswordConfirm">checkPasswordConfirm</a></li><li><a href="global.html#checkPasswordLength">checkPasswordLength</a></li><li><a href="global.html#checkPasswordMatch">checkPasswordMatch</a></li><li><a href="global.html#checkPrio">checkPrio</a></li><li><a href="global.html#checkPrivacyChecked">checkPrivacyChecked</a></li><li><a href="global.html#choosePrio">choosePrio</a></li><li><a href="global.html#clearAssignedTowarnings">clearAssignedTowarnings</a></li><li><a href="global.html#clearBoardBeforeRender">clearBoardBeforeRender</a></li><li><a href="global.html#clearCategoryWarnings">clearCategoryWarnings</a></li><li><a href="global.html#clearDescriptionWarnings">clearDescriptionWarnings</a></li><li><a href="global.html#clearDueDateWarnings">clearDueDateWarnings</a></li><li><a href="global.html#clearInviteNewContactValue">clearInviteNewContactValue</a></li><li><a href="global.html#clearPrioWarnings">clearPrioWarnings</a></li><li><a href="global.html#clearTheInputFields">clearTheInputFields</a></li><li><a href="global.html#clearTitleWarnings">clearTitleWarnings</a></li><li><a href="global.html#clearWarnings">clearWarnings</a></li><li><a href="global.html#closeAddTaskCategory">closeAddTaskCategory</a></li><li><a href="global.html#closeAddTaskContacts">closeAddTaskContacts</a></li><li><a href="global.html#closeAddTaskNewCategory">closeAddTaskNewCategory</a></li><li><a href="global.html#closeConfirmation">closeConfirmation</a></li><li><a href="global.html#closeContactsRightMobile">closeContactsRightMobile</a></li><li><a href="global.html#closeDarkBackground">closeDarkBackground</a></li><li><a href="global.html#closeInviteNewContact">closeInviteNewContact</a></li><li><a href="global.html#closeLogout">closeLogout</a></li><li><a href="global.html#closeNewContactOverlay">closeNewContactOverlay</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeSubtask">closeSubtask</a></li><li><a href="global.html#colorButton">colorButton</a></li><li><a href="global.html#countTasksByProgress">countTasksByProgress</a></li><li><a href="global.html#deleteAddTaskFields">deleteAddTaskFields</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#findNextDueTask">findNextDueTask</a></li><li><a href="global.html#findTask">findTask</a></li><li><a href="global.html#generateAvatarHtml">generateAvatarHtml</a></li><li><a href="global.html#generateAvatarHtmlElement">generateAvatarHtmlElement</a></li><li><a href="global.html#generateAvatarsHtml">generateAvatarsHtml</a></li><li><a href="global.html#getAddTaskJson">getAddTaskJson</a></li><li><a href="global.html#getCount">getCount</a></li><li><a href="global.html#getCurrentDate">getCurrentDate</a></li><li><a href="global.html#getCurrentUser">getCurrentUser</a></li><li><a href="global.html#getFirstLetter">getFirstLetter</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getTarget">getTarget</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#goToBoardPage">goToBoardPage</a></li><li><a href="global.html#greetingAds">greetingAds</a></li><li><a href="global.html#greetingCurrentUser">greetingCurrentUser</a></li><li><a href="global.html#highlightBoardElement">highlightBoardElement</a></li><li><a href="global.html#highlightBoardElementOff">highlightBoardElementOff</a></li><li><a href="global.html#hover">hover</a></li><li><a href="global.html#hoverThis">hoverThis</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#listenerPasswordImg">listenerPasswordImg</a></li><li><a href="global.html#loadCategorys">loadCategorys</a></li><li><a href="global.html#loadContacts">loadContacts</a></li><li><a href="global.html#loadRememberedData">loadRememberedData</a></li><li><a href="global.html#loadTasks">loadTasks</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#logOut">logOut</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#moveToDrop">moveToDrop</a></li><li><a href="global.html#openActiveTaskOverlay">openActiveTaskOverlay</a></li><li><a href="global.html#openAddTaskCategory">openAddTaskCategory</a></li><li><a href="global.html#openAddTaskContacts">openAddTaskContacts</a></li><li><a href="global.html#openAddTaskOverlay">openAddTaskOverlay</a></li><li><a href="global.html#openEditContactOverlay">openEditContactOverlay</a></li><li><a href="global.html#openEditTaskOverlay">openEditTaskOverlay</a></li><li><a href="global.html#openInviteNewContact">openInviteNewContact</a></li><li><a href="global.html#openNewCategoryInput">openNewCategoryInput</a></li><li><a href="global.html#openNewContactOverlay">openNewContactOverlay</a></li><li><a href="global.html#openSubtask">openSubtask</a></li><li><a href="global.html#rememberMe">rememberMe</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderAddTaskCategoriesHTML">renderAddTaskCategoriesHTML</a></li><li><a href="global.html#renderAddTaskCategorySelect">renderAddTaskCategorySelect</a></li><li><a href="global.html#renderAddTaskCategorys">renderAddTaskCategorys</a></li><li><a href="global.html#renderAddTaskContacts">renderAddTaskContacts</a></li><li><a href="global.html#renderAddTaskContactsSelect">renderAddTaskContactsSelect</a></li><li><a href="global.html#renderAddTaskDropdowns">renderAddTaskDropdowns</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderCount">renderCount</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#renderSummary">renderSummary</a></li><li><a href="global.html#renderUpcomingUrgent">renderUpcomingUrgent</a></li><li><a href="global.html#renderUserInitials">renderUserInitials</a></li><li><a href="global.html#resetNewCategoryInput">resetNewCategoryInput</a></li><li><a href="global.html#resetPrioButtons">resetPrioButtons</a></li><li><a href="global.html#resetSignUpInputs">resetSignUpInputs</a></li><li><a href="global.html#resetSubtasks">resetSubtasks</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#selectContactToAssign">selectContactToAssign</a></li><li><a href="global.html#sendNewPasswordLink">sendNewPasswordLink</a></li><li><a href="global.html#setActiveContact">setActiveContact</a></li><li><a href="global.html#setActiveElement">setActiveElement</a></li><li><a href="global.html#setActiveIcon">setActiveIcon</a></li><li><a href="global.html#setCategory">setCategory</a></li><li><a href="global.html#setContacts">setContacts</a></li><li><a href="global.html#setCurrentDate">setCurrentDate</a></li><li><a href="global.html#setEditContactOverlay">setEditContactOverlay</a></li><li><a href="global.html#setEditTaskOverlay">setEditTaskOverlay</a></li><li><a href="global.html#setFavicon">setFavicon</a></li><li><a href="global.html#setInnerContactCard">setInnerContactCard</a></li><li><a href="global.html#setInnerContactCardTemplate">setInnerContactCardTemplate</a></li><li><a href="global.html#setPrio">setPrio</a></li><li><a href="global.html#setPrioColor">setPrioColor</a></li><li><a href="global.html#setSubtasks">setSubtasks</a></li><li><a href="global.html#setupWelcomeDeskAnimation">setupWelcomeDeskAnimation</a></li><li><a href="global.html#showConfirmation">showConfirmation</a></li><li><a href="global.html#showContacts">showContacts</a></li><li><a href="global.html#showContent">showContent</a></li><li><a href="global.html#showContentLogin">showContentLogin</a></li><li><a href="global.html#showDarkBackground">showDarkBackground</a></li><li><a href="global.html#showList">showList</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#toggleAddTaskCategory">toggleAddTaskCategory</a></li><li><a href="global.html#toggleAddTaskContacts">toggleAddTaskContacts</a></li><li><a href="global.html#toggleEdits">toggleEdits</a></li><li><a href="global.html#toggleLogout">toggleLogout</a></li><li><a href="global.html#togglePasswordVisibility">togglePasswordVisibility</a></li><li><a href="global.html#toogleTaskMove">toogleTaskMove</a></li><li><a href="global.html#uncheckSelectedContacts">uncheckSelectedContacts</a></li><li><a href="global.html#updateCheckbox">updateCheckbox</a></li><li><a href="global.html#updateCheckboxConfirmationTerms">updateCheckboxConfirmationTerms</a></li><li><a href="global.html#updatePassword">updatePassword</a></li><li><a href="global.html#updateSubtaskDone">updateSubtaskDone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 20 2024 11:37:38 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

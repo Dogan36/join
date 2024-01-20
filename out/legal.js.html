@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: legal.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: legal.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let isContentLoaded = false
+/**
+ * This function shows selceted content and hides other
+ * @param {string} x This is the id of the content to be shown
+ */
+function showContent(x) {
+    let content = document.querySelectorAll(".indexContent");
+    content.forEach(function (element) {
+        element.classList.add("d-none");
+    });
+    document.getElementById(x).classList.remove('d-none')
+}
+
+/**
+ * This function adds a class to a active element
+ * 
+ * @param {string} element This is the id of the element to get an active class
+ */
+function setActiveElement(element) {
+    var icons = document.querySelectorAll(".desktopTemplateIconActive");
+    var elementName = element.id;
+    var mobileElementName = elementName + "Mobile";
+    icons.forEach(function (icon) {
+        icon.classList.remove("desktopTemplateIconActive");
+    });
+    document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
+    document.getElementById('legalNoticeMobile').classList.remove('desktopTemplateIconActive')
+    element.classList.add("desktopTemplateIconActive");
+    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
+}
+/**
+ * This function calls get target after content is loaded
+ */
+function callTarget() {
+    if (isContentLoaded) getTarget();
+    else setTimeout(callTarget, 50); // Warten und erneut versuchen
+}
+
+callTarget()
+/**
+ * This function gets the target of the url to activate the active element
+ */
+function getTarget() {
+    let legalButton = document.getElementById('legalNotice')
+    let privacyButton = document.getElementById('privacyPolicy')
+    let params = new URLSearchParams(window.location.search);
+    let targetURL = params.get('target');
+    if (targetURL) legalButton.click()
+    else privacyButton.click()
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addActiveCardAssignedTo">addActiveCardAssignedTo</a></li><li><a href="global.html#addActiveCardSubtasks">addActiveCardSubtasks</a></li><li><a href="global.html#addActiveTaskOverlayHTML">addActiveTaskOverlayHTML</a></li><li><a href="global.html#addAssignedTowarnings">addAssignedTowarnings</a></li><li><a href="global.html#addBoardCard">addBoardCard</a></li><li><a href="global.html#addBoardCardAssignedTo">addBoardCardAssignedTo</a></li><li><a href="global.html#addBoardCardSubtask">addBoardCardSubtask</a></li><li><a href="global.html#addCategoryWarnings">addCategoryWarnings</a></li><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addContentEmptyDiv">addContentEmptyDiv</a></li><li><a href="global.html#addDescriptionWarnings">addDescriptionWarnings</a></li><li><a href="global.html#addDueDateWarnings">addDueDateWarnings</a></li><li><a href="global.html#addInviteContact">addInviteContact</a></li><li><a href="global.html#addNewCategory">addNewCategory</a></li><li><a href="global.html#addNewCategoryWarning">addNewCategoryWarning</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addPrioWarnings">addPrioWarnings</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#addTaskJsonArray">addTaskJsonArray</a></li><li><a href="global.html#addTitleWarnings">addTitleWarnings</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#callRender">callRender</a></li><li><a href="global.html#callTarget">callTarget</a></li><li><a href="global.html#categoryTemplate">categoryTemplate</a></li><li><a href="global.html#changePasswortImage">changePasswortImage</a></li><li><a href="global.html#changePrioButtonIcon">changePrioButtonIcon</a></li><li><a href="global.html#changeflyInButton">changeflyInButton</a></li><li><a href="global.html#checkEmailDoesntExist">checkEmailDoesntExist</a></li><li><a href="global.html#checkEmailExist">checkEmailExist</a></li><li><a href="global.html#checkEmailFormat">checkEmailFormat</a></li><li><a href="global.html#checkIn">checkIn</a></li><li><a href="global.html#checkIncorrectPassword">checkIncorrectPassword</a></li><li><a href="global.html#checkInputEmpty">checkInputEmpty</a></li><li><a href="global.html#checkInputsAddContact">checkInputsAddContact</a></li><li><a href="global.html#checkInputsEditContact">checkInputsEditContact</a></li><li><a href="global.html#checkInputsForgot">checkInputsForgot</a></li><li><a href="global.html#checkInputsLogin">checkInputsLogin</a></li><li><a href="global.html#checkInputsReset">checkInputsReset</a></li><li><a href="global.html#checkInputsSignUp">checkInputsSignUp</a></li><li><a href="global.html#checkMandatoryFieldCategory">checkMandatoryFieldCategory</a></li><li><a href="global.html#checkMandatoryFieldDescription">checkMandatoryFieldDescription</a></li><li><a href="global.html#checkMandatoryFieldDueDate">checkMandatoryFieldDueDate</a></li><li><a href="global.html#checkMandatoryFieldTitle">checkMandatoryFieldTitle</a></li><li><a href="global.html#checkMandatoryFields">checkMandatoryFields</a></li><li><a href="global.html#checkNewCategoryName">checkNewCategoryName</a></li><li><a href="global.html#checkNewContactField">checkNewContactField</a></li><li><a href="global.html#checkPasswordConfirm">checkPasswordConfirm</a></li><li><a href="global.html#checkPasswordLength">checkPasswordLength</a></li><li><a href="global.html#checkPasswordMatch">checkPasswordMatch</a></li><li><a href="global.html#checkPrio">checkPrio</a></li><li><a href="global.html#checkPrivacyChecked">checkPrivacyChecked</a></li><li><a href="global.html#choosePrio">choosePrio</a></li><li><a href="global.html#clearAssignedTowarnings">clearAssignedTowarnings</a></li><li><a href="global.html#clearBoardBeforeRender">clearBoardBeforeRender</a></li><li><a href="global.html#clearCategoryWarnings">clearCategoryWarnings</a></li><li><a href="global.html#clearDescriptionWarnings">clearDescriptionWarnings</a></li><li><a href="global.html#clearDueDateWarnings">clearDueDateWarnings</a></li><li><a href="global.html#clearInviteNewContactValue">clearInviteNewContactValue</a></li><li><a href="global.html#clearPrioWarnings">clearPrioWarnings</a></li><li><a href="global.html#clearTheInputFields">clearTheInputFields</a></li><li><a href="global.html#clearTitleWarnings">clearTitleWarnings</a></li><li><a href="global.html#clearWarnings">clearWarnings</a></li><li><a href="global.html#closeAddTaskCategory">closeAddTaskCategory</a></li><li><a href="global.html#closeAddTaskContacts">closeAddTaskContacts</a></li><li><a href="global.html#closeAddTaskNewCategory">closeAddTaskNewCategory</a></li><li><a href="global.html#closeConfirmation">closeConfirmation</a></li><li><a href="global.html#closeContactsRightMobile">closeContactsRightMobile</a></li><li><a href="global.html#closeDarkBackground">closeDarkBackground</a></li><li><a href="global.html#closeInviteNewContact">closeInviteNewContact</a></li><li><a href="global.html#closeLogout">closeLogout</a></li><li><a href="global.html#closeNewContactOverlay">closeNewContactOverlay</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeSubtask">closeSubtask</a></li><li><a href="global.html#colorButton">colorButton</a></li><li><a href="global.html#countTasksByProgress">countTasksByProgress</a></li><li><a href="global.html#deleteAddTaskFields">deleteAddTaskFields</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#findNextDueTask">findNextDueTask</a></li><li><a href="global.html#findTask">findTask</a></li><li><a href="global.html#generateAvatarHtml">generateAvatarHtml</a></li><li><a href="global.html#generateAvatarHtmlElement">generateAvatarHtmlElement</a></li><li><a href="global.html#generateAvatarsHtml">generateAvatarsHtml</a></li><li><a href="global.html#getAddTaskJson">getAddTaskJson</a></li><li><a href="global.html#getCount">getCount</a></li><li><a href="global.html#getCurrentDate">getCurrentDate</a></li><li><a href="global.html#getCurrentUser">getCurrentUser</a></li><li><a href="global.html#getFirstLetter">getFirstLetter</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getTarget">getTarget</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#goToBoardPage">goToBoardPage</a></li><li><a href="global.html#greetingAds">greetingAds</a></li><li><a href="global.html#greetingCurrentUser">greetingCurrentUser</a></li><li><a href="global.html#highlightBoardElement">highlightBoardElement</a></li><li><a href="global.html#highlightBoardElementOff">highlightBoardElementOff</a></li><li><a href="global.html#hover">hover</a></li><li><a href="global.html#hoverThis">hoverThis</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#listenerPasswordImg">listenerPasswordImg</a></li><li><a href="global.html#loadCategorys">loadCategorys</a></li><li><a href="global.html#loadContacts">loadContacts</a></li><li><a href="global.html#loadRememberedData">loadRememberedData</a></li><li><a href="global.html#loadTasks">loadTasks</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#logOut">logOut</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#moveToDrop">moveToDrop</a></li><li><a href="global.html#openActiveTaskOverlay">openActiveTaskOverlay</a></li><li><a href="global.html#openAddTaskCategory">openAddTaskCategory</a></li><li><a href="global.html#openAddTaskContacts">openAddTaskContacts</a></li><li><a href="global.html#openAddTaskOverlay">openAddTaskOverlay</a></li><li><a href="global.html#openEditContactOverlay">openEditContactOverlay</a></li><li><a href="global.html#openEditTaskOverlay">openEditTaskOverlay</a></li><li><a href="global.html#openInviteNewContact">openInviteNewContact</a></li><li><a href="global.html#openNewCategoryInput">openNewCategoryInput</a></li><li><a href="global.html#openNewContactOverlay">openNewContactOverlay</a></li><li><a href="global.html#openSubtask">openSubtask</a></li><li><a href="global.html#rememberMe">rememberMe</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderAddTaskCategoriesHTML">renderAddTaskCategoriesHTML</a></li><li><a href="global.html#renderAddTaskCategorySelect">renderAddTaskCategorySelect</a></li><li><a href="global.html#renderAddTaskCategorys">renderAddTaskCategorys</a></li><li><a href="global.html#renderAddTaskContacts">renderAddTaskContacts</a></li><li><a href="global.html#renderAddTaskContactsSelect">renderAddTaskContactsSelect</a></li><li><a href="global.html#renderAddTaskDropdowns">renderAddTaskDropdowns</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderCount">renderCount</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#renderSummary">renderSummary</a></li><li><a href="global.html#renderUpcomingUrgent">renderUpcomingUrgent</a></li><li><a href="global.html#renderUserInitials">renderUserInitials</a></li><li><a href="global.html#resetNewCategoryInput">resetNewCategoryInput</a></li><li><a href="global.html#resetPrioButtons">resetPrioButtons</a></li><li><a href="global.html#resetSignUpInputs">resetSignUpInputs</a></li><li><a href="global.html#resetSubtasks">resetSubtasks</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#selectContactToAssign">selectContactToAssign</a></li><li><a href="global.html#sendNewPasswordLink">sendNewPasswordLink</a></li><li><a href="global.html#setActiveContact">setActiveContact</a></li><li><a href="global.html#setActiveElement">setActiveElement</a></li><li><a href="global.html#setActiveIcon">setActiveIcon</a></li><li><a href="global.html#setCategory">setCategory</a></li><li><a href="global.html#setContacts">setContacts</a></li><li><a href="global.html#setCurrentDate">setCurrentDate</a></li><li><a href="global.html#setEditContactOverlay">setEditContactOverlay</a></li><li><a href="global.html#setEditTaskOverlay">setEditTaskOverlay</a></li><li><a href="global.html#setFavicon">setFavicon</a></li><li><a href="global.html#setInnerContactCard">setInnerContactCard</a></li><li><a href="global.html#setInnerContactCardTemplate">setInnerContactCardTemplate</a></li><li><a href="global.html#setPrio">setPrio</a></li><li><a href="global.html#setPrioColor">setPrioColor</a></li><li><a href="global.html#setSubtasks">setSubtasks</a></li><li><a href="global.html#setupWelcomeDeskAnimation">setupWelcomeDeskAnimation</a></li><li><a href="global.html#showConfirmation">showConfirmation</a></li><li><a href="global.html#showContacts">showContacts</a></li><li><a href="global.html#showContent">showContent</a></li><li><a href="global.html#showContentLogin">showContentLogin</a></li><li><a href="global.html#showDarkBackground">showDarkBackground</a></li><li><a href="global.html#showList">showList</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#toggleAddTaskCategory">toggleAddTaskCategory</a></li><li><a href="global.html#toggleAddTaskContacts">toggleAddTaskContacts</a></li><li><a href="global.html#toggleEdits">toggleEdits</a></li><li><a href="global.html#toggleLogout">toggleLogout</a></li><li><a href="global.html#togglePasswordVisibility">togglePasswordVisibility</a></li><li><a href="global.html#toogleTaskMove">toogleTaskMove</a></li><li><a href="global.html#uncheckSelectedContacts">uncheckSelectedContacts</a></li><li><a href="global.html#updateCheckbox">updateCheckbox</a></li><li><a href="global.html#updateCheckboxConfirmationTerms">updateCheckboxConfirmationTerms</a></li><li><a href="global.html#updatePassword">updatePassword</a></li><li><a href="global.html#updateSubtaskDone">updateSubtaskDone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 20 2024 11:37:38 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

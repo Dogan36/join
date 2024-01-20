@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: board.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: board.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let currentDraggedElement
+let emptyBoxOpen = false
+
+/**
+ * This function clears the board and renders it
+ */
+function renderBoard() {
+    let containerToDo = document.getElementById('boardContentToDo')
+    let containerInProgress = document.getElementById('boardContentInProgress')
+    let containerAwaiting = document.getElementById('boardContentAwaiting')
+    let containerDone = document.getElementById('boardContentDone')
+    clearBoardBeforeRender()
+    for (let i = 0; i &lt; tasks.length; i++) {
+        let element = tasks[i];
+        if (element.taskProgress === 'toDo' || element.taskProgress == '') containerToDo.innerHTML += addBoardCard(element)
+        if (element.taskProgress === 'inProgress') containerInProgress.innerHTML += addBoardCard(element)
+        if (element.taskProgress === 'awaiting') containerAwaiting.innerHTML += addBoardCard(element)
+        if (element.taskProgress === 'done') containerDone.innerHTML += addBoardCard(element)
+    }
+addContentEmptyDiv()
+}
+
+/**
+ * This function clears the tasks from the board
+ */
+function clearBoardBeforeRender() {
+    document.getElementById('boardContentToDo').innerHTML = ''
+    document.getElementById('boardContentInProgress').innerHTML = ''
+    document.getElementById('boardContentAwaiting').innerHTML = ''
+    document.getElementById('boardContentDone').innerHTML = ''
+}
+
+/**
+ * This function generates html of the task for the board
+ * 
+ * @param {string} element Json of Task
+ * @returns string
+ */
+function addBoardCard(element) {
+    return `
+        &lt;div draggable="true" class="boardCard" ondragstart="startDragging(${tasks.indexOf(element)})" onclick="openActiveTaskOverlay(${tasks.indexOf(element)})">
+            &lt;div class="boardCardInner">
+                &lt;div class="boardCardCategory" style="background-color:${element.taskCategory.categoryColor}">
+                    &lt;span>${element.taskCategory.categorytext}&lt;/span>
+                &lt;/div>
+                &lt;div class="boardCardContent">
+                    &lt;span class="boardCardTaskName">${element.taskTitle}&lt;/span>
+                    &lt;span class="boardCardTaskDescription">${element.taskDescription}&lt;/span>
+                &lt;/div>
+                ${addBoardCardSubtask(element)}
+                &lt;div class="boardCardAssign">
+                    ${addBoardCardAssignedTo(element)}
+                    &lt;img src="${element.prio.iconColor}" alt="">
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+/**
+ * This function generates board element empty divs if so
+ */
+function addContentEmptyDiv() {
+    let containerToDo = document.getElementById('boardContentToDo');
+    let containerInProgress = document.getElementById('boardContentInProgress');
+    let containerAwaiting = document.getElementById('boardContentAwaiting');
+    let containerDone = document.getElementById('boardContentDone');
+    if (containerToDo.innerHTML === '') containerToDo.innerHTML += '&lt;div class="boardElementEmpty">No Tasks To Do&lt;/div>';
+    if (containerInProgress.innerHTML === '') containerInProgress.innerHTML += '&lt;div class="boardElementEmpty">No Tasks In Progress&lt;/div>';
+    if (containerAwaiting.innerHTML === '') containerAwaiting.innerHTML += '&lt;div class="boardElementEmpty">No Tasks Awaiting Feedback&lt;/div>';
+    if (containerDone.innerHTML === '') containerDone.innerHTML += '&lt;div class="boardElementEmpty">No Tasks Done&lt;/div>';
+}
+
+/**
+ * This function generates html with the subtasks total and subtasks done of every task
+ * 
+ * @param {string} element json of the task
+ * @returns string
+ */
+function addBoardCardSubtask(element) {
+    let subtasks = element.subtasks
+    if (subtasks.length > 0) {
+        let subtasksDoneCounter = 0;
+        for (let i = 0; i &lt; subtasks.length; i++) {
+            if (subtasks[i].subtaskDone) {
+                subtasksDoneCounter++;
+            }
+        }
+        return `
+    &lt;div class="boardCardProgress">
+        &lt;progress max="${subtasks.length}" value="${subtasksDoneCounter}">&lt;/progress>
+        &lt;div>&lt;span>${subtasksDoneCounter}&lt;/span>/&lt;span>${subtasks.length}&lt;/span>&lt;span> Done&lt;/span>&lt;/div>
+    &lt;/div>`
+    } else {
+        return `&lt;div class="boardCardProgress">&lt;/div>`
+    }
+}
+/**
+ * This function generats html for the contacts which are assinged to every task
+ * 
+ * @param {string} element Json of the task
+ * @returns string
+ */
+function addBoardCardAssignedTo(element) {
+    let assignedTo = element.assignedTo;
+    return `
+    &lt;div class="boardCardAssignedTo">
+      ${generateAvatarHtml(assignedTo)}
+    &lt;/div>
+  `;
+}
+
+/**
+ * This function generates the html for the avatars of the users which are assigned to everytask
+ * 
+ * @param {string} assignedTo This is the array of contacts the task is assigned to
+ * @returns string
+ */
+function generateAvatarHtml(assignedTo) {
+    let avatarHtml = '';
+    if (assignedTo.length === 3) {
+        avatarHtml = generateAvatarsHtml(assignedTo, 3);
+    } else if (assignedTo.length > 3) {
+        let firstTwoAvatarsHtml = generateAvatarsHtml(assignedTo, 2);
+        let remainingAvatarsHtml = `&lt;div class="boardAvatar" style="background-color:black">&lt;span>+${assignedTo.length - 2}&lt;/span>&lt;/div>`;
+        avatarHtml = firstTwoAvatarsHtml + remainingAvatarsHtml;
+    } else {
+        avatarHtml = generateAvatarsHtml(assignedTo, assignedTo.length);
+    }
+    return avatarHtml;
+}
+
+/**
+ * This function generates the html for every avartar
+ * 
+ * @param {*} assignedTo This is the array of contacts the task is assigned to
+ * @param {*} endIndex This is the length of how many avatars to be generated
+ * @returns string
+ */
+function generateAvatarsHtml(assignedTo, endIndex) {
+    let avatarsHtml = '';
+    for (let index = 0; index &lt; endIndex; index++) {
+        let assignedToIndex = assignedTo[index];
+        let backgroundColor = avatarBackgroundColors[assignedTo[index]];
+        let contact = contacts[assignedToIndex];
+        avatarsHtml += generateAvatarHtmlElement(backgroundColor, contact.initials);
+    }
+    return avatarsHtml;
+}
+
+/**
+ * This function adds background color and initials to the avatar
+ * 
+ * @param {string} backgroundColor This is the color of the avatar background
+ * @param {sting} initials This are the initals of the avatar
+ * @returns string
+ */
+function generateAvatarHtmlElement(backgroundColor, initials) {
+    return `&lt;div class="boardAvatar" style="background-color: ${backgroundColor}">&lt;span>${initials}&lt;/span>&lt;/div>`;
+}
+
+/**
+ * This function generates the html for the active task overlay
+ * 
+ * @param {number} i This is the index of the task 
+ * @returns string
+ */
+function addActiveTaskOverlayHTML(i) {
+    let task = tasks[i]
+    return `
+    &lt;div class="activeTaskCategory" style="background-color:${task.taskCategory.categoryColor}">&lt;span>${task.taskCategory.categorytext}&lt;/span>&lt;/div>
+    &lt;div class="activeTaskTitle">${task.taskTitle}&lt;/div>
+    &lt;div class="activeTaskDescription">${task.taskDescription}&lt;/div>
+    &lt;div class="activeTaskDueDate">
+        &lt;span>Due date:&lt;/span>&lt;span>${task.dueDate}&lt;/span>
+    &lt;/div>
+    &lt;div class="activeTaskPriority">
+        &lt;span>Priority:&lt;/span>
+        &lt;div class="activeTaskPriorityButton" style="background-color:${task.prio.backgroundColor}">&lt;span>${task.prio.name}&lt;/span>&lt;img src="${task.prio.iconWhite}" alt="">&lt;/div>
+    &lt;/div>
+    &lt;div class="activeTaskAssignedToHeader">Assigned To:&lt;/div>
+    &lt;div id="activeTaskAssignedToContainer" class="activeTaskAssignedToContainer">
+        ${addActiveCardAssignedTo(task)}
+    &lt;/div>
+    &lt;div class="activeTaskAssignedToHeader">Subtasks:&lt;/div>
+    &lt;div id="activeTaskSubtasksContainer" class="activeTaskSubtasksContainer">
+        ${addActiveCardSubtasks(i)}
+    &lt;/div>
+    &lt;div class = "activeTaskChangeContainer">
+    &lt;div class = "activeTaskMoveContainer">
+    &lt;div class="activeTaskMoveButtonHeader">Move to ...&lt;/div>
+&lt;div onclick="moveTo(${i}, 'toDo')" class="activeTaskMoveButton">To Do&lt;/div>
+&lt;div onclick="moveTo(${i}, 'inProgress')" class="activeTaskMoveButton">In Progress&lt;/div>
+&lt;div onclick="moveTo(${i}, 'awaiting')" class="activeTaskMoveButton">Awaiting Feedback&lt;/div>
+&lt;div onclick="moveTo(${i}, 'done')" class="activeTaskMoveButton">Done&lt;/div>
+    &lt;/div>
+    &lt;div class="activeTaskButtons">
+    &lt;div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', 'assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', 'assets/img/delete.svg')" class="activeTaskDelete">&lt;img id="activeTaskDelete" src="assets/img/delete.svg" alt="">&lt;/div>
+    &lt;div onclick="toogleTaskMove()" onmouseover="hover('activeTaskMove', 'assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove">&lt;img id="activeTaskMove" src="assets/img/move.svg" alt="">&lt;/div>
+    &lt;div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit">&lt;img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt="">&lt;/div>
+    &lt;/div>
+    &lt;/div>
+    &lt;img onclick="closeOverlay()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
+&lt;/div>
+    `
+}
+
+/**
+ * This function toogles the active task move container
+ */
+function toogleTaskMove() {
+    let container = document.querySelector('.activeTaskMoveContainer');
+    if (container.classList.contains('activeTaskMoveContainerOpen')) container.classList.remove('activeTaskMoveContainerOpen')
+    else container.classList.add('activeTaskMoveContainerOpen')
+}
+
+/**
+ * This function generates the html of assigned to for the active task overlay
+ * @param {string} task This is the json of the active task
+ * @returns string
+ */
+function addActiveCardAssignedTo(task) {
+    let assignedTo = task.assignedTo;
+    let avatarHtml = '';
+    for (let index = 0; index &lt; assignedTo.length; index++) {
+        let assignedToIndex = assignedTo[index]
+        let backgroundColor = avatarBackgroundColors[assignedToIndex];
+        let contact = contacts[assignedToIndex];
+        avatarHtml += ` &lt;div class="activeTaskAssignedTo">
+        &lt;div class="activeTaskAvartar" style="background-color: ${backgroundColor}">&lt;span>${contact.initials}&lt;/span>&lt;/div>
+        &lt;span>${contact.name}&lt;/span>&lt;/div>`;
+    }
+    return avatarHtml;
+}
+
+/**
+ * This function generates the html of subtasks to for the active task overlay
+ * @param {number} i This is the index of the active task
+ * @returns string
+ */
+function addActiveCardSubtasks(i) {
+    let subtasks = tasks[i].subtasks;
+    let subtasksHtml = '';
+    for (let index = 0; index &lt; subtasks.length; index++) {
+        let subtask = subtasks[index]
+        let checkboxId = `active-card-subtask-checkbox-${n}-${index}`;
+        subtasksHtml += `
+        &lt;div>
+        &lt;input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index})">
+        &lt;label for="${checkboxId}">&lt;/label> 
+        &lt;div class="activeTaskAssignedTo">
+            &lt;span>${subtask.subtaskTitle}&lt;/span>
+        &lt;/div>
+        &lt;/div>`;
+    }
+    return subtasksHtml;
+}
+
+/**
+ * This function changes the progress of a task
+ * 
+ * @param {number} i This is the index of the task
+ * @param {string} progress This is the name of the progress which the task is changed to
+ */
+function moveTo(i, progress) {
+    let task = tasks[i]
+    task.taskProgress = `${progress}`
+    showConfirmation('taskMoved')
+    setItem('tasks', tasks)
+    renderBoard()
+    setTimeout(closeConfirmation, 2000)
+}
+
+/**
+ * This function changes the progress of a task on drop
+ * 
+ * @param {string} progress This is the name of the progress which the task is changed to
+ */
+function moveToDrop(progress) {
+    let task = tasks[currentDraggedElement]
+    task.taskProgress = `${progress}`
+    setItem('tasks', tasks)
+    renderBoard()
+}
+/**
+ * This function sets the currentDraggedElement when starting to drag
+ * 
+ * @param {number} i This is the index of the task
+ */
+function startDragging(i) {
+    currentDraggedElement = i
+}
+
+function allowDrop(ev) {
+    ev.preventDefault()
+}
+/**
+ * This function highlights the board element content on which is dragged over
+ * 
+ * @param {string} id This is the id of the element to be highlighted
+ */
+function highlightBoardElement(id) {
+    document.getElementById(id).classList.add('boardElementContentHighlight')
+}
+
+/**
+ * This function end highlight of board element content when drag over left
+ * 
+ * @param {string} id This is the id of the element to be highlighted
+ */
+function highlightBoardElementOff(id) {
+    document.getElementById(id).classList.remove('boardElementContentHighlight')
+}
+
+/**
+ * This function filters the task on board depending on search bar
+ */
+function findTask() {
+    let searchInput = document.getElementById('findTaskInput');
+    let searchTerm = searchInput.value.toLowerCase();
+    let boardCards = document.getElementsByClassName('boardCard');
+    for (let i = 0; i &lt; boardCards.length; i++) {
+        let taskNameElement = boardCards[i].querySelector('.boardCardTaskName');
+        let taskName = taskNameElement.textContent.toLowerCase();
+        if (!taskName.includes(searchTerm)) boardCards[i].classList.add('d-none');
+         else boardCards[i].classList.remove('d-none');
+    }
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addActiveCardAssignedTo">addActiveCardAssignedTo</a></li><li><a href="global.html#addActiveCardSubtasks">addActiveCardSubtasks</a></li><li><a href="global.html#addActiveTaskOverlayHTML">addActiveTaskOverlayHTML</a></li><li><a href="global.html#addAssignedTowarnings">addAssignedTowarnings</a></li><li><a href="global.html#addBoardCard">addBoardCard</a></li><li><a href="global.html#addBoardCardAssignedTo">addBoardCardAssignedTo</a></li><li><a href="global.html#addBoardCardSubtask">addBoardCardSubtask</a></li><li><a href="global.html#addCategoryWarnings">addCategoryWarnings</a></li><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#addContentEmptyDiv">addContentEmptyDiv</a></li><li><a href="global.html#addDescriptionWarnings">addDescriptionWarnings</a></li><li><a href="global.html#addDueDateWarnings">addDueDateWarnings</a></li><li><a href="global.html#addInviteContact">addInviteContact</a></li><li><a href="global.html#addNewCategory">addNewCategory</a></li><li><a href="global.html#addNewCategoryWarning">addNewCategoryWarning</a></li><li><a href="global.html#addNewSubtask">addNewSubtask</a></li><li><a href="global.html#addPrioWarnings">addPrioWarnings</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#addTaskJsonArray">addTaskJsonArray</a></li><li><a href="global.html#addTitleWarnings">addTitleWarnings</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#callRender">callRender</a></li><li><a href="global.html#callTarget">callTarget</a></li><li><a href="global.html#categoryTemplate">categoryTemplate</a></li><li><a href="global.html#changePasswortImage">changePasswortImage</a></li><li><a href="global.html#changePrioButtonIcon">changePrioButtonIcon</a></li><li><a href="global.html#changeflyInButton">changeflyInButton</a></li><li><a href="global.html#checkEmailDoesntExist">checkEmailDoesntExist</a></li><li><a href="global.html#checkEmailExist">checkEmailExist</a></li><li><a href="global.html#checkEmailFormat">checkEmailFormat</a></li><li><a href="global.html#checkIn">checkIn</a></li><li><a href="global.html#checkIncorrectPassword">checkIncorrectPassword</a></li><li><a href="global.html#checkInputEmpty">checkInputEmpty</a></li><li><a href="global.html#checkInputsAddContact">checkInputsAddContact</a></li><li><a href="global.html#checkInputsEditContact">checkInputsEditContact</a></li><li><a href="global.html#checkInputsForgot">checkInputsForgot</a></li><li><a href="global.html#checkInputsLogin">checkInputsLogin</a></li><li><a href="global.html#checkInputsReset">checkInputsReset</a></li><li><a href="global.html#checkInputsSignUp">checkInputsSignUp</a></li><li><a href="global.html#checkMandatoryFieldCategory">checkMandatoryFieldCategory</a></li><li><a href="global.html#checkMandatoryFieldDescription">checkMandatoryFieldDescription</a></li><li><a href="global.html#checkMandatoryFieldDueDate">checkMandatoryFieldDueDate</a></li><li><a href="global.html#checkMandatoryFieldTitle">checkMandatoryFieldTitle</a></li><li><a href="global.html#checkMandatoryFields">checkMandatoryFields</a></li><li><a href="global.html#checkNewCategoryName">checkNewCategoryName</a></li><li><a href="global.html#checkNewContactField">checkNewContactField</a></li><li><a href="global.html#checkPasswordConfirm">checkPasswordConfirm</a></li><li><a href="global.html#checkPasswordLength">checkPasswordLength</a></li><li><a href="global.html#checkPasswordMatch">checkPasswordMatch</a></li><li><a href="global.html#checkPrio">checkPrio</a></li><li><a href="global.html#checkPrivacyChecked">checkPrivacyChecked</a></li><li><a href="global.html#choosePrio">choosePrio</a></li><li><a href="global.html#clearAssignedTowarnings">clearAssignedTowarnings</a></li><li><a href="global.html#clearBoardBeforeRender">clearBoardBeforeRender</a></li><li><a href="global.html#clearCategoryWarnings">clearCategoryWarnings</a></li><li><a href="global.html#clearDescriptionWarnings">clearDescriptionWarnings</a></li><li><a href="global.html#clearDueDateWarnings">clearDueDateWarnings</a></li><li><a href="global.html#clearInviteNewContactValue">clearInviteNewContactValue</a></li><li><a href="global.html#clearPrioWarnings">clearPrioWarnings</a></li><li><a href="global.html#clearTheInputFields">clearTheInputFields</a></li><li><a href="global.html#clearTitleWarnings">clearTitleWarnings</a></li><li><a href="global.html#clearWarnings">clearWarnings</a></li><li><a href="global.html#closeAddTaskCategory">closeAddTaskCategory</a></li><li><a href="global.html#closeAddTaskContacts">closeAddTaskContacts</a></li><li><a href="global.html#closeAddTaskNewCategory">closeAddTaskNewCategory</a></li><li><a href="global.html#closeConfirmation">closeConfirmation</a></li><li><a href="global.html#closeContactsRightMobile">closeContactsRightMobile</a></li><li><a href="global.html#closeDarkBackground">closeDarkBackground</a></li><li><a href="global.html#closeInviteNewContact">closeInviteNewContact</a></li><li><a href="global.html#closeLogout">closeLogout</a></li><li><a href="global.html#closeNewContactOverlay">closeNewContactOverlay</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeSubtask">closeSubtask</a></li><li><a href="global.html#colorButton">colorButton</a></li><li><a href="global.html#countTasksByProgress">countTasksByProgress</a></li><li><a href="global.html#deleteAddTaskFields">deleteAddTaskFields</a></li><li><a href="global.html#deleteCategory">deleteCategory</a></li><li><a href="global.html#deleteContact">deleteContact</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#editContact">editContact</a></li><li><a href="global.html#findNextDueTask">findNextDueTask</a></li><li><a href="global.html#findTask">findTask</a></li><li><a href="global.html#generateAvatarHtml">generateAvatarHtml</a></li><li><a href="global.html#generateAvatarHtmlElement">generateAvatarHtmlElement</a></li><li><a href="global.html#generateAvatarsHtml">generateAvatarsHtml</a></li><li><a href="global.html#getAddTaskJson">getAddTaskJson</a></li><li><a href="global.html#getCount">getCount</a></li><li><a href="global.html#getCurrentDate">getCurrentDate</a></li><li><a href="global.html#getCurrentUser">getCurrentUser</a></li><li><a href="global.html#getFirstLetter">getFirstLetter</a></li><li><a href="global.html#getInitials">getInitials</a></li><li><a href="global.html#getTarget">getTarget</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#goToBoardPage">goToBoardPage</a></li><li><a href="global.html#greetingAds">greetingAds</a></li><li><a href="global.html#greetingCurrentUser">greetingCurrentUser</a></li><li><a href="global.html#highlightBoardElement">highlightBoardElement</a></li><li><a href="global.html#highlightBoardElementOff">highlightBoardElementOff</a></li><li><a href="global.html#hover">hover</a></li><li><a href="global.html#hoverThis">hoverThis</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#listenerPasswordImg">listenerPasswordImg</a></li><li><a href="global.html#loadCategorys">loadCategorys</a></li><li><a href="global.html#loadContacts">loadContacts</a></li><li><a href="global.html#loadRememberedData">loadRememberedData</a></li><li><a href="global.html#loadTasks">loadTasks</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#logOut">logOut</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#moveToDrop">moveToDrop</a></li><li><a href="global.html#openActiveTaskOverlay">openActiveTaskOverlay</a></li><li><a href="global.html#openAddTaskCategory">openAddTaskCategory</a></li><li><a href="global.html#openAddTaskContacts">openAddTaskContacts</a></li><li><a href="global.html#openAddTaskOverlay">openAddTaskOverlay</a></li><li><a href="global.html#openEditContactOverlay">openEditContactOverlay</a></li><li><a href="global.html#openEditTaskOverlay">openEditTaskOverlay</a></li><li><a href="global.html#openInviteNewContact">openInviteNewContact</a></li><li><a href="global.html#openNewCategoryInput">openNewCategoryInput</a></li><li><a href="global.html#openNewContactOverlay">openNewContactOverlay</a></li><li><a href="global.html#openSubtask">openSubtask</a></li><li><a href="global.html#rememberMe">rememberMe</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderAddTaskCategoriesHTML">renderAddTaskCategoriesHTML</a></li><li><a href="global.html#renderAddTaskCategorySelect">renderAddTaskCategorySelect</a></li><li><a href="global.html#renderAddTaskCategorys">renderAddTaskCategorys</a></li><li><a href="global.html#renderAddTaskContacts">renderAddTaskContacts</a></li><li><a href="global.html#renderAddTaskContactsSelect">renderAddTaskContactsSelect</a></li><li><a href="global.html#renderAddTaskDropdowns">renderAddTaskDropdowns</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderCount">renderCount</a></li><li><a href="global.html#renderSubtasks">renderSubtasks</a></li><li><a href="global.html#renderSummary">renderSummary</a></li><li><a href="global.html#renderUpcomingUrgent">renderUpcomingUrgent</a></li><li><a href="global.html#renderUserInitials">renderUserInitials</a></li><li><a href="global.html#resetNewCategoryInput">resetNewCategoryInput</a></li><li><a href="global.html#resetPrioButtons">resetPrioButtons</a></li><li><a href="global.html#resetSignUpInputs">resetSignUpInputs</a></li><li><a href="global.html#resetSubtasks">resetSubtasks</a></li><li><a href="global.html#selectCategory">selectCategory</a></li><li><a href="global.html#selectContactToAssign">selectContactToAssign</a></li><li><a href="global.html#sendNewPasswordLink">sendNewPasswordLink</a></li><li><a href="global.html#setActiveContact">setActiveContact</a></li><li><a href="global.html#setActiveElement">setActiveElement</a></li><li><a href="global.html#setActiveIcon">setActiveIcon</a></li><li><a href="global.html#setCategory">setCategory</a></li><li><a href="global.html#setContacts">setContacts</a></li><li><a href="global.html#setCurrentDate">setCurrentDate</a></li><li><a href="global.html#setEditContactOverlay">setEditContactOverlay</a></li><li><a href="global.html#setEditTaskOverlay">setEditTaskOverlay</a></li><li><a href="global.html#setFavicon">setFavicon</a></li><li><a href="global.html#setInnerContactCard">setInnerContactCard</a></li><li><a href="global.html#setInnerContactCardTemplate">setInnerContactCardTemplate</a></li><li><a href="global.html#setPrio">setPrio</a></li><li><a href="global.html#setPrioColor">setPrioColor</a></li><li><a href="global.html#setSubtasks">setSubtasks</a></li><li><a href="global.html#setupWelcomeDeskAnimation">setupWelcomeDeskAnimation</a></li><li><a href="global.html#showConfirmation">showConfirmation</a></li><li><a href="global.html#showContacts">showContacts</a></li><li><a href="global.html#showContent">showContent</a></li><li><a href="global.html#showContentLogin">showContentLogin</a></li><li><a href="global.html#showDarkBackground">showDarkBackground</a></li><li><a href="global.html#showList">showList</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#toggleAddTaskCategory">toggleAddTaskCategory</a></li><li><a href="global.html#toggleAddTaskContacts">toggleAddTaskContacts</a></li><li><a href="global.html#toggleEdits">toggleEdits</a></li><li><a href="global.html#toggleLogout">toggleLogout</a></li><li><a href="global.html#togglePasswordVisibility">togglePasswordVisibility</a></li><li><a href="global.html#toogleTaskMove">toogleTaskMove</a></li><li><a href="global.html#uncheckSelectedContacts">uncheckSelectedContacts</a></li><li><a href="global.html#updateCheckbox">updateCheckbox</a></li><li><a href="global.html#updateCheckboxConfirmationTerms">updateCheckboxConfirmationTerms</a></li><li><a href="global.html#updatePassword">updatePassword</a></li><li><a href="global.html#updateSubtaskDone">updateSubtaskDone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jan 20 2024 11:37:38 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
