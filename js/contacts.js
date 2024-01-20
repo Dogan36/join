@@ -170,7 +170,7 @@ async function addContact() {
   closeOverlay()
   renderContacts()
   setActiveContact(contacts.length - 1);
-  flyInButton(n)
+ showConfirmation('contactAdded')
 }
 
 /**

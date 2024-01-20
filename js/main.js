@@ -675,6 +675,11 @@ function changeflyInButton(confirmation) {
   <div id="confirmationText" class="task-added-to-board">Task Updated</div>
   <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
   }
+  else if (confirmation == 'contactAdded') {
+    flyInButton.innerHTML = `
+  <div id="confirmationText" class="task-added-to-board">Contact Added</div>
+  <img id="confirmationImg" src="./assets/img/addContactIcon.svg" alt="">`
+  }
   else if (confirmation == 'contactUpdated') {
     flyInButton.innerHTML = `
   <div id="confirmationText" class="task-added-to-board">Contact Updated</div>
