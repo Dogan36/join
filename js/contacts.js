@@ -171,6 +171,7 @@ async function addContact() {
   renderContacts()
   setActiveContact(contacts.length - 1);
  showConfirmation('contactAdded')
+ setTimeout(closeConfirmation, 2000)
 }
 
 /**
