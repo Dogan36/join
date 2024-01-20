@@ -645,7 +645,7 @@ indexWrapper {
 
 .overlay {
     position: absolute;
-    transition: left 5s ease-in-out;
+    transition: left 0.5s ease-in-out;
     left: 500%;
     transform: translate(-50%, -50%);
     overflow-y: auto;
