@@ -5,6 +5,9 @@ let doneCount
 let nextDueDate
 let urgentCount
 
+/**
+ * This function sets the greeting in dependence of the current time
+ */
 function greetingAds() {
     let now = new Date();
     let hours = now.getHours();
@@ -22,10 +25,16 @@ function greetingAds() {
     greetingCurrentUser()
 }
 
+/**
+ * This function sets the name in welcome desk to the name of current user
+ */
 function greetingCurrentUser() {
     document.getElementById('welcome-name-desk').innerHTML = currentUser
 }
 
+/**
+ * This function renders the summary
+ */
 function renderSummary() {
     getCurrentUser();
     getCount()
@@ -34,6 +43,9 @@ function renderSummary() {
     renderUpcomingUrgent()
 }
 
+/**
+ * This function renders the count in the progress sections
+ */
 function renderCount() {
     document.getElementById('summaryCountInBoard').innerHTML = todoCount + inProgressCount + awaitingCount + doneCount;
     document.getElementById('summaryCountProgress').innerHTML = inProgressCount;
@@ -42,6 +54,9 @@ function renderCount() {
     document.getElementById('summaryCountDone').innerHTML = doneCount;
 }
 
+/**
+ * This function gets the counts of the progress sections
+ */
 function getCount() {
     todoCount = countTasksByProgress("toDo");
     inProgressCount = countTasksByProgress("inProgress");
@@ -49,6 +64,12 @@ function getCount() {
     doneCount = countTasksByProgress("done")
 }
 
+/**
+ * This function gets the count of every progress separately
+ * 
+ * @param {string} progress This is the name of the section to be counted
+ * @returns number
+ */
 function countTasksByProgress(progress) {
     let count = 0;
     for (let i = 0; i < tasks.length; i++) {
@@ -57,11 +78,18 @@ function countTasksByProgress(progress) {
     return count;
 }
 
+/**
+ * This function renders the upcoming urgend content
+ */
 function renderUpcomingUrgent() {
     document.getElementById('summaryCountUrgent').innerHTML = urgentCount;
     document.getElementById('summaryNextDeadline').innerHTML = nextDueDate
 }
 
+/**
+ * This function searches for the closest deadline
+ * @returns date
+ */
 function findNextDueTask() {
     let urgentTasks = tasks.filter(task => task.prio.name === "urgent");
     urgentCount = urgentTasks.length
