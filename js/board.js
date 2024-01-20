@@ -267,6 +267,7 @@ function moveTo(i, progress) {
     showConfirmation('taskMoved')
     setItem('tasks', tasks)
     renderBoard()
+    renderSummary()
     setTimeout(closeConfirmation, 2000)
 }
 
@@ -280,6 +281,7 @@ function moveToDrop(progress) {
     task.taskProgress = `${progress}`
     setItem('tasks', tasks)
     renderBoard()
+    renderSummary()
 }
 /**
  * This function sets the currentDraggedElement when starting to drag
