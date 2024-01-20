@@ -690,14 +690,17 @@ function clearInviteNewContactValue() {
  * This funtion checks the checkboxes of contacts and adds them to selectedContacts
  */
 function selectContactToAssign() {
-  selectedContacts = []
+  selectedContacts = [];
   let checkboxes = document.getElementsByName(`option[]${n}`);
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      selectedContacts.push(i);
+      // Extrahiere den Index aus dem value-Attribut der Checkbox
+      let contactIndex = parseInt(checkboxes[i].value.match(/\d+/)[0]);
+      selectedContacts.push(contactIndex);
     }
   }
 }
+
 
 /**
  * This funtion uncheckes all checkboxes of contacts
