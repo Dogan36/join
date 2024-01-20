@@ -1,24 +1,31 @@
 let contactToEdit
 
+/**
+ * This function renders the contacts
+ */
 function renderContacts() {
   initials = []
   getFirstLetter()
   showList()
 }
 
+/**
+ * This function gets the first letter of every contact and pushes them into initials if the contact is not "Contact deleted" and the letter isn´t in the array already
+ */
 function getFirstLetter() {
   contacts.forEach(function (contact) {
-    const name = contact.name;
-    if (name !== 'Kontakt gelöscht') {
-      const initial = name.charAt(0).toUpperCase();
-      if (!initials.includes(initial)) {
-        initials.push(initial);
-      }
+    let name = contact.name;
+    let initial = name.charAt(0).toUpperCase();
+    if (name !== 'Contact deleted' && !initials.includes(initial)) {
+      initials.push(initial);
     }
   });
   initials.sort();
 }
 
+/**
+ * This function generates html for the contact list sections
+ */
 function showList() {
   let contactList = document.getElementById('contactsList')
   if (initials.length > 0) {
@@ -37,12 +44,17 @@ function showList() {
   }
 }
 
+/**
+ * This function renders the contacts by their first letter
+ * 
+ * @param {string} initial This is the initial of the contacts to be rendered
+ */
 function showContacts(initial) {
   let contactList = document.getElementById('contactsList')
   for (let j = 0; j < contacts.length; j++) {
     const contact = contacts[j];
     const backgroundColor = j
-    if (contact.name.charAt(0).toUpperCase() === initial && contact.name !== 'Kontakt gelöscht')
+    if (contact.name.charAt(0).toUpperCase() === initial && contact.name !== 'Contact deleted')
     {
       contactList.innerHTML += `
           <div class="contactListElement" id='contact${j}' onclick="setActiveContact(${j})">
@@ -53,6 +65,11 @@ function showContacts(initial) {
   }
 }
 
+/**
+ * This function sets the edit contact overlay 
+ * 
+ * @param {number} j This is the index of the contact
+ */
 function setEditContactOverlay(j) {
   let contact = contacts[j]
   document.getElementById('editContactName').value = contact.name
@@ -65,6 +82,11 @@ function setEditContactOverlay(j) {
   });
 }
 
+/**
+ * This function adds a class to the active element on the contact list
+ * 
+ * @param {number} j This is the index of the active contact
+ */
 function setActiveContact(j) {
   var contact = document.querySelector(".contactListElementActive");
   var element = document.getElementById(`contact${j}`)
@@ -84,12 +106,23 @@ function setActiveContact(j) {
   }
 }
 
+/**
+ * This function sets the inner contact card
+ * 
+ * @param {number} j This is the index of the contact
+ */
 function setInnerContactCard(j) {
   let contactCard = document.querySelector('.contactsCard')
   contactCard.innerHTML = ''
   contactCard.innerHTML += setInnerContactCardTemplate(j)
 }
 
+/**
+ * This function generates the html for the inner contact card
+ * 
+ * @param {number} j This is the index of the active contact
+ * @returns string
+ */
 function setInnerContactCardTemplate(j) {
   let contact = contacts[j]
   return `<div class="contactCardHeader">
@@ -123,6 +156,9 @@ function setInnerContactCardTemplate(j) {
 </div>`
 }
 
+/**
+ * This function adds the contact to contacts
+ */
 async function addContact() {
   let name = document.getElementById('addContactName')
   let email = document.getElementById('addContactEmail');
@@ -137,11 +173,16 @@ async function addContact() {
   flyInButton(n)
 }
 
+/**
+ * This function replaces a contact with a placeholder called "contact deleted"
+ * 
+ * @param {number} j This is the index of the contact to be deleted
+ */
 async function deleteContact(j) {
-  let name = 'Kontakt gelöscht'
+  let name = 'Contact deleted'
   let email = ''
   let phone = ''
-  let initials = 'KG'
+  let initials = 'CD'
   contacts.splice(j, 1, { name: name, email: email, phone: phone, initials: initials });
   await setItem('contacts', contacts);
   showConfirmation('contactDeleted')
@@ -151,6 +192,9 @@ async function deleteContact(j) {
   renderContacts()
 }
 
+/**
+ * This function replaces a contact in contacts with the edited contact
+ */
 async function editContact() {
   let name = document.getElementById('editContactName')
   let email = document.getElementById('editContactEmail');
@@ -165,6 +209,10 @@ async function editContact() {
   setActiveContact(contactToEdit)
 }
 
+/**
+ * This funcion checks the add contact inputs for errors and calls addcontact if there are none
+ * @returns boolean
+ */
 function checkInputsAddContact() {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -180,6 +228,11 @@ function checkInputsAddContact() {
   addContact()
 }
 
+/**
+ * This funcion checks the edit contact inputs for errors and calls editcontact if there are none
+ * @param {number} j This is the index of the contact to be editet
+ * @returns boolean
+ */
 function checkInputsEditContact(j) {
   document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
     el.classList.add('d-none');
@@ -194,13 +247,17 @@ function checkInputsEditContact(j) {
   })
   editContact(j)
 }
-
+/**
+ * This function closes the right section of contacts for responsivness
+ */
 function closeContactsRightMobile() {
   document.querySelector('.contactsRight').classList.remove("contactsRightMobileActive");
   var contact = document.querySelector(".contactListElementActive");
   contact.classList.remove("contactListElementActive");
 }
-
+/**
+ * This function toggles the visibility of contact card edits
+ */
 function toggleEdits() {
   let edits = document.querySelector(".contactCardEdits")
   if (edits.style.display == 'flex') edits.style.display = 'none'
