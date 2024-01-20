@@ -101,7 +101,8 @@ async function addUser() {
     let initials = getInitials('signUpName')
     users.push({name: name.value, email: email.value, password: password.value, initials: initials});
     showConfirmation('signedUp')
-   await setItem('user', user);
+    debugger
+   await setItem('users', users);
     setTimeout(function() {
         closeConfirmation();
         closeDarkBackground();
