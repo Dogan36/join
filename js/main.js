@@ -310,7 +310,6 @@ function checkInputsSignUp() {
   errorCount += checkInputEmpty('confirmPassword') ? 1 : 0;
   errorCount += checkEmailFormat('signUpEmail') ? 1 : 0;
   errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
-  debugger
   errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
   errorCount += checkPasswordConfirm('signUpPassword') ? 1 : 0;
   errorCount += checkPrivacyChecked() ? 1 : 0;
