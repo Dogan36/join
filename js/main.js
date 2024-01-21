@@ -165,7 +165,7 @@ function showContent(x) {
  * 
  * @param {string} element id of the element which is shown
  */
-function setActiveElement(element) {debugger
+function setActiveElement(element) {
   let mobileElementName = element + "Mobile";
   let icons = document.querySelectorAll(".desktopTemplateIconActive");
   icons.forEach(function (icon) {
@@ -174,8 +174,11 @@ function setActiveElement(element) {debugger
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
   document.getElementById('privacyPolicy').classList.remove('desktopTemplateIconActive')
   document.getElementById(`${element}`).classList.add("desktopTemplateIconActive");
-    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
   setActiveIcon()
+  if (window.location.pathname.includes('index.html')) {
+    return;
+  }
+    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
 }
 
 /**
