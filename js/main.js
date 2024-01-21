@@ -175,10 +175,10 @@ function setActiveElement(element) {
   document.getElementById('privacyPolicy').classList.remove('desktopTemplateIconActive')
   document.getElementById(`${element}`).classList.add("desktopTemplateIconActive");
   setActiveIcon()
-  if (window.location.pathname.includes('index.html')) {
+  if (window.location.pathname.includes('index.html') && (element === 'privacyPolicy' || element === 'legalNotice')) {
     return;
   }
-    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
+  document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
 }
 
 /**
@@ -187,11 +187,11 @@ function setActiveElement(element) {
 function setActiveIcon() {
   let icons = document.getElementsByClassName("desktopTemplateMenuElements");
   let iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
-  for (let i = 0; i < icons; i++) {
+  for (let i = 0; i < icons.length; i++) {
     let img = icons[i].querySelector("img");
     if (img) img.src = img.src.replace("_active.svg", ".svg");
   }
-  for (let i = 0; i < icons; i++) {
+  for (let i = 0; i < iconsMobile.length; i++) {
     let img = iconsMobile[i].querySelector("img");
     if (img) img.src = img.src.replace("_active.svg", ".svg");
   }
