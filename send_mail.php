@@ -1,20 +1,22 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 ########### CONFIG ###############
 
-$recipient = 'dogancelik86@gmail.com';
+// Du musst den Empfänger dynamisch aus dem POST-Request nehmen
+$recipient = isset($_POST['mail']) ? $_POST['mail'] : 'dogancelik86@gmail.com';
+
 $redirect = 'login.html';
 
 ########### CONFIG END ###########
 
 
-
-########### Intruction ###########   
+########### Instruction ###########   
 #
 #   This script has been created to send an email to the $recipient
 #   
 #  1) Upload this file to your FTP Server
-#  2) Send a POST rewquest to this file, including
+#  2) Send a POST request to this file, including
 #     [name] The name of the sender (Absender)
 #     [message] Message that should be send to you
 #
@@ -40,9 +42,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
         header("Access-Control-Allow-Origin: *");
 
         $subject = "Contact From " . $_POST['name'];
-        $headers = "From:  noreply@developerakademie.com";
+        $headers = "From: noreply@developerakademie.com";
+        error_log("Versuche, E-Mail zu senden an: " . $recipient);
+        mail($recipient, $subject, $_POST['message'], $headers);
 
-        mail($recipient, $subject, $_POST['message'], $_POST['mail'],  $headers);
         header("Location: " . $redirect); 
 
         break;
@@ -50,3 +53,6 @@ switch ($_SERVER['REQUEST_METHOD']) {
         header("Allow: POST", true, 405);
         exit;
 }
+
+?>
+

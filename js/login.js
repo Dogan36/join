@@ -54,24 +54,24 @@ function updateCheckboxConfirmationTerms() {
 }
 /**
  * This function gets the user by searching in users with the email
+ * 
+ * @returns boolean
  */
 function getUser() {
     let email = document.getElementById('loginEmail').value;
     user = users.find(user => user.email === email);
+    return user
 }
 /**
  * This function sets in local storage if user checked remember me checkbox
  */
 function rememberMe() {
-    const checkbox = document.getElementById('rememberMe');
-    const usernameInput = document.getElementById('loginEmail');
-    const passwordInput = document.getElementById('loginPassword');
+    let checkbox = document.getElementById('rememberMe');
+    let usernameInput = document.getElementById('loginEmail');
     if (checkbox.checked) {
         localStorage.setItem('rememberedUser', usernameInput.value);
-        localStorage.setItem('rememberedPass', passwordInput.value);
     } else {
         localStorage.removeItem('rememberedUser');
-        localStorage.removeItem('rememberedPass');
         document.querySelector('.loginContainer').reset()
     }
 }
@@ -80,13 +80,10 @@ function rememberMe() {
  * This funtion loads data of remembered user from local storage and sets it if available
  */
 function loadRememberedData() {
-    const rememberedUser = localStorage.getItem('rememberedUser');
-    const rememberedPass = localStorage.getItem('rememberedPass');
-    const usernameInput = document.getElementById('loginEmail');
-    const passwordInput = document.getElementById('loginPassword');
-    if (rememberedUser && rememberedPass) {
+    let rememberedUser = localStorage.getItem('rememberedUser');
+    let usernameInput = document.getElementById('loginEmail');
+    if (rememberedUser) {
         usernameInput.value = rememberedUser;
-        passwordInput.value = rememberedPass;
         document.getElementById('rememberMe').checked = true;
     }
 }
@@ -101,13 +98,12 @@ async function addUser() {
     let initials = getInitials('signUpName')
     users.push({name: name.value, email: email.value, password: password.value, initials: initials});
     showConfirmation('signedUp')
-    debugger
    await setItem('users', users);
     setTimeout(function() {
         closeConfirmation();
         closeDarkBackground();
         showContentLogin('loginContainer');
-      }, 3000);
+      }, 2000);
 }
 /**
  * This funtion shows choosen content and hides others.

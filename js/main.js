@@ -10,15 +10,15 @@ let isContentLoaded = false
 let isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 let avatarBackgroundColors = ['#FF6633', '#FF33FF',
-'#E6B333', '#3366E6', '#B34D4D',
-'#80B300', '#809900', '#6680B3', '#66991A',
-'#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A',
-'#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
-'#66664D', '#991AFF', '#4DB3FF', '#1AB399',
-'#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
-'#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
-'#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
-'#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+  '#E6B333', '#3366E6', '#B34D4D',
+  '#80B300', '#809900', '#6680B3', '#66991A',
+  '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A',
+  '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC',
+  '#66664D', '#991AFF', '#4DB3FF', '#1AB399',
+  '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680',
+  '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+  '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3',
+  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
 
 let categoryColors = ['#0072B2', '#E69F00', '#009E73', '#F0E442', '#CC79A7', '#56B4E9', '#D55E00', '#5D5D5D', '#CC6633', '#66CCEE', '#B2B2B2', '#999933'];
 let visibleIcon = 'assets/img/visibleIcon.svg';
@@ -249,8 +249,8 @@ function changePasswortImage(element) {
   let passwordInput = document.getElementById(`${element}Password`);
   let passwordToggle = document.getElementById(`${element}PasswordImg`);
   if (passwordInput.value === '') passwordToggle.src = standartIcon;
- else if (passwordInput.type == 'text') passwordToggle.src = visibleIcon;
-  else  passwordToggle.src = notVisibleIcon
+  else if (passwordInput.type == 'text') passwordToggle.src = visibleIcon;
+  else passwordToggle.src = notVisibleIcon
 }
 
 /**
@@ -304,6 +304,7 @@ function checkInputsSignUp() {
     el.classList.add('d-none');
   })
   let errorCount = 0;
+  debugger
   errorCount += checkInputEmpty('signUpName') ? 1 : 0;
   errorCount += checkInputEmpty('signUpEmail') ? 1 : 0;
   errorCount += checkInputEmpty('signUpPassword') ? 1 : 0;
@@ -407,7 +408,7 @@ function checkEmailDoesntExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
   for (var i = 0; i < users.length; i++) {
-    if (input.value.length > 0 && input.value.includes('@') && users[i].email === input.value) 
+    if (input.value.length > 0 && input.value.includes('@') && users[i].email === input.value)
       return false;
   }
   if (input.value.length > 0 && input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
@@ -446,13 +447,14 @@ function checkPasswordConfirm() {
  * @returns boolean
  */
 function checkIncorrectPassword(element) {
-  if (getUser()) {
+  debugger
+  let user = getUser();
     let password = document.getElementById(`${element}`).value;
-    if (user.password !== password && password.length >= 6) {
+    if (user && user.password !== password && password.length >= 6) {
       document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
       return true
     } else return false
-  }
+  
 }
 /**
  * This functions checks if the privacy policy is checked otherwise shows error
@@ -465,7 +467,7 @@ function checkPrivacyChecked() {
     document.getElementById('signUpPrivacyError').classList.remove('d-none')
     return true
   } else return false
-  
+
 }
 
 /**
@@ -482,23 +484,43 @@ function checkIn() {
  * This function sends an link to the user via e-mail to reset the password
  */
 function sendNewPasswordLink() {
-  let email = document.getElementById('forgotEmail').value
+  debugger
+  let email = document.getElementById('forgotEmail').value;
   let xhr = new XMLHttpRequest();
 
   let url = '//dogan-celik.developerakademie.net/join/send_mail.php';
   xhr.open('POST', url, true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log('Email sent!');
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        
+        // Hier könntest du die Serverantwort weiter überprüfen
+        if (xhr.responseText === 'success') {
+          showConfirmation('newPassword');
+          setTimeout(function () {
+            closeConfirmation();
+            closeDarkBackground();
+            showContentLogin('loginContainer');
+          }, 2000);
+        } else {
+          console.error('Ungültige Serverantwort:', xhr.responseText);
+        }
+      } else {
+        console.error('Fehler beim E-Mail-Versand. Statuscode:', xhr.status);
+      }
     }
+  
   };
 
+  // Die URL für den Link enthält jetzt die dynamische E-Mail-Adresse
   let message = `Hello,\n\nPlease click on the following link to reset your password: http://dogan-celik.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
-  let params = `name=Join&mail=noreply@join.com&message=${message}`;
+  let params = `name=Join&mail=${email}&message=${message}`; // Empfänger dynamisch setzen
   xhr.send(params);
-  showConfirmation('newPassword')
+
 }
+
 
 /**
  *This function checks of password and confirm passwort are identical on reset page
@@ -520,6 +542,7 @@ async function updatePassword() {
   user.password = newPassword;
   await setItem('users', users)
   showConfirmation('forgot')
+  setTimeout(closeConfirmation, 2000)
 }
 
 /**
@@ -743,13 +766,13 @@ function resetSignUpInputs() {
 function setupWelcomeDeskAnimation() {
   var welcomeDesk = document.getElementById('welcomeDesk');
   if (welcomeDesk) {
-      welcomeDesk.addEventListener('animationend', function () {
-          welcomeDesk.classList.add('animation-done');
-      });
+    welcomeDesk.addEventListener('animationend', function () {
+      welcomeDesk.classList.add('animation-done');
+    });
   } else {
-      setTimeout(function () {
-          setupWelcomeDeskAnimation();
-      }, 1000);
+    setTimeout(function () {
+      setupWelcomeDeskAnimation();
+    }, 1000);
   }
 }
 
@@ -761,12 +784,12 @@ function setupWelcomeDeskAnimation() {
 function setFavicon(isDarkMode) {
   const linkElements = document.getElementsByTagName('link');
   for (const link of linkElements) {
-      if (link.rel === 'icon') {
-          if (isDarkMode) {
-              link.href = 'assets/img/logo_invert.svg'; // Pfad zum Logo für den Dark Mode
-          } else {
-              link.href = 'assets/img/logo.svg'; // Pfad zum Standard-Logo
-          }
+    if (link.rel === 'icon') {
+      if (isDarkMode) {
+        link.href = 'assets/img/logo_invert.svg'; // Pfad zum Logo für den Dark Mode
+      } else {
+        link.href = 'assets/img/logo.svg'; // Pfad zum Standard-Logo
       }
+    }
   }
 }
