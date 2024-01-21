@@ -1,4 +1,4 @@
-let isContentLoaded = false
+
 /**
  * This function shows selceted content and hides other
  * @param {string} x This is the id of the content to be shown
@@ -11,23 +11,6 @@ function showContent(x) {
     document.getElementById(x).classList.remove('d-none')
 }
 
-/**
- * This function adds a class to a active element
- * 
- * @param {string} element This is the id of the element to get an active class
- */
-function setActiveElement(element) {
-    var icons = document.querySelectorAll(".desktopTemplateIconActive");
-    var elementName = element.id;
-    var mobileElementName = elementName + "Mobile";
-    icons.forEach(function (icon) {
-        icon.classList.remove("desktopTemplateIconActive");
-    });
-    document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
-    document.getElementById('legalNoticeMobile').classList.remove('desktopTemplateIconActive')
-    element.classList.add("desktopTemplateIconActive");
-    document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
-}
 /**
  * This function calls get target after content is loaded
  */

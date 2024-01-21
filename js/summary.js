@@ -98,8 +98,8 @@ function findNextDueTask() {
         return
     }
     urgentTasks.sort((task1, task2) => {
-        const dueDate1 = new Date(task1.dueDate);
-        const dueDate2 = new Date(task2.dueDate);
+        let dueDate1 = new Date(task1.dueDate);
+        let dueDate2 = new Date(task2.dueDate);
         return dueDate1 - dueDate2;
     });
     nextDueDate = urgentTasks[0].dueDate; // Gibt die Aufgabe mit dem nächsten Fälligkeitsdatum zurück

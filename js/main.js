@@ -93,12 +93,19 @@ async function loadCategorys() {
  * This function calls render function aber content is loaded
  */
 function callRender() {
-  if (isContentLoaded) {
-    render();
-  } else {
-    setTimeout(callRender, 100); // Warten und erneut versuchen
+  // Überprüfe, ob die aktuelle Seite "index.html" ist
+  if (window.location.pathname.includes('index.html')) {
+    // Wenn ja, führe die Render-Funktion aus
+    if (isContentLoaded) {
+      render();
+    } else {
+      // Warte und versuche es erneut
+      setTimeout(callRender, 100);
+    }
   }
+  // Falls die Seite nicht "index.html" ist, passiert nichts
 }
+
 
 callRender()
 
@@ -145,7 +152,7 @@ function renderUserInitials() {
  * @param {sting} x id of the content to be shown
  */
 function showContent(x) {
-  var content = document.querySelectorAll(".indexContent");
+  let content = document.querySelectorAll(".indexContent");
   clearTheInputFields();
   content.forEach(function (element) {
     element.classList.add("d-none");
@@ -158,18 +165,16 @@ function showContent(x) {
  * 
  * @param {string} element id of the element which is shown
  */
-function setActiveElement(element) {
-  var mobileElementName = element + "Mobile";
-  var icons = document.querySelectorAll(".desktopTemplateIconActive");
+function setActiveElement(element) {debugger
+  let mobileElementName = element + "Mobile";
+  let icons = document.querySelectorAll(".desktopTemplateIconActive");
   icons.forEach(function (icon) {
     icon.classList.remove("desktopTemplateIconActive");
   });
   document.getElementById('legalNotice').classList.remove('desktopTemplateIconActive')
   document.getElementById('privacyPolicy').classList.remove('desktopTemplateIconActive')
   document.getElementById(`${element}`).classList.add("desktopTemplateIconActive");
-  if (!(element === 'privacyPolicy' || element === 'legalNotice')) {
     document.getElementById(`${mobileElementName}`).classList.add("desktopTemplateIconActive");
-  }
   setActiveIcon()
 }
 
@@ -177,22 +182,22 @@ function setActiveElement(element) {
  * This function changes the Icon inside the active element for design reasons
  */
 function setActiveIcon() {
-  var icons = document.getElementsByClassName("desktopTemplateMenuElements");
-  var iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
-  for (var i = 0; i < 4; i++) {
-    var img = icons[i].querySelector("img");
-    img.src = img.src.replace("_active.svg", ".svg");
+  let icons = document.getElementsByClassName("desktopTemplateMenuElements");
+  let iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
+  for (let i = 0; i < icons; i++) {
+    let img = icons[i].querySelector("img");
+    if (img) img.src = img.src.replace("_active.svg", ".svg");
   }
-  for (var i = 0; i < 4; i++) {
-    var img = iconsMobile[i].querySelector("img");
-    img.src = img.src.replace("_active.svg", ".svg");
+  for (let i = 0; i < icons; i++) {
+    let img = iconsMobile[i].querySelector("img");
+    if (img) img.src = img.src.replace("_active.svg", ".svg");
   }
-  var iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
+  let iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
   iconsActive.forEach(function (iconActive) {
-    var img = iconActive.querySelector("img");
+    let img = iconActive.querySelector("img");
     if (img) img.src = img.src.replace(".svg", "_active.svg");
   });
-
+  
 }
 /**
  * This function changes src of img on hover for design reasons
@@ -218,7 +223,7 @@ function hoverThis(element, url) {
  * This function gets the current user from the url
  */
 function getCurrentUser() {
-  var params = new URLSearchParams(window.location.search);
+  let params = new URLSearchParams(window.location.search);
   let currentUserURL = params.get('variable');
   if (currentUserURL) currentUser = currentUserURL
 }
@@ -389,7 +394,7 @@ function checkEmailFormat(element) {
 function checkEmailExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
-  for (var i = 0; i < users.length; i++) {
+  for (let i = 0; i < users.length; i++) {
     if (users[i].email === input.value) {
       document.getElementById(`${element}InUseError`).classList.remove('d-none');
       return true;
@@ -406,7 +411,7 @@ function checkEmailExist(element) {
 function checkEmailDoesntExist(element) {
   let input = document.getElementById(`${element}`);
   let emailFound = false;
-  for (var i = 0; i < users.length; i++) {
+  for (let i = 0; i < users.length; i++) {
     if (input.value.length > 0 && input.value.includes('@') && users[i].email === input.value)
       return false;
   }
@@ -530,7 +535,7 @@ function checkPasswordMatch() {
  * This function updates the password of the user
  */
 async function updatePassword() {
-  var params = new URLSearchParams(window.location.search);
+  let params = new URLSearchParams(window.location.search);
   email = params.get('email');
   user = users.find(user => user.email === email);
   newPassword = document.getElementById('resetPassword').value
@@ -607,7 +612,6 @@ function openActiveTaskOverlay(i) {
  */
 function openEditTaskOverlay(i) {
   taskProgress = tasks[i].taskProgress
-  console.log(taskProgress)
   closeOverlay()
   clearTheInputFields()
   n = 2;
@@ -759,7 +763,7 @@ function resetSignUpInputs() {
  * This function sets the welcome desk animation on responsive design and adds class after animation end
  */
 function setupWelcomeDeskAnimation() {
-  var welcomeDesk = document.getElementById('welcomeDesk');
+  let welcomeDesk = document.getElementById('welcomeDesk');
   if (welcomeDesk) {
     welcomeDesk.addEventListener('animationend', function () {
       welcomeDesk.classList.add('animation-done');

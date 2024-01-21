@@ -832,7 +832,6 @@ function deleteTask(i) {
 function setEditTaskOverlay(i) {
   indexOfEditedTask = i
   let task = tasks[i]
-  console.log(task)
   document.getElementById('task-title-input2').value = task.taskTitle
   document.getElementById('add-task-description2').value = task.taskDescription
   document.getElementById('due-date2').value = task.dueDate
