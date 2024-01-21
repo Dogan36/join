@@ -187,9 +187,6 @@ width: 50px;
     flex-grow: 1;
 }
 
-.contactsRight img{
-    cursor: pointer;
-}
 
 .contactsRightHeader {
     display: flex;
@@ -745,6 +742,7 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
         top: 40px;
         right: 30px;
         z-index: 2;
+        cursor: pointer;
     }
 
     .editContactAvartar,
@@ -909,6 +907,10 @@ z-index: 1;
 }
 
 @media screen and (max-width:500px) {
+
+    .contactsRightHeader h1{
+        font-size: 15vw;
+    }
     .contactCardContentHeader {
         height: auto;
     }
@@ -959,5 +961,11 @@ z-index: 1;
 
     .addContactOverlayCreateContactButton {
         width: 50%;
+    }
+
+    .closeContactArrow {
+       
+        right: 15px;
+    
     }
 }

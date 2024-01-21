@@ -338,14 +338,12 @@ body {
         font-weight: 700;
         font-size: 4vw;
     }
-
-    .everything-in-a-nutshell {
-        font-size: 25px;
-    }
 }
 
 @media screen and (max-width: 500px) {
-
+    .everything-in-a-nutshell {
+        font-size: 6vw;
+    }
     .orange-button {
         width: 12vw;
         height: 12vw;

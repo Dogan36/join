@@ -1069,9 +1069,9 @@ indexWrapper {
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
     h1 {
-        font-size: 56px;
+        font-size: 16vw;
     }
 }
 
@@ -1126,6 +1126,7 @@ indexWrapper {
         height: 100vh;
         position: absolute;
         top: 0;
+        left:0;
         background-color: #f5f5f5;
         z-index: 2;
         animation-name: background-ease-out;
