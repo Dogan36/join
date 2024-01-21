@@ -304,7 +304,6 @@ function checkInputsSignUp() {
     el.classList.add('d-none');
   })
   let errorCount = 0;
-  debugger
   errorCount += checkInputEmpty('signUpName') ? 1 : 0;
   errorCount += checkInputEmpty('signUpEmail') ? 1 : 0;
   errorCount += checkInputEmpty('signUpPassword') ? 1 : 0;
@@ -440,6 +439,7 @@ function checkPasswordConfirm() {
     return true
   }
 }
+
 /**
  * This function checks if the password is incorrect and shows error
  * 
@@ -447,7 +447,6 @@ function checkPasswordConfirm() {
  * @returns boolean
  */
 function checkIncorrectPassword(element) {
-  debugger
   let user = getUser();
     let password = document.getElementById(`${element}`).value;
     if (user && user.password !== password && password.length >= 6) {
@@ -479,12 +478,10 @@ function checkIn() {
   window.location.href = 'index.html?variable=' + currentUser;
 }
 
-
 /**
  * This function sends an link to the user via e-mail to reset the password
  */
 function sendNewPasswordLink() {
-  debugger
   let email = document.getElementById('forgotEmail').value;
   let xhr = new XMLHttpRequest();
 
@@ -494,8 +491,6 @@ function sendNewPasswordLink() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        console.log(xhr.responseText);
-        
         // Hier könntest du die Serverantwort weiter überprüfen
         if (xhr.responseText === 'success') {
           showConfirmation('newPassword');
