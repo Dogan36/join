@@ -69,7 +69,23 @@ indexWrapper {
     width: 100vw;
     overflow: hidden;
 }
+.indexContent::-webkit-scrollbar,
+.contactsLeft::-webkit-scrollbar {
+    width: 10px;
+}
 
+.indexContent::-webkit-scrollbar-thumb,
+.contactsLeft::-webkit-scrollbar-thumb {
+    background-color: #2A3647;
+    border-radius: 100px;
+}
+
+.indexContent::-webkit-scrollbar-track,
+.contactsLeft::-webkit-scrollbar-track {
+    background-color: #D1D1D1;
+    border-radius: 100px;
+    margin-block: 2px;
+}
 .indexContainer {
     display: flex;
     flex-direction: column;
@@ -1105,6 +1121,7 @@ indexWrapper {
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
         width: 100vw;
         height: 100vh;
         position: absolute;

@@ -297,20 +297,7 @@ img.arrow-icon {
     height: 22px;
 }
 
-.indexContent::-webkit-scrollbar {
-    width: 10px;
-}
 
-.indexContent::-webkit-scrollbar-thumb {
-    background-color: #2A3647;
-    border-radius: 100px;
-}
-
-.indexContent::-webkit-scrollbar-track {
-    background-color: #D1D1D1;
-    border-radius: 100px;
-    margin-block: 2px;
-}
 
 .Add-new-subtask {
     font-family: 'Inter';
