@@ -200,7 +200,7 @@ function addActiveTaskOverlayHTML(i) {
     <div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
     </div>
     </div>
-    <img onclick="closeOverlay()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
+    <img onclick="closeOverlay(); renderBoard()" class="activeTaskCloseButton" src="assets/img/black-x.svg" alt="">
 </div>
     `
 }
@@ -246,7 +246,7 @@ function addActiveCardSubtasks(i) {
         let checkboxId = `active-card-subtask-checkbox-${n}-${index}`;
         subtasksHtml += `
         <div>
-        <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index})">
+        <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index}), setItem('tasks', tasks)">
         <label for="${checkboxId}"></label> 
         <div class="activeTaskAssignedTo">
             <span>${subtask.subtaskTitle}</span>

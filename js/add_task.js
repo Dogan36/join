@@ -68,7 +68,7 @@ function checkMandatoryFields(indexOfEditedTask) {
  */
 async function addTask() {
   selectContactToAssign()
-  await addTaskJsonArray(); 
+  await addTaskJsonArray();
   goToBoardPage()
 }
 
@@ -592,10 +592,10 @@ function renderAddTaskContacts() {
       <img class="contact-icon" src="assets/img/contact_icon.svg" alt="">
     </div>`;
 
-    for (let i = 0; i < contacts.length; i++) {
-      let contact = contacts[i];
-      if (contact['name'] !== 'Contact deleted') {
-          content.innerHTML += /*html*/ `
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    if (contact['name'] !== 'Contact deleted') {
+      content.innerHTML += /*html*/ `
               <div class="contactsOption">
                   <div class="selection-point-container">
                       <div>${contact['name']}</div>
@@ -605,9 +605,9 @@ function renderAddTaskContacts() {
                       <label for="${contact['name'] + n}"></label>
                   </div>    
               </div>`;
-      }
+    }
   }
-  
+
 }
 
 /**
@@ -865,8 +865,11 @@ function setContacts(i) {
     contactIDs.push(contId)
   }
   for (let k = 0; k < checkboxes.length; k++) {
-    if (contactIDs.includes(k)) {
-      checkboxes[k].checked = true
+    let checkboxValue = checkboxes[k].value;
+    checkboxValue = checkboxValue.slice(7);
+    let checkboxNumber = parseInt(checkboxValue, 10);
+    if (contactIDs.includes(checkboxNumber)) {
+      checkboxes[k].checked = true;
     }
   }
 }
