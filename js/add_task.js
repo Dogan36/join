@@ -596,20 +596,30 @@ function renderAddTaskContacts() {
     let contact = contacts[i];
     if (contact['name'] !== 'Contact deleted') {
       content.innerHTML += /*html*/ `
-              <div class="contactsOption">
-                  <div class="selection-point-container">
-                      <div>${contact['name']}</div>
-                  </div>
-                  <div>
-                      <input id='${contact['name'] + n}' type="checkbox" name="option[]${n}" value="Option ${i}")"> 
-                      <label for="${contact['name'] + n}"></label>
-                  </div>    
-              </div>`;
+      <div class="contactsOption" onclick="toggleCheckbox('${contact['name'] + n}')">
+      <div class="selection-point-container">
+        <div>${contact['name']}</div>
+      </div>
+      <div>
+        <input id='${contact['name'] + n}' type="checkbox" name="option[]${n}" value="Option ${i}">
+        <label for="${contact['name'] + n}"></label>
+      </div>
+    </div>`;
     }
   }
-
 }
 
+/**
+ * This function toogles the checkbox when clicked on parent div
+ * 
+ * @param {string} checkboxId This is the id of the checkbox to be toogled
+ */
+function toggleCheckbox(checkboxId) {
+  let checkbox = document.getElementById(checkboxId);
+  if (checkbox) {
+    checkbox.checked = !checkbox.checked;
+  }
+}
 /**
  * This function toogles the add task contacts dropdown
  */
