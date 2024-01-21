@@ -284,6 +284,7 @@ indexWrapper {
     border: 1px solid var(--defaultDark);
     border-radius: 10px;
     cursor: pointer;
+    z-index:2
 }
 
 .contactsNewContactButton span {

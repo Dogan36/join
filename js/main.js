@@ -749,6 +749,8 @@ function closeLogout() {
  *This function lets the user logout 
  */
 function logOut() {
+  currentUser='Guest'
+  debugger
   window.location.href = 'login.html';
 }
 

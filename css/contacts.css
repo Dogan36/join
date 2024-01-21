@@ -727,6 +727,7 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
         width: calc(100% - 231px);
         height: calc(100% - 89px);
         background: #F5F5F5;
+        z-index: 1
     }
 
     .contactsCardContainer {
@@ -751,7 +752,7 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
         top: unset;
         bottom: 50px;
         right: 50px;
-
+z-index: 1;
     }
 
     .addContactOverlayLeft {
