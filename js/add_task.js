@@ -570,7 +570,7 @@ function categoryTemplate(category) {
 function renderAddTaskContactsSelect() {
   document.getElementById(`select-contacts-container${n}`).innerHTML = `
   <div onclick="toggleAddTaskContacts()" class="contactsOption">
-              <div id="select-start-task-contact${n}">
+              <div class="addTaskDropdownHeader" id="select-start-task-contact${n}">
                 Select contacts to assign
               </div>
               <img id="arrow-rotate${n}" class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />

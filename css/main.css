@@ -502,13 +502,15 @@ indexWrapper {
 .loginGuestButton:hover,
 .overlayCancelButton:hover,
 .activeTaskMove:hover,
-.activeTaskDelete:hover {
+.activeTaskDelete:hover,
+.addTaskCancelButton:hover {
     border: 2px solid #29ABE2;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .loginGuestButton:hover span,
-.overlayCancelButton:hover span {
+.overlayCancelButton:hover span,
+.addTaskCancelButton:hover span {
     color: var(--secondaryColor)
 }
 
