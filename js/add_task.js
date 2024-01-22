@@ -436,7 +436,8 @@ function renderAddTaskCategorySelect() {
 function toggleAddTaskCategory() {
   if (document.getElementById(`content-category-container${n}`).classList.contains('d-none'))
     openAddTaskCategory()
-  else closeAddTaskCategory()
+  else {closeAddTaskCategory();
+  checkMandatoryFieldCategory()}
 }
 
 /**
@@ -451,10 +452,12 @@ function openAddTaskCategory() {
  * This function closes the category container
  */
 function closeAddTaskCategory() {
-  document.getElementById(`content-category-container${n}`).classList.add('d-none')
-  document.getElementById(`arrowIconCategory${n}`).classList.remove('arrow-rotate')
-  choosenCategory = undefined
-  checkMandatoryFieldCategory()
+let contentCategoryContainer = document.getElementById(`content-category-container${n}`)
+let arrowIconCategory = document.getElementById(`arrowIconCategory${n}`)
+if(contentCategoryContainer){
+contentCategoryContainer.classList.add('d-none')
+arrowIconCategory.classList.remove('arrow-rotate')
+  choosenCategory = undefined}
 }
 /**
  * This function opens the new category input
@@ -659,6 +662,22 @@ function closeInviteNewContact() {
   clearInviteNewContactValue()
   document.getElementById(`select-contacts-container${n}`).classList.remove('d-none');
   document.getElementById(`assigned-to-container${n}`).classList.add('d-none');
+}
+function closeDropdownsAddTask(event) {
+  const selectContainer = document.getElementById(`select-container${n}`);
+  const selectContactsContainer = document.getElementById(`select-contacts-container${n}`);
+  // Überprüfe, ob das geklickte Element oder eines seiner Elternelemente selectContainer ist
+ 
+  if (!(selectContainer.contains(event.target))) {
+    closeAddTaskCategory();
+  }
+
+  // Überprüfe, ob das geklickte Element oder eines seiner Elternelemente selectContactsContainer ist
+  if(selectContactsContainer){
+  if (!(selectContactsContainer.contains(event.target))) {
+    closeAddTaskContacts();
+  }
+}
 }
 /**
  * This function checks if new contact field is empty and adds warning otherwise adds invited contact

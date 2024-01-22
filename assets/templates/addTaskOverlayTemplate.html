@@ -3,7 +3,7 @@
     <h1>Add Task</h1>
   </div>
 
-  <form id="addTaskForm1" novalidate onsubmit="checkMandatoryFields(indexOfEditedTask); return false">
+  <form onclick="closeDropdownsAddTask(event)" id="addTaskForm1" novalidate onsubmit="checkMandatoryFields(indexOfEditedTask); return false">
     <div class="content-body-container">
       <div class="container-left">
         <div class="title-container">
@@ -141,7 +141,7 @@
         </div>
         <div id="add-task-subtask-point1"></div>
         <div class="submit-btns-container">
-          <button class="addTaskoverlayCancelButton" onclick="clearTheInputFields()"
+          <button class="addTaskCancelButton" onclick="clearTheInputFields()"
             onmouseover="hover('addTaskClearButton1', './assets/img/buttonXsecondary.svg'); console.log('test') "
             onmouseout="hover('addTaskClearButton1', 'assets/img/buttonX.svg')">
             <span>Cancel</span>

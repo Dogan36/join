@@ -518,8 +518,12 @@ input[type="checkbox"] + label {
     }
 }
 @media (max-width: 500px) {
-
+    .add-task{
+      
+     padding: 0 15px
+  
+    }
 .submit-btns-container{
-    flex-direction: column-;
+    flex-direction: column;
 }
 }
