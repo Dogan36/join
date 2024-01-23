@@ -413,9 +413,38 @@ color: var(--defaultDark);
     border-radius: 10px;
 }
 
-.checkbox-container {
+.subtaskContainer {
     display: flex;
     margin-bottom: 5px;
+    justify-content: space-between;
+    width: 422px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+
+
+.subtaskEdit{
+    display: none;
+    justify-content: space-between;
+width: 50px;
+}
+
+.subtaskEditOpen{
+    display: flex
+}
+
+.subtaskContainer:hover {
+    background-color: #E7E7E7;
+}
+.subtaskContainer:hover .subtaskEdit{
+    display: flex;
+}
+
+.subtaskEdit img,
+.subtaskEditOpen img{
+    height: 15px;
+    cursor: pointer;
 }
 
 .checkbox {
@@ -502,7 +531,7 @@ input[type="checkbox"] + label {
     .content-body-container{
         align-items: unset;
     }
-
+.subtaskContainer,
     .title-input,
     .description-field,
     .select-container,

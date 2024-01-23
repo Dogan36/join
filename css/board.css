@@ -113,7 +113,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    display: none;
+    display: flex;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -453,9 +453,6 @@
         width: 100%;
     }
 
-    .boardElementEmpty {
-        display: flex;
-    }
 
     .boardCard{
         margin-bottom: 10px;

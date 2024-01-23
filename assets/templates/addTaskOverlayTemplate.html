@@ -2,7 +2,6 @@
   <div class="add-task-header">
     <h1>Add Task</h1>
   </div>
-
   <form onclick="closeDropdownsAddTask(event)" id="addTaskForm1" novalidate onsubmit="checkMandatoryFields(indexOfEditedTask); return false">
     <div class="content-body-container">
       <div class="container-left">
@@ -10,9 +9,8 @@
           <p>
             <label class="title">Title</label>
           </p>
-          <input id="task-title-input1" class="title-input no-outline" type="text" placeholder="Enter a title"
-            maxlength="20" title="Geben Sie hier Ihren Text ein" autocomplete="off" required
-            oninput="checkMandatoryFieldTitle()" />
+          <input id="task-title-input1" class="title-input no-outline" type="text" placeholder="Enter a title" maxlength="20" 
+          title="Geben Sie hier Ihren Text ein" autocomplete="off" required oninput="checkMandatoryFieldTitle()" />
           <p id="required-title1" class="required hidden">
             This field is required
           </p>
@@ -48,7 +46,6 @@
               <img onclick="checkNewCategoryName()" class="x-or-hook" src="./assets/img/black-check.svg" alt="" />
             </div>
           </div>
-
           <div id="color-container1" class="color-container d-none">
             <div id="color-button1" class="purple color wheel" onclick="colorButton(0)"></div>
             <div class="red color wheel" onclick="colorButton(1)"></div>
@@ -61,7 +58,6 @@
             This field is required
           </p>
         </div>
-
         <div class="title-container">
           <p>
             <label class="title">Assigned to</label>

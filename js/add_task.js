@@ -436,8 +436,10 @@ function renderAddTaskCategorySelect() {
 function toggleAddTaskCategory() {
   if (document.getElementById(`content-category-container${n}`).classList.contains('d-none'))
     openAddTaskCategory()
-  else {closeAddTaskCategory();
-  checkMandatoryFieldCategory()}
+  else {
+    closeAddTaskCategory();
+    checkMandatoryFieldCategory()
+  }
 }
 
 /**
@@ -452,12 +454,13 @@ function openAddTaskCategory() {
  * This function closes the category container
  */
 function closeAddTaskCategory() {
-let contentCategoryContainer = document.getElementById(`content-category-container${n}`)
-let arrowIconCategory = document.getElementById(`arrowIconCategory${n}`)
-if(contentCategoryContainer){
-contentCategoryContainer.classList.add('d-none')
-arrowIconCategory.classList.remove('arrow-rotate')
-  choosenCategory = undefined}
+  let contentCategoryContainer = document.getElementById(`content-category-container${n}`)
+  let arrowIconCategory = document.getElementById(`arrowIconCategory${n}`)
+  if (contentCategoryContainer) {
+    contentCategoryContainer.classList.add('d-none')
+    arrowIconCategory.classList.remove('arrow-rotate')
+    choosenCategory = undefined
+  }
 }
 /**
  * This function opens the new category input
@@ -667,17 +670,17 @@ function closeDropdownsAddTask(event) {
   const selectContainer = document.getElementById(`select-container${n}`);
   const selectContactsContainer = document.getElementById(`select-contacts-container${n}`);
   // Überprüfe, ob das geklickte Element oder eines seiner Elternelemente selectContainer ist
- 
+
   if (!(selectContainer.contains(event.target))) {
     closeAddTaskCategory();
   }
 
   // Überprüfe, ob das geklickte Element oder eines seiner Elternelemente selectContactsContainer ist
-  if(selectContactsContainer){
-  if (!(selectContactsContainer.contains(event.target))) {
-    closeAddTaskContacts();
+  if (selectContactsContainer) {
+    if (!(selectContactsContainer.contains(event.target))) {
+      closeAddTaskContacts();
+    }
   }
-}
 }
 /**
  * This function checks if new contact field is empty and adds warning otherwise adds invited contact
@@ -790,30 +793,76 @@ function addNewSubtask() {
   }
 }
 
+function saveEditedSubtask(i) {
+  let newSubtaskInput = document.getElementById(`subTaskEditContent${n}${i}`);
+  if (newSubtaskInput.value !== '') {
+    let newSubtask = {
+      'subtaskTitle': newSubtaskInput.value,
+      'subtaskDone': false
+    }
+    subtasks.splice(i, 1, newSubtask)
+    newSubtaskInput.value = '';
+    renderSubtasks()
+  }
+}
+
+function deleteSubtask(i) {
+  subtasks.splice(i, 1)
+  renderSubtasks()
+}
+
+function openEditSubtask(i) {
+  let subtaskContainer = document.getElementById(`checkboxContainer${n}${i}`);
+  console.log(subtaskContainer);
+  subtaskContainer.innerHTML = `<input id="subTaskEditContent${n}${i}" class="no-outline" type="text" maxlength="40" value="test" autocomplete="off">
+        <div class="subtaskEdit subtaskEditOpen"><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg"><span style="color:#cecece">|</span><img onclick = "saveEditedSubtask(${i})" src="assets/img/black-check.svg">
+      </div>`
+  console.log(subtaskContainer);
+}
+
 /**
  * This function renders html to subtask container
  */
 function renderSubtasks() {
+  console.log('subtaskrender')
   let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
   subtasksContainer.innerHTML = '';
   for (let i = 0; i < subtasks.length; i++) {
     let subtask = subtasks[i];
-    let checkboxId = `subtask-checkbox-${n}-${i}`; // ID mit n-Wert und Index i
+
     subtasksContainer.innerHTML += `
-      <div class="checkbox-container">
-        <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''}>
-        <label for="${checkboxId}"></label>
+      <div id="checkboxContainer${n}${i}" class="subtaskContainer">
         <div>${subtask['subtaskTitle']}</div>
+        <div class="subtaskEdit"><img onclick = "openEditSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/editTaskPenBlack.svg"><span style="color:#cecece">|</span><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg">
       </div>
     `;
 
-    let checkbox = document.getElementById(checkboxId);
-    checkbox.addEventListener('change', function () {
-      subtask['subtaskDone'] = this.checked;
-    });
   }
 }
 
+/**
+ * This function gets the subtasks of the task from tasks array
+ * 
+ * @param {number} i This is the index of the task
+ */
+function setSubtasks(i) {
+  console.log('subtaskSet')
+  let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
+  debugger
+  subtasksContainer.innerHTML = '';
+  subtasks = tasks[i].subtasks;
+  for (let j = 0; j < subtasks.length; j++) {
+    let subtask = subtasks[j]
+    subtasksContainer.innerHTML += `
+          <div id="checkboxContainer${n}${i}" class="subtaskContainer">
+                       <div>${subtask['subtaskTitle']}</div>
+                       <div class="subtaskEdit"><img onclick = "openEditSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/editTaskPenBlack.svg"><span style="color:#cecece">|</span><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg">
+                       </div>
+          </div>
+        `;
+
+  }
+}
 /**
  * This function directs user to board page
  */
@@ -838,6 +887,7 @@ function goToBoardPage() {
  */
 function updateSubtaskDone(checked, i, index) {
   tasks[i].subtasks[index]['subtaskDone'] = checked;
+  renderBoard()
 }
 
 /**
@@ -916,28 +966,4 @@ function setPrio(i) {
   prio = tasks[i].prio
 }
 
-/**
- * This function gets the subtasks of the task from tasks array
- * 
- * @param {number} i This is the index of the task
- */
-function setSubtasks(i) {
-  let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
-  subtasksContainer.innerHTML = '';
-  subtasks = tasks[i].subtasks;
-  for (let j = 0; j < subtasks.length; j++) {
-    let subtask = subtasks[j]
-    let checkboxId = `subtask-checkbox-${n}-${j}`; // ID mit n-Wert und Index i
-    subtasksContainer.innerHTML += `
-          <div class="checkbox-container">
-            <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''}>
-            <label for="${checkboxId}"></label>
-            <div>${subtask['subtaskTitle']}</div>
-          </div>
-        `;
-    let checkbox = document.getElementById(checkboxId);
-    checkbox.addEventListener('change', function () {
-      subtask['subtaskDone'] = this.checked;
-    });
-  }
-}
+
