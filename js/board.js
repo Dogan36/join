@@ -42,7 +42,7 @@ function addBoardCard(element) {
         <div draggable="true" class="boardCard" ondragstart="startDragging(${tasks.indexOf(element)})" onclick="openActiveTaskOverlay(${tasks.indexOf(element)})">
             <div class="boardCardInner">
                 <div class="boardCardCategory" style="background-color:${element.taskCategory.categoryColor}">
-                    <span>${element.taskCategory.categorytext}</span>
+                    <span class="boardCardCategorySpan">${element.taskCategory.categorytext}</span>
                 </div>
                 <div class="boardCardContent">
                     <span class="boardCardTaskName">${element.taskTitle}</span>
@@ -322,10 +322,18 @@ function findTask() {
     let searchTerm = searchInput.value.toLowerCase();
     let boardCards = document.getElementsByClassName('boardCard');
     for (let i = 0; i < boardCards.length; i++) {
-        let taskNameElement = boardCards[i].querySelector('.boardCardTaskName');
-        let taskName = taskNameElement.textContent.toLowerCase();
-        if (!taskName.includes(searchTerm)) boardCards[i].classList.add('d-none');
-         else boardCards[i].classList.remove('d-none');
+        let taskName = boardCards[i].querySelector('.boardCardTaskName').textContent.toLowerCase();
+        let taskCategory = boardCards[i].querySelector('.boardCardCategorySpan').textContent.toLowerCase();
+        let taskDescription = boardCards[i].querySelector('.boardCardTaskDescription').textContent.toLowerCase();
+        if (
+            !taskName.includes(searchTerm) &&
+            !taskCategory.includes(searchTerm) &&
+            !taskDescription.includes(searchTerm)
+        ) {
+            boardCards[i].classList.add('d-none');
+        } else {
+            boardCards[i].classList.remove('d-none');
+        }
     }
 }
 
