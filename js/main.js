@@ -119,7 +119,7 @@ function render() {
   greetingAds()
   renderBoard()
   renderContacts()
-  renderAddTaskDropdowns()
+  renderAddTask()
   renderUserInitials()
   setCurrentDate()
 }
@@ -127,11 +127,12 @@ function render() {
 /**
  * This function renders all dropdowns
  */
-function renderAddTaskDropdowns() {
+function renderAddTask() {
   renderAddTaskCategorySelect()
   renderAddTaskCategorys()
   renderAddTaskContactsSelect()
   renderAddTaskContacts()
+  choosePrio('prio-yellow')
 }
 
 /**
@@ -593,7 +594,7 @@ function openAddTaskOverlay(progress) {
   clearTheInputFields()
   choosenCategory = undefined
   n = 1;
-  renderAddTaskDropdowns()
+  renderAddTask()
   showDarkBackground()
   document.getElementById('addTaskOverlay').classList.add('overlayActive');
 }
@@ -618,7 +619,7 @@ function openEditTaskOverlay(i) {
   closeOverlay()
   clearTheInputFields()
   n = 2;
-  renderAddTaskDropdowns()
+  renderAddTask()
   setTimeout(showDarkBackground, 500)
   document.getElementById('editTaskOverlay').classList.add('overlayActive')
   setEditTaskOverlay(i)

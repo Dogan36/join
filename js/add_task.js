@@ -3,7 +3,6 @@ let description;
 let choosenCategory
 let selectedContacts = [];
 let dueDate;
-let prio;
 let subtasks = []
 let addTaskNewSubtasks = [];
 let indexOfEditedTask
@@ -46,6 +45,7 @@ let prios = [
 ]
 let selectedColor;
 let n = 0
+let prio = prios[1]
 
 /**
  * This function checks the mandatory fields on add task an edit task
@@ -125,8 +125,8 @@ function deleteAddTaskFields() {
   document.getElementById(`due-date${n}`).value = '';
   document.getElementById(`add-task-subtask-point${n}`).innerHTML = '';
   resetSubtasks()
-  resetPrioButtons()
-  renderAddTaskDropdowns()
+  //resetPrioButtons()
+  renderAddTask()
 }
 
 /**
