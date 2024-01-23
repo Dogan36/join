@@ -154,11 +154,11 @@ function renderUserInitials() {
  */
 function showContent(x) {
   let content = document.querySelectorAll(".indexContent");
-  clearTheInputFields();
   content.forEach(function (element) {
     element.classList.add("d-none");
   });
   document.getElementById(x).classList.remove('d-none')
+  clearTheInputFields();
 
 }
 /**
