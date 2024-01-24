@@ -422,11 +422,15 @@ color: var(--defaultDark);
     border-radius: 10px;
 }
 
-
+.subtaskContainer input{
+    flex:1;
+    background-color: #E7E7E7;
+}
 
 .subtaskEdit{
     display: none;
     justify-content: space-between;
+    align-items: center;
 width: 50px;
 }
 

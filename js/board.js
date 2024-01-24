@@ -210,8 +210,18 @@ function addActiveTaskOverlayHTML(i) {
  */
 function toogleTaskMove() {
     let container = document.querySelector('.activeTaskMoveContainer');
-    if (container.classList.contains('activeTaskMoveContainerOpen')) container.classList.remove('activeTaskMoveContainerOpen')
-    else container.classList.add('activeTaskMoveContainerOpen')
+    if (container.classList.contains('activeTaskMoveContainerOpen')) closeTaskMove()
+    else openTaskMove()
+}
+
+function openTaskMove(){
+    let container = document.querySelector('.activeTaskMoveContainer'); 
+    container.classList.add('activeTaskMoveContainerOpen')
+}
+
+function closeTaskMove(){
+    let container = document.querySelector('.activeTaskMoveContainer');
+    container.classList.remove('activeTaskMoveContainerOpen')
 }
 
 /**
@@ -266,6 +276,7 @@ function moveTo(i, progress) {
     let task = tasks[i]
     task.taskProgress = `${progress}`
     showConfirmation('taskMoved')
+    closeTaskMove()
     setItem('tasks', tasks)
     renderBoard()
     renderSummary()

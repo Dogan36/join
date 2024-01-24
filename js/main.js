@@ -751,7 +751,6 @@ function closeLogout() {
  */
 function logOut() {
   currentUser='Guest'
-  debugger
   window.location.href = 'login.html';
 }
 

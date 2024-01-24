@@ -1094,6 +1094,16 @@ max-height: 140px;
 
     .activeTaskButtons{
         flex-direction: column;
+        align-items: end;
+    }
+
+    .activeTaskDelete{
+        border-radius: 10px 10px 0px 0px;
+        margin: unset;
+    }
+
+    .activeTaskEdit{
+        border-radius: 0px 0px 10px 10px;
     }
 }
 

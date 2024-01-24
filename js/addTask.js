@@ -272,7 +272,6 @@ function choosePrio(color) {
   let divClicked = document.getElementById(`${color}${n}`)
   setPrioColor(color)
   resetPrioButtons()
-  debugger
   divClicked.classList.add(`${color}`)
   changePrioButtonIcon(color)
 }
@@ -814,7 +813,6 @@ function deleteSubtask(i) {
 }
 
 function openEditSubtask(i) {
-  debugger
   let subtaskContainer = document.getElementById(`checkboxContainer${n}${i}`);
   let value = document.getElementById(`subtaskContainerValue${n}${i}`).textContent
   subtaskContainer.innerHTML = `<input id="subTaskEditContent${n}${i}" class="noOutline" type="text" maxlength="40" value="${value}" autocomplete="off">
