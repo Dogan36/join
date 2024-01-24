@@ -816,19 +816,15 @@ function openEditSubtask(i) {
   debugger
   let subtaskContainer = document.getElementById(`checkboxContainer${n}${i}`);
   let value = document.getElementById(`subtaskContainerValue${n}${i}`).textContent
-  
-  console.log(subtaskContainer);
   subtaskContainer.innerHTML = `<input id="subTaskEditContent${n}${i}" class="no-outline" type="text" maxlength="40" value="${value}" autocomplete="off">
         <div class="subtaskEdit subtaskEditOpen"><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg"><span style="color:#cecece">|</span><img onclick = "saveEditedSubtask(${i})" src="assets/img/black-check.svg">
       </div>`
-  console.log(subtaskContainer);
 }
 
 /**
  * This function renders html to subtask container
  */
 function renderSubtasks() {
-  console.log('subtaskrender')
   let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
   subtasksContainer.innerHTML = '';
   for (let i = 0; i < subtasks.length; i++) {
@@ -850,7 +846,6 @@ function renderSubtasks() {
  * @param {number} i This is the index of the task
  */
 function setSubtasks(i) {
-  console.log('subtaskSet')
   let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
   subtasksContainer.innerHTML = '';
   subtasks = tasks[i].subtasks;
