@@ -12,7 +12,7 @@
     <script src='./js/board.js'></script>
     <script src="./js/summary.js"></script>
     <script src="./js/contacts.js"></script>
-    <script src="./js/add_task.js"></script>
+    <script src="./js/addTask.js"></script>
     <link rel="preload" href="./fonts/inter-v12-latin-100.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./fonts/inter-v12-latin-200.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="./fonts/inter-v12-latin-300.woff2" as="font" type="font/woff2" crossorigin>
@@ -28,19 +28,19 @@
     <link rel="stylesheet" href="./css/board.css">
     <link rel="stylesheet" href="./css/addTask.css">
     <link rel="stylesheet" href="./css/contacts.css">
-    <link rel="stylesheet" href="./css/desktop_template.css">
-    <link rel="stylesheet" href="./css/mobile_template.css">
+    <link rel="stylesheet" href="./css/desktopTemplate.css">
+    <link rel="stylesheet" href="./css/mobileTemplate.css">
     <link rel="stylesheet" href="./css/login.css">
 </head>
 <body onload="init('include')">
     <indexWrapper>
-        <div w3-include-html="./assets/templates/desktop_template.html"></div>
-        <div w3-include-html="./assets/templates/mobile_template.html"></div>
+        <div w3-include-html="./assets/templates/desktopTemplate.html"></div>
+        <div w3-include-html="./assets/templates/mobileTemplate.html"></div>
         <div class="indexContainer">
             <div class="indexHeader" w3-include-html="./assets/templates/header.html"></div>
             <div id='summaryContent' class="indexContent" w3-include-html="summary2.html"></div>
             <div id='boardContent' class="indexContent d-none" w3-include-html="board.html"></div>
-            <div id='addTaskContent' class="indexContent d-none" w3-include-html="add_task.html"></div>
+            <div id='addTaskContent' class="indexContent d-none" w3-include-html="addTask.html"></div>
             <div id='contactsContent' class="indexContent d-none" w3-include-html="contacts.html"></div>
             <div id='legalContent' class="indexContent d-none" w3-include-html="./assets/templates/legal.html"></div>
             <div id='privacyContent' class="indexContent d-none" w3-include-html="./assets/templates/privacy.html"></div>

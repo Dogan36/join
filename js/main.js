@@ -190,16 +190,16 @@ function setActiveIcon() {
   let iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
   for (let i = 0; i < icons.length; i++) {
     let img = icons[i].querySelector("img");
-    if (img) img.src = img.src.replace("active.svg", ".svg");
+    if (img) img.src = img.src.replace("Active.svg", ".svg");
   }
   for (let i = 0; i < iconsMobile.length; i++) {
     let img = iconsMobile[i].querySelector("img");
-    if (img) img.src = img.src.replace("active.svg", ".svg");
+    if (img) img.src = img.src.replace("Active.svg", ".svg");
   }
   let iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
   iconsActive.forEach(function (iconActive) {
     let img = iconActive.querySelector("img");
-    if (img) img.src = img.src.replace(".svg", "active.svg");
+    if (img) img.src = img.src.replace(".svg", "Active.svg");
   });
   
 }

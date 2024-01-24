@@ -893,9 +893,10 @@ function updateSubtaskDone(checked, i, index) {
  * 
  * @param {number} i This is the index of the task
  */
-function deleteTask(i) {
+async function deleteTask(i) {
   document.getElementById('activeTaskDelete').disabled = true;
-  tasks.splice(i, 1)
+  tasks.splice(i, 1);
+  await setItem('tasks', tasks);
   showConfirmation('taskDeleted')
   goToBoardPage()
   document.getElementById('activeTaskDelete').disabled = false;
