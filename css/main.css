@@ -104,14 +104,7 @@ indexWrapper {
     z-index: 1;
 }
 
-.leftArrow {
-    position: absolute;
-    width: 37px;
-    height: 37px;
-    left: 31px;
-    top: 35px;
-    cursor: pointer;
-}
+
 
 .loginSignUpButton {
     display: flex;

@@ -75,8 +75,18 @@
         transform: translate(-50%, -50%);
     }
 
-    100% {
 
+    99% {
+
+        width: auto;
+        height: 18%;
+        transform: translate(0, 0);
+        top: 7%;
+        left: 5%;
+    }
+
+    100% {
+z-index: 1;
         width: auto;
         height: 18%;
         transform: translate(0, 0);
@@ -105,13 +115,20 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
-
+99% {
+    width: auto;
+    height: 18%;
+    transform: translate(0, 0);
+    top: 7%;
+    left: 5%;
+}
     100% {
         width: auto;
         height: 18%;
         transform: translate(0, 0);
         top: 7%;
         left: 5%;
+        z-index: 1;
     }
 }
 
@@ -564,6 +581,9 @@ img[src="assets/img/visibleIcon.svg"]:hover {
         animation-fill-mode: forwards;
         opacity: 1;
     }
+.leftArrow{
+    left:15px
+}
 
     @keyframes backgroundEaseOut {
         0% {
