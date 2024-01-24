@@ -569,7 +569,7 @@ indexWrapper {
     color: #FFFFFF;
 }
 
-.task-added-to-board-container {
+.taskAddedToBoardContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -585,27 +585,27 @@ indexWrapper {
     z-index: 2;
 }
 
-.task-added-to-board-container img {
+.taskAddedToBoardContainer img {
     height: 40px;
 }
 
-.fly-in {
+.flyIn {
     bottom: 0;
     opacity: 0;
     color: white;
     transform: translate(-50%, 100%);
-    animation: fly-in 0.5s ease-in-out forwards;
+    animation: flyIn 0.5s ease-in-out forwards;
     position: absolute;
 }
 
-@keyframes fly-in {
+@keyframes flyIn {
     to {
         opacity: 1;
         transform: translate(-50%, -50%);
     }
 }
 
-.task-added-to-board {
+.taskAddedToBoard {
     width: 235px;
     font-family: Inter;
     font-size: 21px;
@@ -673,7 +673,6 @@ indexWrapper {
 
 .overlayActive {
     left: 50%;
-
 }
 
 .activeTaskAssignedToContainer {
@@ -911,6 +910,11 @@ max-height: 140px;
     height: 35px;
 }
 
+.activeTaskAssignedTo span{
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+
 .activeTaskAvartar {
     display: flex;
     flex-direction: column;
@@ -955,7 +959,7 @@ max-height: 140px;
     height: 100svh;
 }
 
-.legal_container {
+.legalContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -966,7 +970,7 @@ max-height: 140px;
     gap: 20px;
 }
 
-.log-out-modal {
+.logOutModal {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1076,11 +1080,20 @@ max-height: 140px;
     h1 {
         font-size: 16vw;
     }
+
+     
+    .activeTaskTitle{
+        font-size: 16vw;
+    }
 }
 
 @media screen and (max-width: 610px) {
     .header p {
         display: none;
+    }
+
+    .activeTaskButtons{
+        flex-direction: column;
     }
 }
 
@@ -1089,11 +1102,12 @@ max-height: 140px;
         align-items: normal;
     }
 
-    .legal_container{
+    .legalContainer{
         padding-top: 8.3vw;
     }
+   
 }
-
+    
 @media screen and (max-width: 1080px) {
     indexWrapper {
         flex-direction: column-reverse;
@@ -1124,7 +1138,7 @@ max-height: 140px;
 }
 
 @media screen and (max-width: 1200px) {
-    .welcome-desk {
+    .welcomeDesk {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1136,18 +1150,18 @@ max-height: 140px;
         left:0;
         background-color: #f5f5f5;
         z-index: 2;
-        animation-name: background-ease-out;
+        animation-name: backgroundEaseOut;
         animation-duration: 2s;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;
         opacity: 1;
     }
 
-    .welcome-desk.animation-done {
+    .welcomeDesk.animationDone {
         display: none;
     }
 
-    @keyframes background-ease-out {
+    @keyframes backgroundEaseOut {
         0% {
             opacity: 1;
         }

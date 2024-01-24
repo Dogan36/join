@@ -134,12 +134,12 @@
     flex-grow: 0;
 }
 
-.color-and-delete-icon-container {
+.colorAndDeleteIconContainer {
     display: flex;
     align-items: center;
 }
 
-.delete-icon {
+.deleteIcon {
     width: 20px;
     height: 20px;
 }

@@ -23,24 +23,24 @@ let prios = [
   {
     name: 'low',
     backgroundColor: '#ff3c00',
-    iconWhite: 'assets/img/prio-low-white-icon.svg',
-    iconColor: 'assets/img/prio-low-icon.svg',
-    ID: 'prio-green'
+    iconWhite: 'assets/img/prioLowWhiteIcon.svg',
+    iconColor: 'assets/img/prioLowIcon.svg',
+    ID: 'prioGreen'
   },
   {
     name: 'medium',
     backgroundColor: '#ffa800',
-    iconWhite: 'assets/img/prio-medium-white-icon.svg',
-    iconColor: 'assets/img/prio-medium-icon.svg',
-    ID: 'prio-yellow'
+    iconWhite: 'assets/img/prioMediumWhiteIcon.svg',
+    iconColor: 'assets/img/prioMediumIcon.svg',
+    ID: 'prioYellow'
 
   },
   {
     name: 'urgent',
     backgroundColor: '#ff3c0',
-    iconWhite: 'assets/img/prio-urgent-white-icon.svg',
-    iconColor: 'assets/img/prio-urgent-icon.svg',
-    ID: 'prio-red'
+    iconWhite: 'assets/img/prioUrgentWhiteIcon.svg',
+    iconColor: 'assets/img/prioUrgentIcon.svg',
+    ID: 'prioRed'
   }
 ]
 let selectedColor;
@@ -97,11 +97,11 @@ async function addTaskJsonArray() {
 function getAddTaskJson() {
   let taskJsonArray =
   {
-    'taskTitle': document.getElementById(`task-title-input${n}`).value,
-    'taskDescription': document.getElementById(`add-task-description${n}`).value,
+    'taskTitle': document.getElementById(`taskTitleInput${n}`).value,
+    'taskDescription': document.getElementById(`addTaskDescription${n}`).value,
     'taskCategory': choosenCategory,
     'assignedTo': selectedContacts,
-    'dueDate': document.getElementById(`due-date${n}`).value,
+    'dueDate': document.getElementById(`dueDate${n}`).value,
     'prio': prio,
     'subtasks': subtasks,
     'taskProgress': taskProgress,
@@ -121,10 +121,10 @@ function clearTheInputFields() {
  * This function deletes the values of the input fields and resets the buttons and dropdowns
  */
 function deleteAddTaskFields() {
-  document.getElementById(`task-title-input${n}`).value = '';
-  document.getElementById(`add-task-description${n}`).value = '';
-  document.getElementById(`due-date${n}`).value = '';
-  document.getElementById(`add-task-subtask-point${n}`).innerHTML = '';
+  document.getElementById(`taskTitleInput${n}`).value = '';
+  document.getElementById(`addTaskDescription${n}`).value = '';
+  document.getElementById(`dueDate${n}`).value = '';
+  document.getElementById(`addTaskSubtaskPoint${n}`).innerHTML = '';
   resetSubtasks()
   //resetPrioButtons()
   renderAddTask()
@@ -154,112 +154,112 @@ function clearWarnings() {
  */
 
 function addTitleWarnings() {
-  document.getElementById(`required-title${n}`).classList.remove('hidden');
-  document.getElementById(`task-title-input${n}`).style.border = '2px solid red';
+  document.getElementById(`requiredTitle${n}`).classList.remove('hidden');
+  document.getElementById(`taskTitleInput${n}`).style.border = '2px solid red';
 }
 
 /**
  * This function clears the warning on title
  */
 function clearTitleWarnings() {
-  document.getElementById(`required-title${n}`).classList.add('hidden');
-  document.getElementById(`task-title-input${n}`).style = '';
+  document.getElementById(`requiredTitle${n}`).classList.add('hidden');
+  document.getElementById(`taskTitleInput${n}`).style = '';
 }
 
 /**
  * This function adds warning on description
  */
 function addDescriptionWarnings() {
-  document.getElementById(`required-description${n}`).classList.remove('hidden');
-  document.getElementById(`add-task-description${n}`).style.border = '2px solid red';
+  document.getElementById(`requiredDescription${n}`).classList.remove('hidden');
+  document.getElementById(`addTaskDescription${n}`).style.border = '2px solid red';
 }
 
 /**
  * This function clears warning on description
  */
 function clearDescriptionWarnings() {
-  document.getElementById(`required-description${n}`).classList.add('hidden');
-  document.getElementById(`add-task-description${n}`).style = '';
+  document.getElementById(`requiredDescription${n}`).classList.add('hidden');
+  document.getElementById(`addTaskDescription${n}`).style = '';
 }
 
 /**
  * This function adds warning on new category
  */
 function addNewCategoryWarning() {
-  document.getElementById(`new-category-container${n}`).style.border = '2px solid red';
-  document.getElementById(`required-category${n}`).classList.remove('hidden');
-  document.getElementById(`required-category${n}`).innerHTML = 'Please enter name and color'
+  document.getElementById(`newCategoryContainer${n}`).style.border = '2px solid red';
+  document.getElementById(`requiredCategory${n}`).classList.remove('hidden');
+  document.getElementById(`requiredCategory${n}`).innerHTML = 'Please enter name and color'
 }
 
 /**
  * This function adds warning on new priority
  */
 function addPrioWarnings() {
-  document.getElementById(`prio-red${n}`).style.border = '2px solid red';
-  document.getElementById(`prio-yellow${n}`).style.border = '2px solid red';
-  document.getElementById(`prio-green${n}`).style.border = '2px solid red';
-  document.getElementById(`required-prio${n}`).classList.remove('hidden');
+  document.getElementById(`prioRed${n}`).style.border = '2px solid red';
+  document.getElementById(`prioYellow${n}`).style.border = '2px solid red';
+  document.getElementById(`prioGreen${n}`).style.border = '2px solid red';
+  document.getElementById(`requiredPrio${n}`).classList.remove('hidden');
 }
 
 /**
  * This function clears warning on new priority
  */
 function clearPrioWarnings() {
-  document.getElementById(`prio-red${n}`).style = '';
-  document.getElementById(`prio-yellow${n}`).style = '';
-  document.getElementById(`prio-green${n}`).style = '';
-  document.getElementById(`required-prio${n}`).classList.add('hidden');
+  document.getElementById(`prioRed${n}`).style = '';
+  document.getElementById(`prioYellow${n}`).style = '';
+  document.getElementById(`prioGreen${n}`).style = '';
+  document.getElementById(`requiredPrio${n}`).classList.add('hidden');
 }
 
 /**
  * This function adds warning on category
  */
 function addCategoryWarnings() {
-  document.getElementById(`required-category${n}`).classList.remove('hidden');
-  document.getElementById(`required-category${n}`).innerHTML = 'This field is required'
-  document.getElementById(`select-container${n}`).style.border = '2px solid red';
+  document.getElementById(`requiredCategory${n}`).classList.remove('hidden');
+  document.getElementById(`requiredCategory${n}`).innerHTML = 'This field is required'
+  document.getElementById(`selectContainer${n}`).style.border = '2px solid red';
 }
 
 /**
  * This function clears warning on category
  */
 function clearCategoryWarnings() {
-  document.getElementById(`required-category${n}`).classList.add('hidden');
-  document.getElementById(`select-container${n}`).style = '';
-  document.getElementById(`required-category${n}`).classList.add('hidden');
-  document.getElementById(`new-category-container${n}`).style = '';
+  document.getElementById(`requiredCategory${n}`).classList.add('hidden');
+  document.getElementById(`selectContainer${n}`).style = '';
+  document.getElementById(`requiredCategory${n}`).classList.add('hidden');
+  document.getElementById(`newCategoryContainer${n}`).style = '';
 }
 
 /**
  * This function adds warning on assigned to
  */
 function addAssignedTowarnings() {
-  document.getElementById(`required-assigned-to${n}`).classList.remove('hidden');
-  document.getElementById(`assigned-to-container${n}`).style.border = '2px solid red';
+  document.getElementById(`requiredAssignedTo${n}`).classList.remove('hidden');
+  document.getElementById(`assignedToContainer${n}`).style.border = '2px solid red';
 }
 
 /**
  * This function clears warning on assigned to
  */
 function clearAssignedTowarnings() {
-  document.getElementById(`required-assigned-to${n}`).classList.add('hidden');
-  document.getElementById(`assigned-to-container${n}`).style = '';
+  document.getElementById(`requiredAssignedTo${n}`).classList.add('hidden');
+  document.getElementById(`assignedToContainer${n}`).style = '';
 }
 
 /**
  * This function adds warning on due date
  */
 function addDueDateWarnings() {
-  document.getElementById(`required-due-date${n}`).classList.remove('hidden');
-  document.getElementById(`due-date${n}`).style.border = '2px solid red';
+  document.getElementById(`requiredDueDate${n}`).classList.remove('hidden');
+  document.getElementById(`dueDate${n}`).style.border = '2px solid red';
 }
 
 /**
  * This function clears warning on due date
  */
 function clearDueDateWarnings() {
-  document.getElementById(`required-due-date${n}`).classList.add('hidden');
-  document.getElementById(`due-date${n}`).style = '';
+  document.getElementById(`requiredDueDate${n}`).classList.add('hidden');
+  document.getElementById(`dueDate${n}`).style = '';
 }
 
 /**
@@ -281,9 +281,9 @@ function choosePrio(color) {
  * @param {string} element his is the color of the choosen priority
  */
 function setPrioColor(element) {
-  if (element == `prio-red`) prio = prios[2]
-  if (element == `prio-yellow`) prio = prios[1]
-  if (element == `prio-green`) prio = prios[0]
+  if (element == `prioRed`) prio = prios[2]
+  if (element == `prioYellow`) prio = prios[1]
+  if (element == `prioGreen`) prio = prios[0]
 }
 
 /**
@@ -292,21 +292,21 @@ function setPrioColor(element) {
  * @param {string} element This is the choosen color
  */
 function changePrioButtonIcon(element) {
-  if (element == `prio-red`) document.getElementById(`prio-urgent-icon${n}`).src = 'assets/img/prio-urgent-white-icon.svg'
-  if (element == `prio-yellow`) document.getElementById(`prio-medium-icon${n}`).src = 'assets/img/prio-medium-white-icon.svg'
-  if (element == `prio-green`) document.getElementById(`prio-low-icon${n}`).src = 'assets/img/prio-low-white-icon.svg'
+  if (element == `prioRed`) document.getElementById(`prioUrgentIcon${n}`).src = 'assets/img/prioUrgentWhiteIcon.svg'
+  if (element == `prioYellow`) document.getElementById(`prioMediumIcon${n}`).src = 'assets/img/prioMediumWhiteIcon.svg'
+  if (element == `prioGreen`) document.getElementById(`prioLowIcon${n}`).src = 'assets/img/prioLowWhiteIcon.svg'
 }
 
 /**
  * This function resets the prio buttons
  */
 function resetPrioButtons() {
-  document.getElementById(`prio-red${n}`).classList.remove('prio-red')
-  document.getElementById(`prio-yellow${n}`).classList.remove('prio-yellow')
-  document.getElementById(`prio-green${n}`).classList.remove('prio-green')
-  document.getElementById(`prio-urgent-icon${n}`).src = 'assets/img/prio-urgent-icon.svg'
-  document.getElementById(`prio-medium-icon${n}`).src = 'assets/img/prio-medium-icon.svg'
-  document.getElementById(`prio-low-icon${n}`).src = 'assets/img/prio-low-icon.svg'
+  document.getElementById(`prioRed${n}`).classList.remove('prioRed')
+  document.getElementById(`prioYellow${n}`).classList.remove('prioYellow')
+  document.getElementById(`prioGreen${n}`).classList.remove('prioGreen')
+  document.getElementById(`prioUrgentIcon${n}`).src = 'assets/img/prioUrgentIcon.svg'
+  document.getElementById(`prioMediumIcon${n}`).src = 'assets/img/prioMediumIcon.svg'
+  document.getElementById(`prioLowIcon${n}`).src = 'assets/img/prioLowIcon.svg'
 }
 
 /**
@@ -315,7 +315,7 @@ function resetPrioButtons() {
  * @returns boolean
  */
 function checkMandatoryFieldTitle() {
-  let inputFeldTitle = document.getElementById(`task-title-input${n}`);
+  let inputFeldTitle = document.getElementById(`taskTitleInput${n}`);
   if (inputFeldTitle.value === '') {
     addTitleWarnings()
     return true
@@ -329,7 +329,7 @@ function checkMandatoryFieldTitle() {
  * @returns boolean
  */
 function checkMandatoryFieldDescription() {
-  let textareaFeldDescription = document.getElementById(`add-task-description${n}`);
+  let textareaFeldDescription = document.getElementById(`addTaskDescription${n}`);
   if (textareaFeldDescription.value === '') {
     addDescriptionWarnings()
     return true
@@ -343,7 +343,7 @@ function checkMandatoryFieldDescription() {
  * @returns boolean
  */
 function checkMandatoryFieldDueDate() {
-  let inputFeldDueDate = document.getElementById(`due-date${n}`);
+  let inputFeldDueDate = document.getElementById(`dueDate${n}`);
   if (inputFeldDueDate.value === '') {
     addDueDateWarnings()
     return true
@@ -370,10 +370,10 @@ function checkMandatoryFieldCategory() {
  * @returns boolean
  */
 function checkPrio() {
-  let prioColorRed = document.getElementById(`prio-red${n}`);
-  let prioColorYellow = document.getElementById(`prio-yellow${n}`);
-  let prioColorGreen = document.getElementById(`prio-green${n}`);
-  if (!prioColorRed.classList.contains('prio-red') && !prioColorYellow.classList.contains('prio-yellow') && !prioColorGreen.classList.contains('prio-green')) {
+  let prioColorRed = document.getElementById(`prioRed${n}`);
+  let prioColorYellow = document.getElementById(`prioYellow${n}`);
+  let prioColorGreen = document.getElementById(`prioGreen${n}`);
+  if (!prioColorRed.classList.contains('prioRed') && !prioColorYellow.classList.contains('prioYellow') && !prioColorGreen.classList.contains('prioGreen')) {
     addPrioWarnings()
     return true
   } else {
@@ -404,12 +404,12 @@ function renderAddTaskCategorys() {
 function renderAddTaskCategoriesHTML(i, category) {
   return `
   <div class="categoryOption" >
-    <div class="selection-point-container" onclick="selectCategory(${i})">
+    <div class="selectionPointContainer" onclick="selectCategory(${i})">
       <div>${category['categorytext']}</div>
-      <div class="color" style="background-color: ${category['categoryColor']}"></div>
+      <div class="color" style="backgroundColor: ${category['categoryColor']}"></div>
     </div>
-    <div class="color-and-delete-icon-container">
-      <img onclick="deleteCategory(${i})" class="delete-icon" src = "./assets/img/delete.png" alt = "" >
+    <div class="colorAndDeleteIconContainer">
+      <img onclick="deleteCategory(${i})" class="deleteIcon" src = "./assets/img/delete.png" alt = "" >
     </div> 
   </div>`
 }
@@ -418,14 +418,14 @@ function renderAddTaskCategoriesHTML(i, category) {
  * This function renders the category which is selected
  */
 function renderAddTaskCategorySelect() {
-  let content = document.getElementById(`select-container${n}`);
+  let content = document.getElementById(`selectContainer${n}`);
   content.innerHTML = `
   <div onclick="toggleAddTaskCategory()" class="categoryOption selectTask">
-  <input readonly id="select-start-task-category${n}" class="input-outline"
+  <input readonly id="selectStartTaskCategory${n}" class="inputOutline"
   placeholder="Select task category"></input>
-  <img class="arrow-icon" id="arrowIconCategory${n}" src="./assets/img/arrow_icon.svg" alt="" />
+  <img class="arrowIcon" id="arrowIconCategory${n}" src="./assets/img/arrowIcon.svg" alt="" />
 </div>
-<div id="content-category-container${n}" class="d-none">
+<div id="contentCategoryContainer${n}" class="d-none">
   <div onclick="openNewCategoryInput()" class="categoryOption">New Category</div>
   <div id="categorySelection${n}" class=""></div>
 </div>`
@@ -435,7 +435,7 @@ function renderAddTaskCategorySelect() {
  * This function toogles the category container
  */
 function toggleAddTaskCategory() {
-  if (document.getElementById(`content-category-container${n}`).classList.contains('d-none'))
+  if (document.getElementById(`contentCategoryContainer${n}`).classList.contains('d-none'))
     openAddTaskCategory()
   else {
     closeAddTaskCategory();
@@ -447,19 +447,19 @@ function toggleAddTaskCategory() {
  * This function opens the category container
  */
 function openAddTaskCategory() {
-  document.getElementById(`content-category-container${n}`).classList.remove('d-none')
-  document.getElementById(`arrowIconCategory${n}`).classList.add('arrow-rotate')
+  document.getElementById(`contentCategoryContainer${n}`).classList.remove('d-none')
+  document.getElementById(`arrowIconCategory${n}`).classList.add('arrowRotate')
 }
 
 /**
  * This function closes the category container
  */
 function closeAddTaskCategory() {
-  let contentCategoryContainer = document.getElementById(`content-category-container${n}`)
+  let contentCategoryContainer = document.getElementById(`contentCategoryContainer${n}`)
   let arrowIconCategory = document.getElementById(`arrowIconCategory${n}`)
   if (contentCategoryContainer) {
     contentCategoryContainer.classList.add('d-none')
-    arrowIconCategory.classList.remove('arrow-rotate')
+    arrowIconCategory.classList.remove('arrowRotate')
     choosenCategory = undefined
   }
 }
@@ -468,17 +468,17 @@ function closeAddTaskCategory() {
  */
 function openNewCategoryInput() {
   choosenCategory = undefined
-  document.getElementById(`new-category-container${n}`).classList.remove('d-none');
-  document.getElementById(`color-container${n}`).classList.remove('d-none');
-  document.getElementById(`select-container${n}`).classList.add('d-none');
+  document.getElementById(`newCategoryContainer${n}`).classList.remove('d-none');
+  document.getElementById(`colorContainer${n}`).classList.remove('d-none');
+  document.getElementById(`selectContainer${n}`).classList.add('d-none');
 }
 /**
  * This function closes the new category input
  */
 function closeAddTaskNewCategory() {
-  document.getElementById(`new-category-container${n}`).classList.add('d-none');
-  document.getElementById(`color-container${n}`).classList.add('d-none');
-  document.getElementById(`select-container${n}`).classList.remove('d-none');
+  document.getElementById(`newCategoryContainer${n}`).classList.add('d-none');
+  document.getElementById(`colorContainer${n}`).classList.add('d-none');
+  document.getElementById(`selectContainer${n}`).classList.remove('d-none');
 }
 
 /**
@@ -486,7 +486,7 @@ function closeAddTaskNewCategory() {
  */
 function checkNewCategoryName() {
   let name = document.getElementById(`category${n}`);
-  let color = document.getElementById(`color-button-container${n}`);
+  let color = document.getElementById(`colorButtonContainer${n}`);
   if (name.value === '' || color.innerHTML === '') addNewCategoryWarning()
   else {
     clearCategoryWarnings()
@@ -517,7 +517,7 @@ async function addNewCategory() {
  */
 function resetNewCategoryInput() {
   document.getElementById(`category${n}`).value = "";
-  document.getElementById(`color-button-container${n}`).innerHTML = '';
+  document.getElementById(`colorButtonContainer${n}`).innerHTML = '';
 }
 
 /**
@@ -540,7 +540,7 @@ async function deleteCategory(i) {
 function colorButton(i) {
   selectedColor = '';
   selectedColor = buttonBackgroundColor[i];
-  document.getElementById(`color-button-container${n}`).innerHTML = `<div class="color-category-button" style="background-color :${selectedColor};"></div>`;
+  document.getElementById(`colorButtonContainer${n}`).innerHTML = `<div class="colorCategoryButton" style="backgroundColor :${selectedColor};"></div>`;
 }
 
 /**
@@ -551,7 +551,7 @@ function colorButton(i) {
 function selectCategory(i) {
   clearCategoryWarnings()
   choosenCategory = categorys[i];
-  document.getElementById(`select-container${n}`).innerHTML = categoryTemplate(choosenCategory)
+  document.getElementById(`selectContainer${n}`).innerHTML = categoryTemplate(choosenCategory)
 }
 
 /**
@@ -563,24 +563,24 @@ function selectCategory(i) {
 function categoryTemplate(category) {
   return `
     <div onclick="renderAddTaskCategorySelect(); renderAddTaskCategorys(), toggleAddTaskCategory()" class="categoryOption">
-                  <div class="selection-point-container">
+                  <div class="selectionPointContainer">
                     <div>${category['categorytext']}</div>
-                    <div id="color-button-container${n}"><div class="color-category-button" style="background-color :${category['categoryColor']};">  
+                    <div id="colorButtonContainer${n}"><div class="colorCategoryButton" style="backgroundColor :${category['categoryColor']};">  
                     </div></div>
                   </div>
-                  <img class="arrow-icon" id="arrowIconCategory${n}" src="./assets/img/arrow_icon.svg" alt="">
+                  <img class="arrowIcon" id="arrowIconCategory${n}" src="./assets/img/arrowIcon.svg" alt="">
                 </div>`
 }
 /**
  * This function generates the html for the selected contacts
  */
 function renderAddTaskContactsSelect() {
-  document.getElementById(`select-contacts-container${n}`).innerHTML = `
+  document.getElementById(`selectContactsContainer${n}`).innerHTML = `
   <div onclick="toggleAddTaskContacts()" class="contactsOption">
-              <div class="addTaskDropdownHeader" id="select-start-task-contact${n}">
+              <div class="addTaskDropdownHeader" id="selectStartTaskContact${n}">
                 Select contacts to assign
               </div>
-              <img id="arrow-rotate${n}" class="arrow-icon" src="./assets/img/arrow_icon.svg" alt="" />
+              <img id="arrowRotate${n}" class="arrowIcon" src="./assets/img/arrowIcon.svg" alt="" />
             </div>
             <div id="contacts${n}" class="d-none">
               </div>
@@ -594,9 +594,9 @@ function renderAddTaskContacts() {
   let content = document.getElementById(`contacts${n}`);
   content.innerHTML = '';
   content.innerHTML = `
-    <div id="invite-new-contact-container${n}" onclick="openInviteNewContact()" class="contactsOption">
+    <div id="inviteNewContactContainer${n}" onclick="openInviteNewContact()" class="contactsOption">
       <div>Invite new contact</div>
-      <img class="contact-icon" src="assets/img/contact_icon.svg" alt="">
+      <img class="contactIcon" src="assets/img/contactIcon.svg" alt="">
     </div>`;
 
   for (let i = 0; i < contacts.length; i++) {
@@ -604,7 +604,7 @@ function renderAddTaskContacts() {
     if (contact['name'] !== 'Contact deleted') {
       content.innerHTML += /*html*/ `
       <div class="contactsOption" onclick="toggleCheckbox('${contact['name'] + n}')">
-      <div class="selection-point-container">
+      <div class="selectionPointContainer">
         <div>${contact['name']}</div>
       </div>
       <div>
@@ -641,7 +641,7 @@ function toggleAddTaskContacts() {
  */
 function openAddTaskContacts() {
   document.getElementById(`contacts${n}`).classList.remove('d-none')
-  document.getElementById(`arrow-rotate${n}`).classList.add('arrow-rotate')
+  document.getElementById(`arrowRotate${n}`).classList.add('arrowRotate')
 }
 
 /**
@@ -649,14 +649,14 @@ function openAddTaskContacts() {
  */
 function closeAddTaskContacts() {
   document.getElementById(`contacts${n}`).classList.add('d-none')
-  document.getElementById(`arrow-rotate${n}`).classList.remove('arrow-rotate')
+  document.getElementById(`arrowRotate${n}`).classList.remove('arrowRotate')
 }
 /**
  * This function opens the invite new contact container
  */
 function openInviteNewContact() {
-  document.getElementById(`select-contacts-container${n}`).classList.add('d-none');
-  document.getElementById(`assigned-to-container${n}`).classList.remove('d-none');
+  document.getElementById(`selectContactsContainer${n}`).classList.add('d-none');
+  document.getElementById(`assignedToContainer${n}`).classList.remove('d-none');
 }
 
 /**
@@ -664,12 +664,12 @@ function openInviteNewContact() {
  */
 function closeInviteNewContact() {
   clearInviteNewContactValue()
-  document.getElementById(`select-contacts-container${n}`).classList.remove('d-none');
-  document.getElementById(`assigned-to-container${n}`).classList.add('d-none');
+  document.getElementById(`selectContactsContainer${n}`).classList.remove('d-none');
+  document.getElementById(`assignedToContainer${n}`).classList.add('d-none');
 }
 function closeDropdownsAddTask(event) {
-  const selectContainer = document.getElementById(`select-container${n}`);
-  const selectContactsContainer = document.getElementById(`select-contacts-container${n}`);
+  const selectContainer = document.getElementById(`selectContainer${n}`);
+  const selectContactsContainer = document.getElementById(`selectContactsContainer${n}`);
   // Überprüfe, ob das geklickte Element oder eines seiner Elternelemente selectContainer ist
 
   if (!(selectContainer.contains(event.target))) {
@@ -687,7 +687,7 @@ function closeDropdownsAddTask(event) {
  * This function checks if new contact field is empty and adds warning otherwise adds invited contact
  */
 function checkNewContactField() {
-  let newContactField = document.getElementById(`invite-new-contact${n}`);
+  let newContactField = document.getElementById(`inviteNewContact${n}`);
   if (newContactField.value.indexOf('@') === -1) {
     addAssignedTowarnings()
   } else {
@@ -700,10 +700,10 @@ function checkNewContactField() {
  * This function adds invited contact to contacts
  */
 async function addInviteContact() {
-  let email = document.getElementById(`invite-new-contact${n}`);
+  let email = document.getElementById(`inviteNewContact${n}`);
   let name = email.value.split('@')[0];
   let phone = ""
-  let initials = document.getElementById(`invite-new-contact${n}`).value.charAt(0).toUpperCase();
+  let initials = document.getElementById(`inviteNewContact${n}`).value.charAt(0).toUpperCase();
   contacts.unshift({ name: name, email: email.value, phone: phone, initials: initials });
   await setItem('contacts', contacts);
   renderContacts()
@@ -716,7 +716,7 @@ async function addInviteContact() {
  * This function clears invite new contact input
  */
 function clearInviteNewContactValue() {
-  document.getElementById(`invite-new-contact${n}`).value = ''
+  document.getElementById(`inviteNewContact${n}`).value = ''
 }
 
 /**
@@ -761,28 +761,28 @@ function getCurrentDate() {
  * This function sets the minimum of due date to current date
  */
 function setCurrentDate() {
-  document.getElementById(`due-date${n}`).setAttribute('min', getCurrentDate());
+  document.getElementById(`dueDate${n}`).setAttribute('min', getCurrentDate());
 }
 
 /**
  * This function opens the new subtask container
  */
 function openSubtask() {
-  document.getElementById(`add-new-subtask-container${n}`).classList.add('d-none');
-  document.getElementById(`new-subtask-container${n}`).classList.remove('d-none');
+  document.getElementById(`addNewSubtaskContainer${n}`).classList.add('d-none');
+  document.getElementById(`newSubtaskContainer${n}`).classList.remove('d-none');
 }
 /**
  * This function closes the new subtask container
  */
 function closeSubtask() {
-  document.getElementById(`add-new-subtask-container${n}`).classList.remove('d-none');
-  document.getElementById(`new-subtask-container${n}`).classList.add('d-none');
+  document.getElementById(`addNewSubtaskContainer${n}`).classList.remove('d-none');
+  document.getElementById(`newSubtaskContainer${n}`).classList.add('d-none');
 }
 /**
  * This function checks if new subtask input isn´t empty an adds new subtask to subtasks
  */
 function addNewSubtask() {
-  let newSubtaskInput = document.getElementById(`new-subtask-point${n}`);
+  let newSubtaskInput = document.getElementById(`newSubtaskPoint${n}`);
   if (newSubtaskInput.value !== '') {
     let newSubtask = {
       'subtaskTitle': newSubtaskInput.value,
@@ -816,8 +816,8 @@ function openEditSubtask(i) {
   debugger
   let subtaskContainer = document.getElementById(`checkboxContainer${n}${i}`);
   let value = document.getElementById(`subtaskContainerValue${n}${i}`).textContent
-  subtaskContainer.innerHTML = `<input id="subTaskEditContent${n}${i}" class="no-outline" type="text" maxlength="40" value="${value}" autocomplete="off">
-        <div class="subtaskEdit subtaskEditOpen"><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg"><span style="color:#cecece">|</span><img onclick = "saveEditedSubtask(${i})" src="assets/img/black-check.svg">
+  subtaskContainer.innerHTML = `<input id="subTaskEditContent${n}${i}" class="noOutline" type="text" maxlength="40" value="${value}" autocomplete="off">
+        <div class="subtaskEdit subtaskEditOpen"><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg"><span style="color:#cecece">|</span><img onclick = "saveEditedSubtask(${i})" src="assets/img/blackCheck.svg">
       </div>`
 }
 
@@ -825,7 +825,7 @@ function openEditSubtask(i) {
  * This function renders html to subtask container
  */
 function renderSubtasks() {
-  let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
+  let subtasksContainer = document.getElementById(`addTaskSubtaskPoint${n}`);
   subtasksContainer.innerHTML = '';
   for (let i = 0; i < subtasks.length; i++) {
     let subtask = subtasks[i];
@@ -846,7 +846,7 @@ function renderSubtasks() {
  * @param {number} i This is the index of the task
  */
 function setSubtasks(i) {
-  let subtasksContainer = document.getElementById(`add-task-subtask-point${n}`);
+  let subtasksContainer = document.getElementById(`addTaskSubtaskPoint${n}`);
   subtasksContainer.innerHTML = '';
   subtasks = tasks[i].subtasks;
   for (let j = 0; j < subtasks.length; j++) {
@@ -909,9 +909,9 @@ function deleteTask(i) {
 function setEditTaskOverlay(i) {
   indexOfEditedTask = i
   let task = tasks[i]
-  document.getElementById('task-title-input2').value = task.taskTitle
-  document.getElementById('add-task-description2').value = task.taskDescription
-  document.getElementById('due-date2').value = task.dueDate
+  document.getElementById('taskTitleInput2').value = task.taskTitle
+  document.getElementById('addTaskDescription2').value = task.taskDescription
+  document.getElementById('dueDate2').value = task.dueDate
   let newOnClickFunction = "setEditTaskOverlay(" + i + ")";
   document.querySelector('.overlayCancelButton').setAttribute('onclick', newOnClickFunction);
   setCategory(i)

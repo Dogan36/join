@@ -6,7 +6,7 @@ body {
     overflow: hidden;
 }
 
-.add-task {
+.addTask {
    height: 100%;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@ body {
     padding: 0px 65px 0 65px;
 }
 
-.add-task-header{
+.addTaskHeader{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -28,7 +28,7 @@ body {
     font-weight: 700;
 }
 
-.title-container {
+.titleContainer {
     display: flex;
     flex-direction: column;
 }
@@ -37,7 +37,7 @@ body {
     font-size: 21px;
 }
 
-.title-input {
+.titleInput {
     width: 100%;
     height: 51px;
     padding: 13px 21px;
@@ -47,7 +47,7 @@ body {
     margin-top: 8px;
 }
 
-.description-field {
+.descriptionField {
     width: 421px;
     height: 119px;
     padding: 18px 21px;
@@ -73,7 +73,7 @@ input {
     font-size: 21px;
 }
 
-.no-outline:focus {
+.noOutline:focus {
     outline: none;
 }
 
@@ -82,7 +82,7 @@ input {
     text-wrap: nowrap;
 }
 
-.new-category-container {
+.newCategoryContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,7 +94,7 @@ input {
     margin-top: 8px;
 }
 
-.dash-container {
+.dashContainer {
     display: flex;
     align-items: center;
 }
@@ -106,12 +106,12 @@ input {
     margin-right: 7px;
 }
 
-.img-container {
+.imgContainer {
     display: flex;
     height: 15px;
 }
 
-.select-container {
+.selectContainer {
     margin-top: 8px;
     background-color: white;
     border: 1px solid #D1D1D1;
@@ -130,12 +130,12 @@ input {
     height: 51px;
 }
 
-.display-flex {
+.displayFlex {
     display: flex !important;
     flex-direction: column;
 }
 
-.selection-point-container {
+.selectionPointContainer {
     display: flex;
     align-items: center;
     width: 100%;
@@ -165,7 +165,7 @@ input {
     background-color: #0000ff;
 }
 
-.color-category-button {
+.colorCategoryButton {
     width: 12px;
     height: 12px;
     border-radius: 100%;
@@ -193,31 +193,31 @@ input {
     transform: scale(1.8);
 }
 
-.color-container {
+.colorContainer {
     display: flex;
 }
 
-img.arrow-icon {
+img.arrowIcon {
     width: 25px;
     height: 8px;
     cursor: pointer;
 
 }
 
-.arrow-rotate {
+.arrowRotate {
     transform: rotate(180deg);
 }
 
-.x-or-hook {
+.xOrHook {
     cursor: pointer;
 }
 
-.contact-icon {
+.contactIcon {
     width: 25px;
     height: 25px;
 }
 
-.content-head-container {
+.contentHeadContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -225,25 +225,25 @@ img.arrow-icon {
     height: 73px;
 }
 
-.add-tast-container {
+.addTastContainer {
     display: flex;
     width: 100%;
     justify-content: flex-start;
 }
 
-.content-body-container {
+.contentBodyContainer {
     display: flex;
     width: 100%;
 }
 
-.container-center {
+.containerCenter {
     margin: 0 59px 0 59px;
     width: 0px;
     border: 1px solid #D1D1D1;
     height: 551px;
 }
 
-.prio-container {
+.prioContainer {
     display: flex;
     flex-direction: column;
     margin-top: 8px;
@@ -251,13 +251,13 @@ img.arrow-icon {
     margin-bottom: 10px;
 }
 
-.prio-body-container {
+.prioBodyContainer {
     display: flex;
     gap: 10px;
     margin-top: 5px;
 }
 
-.prio-button {
+.prioButton {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -272,39 +272,39 @@ img.arrow-icon {
     cursor: pointer;
 }
 
-.prio-button:hover {
+.prioButton:hover {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     transform: scale(1.05);
 }
 
-.prio-icon {
+.prioIcon {
     width: 20px;
 }
 
-.prio-red {
+.prioRed {
     background-color: #ff3c00;
     color: white;
 }
 
-.prio-yellow {
+.prioYellow {
     background-color: #ffa800;
     color: white;
 }
 
-.prio-green {
+.prioGreen {
     background-color: #7ae229;
     color: white;
 }
 
-.plus-icon {
+.plusIcon {
     width: 22px;
     height: 22px;
 }
 
 
 
-.Add-new-subtask {
+.AddNewSubtask {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -313,7 +313,7 @@ img.arrow-icon {
     color: #D1D1D1;
 }
 
-.container-left {
+.containerLeft {
     display: flex;
     gap: 14px;
     flex-direction: column;
@@ -331,7 +331,7 @@ img.arrow-icon {
     visibility: hidden;
 }
 
-.submit-btns-container {
+.submitBtnsContainer {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
@@ -340,7 +340,7 @@ img.arrow-icon {
     max-width: 100%;
 }
 
-.create-task-btn {
+.createTaskBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -357,7 +357,7 @@ img.arrow-icon {
     font-family: 'Inter';
 }
 
-.create-task-btn:hover {
+.createTaskBtn:hover {
     background: #29ABE2;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -388,7 +388,7 @@ color: var(--defaultDark);
 }
 
 
-.clear-btn {
+.clearBtn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -406,7 +406,7 @@ color: var(--defaultDark);
     transition: 100ms ease-in-out;
 }
 
-.clear-btn:hover {
+.clearBtn:hover {
     color: #29ABE2;
     border: 2px solid #29ABE2;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -470,89 +470,89 @@ input[type="checkbox"] + label {
     background-image: url(../assets/img/checkboxChecked.svg);
   }
   
-.input-outline {
+.inputOutline {
     outline: none;
     cursor: pointer;
     width: 100%;
     
 }
 
-.input-outline::placeholder{
+.inputOutline::placeholder{
     color:black
     }
 
-.curser-pointer {
+.curserPointer {
     cursor: pointer;
 }
 
-.creat-task-clear-hover {
+.creatTaskClearHover {
     width: 15px;
     height: 15px;
 }
 
-.creat-task-clear-hover:hover {
+.creatTaskClearHover:hover {
     fill: #ff0000;
 }
 
 @media (max-width: 1300px) {
-    .content-body-container {
+    .contentBodyContainer {
         flex-direction: column;
         align-items: center;
 
     }
 
-    .container-center {
+    .containerCenter {
         display: none;
     }
 
-    /* .container-center{
+    /* .containerCenter{
 
 } */
 
 }
 
-.input-and-color-button-container {
+.inputAndColorButtonContainer {
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
 
-.new-category-input {
+.newCategoryInput {
     width: 100%;
 }
 
 @media (max-width: 1080px) {
-.add-task{
+.addTask{
         height: 100%;
      padding: 0 30px
   
     }
 
-    .content-body-container{
+    .contentBodyContainer{
         align-items: unset;
     }
 .subtaskContainer,
-    .title-input,
-    .description-field,
-    .select-container,
-    .new-category-container,
-    .prio-body-container
+    .titleInput,
+    .descriptionField,
+    .selectContainer,
+    .newCategoryContainer,
+    .prioBodyContainer
     {
         width: 100%;
         max-width: 422px;
     }
 
-    .prio-button-name{
+    .prioButtonName{
         display: none;
     }
 }
 @media (max-width: 500px) {
-    .add-task{
+    .addTask{
       
      padding: 0 15px
   
     }
-.submit-btns-container{
+.submitBtnsContainer{
     flex-direction: column;
 }
 }

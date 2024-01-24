@@ -9,7 +9,7 @@ body {
 
 }
 
-.headline-summary {
+.headlineSummary {
     display: flex;
     align-items: center;
     gap: 30px;
@@ -26,7 +26,7 @@ body {
     flex-grow: 0;
 }
 
-.v-line {
+.vLine {
     flex: none;
     flex-grow: 0;
     width: 0px;
@@ -34,7 +34,7 @@ body {
     border: 3px solid #29ABE2;
 }
 
-.everything-in-a-nutshell {
+.everythingInANutshell {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -45,23 +45,23 @@ body {
     flex-grow: 0;
 }
 
-.container-button {
+.containerButton {
     display: flex;
     gap: 35px;
     flex-direction: column;
     margin-top: 87px;
 }
 
-.container-button-head {
+.containerButtonHead {
     display: flex;
     gap: 35px;
 }
 
-.container-button-bottom {
+.containerButtonBottom {
     display: flex;
 }
 
-.button-v1 {
+.buttonV1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,7 +75,7 @@ body {
     cursor: pointer;
 }
 
-.button-v2 {
+.buttonV2 {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -92,7 +92,7 @@ body {
     cursor: pointer;
 }
 
-.button-v3 {
+.buttonV3 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,18 +107,18 @@ body {
     cursor: pointer;
 }
 
-.button-v3 svg {
+.buttonV3 svg {
     fill: #2a3647;
     stroke: fff
 }
 
-.button-v3:hover svg {
+.buttonV3:hover svg {
     fill: fff;
     stroke: #2a3647;
 }
 
 
-.button-text-v1-v3 {
+.buttonTextV1V3 {
     width: 87px;
     height: 50px;
     font-family: 'Inter';
@@ -132,17 +132,17 @@ body {
     flex-grow: 0;
 }
 
-.pen-icon {
+.penIcon {
     width: 69px;
     height: 69px;
 }
 
-.hook-icon {
+.hookIcon {
     width: 69px;
     height: 69px;
 }
 
-.button-text-v2 {
+.buttonTextV2 {
     height: 25px;
     font-family: 'Inter';
     font-style: normal;
@@ -152,30 +152,30 @@ body {
     color: #2A3647;
 }
 
-.button-v2-content {
+.buttonV2Content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.button-v2-text-bold {
+.buttonV2TextBold {
     font-weight: 700;
     font-size: 21px;
 }
 
-.container-urgent-left {
+.containerUrgentLeft {
     display: flex;
     align-items: center;
     gap: 19px;
 }
 
-.orange-button {
+.orangeButton {
     width: 60px;
     height: 60px;
 }
 
-.v-line-grey {
+.vLineGrey {
     width: 0px;
     height: 102.02px;
     border: 2px solid #D1D1D1;
@@ -183,7 +183,7 @@ body {
     flex-grow: 0;
 }
 
-.button-number {
+.buttonNumber {
     font-family: 'Inter';
     font-size: 64px;
     font-style: normal;
@@ -191,50 +191,50 @@ body {
     text-align: center;
 }
 
-.hover-effect:hover {
+.hoverEffect:hover {
     transform: scale(1.1);
     background-color: #2A3647;
     transition: transform 0.3s ease-in-out;
 
 }
 
-.button-v1:hover .button-text-v1-v3 {
+.buttonV1:hover .buttonTextV1V3 {
     color: #ffffff;
 }
 
-.button-v2:hover .button-text-v2 {
+.buttonV2:hover .buttonTextV2 {
     color: white;
 }
 
-.button-v3:hover .button-text-v1-v3 {
+.buttonV3:hover .buttonTextV1V3 {
     color: #ffffff;
 }
 
 
-.button-number-hover-effect:hover {
+.buttonNumberHoverEffect:hover {
     color: white;
 }
 
-.button-v2:hover .v-line-grey {
+.buttonV2:hover .vLineGrey {
     border: 2px solid #ffffff;
 }
 
-.body-summary-container {
+.bodySummaryContainer {
     display: flex;
     align-items: center;
 }
 
-.welcome-desk {
+.welcomeDesk {
     display: flex;
     flex-direction: column;
 }
 
-#welcome-text-desk {
+#welcomeTextDesk {
     font-size: 47px;
     font-weight: 500;
 }
 
-#welcome-name-desk {
+#welcomeNameDesk {
     font-size: 64px;
     font-weight: 700;
     color: #29ABE2;
@@ -251,13 +251,13 @@ body {
         padding: 0px 10px 0 10px;
     }
 
-    .body-summary-container {
+    .bodySummaryContainer {
         justify-content: center;
         height: 54vh;
         max-width: 95vw;
     }
 
-    .container-button {
+    .containerButton {
         margin-top: 20px;
         max-width: 90vw;
         height: 100%;
@@ -267,14 +267,14 @@ body {
         gap: 20px;
     }
 
-    .container-button-head,
-    .container-button-bottom {
+    .containerButtonHead,
+    .containerButtonBottom {
         gap: 0;
         justify-content: space-between;
         max-width: 100%;
     }
 
-    .headline-summary {
+    .headlineSummary {
         align-self: flex-start;
         align-items: flex-start;
         gap: 7%;
@@ -291,18 +291,18 @@ body {
         top: 10px;
     }
 
-    .button-v1 {
+    .buttonV1 {
         max-width: 26.5vw;
         max-height: 26.5vw;
 
     }
 
-    .button-v2 {
+    .buttonV2 {
         max-width: 90vw;
         max-height: 26.5vw;
     }
 
-    .button-v3 {
+    .buttonV3 {
         max-width: 47%;
         max-height: 26.5vw;
         margin: 0;
@@ -310,57 +310,57 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-    .container-button {
+    .containerButton {
         flex-direction: column-reverse;
     }
 
-    .button-number {
+    .buttonNumber {
         font-size: 13vw;
     }
 
-    .button-text-v1-v3 {
+    .buttonTextV1V3 {
         height: unset;
         width: 18vw;
         font-size: 3vw;
     }
 
-    .button-v3 {
+    .buttonV3 {
         gap: unset;
         justify-content: space-around;
     }
 
-    .button-text-v2 {
+    .buttonTextV2 {
         height: unset;
         font-size: 3vw;
     }
 
-    .button-v2-text-bold {
+    .buttonV2TextBold {
         font-weight: 700;
         font-size: 4vw;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .everything-in-a-nutshell {
+    .everythingInANutshell {
         font-size: 6vw;
     }
-    .orange-button {
+    .orangeButton {
         width: 12vw;
         height: 12vw;
     }
 
-    .pen-icon,
-    .hook-icon {
+    .penIcon,
+    .hookIcon {
         width: 13vw;
         height: 13vw;
     }
 
-    .button-v2 {
+    .buttonV2 {
         justify-content: space-around;
         gap: unset
     }
 
-    .v-line-grey {
+    .vLineGrey {
         max-height: 21vw;
     }
 }

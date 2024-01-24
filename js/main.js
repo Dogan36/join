@@ -132,7 +132,7 @@ function renderAddTask() {
   renderAddTaskCategorys()
   renderAddTaskContactsSelect()
   renderAddTaskContacts()
-  choosePrio('prio-yellow')
+  choosePrio('prioYellow')
 }
 
 /**
@@ -190,16 +190,16 @@ function setActiveIcon() {
   let iconsMobile = document.getElementsByClassName("mobileTemplateMenuElements");
   for (let i = 0; i < icons.length; i++) {
     let img = icons[i].querySelector("img");
-    if (img) img.src = img.src.replace("_active.svg", ".svg");
+    if (img) img.src = img.src.replace("active.svg", ".svg");
   }
   for (let i = 0; i < iconsMobile.length; i++) {
     let img = iconsMobile[i].querySelector("img");
-    if (img) img.src = img.src.replace("_active.svg", ".svg");
+    if (img) img.src = img.src.replace("active.svg", ".svg");
   }
   let iconsActive = document.querySelectorAll(".desktopTemplateIconActive");
   iconsActive.forEach(function (iconActive) {
     let img = iconActive.querySelector("img");
-    if (img) img.src = img.src.replace(".svg", "_active.svg");
+    if (img) img.src = img.src.replace(".svg", "active.svg");
   });
   
 }
@@ -556,7 +556,7 @@ async function updatePassword() {
  */
 function showConfirmation(confirmation) {
   showDarkBackground()
-  let flyInButton = document.getElementById(`fly-in-button`);
+  let flyInButton = document.getElementById(`flyInButton`);
   changeflyInButton(confirmation)
   flyInButton.classList.remove('d-none');
 }
@@ -564,7 +564,7 @@ function showConfirmation(confirmation) {
  * This function closes the confirmation
  */
 function closeConfirmation() {
-  let flyInButton = document.getElementById(`fly-in-button`);
+  let flyInButton = document.getElementById(`flyInButton`);
   flyInButton.classList.add('d-none');
 }
 
@@ -637,7 +637,7 @@ function openNewContactOverlay() {
  */
 function closeNewContactOverlay() {
   document.getElementById('addContactOverlay').classList.add('d-none')
-  document.getElementById('container-opened-task').classList.add('d-none')
+  document.getElementById('containerOpenedTask').classList.add('d-none')
 }
 
 /**
@@ -681,49 +681,49 @@ function closeOverlay() {
  * @param {string} confirmation This is the change inside the fly in button
  */
 function changeflyInButton(confirmation) {
-  let flyInButton = document.getElementById(`fly-in-button`);
+  let flyInButton = document.getElementById(`flyInButton`);
   if (confirmation == 'taskAdded') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Task added to board</div>
+  <div id="confirmationText" class="taskAddedToBoard">Task added to board</div>
   <img id="confirmationImg"src="./assets/img/boardIcon.svg" alt="">`}
   else if (confirmation == 'taskDeleted') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Task deleted</div>
+  <div id="confirmationText" class="taskAddedToBoard">Task deleted</div>
   <img id="confirmationImg"src="./assets/img/deleteWhite.svg" alt="">`
   }
   else if (confirmation == 'taskMoved') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Task Moved</div>
+  <div id="confirmationText" class="taskAddedToBoard">Task Moved</div>
   <img id="confirmationImg" src="./assets/img/moveWhite.svg" alt="">`
   }
   else if (confirmation == 'taskUpdated') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Task Updated</div>
+  <div id="confirmationText" class="taskAddedToBoard">Task Updated</div>
   <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
   }
   else if (confirmation == 'contactAdded') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Contact Added</div>
+  <div id="confirmationText" class="taskAddedToBoard">Contact Added</div>
   <img id="confirmationImg" src="./assets/img/addContactIcon.svg" alt="">`
   }
   else if (confirmation == 'contactUpdated') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Contact Updated</div>
+  <div id="confirmationText" class="taskAddedToBoard">Contact Updated</div>
   <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
   }
   else if (confirmation == 'newPassword') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">An e-mail has beend send</div>
+  <div id="confirmationText" class="taskAddedToBoard">An e-mail has beend send</div>
   <img id="confirmationImg" src="./assets/img/SendCheck.svg" alt="">`
   }
   else if (confirmation == 'signedUp') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Signed up successfully</div>
+  <div id="confirmationText" class="taskAddedToBoard">Signed up successfully</div>
   <img id="confirmationImg" src="./assets/img/userIcon.svg" alt="">`
   }
   else if (confirmation == 'contactDeleted') {
     flyInButton.innerHTML = `
-  <div id="confirmationText" class="task-added-to-board">Contact deleted</div>
+  <div id="confirmationText" class="taskAddedToBoard">Contact deleted</div>
   <img id="confirmationImg" src="./assets/img/deleteWhite.svg" alt="">`
   }
 }
@@ -732,7 +732,7 @@ function changeflyInButton(confirmation) {
  * This function toogles the logout modal and closes it after timeout
  */
 function toggleLogout() {
-  let button = document.querySelector('.log-out-modal')
+  let button = document.querySelector('.logOutModal')
   if (button.classList.contains('d-none')) button.classList.remove('d-none')
   else button.classList.add('d-none')
   setTimeout(closeLogout, 2000)
@@ -742,7 +742,7 @@ function toggleLogout() {
  * This function closes the logout modal
  */
 function closeLogout() {
-  let button = document.querySelector('.log-out-modal')
+  let button = document.querySelector('.logOutModal')
   if (!button.classList.contains('d-none')) button.classList.add('d-none')
 }
 
@@ -772,7 +772,7 @@ function setupWelcomeDeskAnimation() {
   let welcomeDesk = document.getElementById('welcomeDesk');
   if (welcomeDesk) {
     welcomeDesk.addEventListener('animationend', function () {
-      welcomeDesk.classList.add('animation-done');
+      welcomeDesk.classList.add('animationDone');
     });
   } else {
     setTimeout(function () {
@@ -791,7 +791,7 @@ function setFavicon(isDarkMode) {
   for (const link of linkElements) {
     if (link.rel === 'icon') {
       if (isDarkMode) {
-        link.href = 'assets/img/logo_invert.svg'; // Pfad zum Logo für den Dark Mode
+        link.href = 'assets/img/logoInvert.svg'; // Pfad zum Logo für den Dark Mode
       } else {
         link.href = 'assets/img/logo.svg'; // Pfad zum Standard-Logo
       }

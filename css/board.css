@@ -310,25 +310,25 @@
     top: 50%;
 }
 
-.add-task-window-off {
+.add-task-windowOff {
     position: relative;
     z-index: 2;
     display: flex;
     justify-content: flex-end;
 }
 
-.task-added-to-board-button-container {
+.taskAdded-toBoardButtonContainer {
     display: flex;
     justify-content: center;
 }
 
-.fade-in-left {
-    animation-name: fade-in-left;
+.fadeInLeft {
+    animation-name: fadeInLeft;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 
-@keyframes fade-in-left {
+@keyframes fadeInLeft {
     0% {
         opacity: 0;
         transform: translateX(10000%);
@@ -340,8 +340,8 @@
     }
 }
 
-.fade-out-right {
-    animation-name: fade-out-right;
+.fadeOutRight {
+    animation-name: fadeOutRight;
     animation-duration: 2s;
     animation-fill-mode: forwards;
     animation-direction: reverse;
@@ -393,7 +393,7 @@
     transform: scale(1.05);
 }
 
-@keyframes fade-out-right {
+@keyframes fadeOutRight {
     0% {
         opacity: 0;
         transform: translateX(10000%);

@@ -659,7 +659,6 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
 }
 
 .editContactAvartarInitials {
-
     height: 28.57px;
     font-family: 'Inter';
     font-style: normal;
@@ -964,7 +963,6 @@ z-index: 1;
     }
 
     .closeContactArrow {
-       
         right: 15px;
     
     }
