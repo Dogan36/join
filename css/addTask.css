@@ -304,7 +304,7 @@ img.arrowIcon {
 
 
 
-.AddNewSubtask {
+.addNewSubtask {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -481,7 +481,7 @@ input[type="checkbox"] + label {
     color:black
     }
 
-.curserPointer {
+.cursorPointer {
     cursor: pointer;
 }
 

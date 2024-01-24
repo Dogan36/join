@@ -39,7 +39,7 @@
               <div id="colorButtonContainer1"></div>
             </div>
             <div class="imgContainer">
-              <img class="xOrHook" onclick="closeaddTaskNewCategory()" src="./assets/img/blackX.svg" alt="" />
+              <img class="xOrHook" onclick="closeAddTaskNewCategory()" src="./assets/img/blackX.svg" alt="" />
               <div class="dashContainer">
                 <span class="dash"></span>
               </div>
@@ -65,9 +65,9 @@
           <div id="assignedToContainer1" class="newCategoryContainer d-none">
             <input id="inviteNewContact1" class="noOutline" type="email" placeholder="Contact email"
               aria-required="true" required />
-            <div class="imgContainer curserPointer">
+            <div class="imgContainer cursorPointer">
               <img onclick="closeInviteNewContact()" src="./assets/img/blackX.svg" alt="" />
-              <div class="dashContaier curserPointer"><span class="dash"></span></div>
+              <div class="dashContaier cursorPointer"><span class="dash"></span></div>
               <img src="./assets/img/blackCheck.svg" alt="" onclick="checkNewContactField()" />
             </div>
           </div>
@@ -105,7 +105,7 @@
               <div class="prioButtonName">Medium</div>
               <img id="prioMediumIcon1" class="prioIcon" src="./assets/img/prioMediumIcon.svg" alt="" />
             </div>
-            <div id="prioGreen1" class="prioButton" onclick="choosePrio('prioNreen')">
+            <div id="prioGreen1" class="prioButton" onclick="choosePrio('prioGreen')">
               <div class="prioButtonName">Low</div>
               <img id="prioLowIcon1" class="prioIcon" src="./assets/img/prioLowIcon.svg" alt="" />
             </div>
@@ -114,20 +114,20 @@
             This field is required
           </p>
         </div>
-        <div class="subtaskContainer">
+        <div>
           <p>
             <label class="title">Subtasks</label>
           </p>
           <div id="newSubtaskContainer1" class="newCategoryContainer d-none ">
             <input id="newSubtaskPoint1" class="newCategoryInput noOutline" type="text" maxlength="40"
               placeholder="New Subtasks" />
-            <div class="imgContainer curserPointer">
+            <div class="imgContainer cursorPointer">
               <img onclick="closeSubtask()" src="./assets/img/blackX.svg" alt="" />
-              <div class="dashContaier curserPointer"><span class="dash"></span></div>
+              <div class="dashContaier cursorPointer"><span class="dash"></span></div>
               <img onclick="addNewSubtask()" src="./assets/img/blackCheck.svg" alt="" />
             </div>
           </div>
-          <div id="addNewSubtaskContainer1" class="newCategoryContainer curserPointer" onclick="openSubtask()">
+          <div id="addNewSubtaskContainer1" class="newCategoryContainer cursorPointer" onclick="openSubtask()">
             <div class="addNewSubtask">Add new subtask</div>
             <img class="plusIcon" src="./assets/img/plusIcon.svg" alt="" />
           </div>
@@ -138,12 +138,12 @@
         <div id="addTaskSubtaskPoint1"></div>
         <div class="submitBtnsContainer">
           <button type="button" class="addTaskCancelButton" onclick="clearTheInputFields()"
-            onmouseover="hover('addTaskClearButton1', './assets/img/buttonXsecondary.svg'); console.log('test') "
+            onmouseover="hover('addTaskClearButton1', './assets/img/buttonXsecondary.svg');"
             onmouseout="hover('addTaskClearButton1', 'assets/img/buttonX.svg')">
             <span>Cancel</span>
             <img id="addTaskClearButton1" src="assets/img/buttonX.svg" alt="">
           </button>
-          <button type="submit" class="createCaskBtn">
+          <button type="submit" class="createTaskBtn">
             <span>Create Task</span>
             <img src="./assets/img/creatTaskCheck.svg" alt="" />
           </button>

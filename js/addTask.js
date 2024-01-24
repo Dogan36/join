@@ -272,6 +272,7 @@ function choosePrio(color) {
   let divClicked = document.getElementById(`${color}${n}`)
   setPrioColor(color)
   resetPrioButtons()
+  debugger
   divClicked.classList.add(`${color}`)
   changePrioButtonIcon(color)
 }
@@ -406,7 +407,7 @@ function renderAddTaskCategoriesHTML(i, category) {
   <div class="categoryOption" >
     <div class="selectionPointContainer" onclick="selectCategory(${i})">
       <div>${category['categorytext']}</div>
-      <div class="color" style="backgroundColor: ${category['categoryColor']}"></div>
+      <div class="color" style="background-color: ${category['categoryColor']}"></div>
     </div>
     <div class="colorAndDeleteIconContainer">
       <img onclick="deleteCategory(${i})" class="deleteIcon" src = "./assets/img/delete.png" alt = "" >
@@ -540,7 +541,7 @@ async function deleteCategory(i) {
 function colorButton(i) {
   selectedColor = '';
   selectedColor = buttonBackgroundColor[i];
-  document.getElementById(`colorButtonContainer${n}`).innerHTML = `<div class="colorCategoryButton" style="backgroundColor :${selectedColor};"></div>`;
+  document.getElementById(`colorButtonContainer${n}`).innerHTML = `<div class="colorCategoryButton" style="background-color :${selectedColor};"></div>`;
 }
 
 /**
@@ -565,7 +566,7 @@ function categoryTemplate(category) {
     <div onclick="renderAddTaskCategorySelect(); renderAddTaskCategorys(), toggleAddTaskCategory()" class="categoryOption">
                   <div class="selectionPointContainer">
                     <div>${category['categorytext']}</div>
-                    <div id="colorButtonContainer${n}"><div class="colorCategoryButton" style="backgroundColor :${category['categoryColor']};">  
+                    <div id="colorButtonContainer${n}"><div class="colorCategoryButton" style="background-color :${category['categoryColor']};">  
                     </div></div>
                   </div>
                   <img class="arrowIcon" id="arrowIconCategory${n}" src="./assets/img/arrowIcon.svg" alt="">

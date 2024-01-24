@@ -190,6 +190,7 @@ async function deleteContact(j) {
   setTimeout(closeConfirmation, 2000)
   closeOverlay()
   document.querySelector(".contactsCard").classList.remove('contactsCardActive')
+  closeContactsRightMobile()
   renderContacts()
 }
 
@@ -253,8 +254,8 @@ function checkInputsEditContact(j) {
  */
 function closeContactsRightMobile() {
   document.querySelector('.contactsRight').classList.remove("contactsRightMobileActive");
-  var contact = document.querySelector(".contactListElementActive");
-  contact.classList.remove("contactListElementActive");
+  let contact = document.querySelector(".contactListElementActive");
+  if (contact) contact.classList.remove("contactListElementActive");
 }
 /**
  * This function toggles the visibility of contact card edits
