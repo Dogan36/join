@@ -21,7 +21,7 @@ function greetingAds() {
     } else {
         greeting = "Good night";
     }
-    document.getElementById('welcome-text-desk').innerHTML = greeting;
+    document.getElementById('welcomeTextDesk').innerHTML = greeting;
     greetingCurrentUser()
 }
 
@@ -29,7 +29,7 @@ function greetingAds() {
  * This function sets the name in welcome desk to the name of current user
  */
 function greetingCurrentUser() {
-    document.getElementById('welcome-name-desk').innerHTML = currentUser
+    document.getElementById('welcomeNameDesk').innerHTML = currentUser
 }
 
 /**
