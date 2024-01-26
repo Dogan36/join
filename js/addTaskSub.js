@@ -433,3 +433,21 @@ function clearInviteNewContactValue() {
     document.getElementById(`inviteNewContact${n}`).value = ''
   }
   
+  /**
+ * This function renders html to subtask container
+ */
+function renderSubtasks() {
+  let subtasksContainer = document.getElementById(`addTaskSubtaskPoint${n}`);
+  subtasksContainer.innerHTML = '';
+  for (let i = 0; i < subtasks.length; i++) {
+    let subtask = subtasks[i];
+
+    subtasksContainer.innerHTML += `
+      <div id="checkboxContainer${n}${i}" class="subtaskContainer">
+        <div id="subtaskContainerValue${n}${i}">${subtask['subtaskTitle']}</div>
+        <div class="subtaskEdit"><img onclick = "openEditSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/editTaskPenBlack.svg"><span style="color:#cecece">|</span><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg">
+      </div>
+    `;
+
+  }
+}

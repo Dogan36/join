@@ -423,15 +423,3 @@ function listenerPasswordImg(element) {
       }
     }
   }
-
-  /**
- * This function loads user data from server
-*/
-async function loadUsers() {
-    try {
-      users = JSON.parse(await getItem('users'));
-    } catch (e) {
-      console.error('Loading error:', e);
-    }
-  }
-  
