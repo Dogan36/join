@@ -95,6 +95,7 @@ function addBoardCardSubtask(element) {
         return `<div class="boardCardProgress"></div>`
     }
 }
+
 /**
  * This function generats html for the contacts which are assinged to every task
  * 
@@ -295,6 +296,7 @@ function moveToDrop(progress) {
     renderBoard()
     renderSummary()
 }
+
 /**
  * This function sets the currentDraggedElement when starting to drag
  * 

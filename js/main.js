@@ -1,4 +1,3 @@
-
 let tasks = [];
 let contacts = [];
 let users = [];
@@ -31,7 +30,6 @@ let standartIcon = 'assets/img/loginPassword.svg';
  *      
  * @param {boolean} include Depending on this include HTML is called or not
 */
-
 async function init(include = false) {
   await loadUsers()
   await loadTasks()
@@ -39,17 +37,6 @@ async function init(include = false) {
   await loadCategorys()
   if (include) {
     includeHTML()
-  }
-}
-
-/**
- * This function loads user data from server
-*/
-async function loadUsers() {
-  try {
-    users = JSON.parse(await getItem('users'));
-  } catch (e) {
-    console.error('Loading error:', e);
   }
 }
 
@@ -93,22 +80,16 @@ async function loadCategorys() {
  * This function calls render function aber content is loaded
  */
 function callRender() {
-  // Überprüfe, ob die aktuelle Seite "index.html" ist
   if (window.location.pathname.includes('index.html')) {
-    // Wenn ja, führe die Render-Funktion aus
     if (isContentLoaded) {
       render();
     } else {
-      // Warte und versuche es erneut
       setTimeout(callRender, 100);
     }
   }
-  // Falls die Seite nicht "index.html" ist, passiert nichts
 }
 
-
 callRender()
-
 
 /**
  * This function renders all html
@@ -161,6 +142,7 @@ function showContent(x) {
   clearTheInputFields();
 
 }
+
 /**
  * This function add classlist active on menuelement which is shown
  * 
@@ -201,13 +183,13 @@ function setActiveIcon() {
     let img = iconActive.querySelector("img");
     if (img) img.src = img.src.replace(".svg", "Active.svg");
   });
-  
 }
+
 /**
  * This function changes src of img on hover for design reasons
  * 
  * @param {string} element This is the id of the element which is hovered on
- * @param {sting} url This is the url which is to be set on hover
+ * @param {string} url This is the url which is to be set on hover
  */
 function hover(element, url) {
   document.getElementById(`${element}`).setAttribute('src', url);
@@ -230,136 +212,6 @@ function getCurrentUser() {
   let params = new URLSearchParams(window.location.search);
   let currentUserURL = params.get('variable');
   if (currentUserURL) currentUser = currentUserURL
-}
-
-/**
- * This function sets an eventlistener for the password images on input an click
- * 
- * @param {sting} element This is the ID of the element which will get an eventlistener
- */
-
-function listenerPasswordImg(element) {
-  let passwordInput = document.getElementById(`${element}Password`);
-  let passwordToggle = document.getElementById(`${element}PasswordImg`);
-  passwordInput.addEventListener('keyup', function () {
-    changePasswortImage(element);
-  });
-  passwordToggle.addEventListener('click', function () {
-    togglePasswordVisibility(element);
-  });
-}
-
-/**
- * This function changes the src of an password img
- * 
- * @param {string} element This is the ID of the element to be changed
- */
-function changePasswortImage(element) {
-  let passwordInput = document.getElementById(`${element}Password`);
-  let passwordToggle = document.getElementById(`${element}PasswordImg`);
-  if (passwordInput.value === '') passwordToggle.src = standartIcon;
-  else if (passwordInput.type == 'text') passwordToggle.src = visibleIcon;
-  else passwordToggle.src = notVisibleIcon
-}
-
-/**
- * This function changes the visibility of an password 
- * 
- * @param {string} element This is the ID of the element to be changed
- */
-function togglePasswordVisibility(element) {
-  let passwordInput = document.getElementById(`${element}Password`);
-  let passwordToggle = document.getElementById(`${element}PasswordImg`);
-  if (passwordInput.value === '') {
-    passwordToggle.src = standartIcon;
-  } else {
-    if (passwordInput.type === 'password') {
-      passwordInput.type = 'text';
-      passwordToggle.src = visibleIcon;
-    } else {
-      passwordInput.type = 'password';
-      if (passwordToggle.src !== 'assets/img/loginPassword.svg') passwordToggle.src = notVisibleIcon;
-    }
-  }
-}
-
-/**
- * This function checks all inputs on login page and let user check in if no errors
- * 
- * @returns boolean
- */
-function checkInputsLogin() {
-  document.querySelectorAll(`.loginErrorMessage`).forEach(function (el) {
-    el.classList.add('d-none');
-  })
-  let errorCount = 0;
-  errorCount += checkInputEmpty('loginEmail') ? 1 : 0;
-  errorCount += checkInputEmpty('loginPassword') ? 1 : 0;
-  errorCount += checkEmailFormat('loginEmail') ? 1 : 0;
-  errorCount += checkEmailDoesntExist('loginEmail') ? 1 : 0;
-  errorCount += checkPasswordLength('loginPassword') ? 1 : 0;
-  errorCount += checkIncorrectPassword('loginPassword') ? 1 : 0;
-  if (errorCount > 0) return;
-  checkIn()
-}
-
-/**
- * This function checks all inputs on sign up page and adds user if no error
- * 
- * @returns boolean
- */
-function checkInputsSignUp() {
-  document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
-    el.classList.add('d-none');
-  })
-  let errorCount = 0;
-  errorCount += checkInputEmpty('signUpName') ? 1 : 0;
-  errorCount += checkInputEmpty('signUpEmail') ? 1 : 0;
-  errorCount += checkInputEmpty('signUpPassword') ? 1 : 0;
-  errorCount += checkInputEmpty('confirmPassword') ? 1 : 0;
-  errorCount += checkEmailFormat('signUpEmail') ? 1 : 0;
-  errorCount += checkEmailExist('signUpEmail') ? 1 : 0;
-  errorCount += checkPasswordLength('signUpPassword') ? 1 : 0;
-  errorCount += checkPasswordConfirm('signUpPassword') ? 1 : 0;
-  errorCount += checkPrivacyChecked() ? 1 : 0;
-  if (errorCount > 0) return;
-  addUser()
-}
-
-/**
- * This function checks all inputs on forgot password page and sends new password link if no errors
- * 
- * @returns boolean
- */
-
-function checkInputsForgot() {
-  document.querySelectorAll(`.forgotErrorMessage`).forEach(function (el) {
-    el.classList.add('d-none');
-  })
-  let errorCount = 0;
-  errorCount += checkInputEmpty('forgotEmail') ? 1 : 0;
-  errorCount += checkEmailFormat('forgotEmail') ? 1 : 0;
-  errorCount += checkEmailDoesntExist('forgotEmail') ? 1 : 0;
-  if (errorCount > 0) return;
-  sendNewPasswordLink()
-}
-
-/**
- * This function checks all inputs on reset password page and updates password if no errors
- * 
- * @returns boolean
- */
-function checkInputsReset() {
-  document.querySelectorAll(`.resetErrorMessage`).forEach(function (el) {
-    el.classList.add('d-none');
-  })
-  let errorCount = 0;
-  errorCount += checkInputEmpty('resetPassword') ? 1 : 0;
-  errorCount += checkInputEmpty('confirmPassword') ? 1 : 0;
-  errorCount += checkPasswordLength('resetPassword') ? 1 : 0;
-  errorCount += checkPasswordMatch() ? 1 : 0;
-  if (errorCount > 0) return;
-  updatePassword()
 }
 
 /**
@@ -389,184 +241,6 @@ function checkEmailFormat(element) {
     return true
   }
 }
-/**
- * This function checks if an email already exists in data otherwise shows error
- * 
- * @param {string} element ID of the element to be checked
- * @returns boolean
- */
-function checkEmailExist(element) {
-  let input = document.getElementById(`${element}`);
-  let emailFound = false;
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].email === input.value) {
-      document.getElementById(`${element}InUseError`).classList.remove('d-none');
-      return true;
-    }
-  }
-  return false
-}
-/**
- * This function checks if an email doesn`t exists in data otherwise shows error
- * 
- * @param {string} element ID of the element to be checked
- * @returns boolean
- */
-function checkEmailDoesntExist(element) {
-  let input = document.getElementById(`${element}`);
-  let emailFound = false;
-  for (let i = 0; i < users.length; i++) {
-    if (input.value.length > 0 && input.value.includes('@') && users[i].email === input.value)
-      return false;
-  }
-  if (input.value.length > 0 && input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
-  return true
-}
-/**
- * This function checks if an input has the minimum count of characters otherwise shows error
- * 
- * @param {string} element ID of element to be checked
- * @returns boolean
- */
-function checkPasswordLength(element) {
-  let password = document.getElementById(`${element}`)
-  if (password.value.length < 6 && password.value.length > 0) {
-    document.getElementById(`${element}LengthError`).classList.remove('d-none');
-    return true
-  }
-}
-/**
- * This function checks if the password and confirmation password are identical otherwise shows error
- * 
- * @returns boolean
- */
-function checkPasswordConfirm() {
-  let password = document.getElementById('signUpPassword')
-  let passwordConfirm = document.getElementById('confirmPassword')
-  if (password.value != passwordConfirm.value) {
-    document.getElementById('confirmPasswordConfirmIdenticalError').classList.remove('d-none');
-    return true
-  }
-}
-
-/**
- * This function checks if the password is incorrect and shows error
- * 
- * @param {sting} element ID of the element where password is inserted
- * @returns boolean
- */
-function checkIncorrectPassword(element) {
-  let user = getUser();
-    let password = document.getElementById(`${element}`).value;
-    if (user && user.password !== password && password.length >= 6) {
-      document.getElementById(`${element}IncorrectError`).classList.remove('d-none');
-      return true
-    } else return false
-  
-}
-/**
- * This functions checks if the privacy policy is checked otherwise shows error
- * 
- * @returns boolean
- */
-function checkPrivacyChecked() {
-  let checkbox = document.getElementById('confirmationTerms');
-  if (checkbox.checked != true) {
-    document.getElementById('signUpPrivacyError').classList.remove('d-none')
-    return true
-  } else return false
-
-}
-
-/**
- * This function lets the user check in
- */
-function checkIn() {
-  rememberMe()
-  let currentUser = user.name
-  window.location.href = 'index.html?variable=' + currentUser;
-}
-
-/**
- * This function sends an link to the user via e-mail to reset the password
- */
-function sendNewPasswordLink() {
-  let email = document.getElementById('forgotEmail').value;
-  let xhr = new XMLHttpRequest();
-
-  let url = '//dogan-celik.developerakademie.net/join/send_mail.php';
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        // Hier könntest du die Serverantwort weiter überprüfen
-        if (xhr.responseText === 'success') {
-          showConfirmation('newPassword');
-          setTimeout(function () {
-            closeConfirmation();
-            closeDarkBackground();
-            showContentLogin('loginContainer');
-          }, 2000);
-        } else {
-          console.error('Ungültige Serverantwort:', xhr.responseText);
-        }
-      } else {
-        console.error('Fehler beim E-Mail-Versand. Statuscode:', xhr.status);
-      }
-    }
-  
-  };
-
-  // Die URL für den Link enthält jetzt die dynamische E-Mail-Adresse
-  let message = `Hello,\n\nPlease click on the following link to reset your password: http://dogan-celik.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
-  let params = `name=Join&mail=${email}&message=${message}`; // Empfänger dynamisch setzen
-  xhr.send(params);
-
-}
-
-
-/**
- *This function checks of password and confirm passwort are identical on reset page
- */
-function checkPasswordMatch() {
-  let password = document.getElementById('resetPassword').value
-  let confirmPassword = document.getElementById('confirmPassword').value;
-  if (password !== confirmPassword) document.getElementById('confirmPasswordIncorrectError').classList.remove('d-none');
-}
-
-/**
- * This function updates the password of the user
- */
-async function updatePassword() {
-  let params = new URLSearchParams(window.location.search);
-  email = params.get('email');
-  user = users.find(user => user.email === email);
-  newPassword = document.getElementById('resetPassword').value
-  user.password = newPassword;
-  await setItem('users', users)
-  showConfirmation('forgot')
-  setTimeout(closeConfirmation, 2000)
-}
-
-/**
- * This function shows confirmation to the user
- * 
- * @param {string} confirmation This is the type of confirmation the user gets 
- */
-function showConfirmation(confirmation) {
-  showDarkBackground()
-  let flyInButton = document.getElementById(`flyInButton`);
-  changeflyInButton(confirmation)
-  flyInButton.classList.remove('d-none');
-}
-/**
- * This function closes the confirmation
- */
-function closeConfirmation() {
-  let flyInButton = document.getElementById(`flyInButton`);
-  flyInButton.classList.add('d-none');
-}
 
 /**
  * This function gets the Initials of a contact
@@ -584,184 +258,11 @@ function getInitials(element) {
 }
 
 /**
- * This function opens the add task overlay
- * 
- * @param {string} progress Preset the progress of the task to create
- */
-function openAddTaskOverlay(progress) {
-  if (progress) taskProgress = progress
-  else progress = 'toDo'
-  clearTheInputFields()
-  choosenCategory = undefined
-  n = 1;
-  renderAddTask()
-  showDarkBackground()
-  document.getElementById('addTaskOverlay').classList.add('overlayActive');
-}
-/**
- * This function opens the overlay with the active task
- * 
- * @param {number} i This is the position of the task in tasks array
- */
-function openActiveTaskOverlay(i) {
-  let activeTask = tasks[i];
-  document.getElementById('activeTaskOverlay').innerHTML = addActiveTaskOverlayHTML(i)
-  showDarkBackground()
-  document.getElementById('activeTaskOverlay').classList.add('overlayActive')
-}
-/**
- * This function opens the edit task overlay with the active task 
- * 
- * @param {number} i This is the position of the task in tasks array
- */
-function openEditTaskOverlay(i) {
-  taskProgress = tasks[i].taskProgress
-  closeOverlay()
-  clearTheInputFields()
-  n = 2;
-  renderAddTask()
-  setTimeout(showDarkBackground, 500)
-  document.getElementById('editTaskOverlay').classList.add('overlayActive')
-  setEditTaskOverlay(i)
-}
-/**
- * This function opens the new contact overlay
- */
-function openNewContactOverlay() {
-  showDarkBackground()
-  document.getElementById('addContactOverlay').classList.add('overlayActive')
-}
-
-/**
- * This function closes the new contact overlay
- */
-function closeNewContactOverlay() {
-  document.getElementById('addContactOverlay').classList.add('d-none')
-  document.getElementById('containerOpenedTask').classList.add('d-none')
-}
-
-/**
- * This function opens the edit contact overlay
- * 
- * @param {number} j This is the position of the contact in contacts array
- */
-function openEditContactOverlay(j) {
-  contactToEdit = j
-  setEditContactOverlay(j)
-  document.getElementById('editContactOverlay').classList.add('overlayActive')
-  showDarkBackground()
-}
-/**
- * This function shows the dark background
- */
-function showDarkBackground() {
-  document.getElementById('darkBackgroundContainer').classList.remove('d-none');
-}
-
-/**
- * This function hides the dark background
- */
-function closeDarkBackground() {
-  document.getElementById('darkBackgroundContainer').classList.add('d-none');
-}
-
-/**
- * This function closes the active overlay
- */
-function closeOverlay() {
-  let overlay = document.querySelector('.overlayActive')
-  if (overlay) overlay.classList.remove('overlayActive');
-  clearTheInputFields()
-  n = 0
-  setTimeout(closeDarkBackground, 500)
-}
-/**
- * This function changes the inner html of the fly in button
- * 
- * @param {string} confirmation This is the change inside the fly in button
- */
-function changeflyInButton(confirmation) {
-  let flyInButton = document.getElementById(`flyInButton`);
-  if (confirmation == 'taskAdded') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Task added to board</div>
-  <img id="confirmationImg"src="./assets/img/boardIcon.svg" alt="">`}
-  else if (confirmation == 'taskDeleted') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Task deleted</div>
-  <img id="confirmationImg"src="./assets/img/deleteWhite.svg" alt="">`
-  }
-  else if (confirmation == 'taskMoved') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Task Moved</div>
-  <img id="confirmationImg" src="./assets/img/moveWhite.svg" alt="">`
-  }
-  else if (confirmation == 'taskUpdated') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Task Updated</div>
-  <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
-  }
-  else if (confirmation == 'contactAdded') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Contact Added</div>
-  <img id="confirmationImg" src="./assets/img/addContactIcon.svg" alt="">`
-  }
-  else if (confirmation == 'contactUpdated') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Contact Updated</div>
-  <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
-  }
-  else if (confirmation == 'newPassword') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">An e-mail has beend send</div>
-  <img id="confirmationImg" src="./assets/img/SendCheck.svg" alt="">`
-  }
-  else if (confirmation == 'signedUp') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Signed up successfully</div>
-  <img id="confirmationImg" src="./assets/img/userIcon.svg" alt="">`
-  }
-  else if (confirmation == 'contactDeleted') {
-    flyInButton.innerHTML = `
-  <div id="confirmationText" class="taskAddedToBoard">Contact deleted</div>
-  <img id="confirmationImg" src="./assets/img/deleteWhite.svg" alt="">`
-  }
-}
-
-/**
- * This function toogles the logout modal and closes it after timeout
- */
-function toggleLogout() {
-  let button = document.querySelector('.logOutModal')
-  if (button.classList.contains('d-none')) button.classList.remove('d-none')
-  else button.classList.add('d-none')
-  setTimeout(closeLogout, 2000)
-}
-
-/**
- * This function closes the logout modal
- */
-function closeLogout() {
-  let button = document.querySelector('.logOutModal')
-  if (!button.classList.contains('d-none')) button.classList.add('d-none')
-}
-
-/**
  *This function lets the user logout 
  */
 function logOut() {
   currentUser='Guest'
   window.location.href = 'login.html';
-}
-
-/**
- * This function resets all inputs and error messages on sign up
- */
-function resetSignUpInputs() {
-  document.querySelector('.signUpContainer').reset();
-  document.querySelectorAll(`.signUpErrorMessage`).forEach(function (el) {
-    el.classList.add('d-none');
-  })
 }
 
 /**
@@ -796,4 +297,21 @@ function setFavicon(isDarkMode) {
       }
     }
   }
+}
+
+
+/**
+ * This function directs user to board page
+ */
+function goToBoardPage() {
+  let boardButton = document.getElementById('board');
+  renderBoard()
+  setTimeout(function () {
+    boardButton.click();
+    document.getElementById(`addTaskForm${n}`).reset()
+    deleteAddTaskFields();
+    uncheckSelectedContacts();
+    closeOverlay()
+    closeConfirmation()
+  }, 1000);
 }

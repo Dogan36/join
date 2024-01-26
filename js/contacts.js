@@ -249,6 +249,7 @@ function checkInputsEditContact(j) {
   })
   editContact(j)
 }
+
 /**
  * This function closes the right section of contacts for responsivness
  */
@@ -257,6 +258,7 @@ function closeContactsRightMobile() {
   let contact = document.querySelector(".contactListElementActive");
   if (contact) contact.classList.remove("contactListElementActive");
 }
+
 /**
  * This function toggles the visibility of contact card edits
  */
