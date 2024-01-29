@@ -9,27 +9,12 @@ function setEditTaskOverlay(i) {
     document.getElementById('taskTitleInput2').value = task.taskTitle
     document.getElementById('addTaskDescription2').value = task.taskDescription
     document.getElementById('dueDate2').value = task.dueDate
-    let newOnClickFunction = "setEditTaskOverlay(" + i + ")";
-    document.querySelector('.overlayCancelButton').setAttribute('onclick', newOnClickFunction);
     setCategory(i)
     setContacts(i)
     setPrio(i)
     setSubtasks(i)
   }
 
-/**
- * This function opens an input to edit a subtask
- * 
- * @param {number} i This is the index of the subtask to be edited 
- */
-function openEditSubtask(i) {
-    let subtaskContainer = document.getElementById(`checkboxContainer${n}${i}`);
-    let value = document.getElementById(`subtaskContainerValue${n}${i}`).textContent
-    subtaskContainer.innerHTML = `<input id="subTaskEditContent${n}${i}" class="noOutline" type="text" maxlength="40" value="${value}" autocomplete="off">
-          <div class="subtaskEdit subtaskEditOpen"><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg"><span style="color:#cecece">|</span><img onclick = "saveEditedSubtask(${i})" src="assets/img/blackCheck.svg">
-        </div>`
-  }
-  
  /**
  * This function opens the add task overlay
  * 
@@ -191,6 +176,7 @@ function showConfirmation(confirmation) {
     changeflyInButton(confirmation)
     flyInButton.classList.remove('d-none');
   }
+  
   /**
    * This function closes the confirmation
    */

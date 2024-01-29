@@ -51,10 +51,8 @@
 }
 
 h1 {
-    font-style: normal;
     font-weight: 700;
     font-size: 61px;
-    line-height: 120%;
 }
 
 h2 {
@@ -69,23 +67,29 @@ indexWrapper {
     width: 100vw;
     overflow: hidden;
 }
+
 .indexContent::-webkit-scrollbar,
-.contactsLeft::-webkit-scrollbar {
+.contactsLeft::-webkit-scrollbar,
+.boardElementContent::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
 
 .indexContent::-webkit-scrollbar-thumb,
-.contactsLeft::-webkit-scrollbar-thumb {
-    background-color: #2A3647;
+.contactsLeft::-webkit-scrollbar-thumb,
+.boardElementContent::-webkit-scrollbar-thumb {
+    background-color: var(--defaultDark);
     border-radius: 100px;
 }
 
 .indexContent::-webkit-scrollbar-track,
-.contactsLeft::-webkit-scrollbar-track {
+.contactsLeft::-webkit-scrollbar-track,
+.boardElementContent::-webkit-scrollbar -track{
     background-color: #D1D1D1;
     border-radius: 100px;
     margin-block: 2px;
 }
+
 .indexContainer {
     display: flex;
     flex-direction: column;
@@ -106,332 +110,6 @@ indexWrapper {
 
 
 
-.loginSignUpButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 16px;
-    gap: 10px;
-    width: 91px;
-    height: 51px;
-    background: var(--defaultDark);
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.loginSignUpButton span {
-    width: 59px;
-    height: 19px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 120%;
-    color: white;
-}
-
-.loginLoginButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 0px;
-    gap: 10px;
-    width: 145px;
-    height: 51px;
-    background: var(--defaultDark);
-    border-radius: 8px;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.loginLoginButton span {
-    height: 25px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: white;
-}
-
-.loginGuestButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 16px;
-    gap: 10px;
-    width: 161px;
-    height: 51px;
-    border: 1px solid var(--defaultDark);
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.loginGuestButton span {
-    width: 129px;
-    height: 25px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: var(--defaultDark);
-    white-space: nowrap;
-}
-
-.signUpSignUpButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 0px;
-    gap: 10px;
-    width: 145px;
-    height: 51px;
-    background: var(--defaultDark);
-    border-radius: 8px;
-}
-
-.signUpButton span {
-    width: 78px;
-    height: 25px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: white;
-}
-
-.boardAddTaskButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 137px;
-    height: 51px;
-    background: var(--defaultDark);
-    border: 1px solid var(--defaultDark);
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.boardAddTaskButton span {
-    width: 92px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: white;
-    white-space: nowrap;
-}
-
-.addTaskCreateTaskButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 177px;
-    height: 61px;
-    background: #2A3647;
-    border-radius: 10px;
-}
-
-.addTaskCreateTaskButton span {
-    width: 123px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: white;
-}
-
-.addTaskClearButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 136px;
-    height: 61px;
-    border: 1px solid;
-    border-radius: 10px;
-}
-
-.addTaskClearButton span {
-    width: 53px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    color: var(--defaultDark);
-}
-
-.contactsNewContactButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    position: absolute;
-    width: 193px;
-    height: 53px;
-    right: 100px;
-    top: 700px;
-    background: var(--defaultDark);
-    border: 1px solid var(--defaultDark);
-    border-radius: 10px;
-    cursor: pointer;
-    z-index:2
-}
-
-.contactsNewContactButton span {
-    width: 130px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #FFFFFF;
-    white-space: nowrap;
-}
-
-.resetButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 0px;
-    gap: 10px;
-    width: 264px;
-    height: 51px;
-    cursor: pointer;
-    background: #2A3647;
-    border-radius: 8px;
-}
-
-.resetButton span {
-    width: 95px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #FFFFFF;
-}
-
-.forgotButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 0px;
-    gap: 10px;
-    width: 264px;
-    height: 51px;
-    background: #2A3647;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.forgotButton span {
-    width: 189px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #FFFFFF;
-}
-
-.addContactOverlayCreateContactButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 208px;
-    height: 61px;
-    background: var(--defaultDark);
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.addContactOverlayCreateContactButton span {
-    width: 154px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    color: #FFFFFF;
-}
-
-.overlayCancelButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 136px;
-    height: 61px;
-    border: 1px solid var(--defaultDark);
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.overlayCancelButton span {
-    width: 69px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    color: var(--defaultDark);
-}
-
-.editContactOverlaySaveButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 143px;
-    height: 61px;
-    background: var(--defaultDark);
-    border-radius: 10px;
-}
-
-.editContactOverlaySaveButton span {
-    width: 123px;
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 120%;
-    text-align: center;
-    color: #FFFFFF;
-}
-
 .activeTaskDelete {
     display: flex;
     justify-content: center;
@@ -440,7 +118,7 @@ indexWrapper {
     width: 50px;
     height: 50px;
     background: #FFFFFF;
-    border: 1px solid #2A3647;
+    border: 1px solid var(--defaultDark);
     border-radius: 10px 0px 0px 10px;
 }
 
@@ -452,7 +130,7 @@ indexWrapper {
     width: 50px;
     height: 50px;
     background: #FFFFFF;
-    border: 1px solid #2A3647;
+    border: 1px solid var(--defaultDark);
 }
 
 .activeTaskMove img {
@@ -467,45 +145,13 @@ indexWrapper {
     margin-left: -1px;
     width: 50px;
     height: 50px;
-    background: #2A3647;
+    background: var(--defaultDark);
     border-radius: 0px 10px 10px 0px;
 }
 
-.activeTaskCloseButton {
-    position: absolute;
-    right: 35px;
-    top: 35px;
-    cursor: pointer;
-}
 
-.boardAddTaskButton:hover,
-.contactsNewContactButton:hover,
-.loginLoginButton:hover,
-.loginSignUpButton:hover,
-.resetButton:hover,
-.forgotButton:hover,
-.editContactOverlaySaveButton:hover,
-.addContactOverlayCreateContactButton:hover,
-.activeTaskEdit:hover,
-.contactsMenuButton:hover {
-    background-color: var(--secondaryColor);
-    border: 1px solid var(--secondaryColor);
-}
 
-.loginGuestButton:hover,
-.overlayCancelButton:hover,
-.activeTaskMove:hover,
-.activeTaskDelete:hover,
-.addTaskCancelButton:hover {
-    border: 2px solid #29ABE2;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
 
-.loginGuestButton:hover span,
-.overlayCancelButton:hover span,
-.addTaskCancelButton:hover span {
-    color: var(--secondaryColor)
-}
 
 .loginErrorMessage,
 .signUpErrorMessage,
@@ -515,10 +161,10 @@ indexWrapper {
 .resetErrorMessage {
     white-space: nowrap;
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
+   
+     
     font-size: 12px;
-    line-height: 120%;
+     
     color: #FF001F;
 }
 
@@ -544,7 +190,7 @@ indexWrapper {
     gap: 13px;
     width: 424px;
     height: 74px;
-    background: #2A3647;
+    background: var(--defaultDark);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     bottom: -10%;
@@ -555,10 +201,10 @@ indexWrapper {
     width: 330px;
     height: 28px;
     font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+   
+     
     font-size: 23px;
-    line-height: 120%;
+     
     color: #FFFFFF;
 }
 
@@ -571,7 +217,7 @@ indexWrapper {
     left: 50%;
     width: 326px;
     height: 74px;
-    background: #2A3647;
+    background: var(--defaultDark);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     position: absolute;
@@ -602,7 +248,7 @@ indexWrapper {
     width: 235px;
     font-family: Inter;
     font-size: 21px;
-    font-weight: 400;
+     
     line-height: 25px;
     letter-spacing: 0em;
     text-align: left;
@@ -628,7 +274,7 @@ indexWrapper {
     padding: 0px;
     width: 326px;
     height: 74px;
-    background: #2A3647;
+    background: var(--defaultDark);
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     position: absolute;
@@ -639,10 +285,10 @@ indexWrapper {
 .forgotSentConfirmation span {
     height: 28px;
     font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+   
+     
     font-size: 23px;
-    line-height: 120%;
+     
     color: #FFFFFF;
 }
 
@@ -673,12 +319,13 @@ indexWrapper {
     flex-direction: column;
     overflow-y: auto;
     width: 100%;
+    min-height: 50px;
     max-height: 180px;
     padding-top: 5px;
 }
 
 .activeTaskAssignedToContainer::-webkit-scrollbar-thumb {
-    background-color: #2A3647;
+    background-color: var(--defaultDark);
     border-radius: 100px;
 }
 
@@ -697,7 +344,7 @@ indexWrapper {
     flex-direction: column;
 max-height: 140px;
     overflow-y: auto;
-    width: 59%;
+    width: 80%;
 }
 
 .activeTaskSubtasksContainer div {
@@ -706,7 +353,7 @@ max-height: 140px;
 }
 
 .activeTaskSubtasksContainer::-webkit-scrollbar-thumb {
-    background-color: #2A3647;
+    background-color: var(--defaultDark);
     border-radius: 100px;
 }
 
@@ -726,7 +373,7 @@ max-height: 140px;
 }
 
 .overlay::-webkit-scrollbar-thumb {
-    background-color: #2A3647;
+    background-color: var(--defaultDark);
     border-radius: 100px;
 }
 
@@ -758,9 +405,7 @@ max-height: 140px;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    padding: 4px 36.5px;
-    gap: 10px;
-    width: 142px;
+    padding: 4px 12px;
     height: 40px;
     background: #FC71FF;
     border-radius: 8px;
@@ -768,10 +413,10 @@ max-height: 140px;
 
 .activeTaskCategory span {
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
+   
+     
     font-size: 27px;
-    line-height: 120%;
+     
     color: #FFFFFF;
     height: 32px;
 }
@@ -785,17 +430,17 @@ max-height: 140px;
     width: 523px;
     font-weight: 700;
     font-size: 61px;
-    line-height: 120%;
-    color: #2A3647;
+     
+    color: var(--defaultDark);
     max-width: 70vw;
 }
 
 .activeTaskDescription {
     width: 518px;
     height: 50px;
-    font-weight: 400;
+     
     font-size: 21px;
-    line-height: 120%;
+     
     color: #000000;
     max-width: 70vw;
 }
@@ -814,10 +459,10 @@ max-height: 140px;
     width: 99px;
     height: 25px;
     font-family: 'Inter';
-    font-style: normal;
+   
     font-weight: 700;
     font-size: 21px;
-    line-height: 120%;
+     
     color: #000000;
 }
 
@@ -826,10 +471,10 @@ max-height: 140px;
     height: 25px;
     white-space: nowrap;
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
+   
+     
     font-size: 21px;
-    line-height: 120%;
+     
     color: #000000;
 }
 
@@ -847,50 +492,23 @@ max-height: 140px;
     width: 82px;
     height: 25px;
     font-family: 'Inter';
-    font-style: normal;
+   
     font-weight: 700;
     font-size: 21px;
-    line-height: 120%;
+     
     color: #000000;
 }
 
-.activeTaskPriorityButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 18px;
-    gap: 10px;
-    width: 131px;
-    height: 33px;
-    background: #FF3D00;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
 
-.activeTaskPriorityButton span {
-    height: 25px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 120%;
-    color: #FFFFFF;
-}
-
-.activeTaskPriorityButton img {
-    height: 12px;
-    width: 17px;
-}
 
 .activeTaskAssignedToHeader {
     width: 134px;
     height: 25px;
     font-family: 'Inter';
-    font-style: normal;
+   
     font-weight: 700;
     font-size: 21px;
-    line-height: 120%;
+     
     color: #000000;
 }
 
@@ -924,26 +542,24 @@ max-height: 140px;
 
 .activeTaskAssignedTo span {
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
+   
+     
     font-size: 21px;
-    line-height: 120%;
+     
     color: #000000;
 }
 
 .activeTaskAvartar span {
     height: 19px;
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
+   
+     
     font-size: 16px;
-    line-height: 120%;
+     
     color: #FFFFFF;
 }
 
-.activeTaskButtons {
-    display: flex;
-}
+
 
 .content {
     padding: 89px 0 0 230px;
@@ -987,26 +603,7 @@ max-height: 140px;
     display: none;
 }
 
-.noticeButton {
-    cursor: pointer;
-    display: flex;
-    padding: 8px;
-    align-items: center;
-    gap: 8px;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-    color: #A8A8A8;
-    text-decoration: none;
-    white-space: nowrap
-}
 
-.noticeButton:hover {
-    color: var(--secondaryColor);
-    scale: 1.1;
-}
 
 .helpSteps {
     display: flex;
@@ -1029,9 +626,9 @@ max-height: 140px;
     color: var(--black, #000);
     font-family: Inter;
     font-size: 27px;
-    font-style: normal;
+   
     font-weight: 700;
-    line-height: 120%;
+     
     /* 32.4px */
 }
 
@@ -1043,9 +640,9 @@ max-height: 140px;
     color: var(--black, #000);
     font-family: Inter;
     font-size: 20px;
-    font-style: normal;
+   
     font-weight: 700;
-    line-height: 120%;
+     
     /* 24px */
 }
 

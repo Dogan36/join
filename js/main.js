@@ -40,8 +40,8 @@ async function init(include = false) {
   }
 }
 
-  /**
- * This function loads user data from server
+/**
+* This function loads user data from server
 */
 async function loadUsers() {
   try {
@@ -124,7 +124,9 @@ function renderAddTask() {
   renderAddTaskCategorys()
   renderAddTaskContactsSelect()
   renderAddTaskContacts()
-  choosePrio('prioYellow')
+  if (n !== 2) {
+    choosePrio('prioYellow')
+  }
 }
 
 /**
@@ -142,7 +144,7 @@ function renderUserInitials() {
 /**
  * This function shows the selected content and hides all other
  * 
- * @param {sting} x id of the content to be shown
+ * @param {string} x id of the content to be shown
  */
 function showContent(x) {
   let content = document.querySelectorAll(".indexContent");
@@ -272,7 +274,7 @@ function getInitials(element) {
  *This function lets the user logout 
  */
 function logOut() {
-  currentUser='Guest'
+  currentUser = 'Guest'
   window.location.href = 'login.html';
 }
 

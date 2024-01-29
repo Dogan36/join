@@ -165,7 +165,6 @@
     align-items: center;
     padding: 4px 25px;
     gap: 10px;
-    width: 103px;
     height: 27px;
     background: var(--avatar-color-1);
     border-radius: 8px;
@@ -381,17 +380,7 @@
     height: 32px;
 }
 
-.activeTaskMoveButton {
-    font-size: 14px;
-    align-items: center;
-    cursor: pointer;
-    height: 32px;
-}
 
-.activeTaskMoveButton:hover {
-    box-shadow: 0px -3px 4px rgba(0, 0, 0, 0.25);
-    transform: scale(1.05);
-}
 
 @keyframes fadeOutRight {
     0% {
@@ -405,71 +394,3 @@
     }
 }
 
-@media screen and (max-width: 1375px) {
-    .boardElement {
-        flex: 1 0 33%;
-    }
-}
-
-@media screen and (max-width: 1080px) {
-    .boardContent {
-        margin-top: 50px;
-        padding-bottom: 50px;
-    }
-
-    .boardAddTaskButton span {
-        display: none;
-
-    }
-
-    .boardAddTaskButton {
-        width: 51px;
-    }
-
-    .overlay{
-        
-        padding: 20px;
-    }
-}
-
-@media screen and (max-width:650px) {
-    .board {
-        padding: 0px 30px 0px 30px;
-    }
-    .findTask {
-        position: absolute;
-        top: 126px;
-        left: 30px;
-        width: calc(100% - 60px);
-    }
-    .boardElement {
-        flex: 1 0 50%;
-        gap: 0;
-        min-height: unset;
-        align-items: baseline;
-        max-width: 100%
-    }
-
-    .boardElementHeader{
-        width: 100%;
-    }
-
-
-    .boardCard{
-        margin-bottom: 10px;
-        scroll-snap-align: start;
-    }
-
-    .boardElementContent {
-        flex-direction: row;
-        overflow-x: scroll;
-        width: 100%;
-       scroll-snap-type: x mandatory ;
-       scroll-snap-align: center
-    }
-
-  .activeTaskChangeContainer{
-    bottom:30px;
-    right:30px
-  }
-}

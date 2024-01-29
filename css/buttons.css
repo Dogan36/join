@@ -1,0 +1,570 @@
+.colorCategoryButton {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    margin: 10px;
+}
+
+.prioButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 134px;
+    height: 51px;
+    background-color: white;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 18px 10px;
+    gap: 10px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.prioButton:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    transform: scale(1.05);
+}
+
+.addTaskCancelButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addTaskCancelButton span {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    color: var(--defaultDark);
+}
+
+.clearBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    font-size: 21px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter';
+    color: #2A3647;
+    background-color: #F6F7F8;
+    transition: 100ms ease-in-out;
+}
+
+.clearBtn:hover {
+    color: #29ABE2;
+    border: 2px solid #29ABE2;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 10px;
+}
+
+.activeTaskMoveButton {
+    font-size: 14px;
+    align-items: center;
+    cursor: pointer;
+    height: 32px;
+}
+
+.activeTaskMoveButton:hover {
+    box-shadow: 0px -3px 4px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+
+.addContactButtons {
+    display: flex;
+    position: absolute;
+    width: 369px;
+    height: 61px;
+    left: 737px;
+    top: 435px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.overlayCancelButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+}
+
+.overlayCancelButton span {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    color: var(--defaultDark);
+}
+
+.editContactOverlaySaveButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 143px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
+}
+
+.editContactOverlaySaveButton span {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 120%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.contactsMenuButton {
+    display: none;
+    background: var(--defaultDark);
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    bottom: 100px;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 100%;
+}
+
+.loginButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 35px;
+    width: 341px;
+    height: 51px;
+}
+
+.loginSignUpButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+    width: 91px;
+    height: 51px;
+    background: var(--defaultDark);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.loginSignUpButton span {
+    width: 59px;
+    height: 19px;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+}
+
+.loginLoginButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 145px;
+    height: 51px;
+    background: var(--defaultDark);
+    border-radius: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.loginLoginButton span {
+    height: 25px;
+    font-weight: 700;
+    font-size: 21px; 
+    color: white;
+}
+
+.loginGuestButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    gap: 10px;
+    width: 161px;
+    height: 51px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.loginGuestButton span {
+    width: 129px;
+    height: 25px;
+    font-weight: 700;
+    font-size: 21px;  
+    color: var(--defaultDark);
+    white-space: nowrap;
+}
+
+.signUpSignUpButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 145px;
+    height: 51px;
+    background: var(--defaultDark);
+    border-radius: 8px;
+}
+
+.signUpButton span {
+    width: 78px;
+    height: 25px;
+    font-weight: 700;
+    font-size: 21px;   
+    color: white;
+}
+
+.boardAddTaskButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 137px;
+    height: 51px;
+    background: var(--defaultDark);
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.boardAddTaskButton span {
+    width: 92px;
+    height: 25px;
+    font-family: 'Inter';   
+    font-weight: 700;
+    font-size: 21px;  
+    color: white;
+    white-space: nowrap;
+}
+
+.addTaskCreateTaskButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 177px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
+}
+
+.addTaskCreateTaskButton span {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+    font-size: 21px;
+    color: white;
+}
+
+.addTaskClearButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.addTaskClearButton span {
+    width: 53px;
+    height: 25px;
+    font-family: 'Inter';
+    font-size: 21px;
+    color: var(--defaultDark);
+}
+
+.contactsNewContactButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    position: absolute;
+    width: 193px;
+    height: 53px;
+    right: 100px;
+    top: 700px;
+    background: var(--defaultDark);
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index:2
+}
+
+.contactsNewContactButton span {
+    width: 130px;
+    height: 25px;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+.resetButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 264px;
+    height: 51px;
+    cursor: pointer;
+    background: var(--defaultDark);
+    border-radius: 8px;
+}
+
+.resetButton span {
+    width: 95px;
+    height: 25px;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 21px;
+    color: #FFFFFF;
+}
+
+.forgotButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0px;
+    gap: 10px;
+    width: 264px;
+    height: 51px;
+    background: var(--defaultDark);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.forgotButton span {
+    width: 189px;
+    height: 25px;
+    font-family: 'Inter';
+   
+    font-weight: 700;
+    font-size: 21px;
+     
+    color: #FFFFFF;
+}
+
+.addContactOverlayCreateContactButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 208px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addContactOverlayCreateContactButton span {
+    width: 154px;
+    font-family: 'Inter';
+   
+    font-weight: 700;
+    font-size: 21px;
+     
+    color: #FFFFFF;
+}
+
+.overlayCancelButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 136px;
+    height: 61px;
+    border: 1px solid var(--defaultDark);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.overlayCancelButton span {
+    width: 69px;
+    height: 25px;
+    font-family: 'Inter';
+   
+     
+    font-size: 21px;
+     
+    color: var(--defaultDark);
+}
+
+.editContactOverlaySaveButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 10px;
+    gap: 10px;
+    width: 143px;
+    height: 61px;
+    background: var(--defaultDark);
+    border-radius: 10px;
+}
+
+.editContactOverlaySaveButton span {
+    width: 123px;
+    height: 25px;
+    font-family: 'Inter';
+   
+    font-weight: 700;
+    font-size: 21px;
+     
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.activeTaskCloseButton {
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+}
+
+.boardAddTaskButton:hover,
+.contactsNewContactButton:hover,
+.loginLoginButton:hover,
+.loginSignUpButton:hover,
+.resetButton:hover,
+.forgotButton:hover,
+.editContactOverlaySaveButton:hover,
+.addContactOverlayCreateContactButton:hover,
+.activeTaskEdit:hover,
+.contactsMenuButton:hover {
+    background-color: var(--secondaryColor);
+    border: 1px solid var(--secondaryColor);
+}
+
+.loginGuestButton:hover,
+.overlayCancelButton:hover,
+.activeTaskMove:hover,
+.activeTaskDelete:hover,
+.addTaskCancelButton:hover {
+    border: 2px solid #29ABE2;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.loginGuestButton:hover span,
+.overlayCancelButton:hover span,
+.addTaskCancelButton:hover span {
+    color: var(--secondaryColor)
+}
+
+.activeTaskPriorityButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 18px;
+    gap: 10px;
+    width: 131px;
+    height: 33px;
+    background: #FF3D00;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.activeTaskPriorityButton span {
+    height: 25px;
+    font-family: 'Inter';
+   
+     
+    font-size: 21px;
+     
+    color: #FFFFFF;
+}
+
+.activeTaskPriorityButton img {
+    height: 12px;
+    width: 17px;
+}
+
+.activeTaskButtons {
+    display: flex;
+}
+
+.noticeButton {
+    cursor: pointer;
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    font-family: Inter;
+    font-size: 16px;
+   
+     
+     
+    color: #A8A8A8;
+    text-decoration: none;
+    white-space: nowrap
+}
+
+.noticeButton:hover {
+    color: var(--secondaryColor);
+    scale: 1.1;
+}

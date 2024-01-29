@@ -55,14 +55,9 @@ body {
     border-radius: 10px;
     background: #ffffff;
     margin-top: 8px;
-    isolation: isolate;
-    flex: none;
     resize: vertical;
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
     font-size: 21px;
-    line-height: 120%;
 }
 
 input {
@@ -130,11 +125,6 @@ input {
     height: 51px;
 }
 
-.displayFlex {
-    display: flex !important;
-    flex-direction: column;
-}
-
 .selectionPointContainer {
     display: flex;
     align-items: center;
@@ -165,12 +155,7 @@ input {
     background-color: #0000ff;
 }
 
-.colorCategoryButton {
-    width: 12px;
-    height: 12px;
-    border-radius: 100%;
-    margin: 10px;
-}
+
 
 .color {
     width: 12px;
@@ -201,7 +186,6 @@ img.arrowIcon {
     width: 25px;
     height: 8px;
     cursor: pointer;
-
 }
 
 .arrowRotate {
@@ -257,26 +241,7 @@ img.arrowIcon {
     margin-top: 5px;
 }
 
-.prioButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 134px;
-    height: 51px;
-    background-color: white;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 18px 10px;
-    gap: 10px;
-    font-size: 21px;
-    cursor: pointer;
-}
 
-.prioButton:hover {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    transform: scale(1.05);
-}
 
 .prioIcon {
     width: 20px;
@@ -302,14 +267,9 @@ img.arrowIcon {
     height: 22px;
 }
 
-
-
 .addNewSubtask {
     font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
     font-size: 21px;
-    line-height: 120%;
     color: #D1D1D1;
 }
 
@@ -322,7 +282,6 @@ img.arrowIcon {
 .required {
     position: relative;
     font-size: 12px;
-    line-height: 120%;
     margin: 8px 0 0 0;
     color: #ff3a3a;
 }
@@ -362,56 +321,10 @@ img.arrowIcon {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
-.addTaskCancelButton{
-display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 136px;
-    height: 61px;
-    border: 1px solid var(--defaultDark);
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.addTaskCancelButton span{
-width: 69px;
-height: 25px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 120%;
-color: var(--defaultDark);
-}
 
 
-.clearBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 18px 10px;
-    gap: 10px;
-    width: 136px;
-    height: 61px;
-    font-size: 21px;
-    border: 1px solid #2A3647;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: 'Inter';
-    color: #2A3647;
-    background-color: #F6F7F8;
-    transition: 100ms ease-in-out;
-}
 
-.clearBtn:hover {
-    color: #29ABE2;
-    border: 2px solid #29ABE2;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 10px;
-}
+
 
 .subtaskContainer {
     display: flex;
@@ -425,6 +338,8 @@ color: var(--defaultDark);
 .subtaskContainer input{
     flex:1;
     background-color: #E7E7E7;
+    max-width: 82%;
+    margin-right: 10px;
 }
 
 .subtaskEdit{
@@ -498,22 +413,7 @@ input[type="checkbox"] + label {
     fill: #ff0000;
 }
 
-@media (max-width: 1300px) {
-    .contentBodyContainer {
-        flex-direction: column;
-        align-items: center;
 
-    }
-
-    .containerCenter {
-        display: none;
-    }
-
-    /* .containerCenter{
-
-} */
-
-}
 
 .inputAndColorButtonContainer {
     display: flex;
@@ -525,38 +425,3 @@ input[type="checkbox"] + label {
     width: 100%;
 }
 
-@media (max-width: 1080px) {
-.addTask{
-        height: 100%;
-     padding: 0 30px
-  
-    }
-
-    .contentBodyContainer{
-        align-items: unset;
-    }
-.subtaskContainer,
-    .titleInput,
-    .descriptionField,
-    .selectContainer,
-    .newCategoryContainer,
-    .prioBodyContainer
-    {
-        width: 100%;
-        max-width: 422px;
-    }
-
-    .prioButtonName{
-        display: none;
-    }
-}
-@media (max-width: 500px) {
-    .addTask{
-      
-     padding: 0 15px
-  
-    }
-.submitBtnsContainer{
-    flex-direction: column;
-}
-}

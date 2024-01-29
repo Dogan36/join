@@ -172,7 +172,6 @@ function checkInputsLogin() {
    * 
    * @returns boolean
    */
-  
   function checkInputsForgot() {
     document.querySelectorAll(`.forgotErrorMessage`).forEach(function (el) {
       el.classList.add('d-none');
@@ -237,6 +236,7 @@ function checkEmailExist(element) {
     if (input.value.length > 0 && input.value.includes('@')) document.getElementById(`${element}NotFoundError`).classList.remove('d-none');
     return true
   }
+
   /**
    * This function checks if an input has the minimum count of characters otherwise shows error
    * 
@@ -250,6 +250,7 @@ function checkEmailExist(element) {
       return true
     }
   }
+
   /**
    * This function checks if the password and confirmation password are identical otherwise shows error
    * 

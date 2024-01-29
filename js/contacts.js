@@ -125,9 +125,10 @@ function setInnerContactCard(j) {
  */
 function setInnerContactCardTemplate(j) {
   let contact = contacts[j]
-  return `<div class="contactCardHeader">
-  <div class="contactCardAvatar" style="background-color: ${avatarBackgroundColors[j]};"><span>${contact.initials}</span></div>
-  <div class="contactCardContentHeader">
+  return `
+  <div class="contactCardHeader">
+    <div class="contactCardAvatar" style="background-color: ${avatarBackgroundColors[j]};"><span>${contact.initials}</span></div>
+    <div class="contactCardContentHeader">
       <span>${contact.name}</span>
       <div class="contactCardEdits">
       <div onclick="openEditContactOverlay(${j})" class="contactCardEdit">

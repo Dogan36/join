@@ -188,18 +188,18 @@ function addActiveTaskOverlayHTML(i) {
         ${addActiveCardSubtasks(i)}
     </div>
     <div class = "activeTaskChangeContainer">
-    <div class = "activeTaskMoveContainer">
-    <div class="activeTaskMoveButtonHeader">Move to ...</div>
-<div onclick="moveTo(${i}, 'toDo')" class="activeTaskMoveButton">To Do</div>
-<div onclick="moveTo(${i}, 'inProgress')" class="activeTaskMoveButton">In Progress</div>
-<div onclick="moveTo(${i}, 'awaiting')" class="activeTaskMoveButton">Awaiting Feedback</div>
-<div onclick="moveTo(${i}, 'done')" class="activeTaskMoveButton">Done</div>
-    </div>
-    <div class="activeTaskButtons">
-    <div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', 'assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', 'assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
-    <div onclick="toogleTaskMove()" onmouseover="hover('activeTaskMove', 'assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
-    <div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
-    </div>
+        <div class = "activeTaskMoveContainer">
+        <div class="activeTaskMoveButtonHeader">Move to ...</div>
+            <div onclick="moveTo(${i}, 'toDo')" class="activeTaskMoveButton">To Do</div>
+            <div onclick="moveTo(${i}, 'inProgress')" class="activeTaskMoveButton">In Progress</div>
+            <div onclick="moveTo(${i}, 'awaiting')" class="activeTaskMoveButton">Awaiting Feedback</div>
+            <div onclick="moveTo(${i}, 'done')" class="activeTaskMoveButton">Done</div>
+        </div>
+        <div class="activeTaskButtons">
+            <div onclick="deleteTask(${i})" onmouseover="hover('activeTaskDelete', 'assets/img/deleteHover.svg')" onmouseout="hover('activeTaskDelete', 'assets/img/delete.svg')" class="activeTaskDelete"><img id="activeTaskDelete" src="assets/img/delete.svg" alt=""></div>
+            <div onclick="toogleTaskMove()" onmouseover="hover('activeTaskMove', 'assets/img/moveHover.svg')" onmouseout="hover('activeTaskMove', 'assets/img/move.svg')" class="activeTaskMove"><img id="activeTaskMove" src="assets/img/move.svg" alt=""></div>
+            <div onclick="openEditTaskOverlay(${i})" class="activeTaskEdit"><img id="activeTaskEdit" src="assets/img/editTaskPen.svg" alt=""></div>
+        </div>
     </div>
     <img onclick="closeOverlay(); renderBoard()" class="activeTaskCloseButton" src="assets/img/blackX.svg" alt="">
 </div>
@@ -257,7 +257,7 @@ function addActiveCardSubtasks(i) {
         let checkboxId = `activeCardSubtaskCheckbox-${n}-${index}`;
         subtasksHtml += `
         <div>
-        <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index}), setItem('tasks', tasks)">
+        <input id="${checkboxId}" class="checkbox" type="checkbox" ${subtask['subtaskDone'] ? 'checked' : ''} onchange="updateSubtaskDone(this.checked, ${i}, ${index})">
         <label for="${checkboxId}"></label> 
         <div class="activeTaskAssignedTo">
             <span>${subtask.subtaskTitle}</span>
@@ -278,6 +278,7 @@ function moveTo(i, progress) {
     task.taskProgress = `${progress}`
     showConfirmation('taskMoved')
     closeTaskMove()
+    closeOverlay()
     setItem('tasks', tasks)
     renderBoard()
     renderSummary()

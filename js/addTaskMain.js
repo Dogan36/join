@@ -7,18 +7,6 @@ let subtasks = []
 let addTaskNewSubtasks = [];
 let indexOfEditedTask
 let taskProgress = 'toDo';
-let buttonBackgroundColor = [
-  '#800080',   // Purple
-  '#ff0000',   // Red
-  '#008000',   // Green
-  '#ffba00',   // Orange
-  '#ffc0cb',   // Pink
-  '#0000ff',   // Blue
-  '#ffff00',   // Yellow
-  '#00ffff',   // Cyan
-  '#800000',   // Maroon
-  '#808080'    // Gray
-];
 let prios = [
   {
     name: 'low',
@@ -33,7 +21,6 @@ let prios = [
     iconWhite: 'assets/img/prioMediumWhiteIcon.svg',
     iconColor: 'assets/img/prioMediumIcon.svg',
     ID: 'prioYellow'
-
   },
   {
     name: 'urgent',
@@ -110,7 +97,6 @@ function getAddTaskJson() {
   return taskJsonArray
 }
 
-
 /**
  * This function clears the warnings
  */
@@ -160,7 +146,6 @@ async function addNewCategory() {
   await setItem('categorys', categorys);
 }
 
-
 /**
  * This function deletes category from categorys 
  * 
@@ -194,7 +179,6 @@ function selectCategory(i) {
   choosenCategory = categorys[i];
   document.getElementById(`selectContainer${n}`).innerHTML = categoryTemplate(choosenCategory)
 }
-
 
 /**
  * This function toogles the checkbox when clicked on parent div
@@ -256,8 +240,8 @@ function closeInviteNewContact() {
 * @param {event} event This is the event target which is clicked on
  */
 function closeDropdownsAddTask(event) {
-  const selectContainer = document.getElementById(`selectContainer${n}`);
-  const selectContactsContainer = document.getElementById(`selectContactsContainer${n}`);
+  let selectContainer = document.getElementById(`selectContainer${n}`);
+  let selectContactsContainer = document.getElementById(`selectContactsContainer${n}`);
   if (!(selectContainer.contains(event.target))) closeAddTaskCategory();
 
   if (selectContactsContainer) {
@@ -304,7 +288,6 @@ function selectContactToAssign() {
   let checkboxes = document.getElementsByName(`option[]${n}`);
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      // Extrahiere den Index aus dem value-Attribut der Checkbox
       let contactIndex = parseInt(checkboxes[i].value.match(/\d+/)[0]);
       selectedContacts.push(contactIndex);
     }
@@ -378,14 +361,15 @@ function addNewSubtask() {
  * 
  * @param {number} i This is the index of the Subtask to be edited
  */
-function saveEditedSubtask(i) {
-  let newSubtaskInput = document.getElementById(`subTaskEditContent${n}${i}`);
+async function saveEditedSubtask(j) {
+  let newSubtaskInput = document.getElementById(`subTaskEditContent${n}${j}`);
   if (newSubtaskInput.value !== '') {
     let newSubtask = {
       'subtaskTitle': newSubtaskInput.value,
       'subtaskDone': false
     }
-    subtasks.splice(i, 1, newSubtask)
+    subtasks.splice(j, 1, newSubtask)
+    await setItem('tasks', tasks);
     newSubtaskInput.value = '';
     renderSubtasks()
   }
@@ -396,33 +380,10 @@ function saveEditedSubtask(i) {
  * 
  * @param {number} i This is the index of the subtask to be deleted
  */
-function deleteSubtask(i) {
-  subtasks.splice(i, 1)
+function deleteSubtask(j) {
+  subtasks.splice(j, 1)
   renderSubtasks()
 }
-
-/**
- * This function gets the subtasks of the task from tasks array
- * 
- * @param {number} i This is the index of the task
- */
-function setSubtasks(i) {
-  let subtasksContainer = document.getElementById(`addTaskSubtaskPoint${n}`);
-  subtasksContainer.innerHTML = '';
-  subtasks = tasks[i].subtasks;
-  for (let j = 0; j < subtasks.length; j++) {
-    let subtask = subtasks[j]
-    subtasksContainer.innerHTML += `
-          <div id="checkboxContainer${n}${i}" class="subtaskContainer">
-                       <div id="subtaskContainerValue${n}${i}">${subtask['subtaskTitle']}</div>
-                       <div class="subtaskEdit"><img onclick = "openEditSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/editTaskPenBlack.svg"><span style="color:#cecece">|</span><img onclick = "deleteSubtask(${i})" class="taskEditSubtaskImg" src="assets/img/delete.svg">
-                       </div>
-          </div>
-        `;
-
-  }
-}
-
 
 /**
  * This function checkes if new added subtask is already done and add that info to subtask
@@ -431,8 +392,9 @@ function setSubtasks(i) {
  * @param {number} i This is the index of the task
  * @param {number} index This is the index of the subtask
  */
-function updateSubtaskDone(checked, i, index) {
+async function updateSubtaskDone(checked, i, index) {
   tasks[i].subtasks[index]['subtaskDone'] = checked;
+  await setItem('tasks', tasks)
   renderBoard()
 }
 
@@ -488,7 +450,9 @@ function setContacts(i) {
  * 
  * @param {number} i This is the index of the task
  */
+
 function setPrio(i) {
+  resetPrioButtons()
   let prioEdit = tasks[i].prio.ID
   let divClicked = document.getElementById(`${prioEdit}2`)
   divClicked.classList.add(`${prioEdit}`)
