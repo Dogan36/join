@@ -478,29 +478,6 @@ max-height: 140px;
     color: #000000;
 }
 
-.activeTaskPriority {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0px;
-    gap: 25px;
-    width: 238px;
-    height: 33px;
-}
-
-.activeTaskPriority span {
-    width: 82px;
-    height: 25px;
-    font-family: 'Inter';
-   
-    font-weight: 700;
-    font-size: 21px;
-     
-    color: #000000;
-}
-
-
-
 .activeTaskAssignedToHeader {
     width: 134px;
     height: 25px;
