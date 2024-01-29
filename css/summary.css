@@ -195,7 +195,6 @@ body {
     transform: scale(1.1);
     background-color: #2A3647;
     transition: transform 0.3s ease-in-out;
-
 }
 
 .buttonV1:hover .buttonTextV1V3 {

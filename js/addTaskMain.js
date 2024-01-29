@@ -7,6 +7,18 @@ let subtasks = []
 let addTaskNewSubtasks = [];
 let indexOfEditedTask
 let taskProgress = 'toDo';
+let buttonBackgroundColor = [
+  '#800080',   // Purple
+  '#ff0000',   // Red
+  '#008000',   // Green
+  '#ffba00',   // Orange
+  '#ffc0cb',   // Pink
+  '#0000ff',   // Blue
+  '#ffff00',   // Yellow
+  '#00ffff',   // Cyan
+  '#800000',   // Maroon
+  '#808080'    // Gray
+];
 let prios = [
   {
     name: 'low',

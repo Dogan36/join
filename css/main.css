@@ -84,7 +84,7 @@ indexWrapper {
 
 .indexContent::-webkit-scrollbar-track,
 .contactsLeft::-webkit-scrollbar-track,
-.boardElementContent::-webkit-scrollbar -track{
+.boardElementContent::-webkit-scrollbar -track {
     background-color: #D1D1D1;
     border-radius: 100px;
     margin-block: 2px;
@@ -161,10 +161,10 @@ indexWrapper {
 .resetErrorMessage {
     white-space: nowrap;
     font-family: 'Inter';
-   
-     
+
+
     font-size: 12px;
-     
+
     color: #FF001F;
 }
 
@@ -201,10 +201,10 @@ indexWrapper {
     width: 330px;
     height: 28px;
     font-family: 'Open Sans';
-   
-     
+
+
     font-size: 23px;
-     
+
     color: #FFFFFF;
 }
 
@@ -248,7 +248,7 @@ indexWrapper {
     width: 235px;
     font-family: Inter;
     font-size: 21px;
-     
+
     line-height: 25px;
     letter-spacing: 0em;
     text-align: left;
@@ -285,10 +285,10 @@ indexWrapper {
 .forgotSentConfirmation span {
     height: 28px;
     font-family: 'Open Sans';
-   
-     
+
+
     font-size: 23px;
-     
+
     color: #FFFFFF;
 }
 
@@ -342,7 +342,7 @@ indexWrapper {
 .activeTaskSubtasksContainer {
     display: flex;
     flex-direction: column;
-max-height: 140px;
+    max-height: 140px;
     overflow-y: auto;
     width: 80%;
 }
@@ -413,10 +413,10 @@ max-height: 140px;
 
 .activeTaskCategory span {
     font-family: 'Inter';
-   
-     
+
+
     font-size: 27px;
-     
+
     color: #FFFFFF;
     height: 32px;
 }
@@ -430,7 +430,7 @@ max-height: 140px;
     width: 523px;
     font-weight: 700;
     font-size: 61px;
-     
+
     color: var(--defaultDark);
     max-width: 70vw;
 }
@@ -438,9 +438,9 @@ max-height: 140px;
 .activeTaskDescription {
     width: 518px;
     height: 50px;
-     
+
     font-size: 21px;
-     
+
     color: #000000;
     max-width: 70vw;
 }
@@ -459,10 +459,10 @@ max-height: 140px;
     width: 99px;
     height: 25px;
     font-family: 'Inter';
-   
+
     font-weight: 700;
     font-size: 21px;
-     
+
     color: #000000;
 }
 
@@ -471,10 +471,10 @@ max-height: 140px;
     height: 25px;
     white-space: nowrap;
     font-family: 'Inter';
-   
-     
+
+
     font-size: 21px;
-     
+
     color: #000000;
 }
 
@@ -482,10 +482,8 @@ max-height: 140px;
     width: 134px;
     height: 25px;
     font-family: 'Inter';
-   
     font-weight: 700;
     font-size: 21px;
-     
     color: #000000;
 }
 
@@ -498,7 +496,7 @@ max-height: 140px;
     height: 35px;
 }
 
-.activeTaskAssignedTo span{
+.activeTaskAssignedTo span {
     text-wrap: nowrap;
     overflow: hidden;
 }
@@ -519,24 +517,16 @@ max-height: 140px;
 
 .activeTaskAssignedTo span {
     font-family: 'Inter';
-   
-     
     font-size: 21px;
-     
     color: #000000;
 }
 
 .activeTaskAvartar span {
     height: 19px;
     font-family: 'Inter';
-   
-     
     font-size: 16px;
-     
     color: #FFFFFF;
 }
-
-
 
 .content {
     padding: 89px 0 0 230px;
@@ -580,8 +570,6 @@ max-height: 140px;
     display: none;
 }
 
-
-
 .helpSteps {
     display: flex;
     flex-direction: column;
@@ -603,10 +591,7 @@ max-height: 140px;
     color: var(--black, #000);
     font-family: Inter;
     font-size: 27px;
-   
     font-weight: 700;
-     
-    /* 32.4px */
 }
 
 .helpStepText {
@@ -617,10 +602,7 @@ max-height: 140px;
     color: var(--black, #000);
     font-family: Inter;
     font-size: 20px;
-   
     font-weight: 700;
-     
-    /* 24px */
 }
 
 .helpJoin {
@@ -648,8 +630,7 @@ max-height: 140px;
         font-size: 16vw;
     }
 
-     
-    .activeTaskTitle{
+    .activeTaskTitle {
         font-size: 16vw;
     }
 }
@@ -659,17 +640,17 @@ max-height: 140px;
         display: none;
     }
 
-    .activeTaskButtons{
+    .activeTaskButtons {
         flex-direction: column;
         align-items: end;
     }
 
-    .activeTaskDelete{
+    .activeTaskDelete {
         border-radius: 10px 10px 0px 0px;
         margin: unset;
     }
 
-    .activeTaskEdit{
+    .activeTaskEdit {
         border-radius: 0px 0px 10px 10px;
     }
 }
@@ -679,12 +660,11 @@ max-height: 140px;
         align-items: normal;
     }
 
-    .legalContainer{
+    .legalContainer {
         padding-top: 8.3vw;
     }
-   
 }
-    
+
 @media screen and (max-width: 1080px) {
     indexWrapper {
         flex-direction: column-reverse;
@@ -724,7 +704,7 @@ max-height: 140px;
         height: 100vh;
         position: absolute;
         top: 0;
-        left:0;
+        left: 0;
         background-color: #f5f5f5;
         z-index: 2;
         animation-name: backgroundEaseOut;

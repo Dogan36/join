@@ -15,7 +15,7 @@ contacts {
     align-items: center;
 }
 
-.contactsLeft{
+.contactsLeft {
     width: 420px;
     max-width: 100%;
 }
@@ -45,7 +45,7 @@ contacts {
     flex: none;
     order: 0;
     flex-grow: 0;
-    max-width:100%;
+    max-width: 100%;
     gap: 10px;
     padding: 10px;
 }
@@ -54,7 +54,7 @@ contacts {
     display: flex;
     flex-direction: column;
     justify-content: center;
-width: 50px;
+    width: 50px;
     height: 60px;
     padding: 10px;
 }
@@ -526,8 +526,6 @@ width: 50px;
     border-radius: 70px
 }
 
-
-
 .addContactOverlayContent {
     display: flex;
     flex-direction: column;
@@ -590,13 +588,6 @@ width: 50px;
     bottom: 62.88%;
 }
 
-
-
-
-
-
-
-
 input.loginInput[type=number]::-webkit-inner-spin-button,
 input.loginInput[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -619,6 +610,3 @@ input.loginInput[type=number]::-webkit-outer-spin-button {
 .closeContactArrow {
     display: none;
 }
-
-
-
