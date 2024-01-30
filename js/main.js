@@ -312,7 +312,6 @@ function setFavicon(isDarkMode) {
   }
 }
 
-
 /**
  * This function directs user to board page
  */

@@ -176,7 +176,7 @@ function showConfirmation(confirmation) {
     changeflyInButton(confirmation)
     flyInButton.classList.remove('d-none');
   }
-  
+
   /**
    * This function closes the confirmation
    */

@@ -1,0 +1,285 @@
+@media screen and (max-width:1400px) {
+    .contactsRightHeader {
+        padding: 130px 0px 80px 0px;
+        align-items: flex-start;
+        gap: 7%;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .contactsRightHeader img {
+        order: 1;
+        rotate: -90deg;
+        transform-origin: top;
+        position: relative;
+        top: 10px;
+    }
+
+    .contactsRight {
+        padding: unset;
+        padding-left: 65px;
+    }
+}
+
+@media screen and (max-width: 1375px) {
+    .boardElement {
+        flex: 1 0 33%;
+    }
+}
+
+@media screen and (max-width:1300px) {
+    .contactsLeft {
+        width: 100%;
+    }
+
+    .contactsRight {
+        display: none;
+    }
+
+    .contactsRightMobileActive {
+        display: flex;
+        position: absolute;
+        width: calc(100% - 231px);
+        height: calc(100% - 89px);
+        background: #F5F5F5;
+        z-index: 1
+    }
+
+    .contactsCardContainer {
+        left: 65px;
+        top: 240px
+    }
+
+    .closeContactArrow {
+        display: block;
+        position: absolute;
+        top: 40px;
+        right: 30px;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    .editContactAvartar,
+    .addContactIcon {
+        top: 30%
+    }
+
+    .contactsNewContactButton {
+        top: unset;
+        bottom: 50px;
+        right: 50px;
+        z-index: 1;
+    }
+
+    .addContactOverlayLeft {
+        width: 100%;
+        height: 28%;
+        left: 0;
+        border-bottom-left-radius: 0;
+        padding: 10px 30px;
+    }
+
+    .addContactOverlayContent {
+        max-width: 100%;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        align-items: center;
+    }
+
+    .addContactButtons {
+        left: 50%;
+        transform: translate(-50%);
+        top: unset;
+        bottom: 20px;
+        align-self: center;
+        gap: unset;
+        justify-content: space-around;
+        max-width: 90vw;
+    }
+
+    .addContactOverlayLogo {
+        display: none;
+    }
+
+    .closeOverlay {
+        left: unset;
+        right: 20px;
+        top: 20px;
+        content: url(../assets/img/whiteX.svg);
+        z-index: 2;
+    }
+
+    .contactsNewContactButton {
+        z-index: 0;
+    }
+
+    .contentBodyContainer {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .containerCenter {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .desktopTemplate {
+        display: none;
+    }
+
+    .desktopTemplateLegal {
+        display: none;
+    }
+
+    .summary {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 93%;
+        justify-content: space-around;
+        padding: 0px 10px 0 10px;
+    }
+
+    .bodySummaryContainer {
+        justify-content: center;
+        height: 54vh;
+        max-width: 95vw;
+    }
+
+    .containerButton {
+        margin-top: 20px;
+        max-width: 90vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 20px;
+    }
+
+    .containerButtonHead,
+    .containerButtonBottom {
+        gap: 0;
+        justify-content: space-between;
+        max-width: 100%;
+    }
+
+    .headlineSummary {
+        align-self: flex-start;
+        align-items: flex-start;
+        gap: 7%;
+        flex-direction: column;
+        padding: unset;
+        height: 100px;
+    }
+
+    .headlineSeperator {
+        order: 1;
+        rotate: -90deg;
+        transform-origin: top;
+        position: relative;
+        top: 10px;
+    }
+
+    .buttonV1 {
+        max-width: 26.5vw;
+        max-height: 26.5vw;
+
+    }
+
+    .buttonV2 {
+        max-width: 90vw;
+        max-height: 26.5vw;
+    }
+
+    .buttonV3 {
+        max-width: 47%;
+        max-height: 26.5vw;
+        margin: 0;
+    }
+
+    .mobileTemplate,
+    .mobileTemplateLegal {
+        display: flex;
+    }
+
+    .contactsRightMobileActive {
+        width: 100%;
+    }
+
+    .contactsNewContactButton {
+        height: 56px;
+        width: 56px;
+        bottom: 100px;
+        border-radius: 100%;
+    }
+
+    .contactsNewContactButton img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .contactsNewContactButton span {
+        display: none;
+    }
+
+    .contactsLeft {
+        max-width: 100vw;
+        padding: 0;
+        align-items: center;
+    }
+
+    .contactListSection,
+    .contactListSection span,
+    .contactListSeperator,
+    .contactListSeperator img,
+    .contactListElement {
+        max-width: 100%;
+    }
+
+    .boardContent {
+        margin-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .boardAddTaskButton span {
+        display: none;
+    }
+
+    .boardAddTaskButton {
+        width: 51px;
+    }
+
+    .overlay {
+        padding: 20px;
+    }
+
+    .addTask {
+        height: 100%;
+        padding: 0 30px
+    }
+
+    .contentBodyContainer {
+        align-items: unset;
+    }
+
+    .subtaskContainer,
+    .titleInput,
+    .descriptionField,
+    .selectContainer,
+    .newCategoryContainer,
+    .prioBodyContainer {
+        width: 100%;
+        max-width: 422px;
+    }
+
+    .prioButtonName {
+        display: none;
+    }
+}
+
+

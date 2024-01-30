@@ -267,12 +267,6 @@ img.arrowIcon {
     height: 22px;
 }
 
-.addNewSubtask {
-    font-family: 'Inter';
-    font-size: 21px;
-    color: #D1D1D1;
-}
-
 .containerLeft {
     display: flex;
     gap: 14px;
@@ -323,77 +317,10 @@ img.arrowIcon {
 }
 
 
-
-
-
-.subtaskContainer {
-    display: flex;
-    margin-bottom: 5px;
-    justify-content: space-between;
-    width: 422px;
-    padding: 8px;
-    border-radius: 10px;
-}
-
-.subtaskContainer input{
-    flex:1;
-    background-color: #E7E7E7;
-    max-width: 82%;
-    margin-right: 10px;
-}
-
-.subtaskEdit{
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-width: 50px;
-}
-
-.subtaskEditOpen{
-    display: flex
-}
-
-.subtaskContainer:hover {
-    background-color: #E7E7E7;
-}
-.subtaskContainer:hover .subtaskEdit{
-    display: flex;
-}
-
-.subtaskEdit img,
-.subtaskEditOpen img{
-    height: 15px;
-    cursor: pointer;
-}
-
-.checkbox {
-    margin-right: 10px;
-}
-
-input[type="checkbox"] {
-    display: none;
-}
-
-input[type="checkbox"] + label {
-      margin-right: 10px;
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    background-image: url(../assets/img/checkboxUnchecked.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-  }
-  
-  input[type="checkbox"]:checked + label {
-    background-image: url(../assets/img/checkboxChecked.svg);
-  }
-  
 .inputOutline {
     outline: none;
     cursor: pointer;
     width: 100%;
-    
 }
 
 .inputOutline::placeholder{
@@ -412,8 +339,6 @@ input[type="checkbox"] + label {
 .creatTaskClearHover:hover {
     fill: #ff0000;
 }
-
-
 
 .inputAndColorButtonContainer {
     display: flex;

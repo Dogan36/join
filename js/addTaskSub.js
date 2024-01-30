@@ -4,6 +4,7 @@
 function clearTheInputFields() {
   deleteAddTaskFields()
   clearWarnings()
+ renderAddTask()
 }
 
 /**
@@ -16,13 +17,6 @@ function deleteAddTaskFields() {
   document.getElementById(`addTaskSubtaskPoint${n}`).innerHTML = '';
   resetSubtasks()
   resetPrioButtons()
-}
-
-/**
- * This function resets the subtasks
- */
-function resetSubtasks() {
-  subtasks = []
 }
 
 /**
@@ -380,105 +374,4 @@ function categoryTemplate(category) {
       </div>`
 }
 
-/**
- * This function generates the html for the selected contacts
- */
-function renderAddTaskContactsSelect() {
-  document.getElementById(`selectContactsContainer${n}`).innerHTML = `
-    <div onclick="toggleAddTaskContacts()" class="contactsOption">
-      <div class="addTaskDropdownHeader" id="selectStartTaskContact${n}">
-        Select contacts to assign
-      </div>
-      <img id="arrowRotate${n}" class="arrowIcon" src="./assets/img/arrowIcon.svg" alt="" />
-    </div>
-    <div id="contacts${n}" class="d-none">
-    </div>`
-}
 
-/**
- * This function generates the html for the contacts
- */
-function renderAddTaskContacts() {
-  let content = document.getElementById(`contacts${n}`);
-  content.innerHTML = '';
-  content.innerHTML = `
-      <div id="inviteNewContactContainer${n}" onclick="openInviteNewContact()" class="contactsOption">
-        <div>Invite new contact</div>
-        <img class="contactIcon" src="assets/img/contactIcon.svg" alt="">
-      </div>`;
-
-  for (let i = 0; i < contacts.length; i++) {
-    let contact = contacts[i];
-    if (contact['name'] !== 'Contact deleted') {
-      content.innerHTML += /*html*/ `
-        <div class="contactsOption" onclick="toggleCheckbox('${contact['name'] + n}')">
-        <div class="selectionPointContainer">
-          <div>${contact['name']}</div>
-        </div>
-        <div>
-          <input id='${contact['name'] + n}' type="checkbox" name="option[]${n}" value="Option ${i}">
-          <label for="${contact['name'] + n}"></label>
-        </div>
-      </div>`;
-    }
-  }
-}
-
-/**
- * This function clears invite new contact input
- */
-function clearInviteNewContactValue() {
-  document.getElementById(`inviteNewContact${n}`).value = ''
-}
-
-/**
- * This function renders html to subtask container
- */
-function renderSubtasks() {
-  let subtasksContainer = document.getElementById(`addTaskSubtaskPoint${n}`);
-  subtasksContainer.innerHTML = '';
-  for (let j = 0; j < subtasks.length; j++) {
-    let subtask = subtasks[j];
-    subtasksContainer.innerHTML += `
-      <div id="checkboxContainer${n}${j}" class="subtaskContainer">
-        <div id="subtaskContainerValue${n}${j}">${subtask['subtaskTitle']}</div>
-        <div class="subtaskEdit"><img onclick = "openEditSubtask(${j})" class="taskEditSubtaskImg" src="assets/img/editTaskPenBlack.svg"><span style="color:#cecece">|</span><img onclick = "deleteSubtask(${j})" class="taskEditSubtaskImg" src="assets/img/delete.svg">
-      </div>
-    `;
-
-  }
-}
-
-/**
- * This function gets the subtasks of the task from tasks array
- * 
- * @param {number} i This is the index of the task
- */
-function setSubtasks(i) {
-  let subtasksContainer = document.getElementById(`addTaskSubtaskPoint${n}`);
-  subtasksContainer.innerHTML = '';
-  subtasks = tasks[i].subtasks;
-  for (let j = 0; j < subtasks.length; j++) {
-    let subtask = subtasks[j]
-    subtasksContainer.innerHTML += `
-          <div id="checkboxContainer${n}${j}" class="subtaskContainer">
-                       <div id="subtaskContainerValue${n}${j}">${subtask['subtaskTitle']}</div>
-                       <div class="subtaskEdit"><img onclick = "openEditSubtask(${j})" class="taskEditSubtaskImg" src="assets/img/editTaskPenBlack.svg"><span style="color:#cecece">|</span><img onclick = "deleteSubtask(${j})" class="taskEditSubtaskImg" src="assets/img/delete.svg">
-                       </div>
-          </div>
-        `;
-  }
-}
-
-/**
- * This function opens an input to edit a subtask
- * 
- * @param {number} i This is the index of the subtask to be edited 
- */
-function openEditSubtask(j) {
-  let subtaskContainer = document.getElementById(`checkboxContainer${n}${j}`);
-  let value = document.getElementById(`subtaskContainerValue${n}${j}`).textContent
-  subtaskContainer.innerHTML = `<input id="subTaskEditContent${n}${j}" class="noOutline" type="text" maxlength="40" value="${value}" autocomplete="off">
-        <div class="subtaskEdit subtaskEditOpen"><img onclick = "deleteSubtask(${j})" class="taskEditSubtaskImg" src="assets/img/delete.svg"><span style="color:#cecece">|</span><img onclick = "saveEditedSubtask(${j})" src="assets/img/blackCheck.svg">
-      </div>`
-}

@@ -1,0 +1,210 @@
+@media screen and (max-width: 820px) {
+    .signUpContainer {
+        min-height: 502px;
+        top: 59%
+    }
+
+    .loginContainer {
+        min-height: 440px;
+        top: 59%
+    }
+
+    .forgotPassword {
+        min-height: 440px;
+        top: 59%
+    }
+
+    .forgotHeadline {
+        width: 70%;
+    }
+
+    .notice {
+        bottom: 10px;
+    }
+
+    @keyframes logoAnimation {
+        0% {
+            width: 274px;
+            height: 334px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        50% {
+            width: 274px;
+            height: 334px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        100% {
+            width: auto;
+            height: 16%;
+            transform: translate(0, 0);
+            top: 4%;
+            left: 5%;
+        }
+    }
+
+    .logoTopLeft {
+        height: 8%;
+        top: 4%;
+        left: 5%;
+    }
+
+    .resetPassword {
+        padding: 15px 20px;
+        height: 80%;
+        top: 55%
+    }
+
+    .resetHeadline span {
+        font-size: 34px;
+        white-space: wrap;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .contactsRight {
+        padding-left: 30px
+    }
+
+    .contactsRightHeader {
+        padding: 90px 0px 50px 0px;
+    }
+
+    .contactsCardContainer {
+        left: 30px;
+        top: 185px;
+    }
+
+    .contactCardAvatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .contactCardAvatar span {
+        font-size: 35px;
+    }
+
+    .contactCardHeader {
+        gap: 25px;
+        height: 90px;
+    }
+
+    .contactCardContentHeader span:first-child {
+        font-size: 36px;
+    }
+
+    .contactsMenuButton {
+        display: block;
+    }
+
+    .contactCardEdits {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        border-radius: 20px 20px 0px 20px;
+        height: 80px;
+        width: 100px;
+        bottom: 90px;
+        right: 100px;
+        align-items: flex-start;
+        justify-content: center;
+        box-shadow: 0px 4px 4px 0px #00000040;
+        padding: 10px;
+    }
+
+    .contactCardEdit {
+        width: unset;
+    }
+
+    .contactCardEdit img {
+        height: 18px;
+        width: 18px;
+    }
+
+    .contactCardEdit span {
+        font-size: 16px;
+        width: unset;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .containerButton {
+        flex-direction: column-reverse;
+    }
+
+    .buttonNumber {
+        font-size: 13vw;
+    }
+
+    .buttonTextV1V3 {
+        height: unset;
+        width: 18vw;
+        font-size: 3vw;
+    }
+
+    .buttonV3 {
+        gap: unset;
+        justify-content: space-around;
+    }
+
+    .buttonTextV2 {
+        height: unset;
+        font-size: 3vw;
+    }
+
+    .buttonV2TextBold {
+        font-weight: 700;
+        font-size: 4vw;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .board {
+        padding: 0px 30px 0px 30px;
+    }
+
+    .findTask {
+        position: absolute;
+        top: 126px;
+        left: 30px;
+        width: calc(100% - 60px);
+    }
+
+    .boardElement {
+        flex: 1 0 50%;
+        gap: 0;
+        min-height: unset;
+        align-items: baseline;
+        max-width: 100%
+    }
+
+    .boardElementHeader {
+        width: 100%;
+    }
+
+
+    .boardCard {
+        margin-bottom: 10px;
+        scroll-snap-align: start;
+    }
+
+    .boardElementContent {
+        flex-direction: row;
+        overflow-x: scroll;
+        width: 100%;
+        scroll-snap-type: x mandatory;
+        scroll-snap-align: center
+    }
+
+    .activeTaskChangeContainer {
+        bottom: 30px;
+        right: 30px
+    }
+}
