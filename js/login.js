@@ -307,39 +307,33 @@ function checkEmailExist(element) {
    * This function sends an link to the user via e-mail to reset the password
    */
   function sendNewPasswordLink() {
+    debugger
     let email = document.getElementById('forgotEmail').value;
     let xhr = new XMLHttpRequest();
   
-    let url = '//dogan-celik.developerakademie.net/join/send_mail.php';
+    let url = '//join.dogan-celik.com/send_mail.php';
     xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          // Hier könntest du die Serverantwort weiter überprüfen
-          if (xhr.responseText === 'success') {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
             showConfirmation('newPassword');
-            setTimeout(function () {
-              closeConfirmation();
-              closeDarkBackground();
-              showContentLogin('loginContainer');
-            }, 2000);
-          } else {
-            console.error('Ungültige Serverantwort:', xhr.responseText);
-          }
-        } else {
-          console.error('Fehler beim E-Mail-Versand. Statuscode:', xhr.status);
+            document.getElementById('forgotPassword').reset()
+                    setTimeout(function () {
+                        closeConfirmation();
+                        closeDarkBackground();
+                        showContentLogin('loginContainer');
+                    }, 2000);
+                 
+                  }
         }
-      }
-    
     };
-  
-    // Die URL für den Link enthält jetzt die dynamische E-Mail-Adresse
-    let message = `Hello,\n\nPlease click on the following link to reset your password: http://dogan-celik.developerakademie.net/join/forgot.html?email=${email}\n\nBest regards,\nYour Join Team`;
-    let params = `name=Join&mail=${email}&message=${message}`; // Empfänger dynamisch setzen
+
+    let message = `Hello,\n\nPlease click on the following link to reset your password: http://join.dogan-celik.com/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
+    let params = `name=Join&mail=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`;
     xhr.send(params);
-  
-  }
+}
+
   
   
   /**
@@ -357,6 +351,7 @@ function checkEmailExist(element) {
   async function updatePassword() {
     let params = new URLSearchParams(window.location.search);
     email = params.get('email');
+    console.log(email)
     user = users.find(user => user.email === email);
     newPassword = document.getElementById('resetPassword').value
     user.password = newPassword;
@@ -381,6 +376,7 @@ function resetSignUpInputs() {
  * @param {string} element This is the ID of the element which will get an eventlistener
  */
 function listenerPasswordImg(element) {
+  console.log('listenercalled')
     let passwordInput = document.getElementById(`${element}Password`);
     let passwordToggle = document.getElementById(`${element}PasswordImg`);
     passwordInput.addEventListener('keyup', function () {

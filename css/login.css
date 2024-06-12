@@ -358,7 +358,7 @@ img[src="assets/img/visibleIcon.svg"]:hover {
     left: 77px;
 }
 
-.leftArrow, .leftArrowLegal {
+.leftArrow {
     position: absolute;
     width: 37px;
     height: 37px;
@@ -371,6 +371,11 @@ img[src="assets/img/visibleIcon.svg"]:hover {
 .leftArrowLegal {
     right: 6vw;
     top: 198px;  
+    position: absolute;
+    width: 37px;
+    height: 37px;
+    cursor: pointer;
+    z-index: 1;
 }
 
 #unchecked,

@@ -1,58 +1,41 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-########### CONFIG ###############
 
+########### CONFIG ###############
 // Du musst den Empfänger dynamisch aus dem POST-Request nehmen
 $recipient = isset($_POST['mail']) ? $_POST['mail'] : 'dogancelik86@gmail.com';
-
-$redirect = 'login.html';
-
 ########### CONFIG END ###########
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: content-type");
 
-########### Instruction ###########   
-#
-#   This script has been created to send an email to the $recipient
-#   
-#  1) Upload this file to your FTP Server
-#  2) Send a POST request to this file, including
-#     [name] The name of the sender (Absender)
-#     [message] Message that should be send to you
-#
-##################################
-
-
-
-###############################
-#
-#        DON'T CHANGE ANYTHING FROM HERE!
-#
-#        Ab hier nichts mehr ändern!
-#
-###############################
-
-switch ($_SERVER['REQUEST_METHOD']) {
-    case ("OPTIONS"): //Allow preflighting to take place.
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Methods: POST");
-        header("Access-Control-Allow-Headers: content-type");
-        exit;
-    case ("POST"): //Send the email;
-        header("Access-Control-Allow-Origin: *");
-
-        $subject = "Contact From " . $_POST['name'];
-        $headers = "From: noreply@developerakademie.com";
-        error_log("Versuche, E-Mail zu senden an: " . $recipient);
-        mail($recipient, $subject, $_POST['message'], $headers);
-
-        header("Location: " . $redirect); 
-
-        break;
-    default: //Reject any non POST or OPTIONS requests.
-        header("Allow: POST", true, 405);
-        exit;
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit;
 }
 
-?>
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    error_log("POST-Parameter: " . print_r($_POST, true));
 
+    if (!isset($_POST['name']) || !isset($_POST['message']) || !isset($_POST['mail'])) {
+        http_response_code(400);
+        echo 'Missing required POST parameters';
+        exit;
+    }
+
+    $subject = "Contact From " . $_POST['name'];
+    $headers = "From: noreply@developerakademie.com";
+    $mailSent = mail($recipient, $subject, $_POST['message'], $headers);
+
+    if ($mailSent) {
+        echo 'success';
+    } else {
+        http_response_code(500);
+        echo 'Error sending email';
+    }
+} else {
+    header("Allow: POST", true, 405);
+    exit;
+}
+?>
