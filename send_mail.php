@@ -7,7 +7,21 @@ ini_set('display_errors', 1);
 $recipient = isset($_POST['mail']) ? $_POST['mail'] : 'dogancelik86@gmail.com';
 ########### CONFIG END ###########
 
-header("Access-Control-Allow-Origin: *");
+// Ursprung der Anfrage ermitteln
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+$allowed_origins = [
+    'http://join.dogan-celik.com',
+    'https://join.dogan-celik.com'
+];
+
+// Überprüfen, ob der Ursprung in der Liste der erlaubten Ursprünge ist
+if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: " . $origin);
+} else {
+    header("Access-Control-Allow-Origin: http://join.dogan-celik.com"); // Standardursprung
+}
+
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: content-type");
 
@@ -16,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    error_log("PHP-Skript wird ausgeführt.");
     error_log("POST-Parameter: " . print_r($_POST, true));
 
     if (!isset($_POST['name']) || !isset($_POST['message']) || !isset($_POST['mail'])) {
@@ -25,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $subject = "Contact From " . $_POST['name'];
-    $headers = "From: noreply@developerakademie.com";
+    $headers = "From: noreply@noreply@join.dogan-celik.com";
     $mailSent = mail($recipient, $subject, $_POST['message'], $headers);
 
     if ($mailSent) {

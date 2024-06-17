@@ -153,6 +153,11 @@ function changeflyInButton(confirmation) {
   <div id="confirmationText" class="taskAddedToBoard">An e-mail has beend send</div>
   <img id="confirmationImg" src="./assets/img/SendCheck.svg" alt="">`
   }
+  else if (confirmation == 'forgot') {
+    flyInButton.innerHTML = `
+  <div id="confirmationText" class="taskAddedToBoard">Password has been changed</div>
+   <img id="confirmationImg" src="./assets/img/update.svg" alt="">`
+  }
   else if (confirmation == 'signedUp') {
     flyInButton.innerHTML = `
   <div id="confirmationText" class="taskAddedToBoard">Signed up successfully</div>

@@ -23,8 +23,9 @@
     <link rel="stylesheet" href="./css/mediaQueries-650.css">
     <link rel="stylesheet" href="./css/mediaQueries.css">
     <script src='./js/storage.js'></script>
+    <script src="./js/login.js"></script>
 <script src="./js/main.js"></script>
-<script src="./js/login.js"></script>
+<script src="./js/overlays.js"></script>
     </head>
 <body onload="init(), listenerPasswordImg('reset'), listenerPasswordImg('confirm');">
     <div class="signUpWrapper">
@@ -63,5 +64,7 @@
             </div>
             <button type="submit" class="resetButton"><span>Continue</span></button>
         </form>
+        <div id="flyInButton" class="flyIn taskAddedToBoardContainer d-none"></div>
+        <div class="darkBackgroundContainer d-none" id="darkBackgroundContainer"></div>
 </body>
 </html>

@@ -351,13 +351,16 @@ function checkEmailExist(element) {
   async function updatePassword() {
     let params = new URLSearchParams(window.location.search);
     email = params.get('email');
-    console.log(email)
     user = users.find(user => user.email === email);
     newPassword = document.getElementById('resetPassword').value
     user.password = newPassword;
     await setItem('users', users)
     showConfirmation('forgot')
-    setTimeout(closeConfirmation, 2000)
+    setTimeout(function () {
+      closeConfirmation();
+      closeDarkBackground();
+      window.location.href='login.html'
+  }, 2000);
   }
 
   /**
@@ -376,7 +379,7 @@ function resetSignUpInputs() {
  * @param {string} element This is the ID of the element which will get an eventlistener
  */
 function listenerPasswordImg(element) {
-  console.log('listenercalled')
+  
     let passwordInput = document.getElementById(`${element}Password`);
     let passwordToggle = document.getElementById(`${element}PasswordImg`);
     passwordInput.addEventListener('keyup', function () {
