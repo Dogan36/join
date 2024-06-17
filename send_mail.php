@@ -30,9 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    error_log("PHP-Skript wird ausgeführt.");
-    error_log("POST-Parameter: " . print_r($_POST, true));
-
     if (!isset($_POST['name']) || !isset($_POST['message']) || !isset($_POST['mail'])) {
         http_response_code(400);
         echo 'Missing required POST parameters';
@@ -40,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $subject = "Contact From " . $_POST['name'];
-    $headers = "From: noreply@noreply@join.dogan-celik.com";
+    $headers = "From: noreply@join.dogan-celik.com";
     $mailSent = mail($recipient, $subject, $_POST['message'], $headers);
 
     if ($mailSent) {

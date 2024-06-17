@@ -307,30 +307,31 @@ function checkEmailExist(element) {
    * This function sends an link to the user via e-mail to reset the password
    */
   function sendNewPasswordLink() {
-    debugger
     let email = document.getElementById('forgotEmail').value;
     let xhr = new XMLHttpRequest();
-  
     let url = '//join.dogan-celik.com/send_mail.php';
     xhr.open('POST', url, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            showConfirmation('newPassword');
-            document.getElementById('forgotPassword').reset()
-                    setTimeout(function () {
-                        closeConfirmation();
-                        closeDarkBackground();
-                        showContentLogin('loginContainer');
-                    }, 2000);
-                 
-                  }
+            if (xhr.status === 200) {
+                showConfirmation('newPassword');
+                document.getElementById('forgotPassword').reset()
+                setTimeout(function () {
+                    closeConfirmation();
+                    closeDarkBackground();
+                    showContentLogin('loginContainer');
+                }, 2000);
+            } else {
+                console.error("Fehler beim Senden der E-Mail:", xhr.status, xhr.responseText);
+            }
         }
     };
 
     let message = `Hello,\n\nPlease click on the following link to reset your password: http://join.dogan-celik.com/reset.html?email=${email}\n\nBest regards,\nYour Join Team`;
+
     let params = `name=Join&mail=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`;
+
     xhr.send(params);
 }
 
